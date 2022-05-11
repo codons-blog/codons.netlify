@@ -3,17 +3,25 @@
     {
       "path": "about.html",
       "title": "A propos",
-      "description": "Tutoriels pour apprendre à coder",
+      "description": "Tutoriels pour apprendre à coder en R",
       "author": [],
-      "contents": "\r\nVous trouverez ici des tutoriels pour apprendre à coder.\r\nLe contenu est très largement inspiré du contenu du site ourcodingclub, dont les auteurs nous ont gentiment autorisé la traduction et l’adaptation.\r\n\r\n\r\n\r\n",
-      "last_modified": "2022-05-03T17:30:00+02:00"
+      "contents": "\r\nLe contenu des tutoriels de ce site a été adapté du site ourcodingclub avec\r\nl’autorisation des auteurs.\r\n\r\nListe des tutoriels disponibles à ce jour :\r\nPremiers\r\npas avec R\r\n\r\n\r\n\r\n",
+      "last_modified": "2022-05-09T13:02:28+02:00"
     },
     {
       "path": "index.html",
       "title": "Tutoriels R",
       "author": [],
       "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2022-05-03T17:30:01+02:00"
+      "last_modified": "2022-05-09T13:02:29+02:00"
+    },
+    {
+      "path": "links.html",
+      "title": "Liens",
+      "description": "Liens utiles pour approfondir",
+      "author": [],
+      "contents": "\r\nTélécharger R et RStudioAide-mémoiresRépertoires GitHub des tutoriels\r\nTélécharger R et RStudio\r\nThe Comprehensive R Archive\r\nNetworkRStudio\r\nAide-mémoires\r\nRStudio (anglais\r\n/ français)\r\nR basique (anglais)\r\nRépertoires GitHub des tutoriels\r\nPremiers\r\npas avec R\r\n\r\n\r\n\r\n",
+      "last_modified": "2022-05-09T13:02:29+02:00"
     }
   ],
   "collections": ["posts/posts.json"]

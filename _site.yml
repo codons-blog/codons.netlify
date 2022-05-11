@@ -1,14 +1,16 @@
 name: "codons"
-title: "Codon(s)!"
+title: "Codons"
 description: |
-  Turoriels pour apprendre à coder
+  Turoriels pour apprendre à coder en R
 output_dir: "_site"
 navbar:
   right:
-    - text: "Home"
+    - text: "Accueil"
       href: index.html
     - text: "A propos"
       href: about.html
+    - text: "Liens"
+      href: links.html
 output:
   distill::distill_article:
     css: theme.css

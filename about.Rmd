@@ -1,13 +1,18 @@
 ---
 title: "A propos"
 description: |
-  Tutoriels pour apprendre à coder
+  Tutoriels pour apprendre à coder en R
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-Vous trouverez ici des tutoriels pour apprendre à coder.  
-Le contenu est très largement inspiré du contenu du site [ourcodingclub](https://ourcodingclub.github.io/), 
-dont les auteurs nous ont gentiment autorisé la traduction et l'adaptation.
+
+Le contenu des tutoriels de ce site a été adapté du site [ourcodingclub](https://ourcodingclub.github.io/) avec l'autorisation des auteurs.
+
+<br>
+
+Liste des tutoriels disponibles à ce jour : 
+
+[Premiers pas avec R](https://codons.netlify.app/posts/premiers-pas-avec-r/)

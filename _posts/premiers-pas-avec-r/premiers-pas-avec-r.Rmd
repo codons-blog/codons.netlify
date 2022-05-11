@@ -65,7 +65,7 @@ R est un **langage de programmation statistique** qui a rapidement gagné en pop
 
 <br>
 
-R désigne également le **logiciel** qui utilise ce langage pour des calculs statistiques. Il dispose d'une **communauté** en ligne très active ainsi que d'**extensions** pour presque tous les domaines et applications possibles et imaginables.  
+R désigne également le **logiciel** qui utilise ce langage pour des calculs statistiques (et tout un tas d'autres applications !). Il dispose d'une **communauté** en ligne très active ainsi que d'**extensions** pour presque tous les domaines et applications possibles et imaginables.  
 
 <br>
 
@@ -194,7 +194,7 @@ L'auto-complétion est votre alliée ! Tapez quelques lettres puis sur la touche
 
 # Importer et vérifier les données {#importer}
 
-Pour importer les donées dans RStudio, deux options s'offrent à vous : 
+Pour importer les données dans RStudio, deux options s'offrent à vous : 
 
 - **Cliquer sur le bouton Import Dataset**
 
@@ -437,7 +437,7 @@ Il existe une manière plus simple de préciser les étiquettes ...
 
 # Défi {#defi}
 
-Si c'est votre premier contact avec R, ne vous inquiétez pas si vous ne comprenez pas tout, tout de suite. Revenez sur les sections que vous avez trouvées plus difficiles à tête reposée.
+Si c'est votre premier contact avec R, ne vous inquiétez pas si vous ne comprenez pas tout, tout de suite. Revenez à tête reposée sur les parties que vous avez trouvées plus difficiles.
 
 Voici un petit défi pour mettre en pratique ce que vous avez vu dans ce tutoriel.
 

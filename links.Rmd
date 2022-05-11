@@ -1,0 +1,27 @@
+---
+title: "Liens"
+description: |
+  Liens utiles pour approfondir
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+[Télécharger R et RStudio](#download)  
+[Aide-mémoires](#cheatsheets)  
+[Répertoires GitHub des tutoriels](#git)
+
+# Télécharger R et RStudio {#download}
+
+[The Comprehensive R Archive Network](https://cran.r-project.org/)   
+[RStudio](https://www.rstudio.com/products/rstudio/)  
+
+# Aide-mémoires {#cheatsheets}
+
+RStudio ([anglais](https://raw.githubusercontent.com/rstudio/cheatsheets/main/rstudio-ide.pdf) / [français](https://thinkr.fr/pdf/rstudio-french-cheatsheet.pdf))  
+R basique ([anglais](https://raw.githubusercontent.com/rstudio/cheatsheets/main/base-r.pdf))
+
+# Répertoires GitHub des tutoriels {#git}
+
+[Premiers pas avec R](https://github.com/KittJonathan/Codons-01-PremiersPasAvecR)
