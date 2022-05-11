@@ -1,0 +1,13 @@
+---
+title: "A propos"
+description: |
+  Tutoriels pour apprendre à coder
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+Vous trouverez ici des tutoriels pour apprendre à coder.  
+Le contenu est très largement inspiré du contenu du site [ourcodingclub](https://ourcodingclub.github.io/), 
+dont les auteurs nous ont gentiment autorisé la traduction et l'adaptation.

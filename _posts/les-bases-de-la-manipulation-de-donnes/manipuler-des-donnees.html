@@ -1,0 +1,1766 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+  <meta name="generator" content="distill" />
+
+  <style type="text/css">
+  /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
+  body {
+    visibility: hidden;
+  }
+  </style>
+
+ <!--radix_placeholder_import_source-->
+ <!--/radix_placeholder_import_source-->
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ad0000; } /* Alert */
+code span.an { color: #5e5e5e; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bn { color: #ad0000; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007ba5; } /* ControlFlow */
+code span.ch { color: #20794d; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #5e5e5e; } /* Comment */
+code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+code span.dt { color: #ad0000; } /* DataType */
+code span.dv { color: #ad0000; } /* DecVal */
+code span.er { color: #ad0000; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #ad0000; } /* Float */
+code span.fu { color: #4758ab; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #5e5e5e; } /* Information */
+code span.kw { color: #007ba5; } /* Keyword */
+code span.op { color: #5e5e5e; } /* Operator */
+code span.ot { color: #007ba5; } /* Other */
+code span.pp { color: #ad0000; } /* Preprocessor */
+code span.sc { color: #5e5e5e; } /* SpecialChar */
+code span.ss { color: #20794d; } /* SpecialString */
+code span.st { color: #20794d; } /* String */
+code span.va { color: #111111; } /* Variable */
+code span.vs { color: #20794d; } /* VerbatimString */
+code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+</style>
+
+
+  <!--radix_placeholder_meta_tags-->
+  <title>Les bases de la manipulation de données</title>
+
+  <meta property="description" itemprop="description" content="Sélectrionner, modifier et mettre en forme vos données."/>
+
+
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2022-05-02"/>
+  <meta property="article:created" itemprop="dateCreated" content="2022-05-02"/>
+  <meta name="article:author" content="Sandra Angers-Blondin"/>
+  <meta name="article:author" content="Jonathan Kitt (adaptation)"/>
+
+  <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
+  <meta property="og:title" content="Les bases de la manipulation de données"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:description" content="Sélectrionner, modifier et mettre en forme vos données."/>
+  <meta property="og:locale" content="en_US"/>
+
+  <!--  https://dev.twitter.com/cards/types/summary -->
+  <meta property="twitter:card" content="summary"/>
+  <meta property="twitter:title" content="Les bases de la manipulation de données"/>
+  <meta property="twitter:description" content="Sélectrionner, modifier et mettre en forme vos données."/>
+
+  <!--/radix_placeholder_meta_tags-->
+  <!--radix_placeholder_rmarkdown_metadata-->
+
+  <script type="text/json" id="radix-rmarkdown-metadata">
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","categories","output","draft"]}},"value":[{"type":"character","attributes":{},"value":["Les bases de la manipulation de données"]},{"type":"character","attributes":{},"value":["Sélectrionner, modifier et mettre en forme vos données.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Sandra Angers-Blondin"]},{"type":"character","attributes":{},"value":["https://ourcodingclub.github.io/tutorials/data-manip-intro"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Jonathan Kitt (adaptation)"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":[]}},"value":[]}]}]},{"type":"character","attributes":{},"value":["2022-05-02"]},{"type":"character","attributes":{},"value":["R","RStudio","Données","Tidyverse"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth","self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[1]},{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"logical","attributes":{},"value":[false]}]}
+  </script>
+  <!--/radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["img/data_cowboy.png","img/empetrum.jpg","img/tidy_data_1.png","img/tidy_data_2.png","manipuler-des-donnees_files/anchor-4.2.2/anchor.min.js","manipuler-des-donnees_files/bowser-1.9.3/bowser.min.js","manipuler-des-donnees_files/distill-2.2.21/template.v2.js","manipuler-des-donnees_files/figure-html5/unnamed-chunk-16-1.png","manipuler-des-donnees_files/header-attrs-2.11/header-attrs.js","manipuler-des-donnees_files/header-attrs-2.14/header-attrs.js","manipuler-des-donnees_files/jquery-3.6.0/jquery-3.6.0.js","manipuler-des-donnees_files/jquery-3.6.0/jquery-3.6.0.min.js","manipuler-des-donnees_files/jquery-3.6.0/jquery-3.6.0.min.map","manipuler-des-donnees_files/popper-2.6.0/popper.min.js","manipuler-des-donnees_files/tippy-6.2.7/tippy-bundle.umd.min.js","manipuler-des-donnees_files/tippy-6.2.7/tippy-light-border.css","manipuler-des-donnees_files/tippy-6.2.7/tippy.css","manipuler-des-donnees_files/tippy-6.2.7/tippy.umd.min.js","manipuler-des-donnees_files/webcomponents-2.0.0/webcomponents.js"]}
+  </script>
+  <!--radix_placeholder_navigation_in_header-->
+  <!--/radix_placeholder_navigation_in_header-->
+  <!--radix_placeholder_distill-->
+
+  <style type="text/css">
+
+  body {
+    background-color: white;
+  }
+
+  .pandoc-table {
+    width: 100%;
+  }
+
+  .pandoc-table>caption {
+    margin-bottom: 10px;
+  }
+
+  .pandoc-table th:not([align]) {
+    text-align: left;
+  }
+
+  .pagedtable-footer {
+    font-size: 15px;
+  }
+
+  d-byline .byline {
+    grid-template-columns: 2fr 2fr;
+  }
+
+  d-byline .byline h3 {
+    margin-block-start: 1.5em;
+  }
+
+  d-byline .byline .authors-affiliations h3 {
+    margin-block-start: 0.5em;
+  }
+
+  .authors-affiliations .orcid-id {
+    width: 16px;
+    height:16px;
+    margin-left: 4px;
+    margin-right: 4px;
+    vertical-align: middle;
+    padding-bottom: 2px;
+  }
+
+  d-title .dt-tags {
+    margin-top: 1em;
+    grid-column: text;
+  }
+
+  .dt-tags .dt-tag {
+    text-decoration: none;
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0em 0.4em;
+    margin-right: 0.5em;
+    margin-bottom: 0.4em;
+    font-size: 70%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  d-article table.gt_table td,
+  d-article table.gt_table th {
+    border-bottom: none;
+  }
+
+  .html-widget {
+    margin-bottom: 2.0em;
+  }
+
+  .l-screen-inset {
+    padding-right: 16px;
+  }
+
+  .l-screen .caption {
+    margin-left: 10px;
+  }
+
+  .shaded {
+    background: rgb(247, 247, 247);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .shaded .html-widget {
+    margin-bottom: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .shaded .shaded-content {
+    background: white;
+  }
+
+  .text-output {
+    margin-top: 0;
+    line-height: 1.5em;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  d-article {
+    padding-top: 2.5rem;
+    padding-bottom: 30px;
+  }
+
+  d-appendix {
+    padding-top: 30px;
+  }
+
+  d-article>p>img {
+    width: 100%;
+  }
+
+  d-article h2 {
+    margin: 1rem 0 1.5rem 0;
+  }
+
+  d-article h3 {
+    margin-top: 1.5rem;
+  }
+
+  d-article iframe {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 2.0em;
+    width: 100%;
+  }
+
+  /* Tweak code blocks */
+
+  d-article div.sourceCode code,
+  d-article pre code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: auto;
+  }
+
+  d-article div.sourceCode {
+    background-color: white;
+  }
+
+  d-article div.sourceCode pre {
+    padding-left: 10px;
+    font-size: 12px;
+    border-left: 2px solid rgba(0,0,0,0.1);
+  }
+
+  d-article pre {
+    font-size: 12px;
+    color: black;
+    background: none;
+    margin-top: 0;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+
+  d-article pre a {
+    border-bottom: none;
+  }
+
+  d-article pre a:hover {
+    border-bottom: none;
+    text-decoration: underline;
+  }
+
+  d-article details {
+    grid-column: text;
+    margin-bottom: 0.8em;
+  }
+
+  @media(min-width: 768px) {
+
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: visible !important;
+  }
+
+  d-article div.sourceCode pre {
+    padding-left: 18px;
+    font-size: 14px;
+  }
+
+  d-article pre {
+    font-size: 14px;
+  }
+
+  }
+
+  figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  /* CSS for d-contents */
+
+  .d-contents {
+    grid-column: text;
+    color: rgba(0,0,0,0.8);
+    font-size: 0.9em;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+    padding-left: 0.25em;
+    justify-self: start;
+  }
+
+  @media(min-width: 1000px) {
+    .d-contents.d-contents-float {
+      height: 0;
+      grid-column-start: 1;
+      grid-column-end: 4;
+      justify-self: center;
+      padding-right: 3em;
+      padding-left: 2em;
+    }
+  }
+
+  .d-contents nav h3 {
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 1em;
+  }
+
+  .d-contents li {
+    list-style-type: none
+  }
+
+  .d-contents nav > ul {
+    padding-left: 0;
+  }
+
+  .d-contents ul {
+    padding-left: 1em
+  }
+
+  .d-contents nav ul li {
+    margin-top: 0.6em;
+    margin-bottom: 0.2em;
+  }
+
+  .d-contents nav a {
+    font-size: 13px;
+    border-bottom: none;
+    text-decoration: none
+    color: rgba(0, 0, 0, 0.8);
+  }
+
+  .d-contents nav a:hover {
+    text-decoration: underline solid rgba(0, 0, 0, 0.6)
+  }
+
+  .d-contents nav > ul > li > a {
+    font-weight: 600;
+  }
+
+  .d-contents nav > ul > li > ul {
+    font-weight: inherit;
+  }
+
+  .d-contents nav > ul > li > ul > li {
+    margin-top: 0.2em;
+  }
+
+
+  .d-contents nav ul {
+    margin-top: 0;
+    margin-bottom: 0.25em;
+  }
+
+  .d-article-with-toc h2:nth-child(2) {
+    margin-top: 0;
+  }
+
+
+  /* Figure */
+
+  .figure {
+    position: relative;
+    margin-bottom: 2.5em;
+    margin-top: 1.5em;
+  }
+
+  .figure img {
+    width: 100%;
+  }
+
+  .figure .caption {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+    line-height: 1.5em;
+  }
+
+  .figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  .figure .caption a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .figure .caption b,
+  .figure .caption strong, {
+    font-weight: 600;
+    color: rgba(0, 0, 0, 1.0);
+  }
+
+  /* Citations */
+
+  d-article .citation {
+    color: inherit;
+    cursor: inherit;
+  }
+
+  div.hanging-indent{
+    margin-left: 1em; text-indent: -1em;
+  }
+
+  /* Citation hover box */
+
+  .tippy-box[data-theme~=light-border] {
+    background-color: rgba(250, 250, 250, 0.95);
+  }
+
+  .tippy-content > p {
+    margin-bottom: 0;
+    padding: 2px;
+  }
+
+
+  /* Tweak 1000px media break to show more text */
+
+  @media(min-width: 1000px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 80px [middle-start] 50px [text-start kicker-end] 65px 65px 65px 65px 65px 65px 65px 65px [text-end gutter-start] 65px [middle-end] 65px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 16px;
+    }
+
+    .grid {
+      grid-column-gap: 16px;
+    }
+
+    d-article {
+      font-size: 1.06rem;
+      line-height: 1.7em;
+    }
+    figure .caption, .figure .caption, figure figcaption {
+      font-size: 13px;
+    }
+  }
+
+  @media(min-width: 1180px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 32px;
+    }
+
+    .grid {
+      grid-column-gap: 32px;
+    }
+  }
+
+
+  /* Get the citation styles for the appendix (not auto-injected on render since
+     we do our own rendering of the citation appendix) */
+
+  d-appendix .citation-appendix,
+  .d-appendix .citation-appendix {
+    font-size: 11px;
+    line-height: 15px;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    padding-left: 18px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.02);
+    padding: 10px 18px;
+    border-radius: 3px;
+    color: rgba(150, 150, 150, 1);
+    overflow: hidden;
+    margin-top: -12px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  /* Include appendix styles here so they can be overridden */
+
+  d-appendix {
+    contain: layout style;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-top: 60px;
+    margin-bottom: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    color: rgba(0,0,0,0.5);
+    padding-top: 60px;
+    padding-bottom: 48px;
+  }
+
+  d-appendix h3 {
+    grid-column: page-start / text-start;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 1em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.65);
+  }
+
+  d-appendix h3 + * {
+    margin-top: 1em;
+  }
+
+  d-appendix ol {
+    padding: 0 0 0 15px;
+  }
+
+  @media (min-width: 768px) {
+    d-appendix ol {
+      padding: 0 0 0 30px;
+      margin-left: -30px;
+    }
+  }
+
+  d-appendix li {
+    margin-bottom: 1em;
+  }
+
+  d-appendix a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  d-appendix > * {
+    grid-column: text;
+  }
+
+  d-appendix > d-footnote-list,
+  d-appendix > d-citation-list,
+  d-appendix > distill-appendix {
+    grid-column: screen;
+  }
+
+  /* Include footnote styles here so they can be overridden */
+
+  d-footnote-list {
+    contain: layout style;
+  }
+
+  d-footnote-list > * {
+    grid-column: text;
+  }
+
+  d-footnote-list a.footnote-backlink {
+    color: rgba(0,0,0,0.3);
+    padding-left: 0.5em;
+  }
+
+
+
+  /* Anchor.js */
+
+  .anchorjs-link {
+    /*transition: all .25s linear; */
+    text-decoration: none;
+    border-bottom: none;
+  }
+  *:hover > .anchorjs-link {
+    margin-left: -1.125em !important;
+    text-decoration: none;
+    border-bottom: none;
+  }
+
+  /* Social footer */
+
+  .social_footer {
+    margin-top: 30px;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.67);
+  }
+
+  .disqus-comments {
+    margin-right: 30px;
+  }
+
+  .disqus-comment-count {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+  }
+
+  #disqus_thread {
+    margin-top: 30px;
+  }
+
+  .article-sharing a {
+    border-bottom: none;
+    margin-right: 8px;
+  }
+
+  .article-sharing a:hover {
+    border-bottom: none;
+  }
+
+  .sidebar-section.subscribe {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+
+  .subscribe p {
+    margin-bottom: 0.5em;
+  }
+
+
+  .article-footer .subscribe {
+    font-size: 15px;
+    margin-top: 45px;
+  }
+
+
+  .sidebar-section.custom {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+
+  .custom p {
+    margin-bottom: 0.5em;
+  }
+
+  /* Styles for listing layout (hide title) */
+  .layout-listing d-title, .layout-listing .d-title {
+    display: none;
+  }
+
+  /* Styles for posts lists (not auto-injected) */
+
+
+  .posts-with-sidebar {
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+
+  .posts-list .description h2,
+  .posts-list .description p {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  .posts-list .description h2 {
+    font-weight: 700;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .posts-list h2.post-tag {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding-bottom: 12px;
+  }
+  .posts-list {
+    margin-top: 60px;
+    margin-bottom: 24px;
+  }
+
+  .posts-list .post-preview {
+    text-decoration: none;
+    overflow: hidden;
+    display: block;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 24px 0;
+  }
+
+  .post-preview-last {
+    border-bottom: none !important;
+  }
+
+  .posts-list .posts-list-caption {
+    grid-column: screen;
+    font-weight: 400;
+  }
+
+  .posts-list .post-preview h2 {
+    margin: 0 0 6px 0;
+    line-height: 1.2em;
+    font-style: normal;
+    font-size: 24px;
+  }
+
+  .posts-list .post-preview p {
+    margin: 0 0 12px 0;
+    line-height: 1.4em;
+    font-size: 16px;
+  }
+
+  .posts-list .post-preview .thumbnail {
+    box-sizing: border-box;
+    margin-bottom: 24px;
+    position: relative;
+    max-width: 500px;
+  }
+  .posts-list .post-preview img {
+    width: 100%;
+    display: block;
+  }
+
+  .posts-list .metadata {
+    font-size: 12px;
+    line-height: 1.4em;
+    margin-bottom: 18px;
+  }
+
+  .posts-list .metadata > * {
+    display: inline-block;
+  }
+
+  .posts-list .metadata .publishedDate {
+    margin-right: 2em;
+  }
+
+  .posts-list .metadata .dt-authors {
+    display: block;
+    margin-top: 0.3em;
+    margin-right: 2em;
+  }
+
+  .posts-list .dt-tags {
+    display: block;
+    line-height: 1em;
+  }
+
+  .posts-list .dt-tags .dt-tag {
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0.3em 0.4em;
+    margin-right: 0.2em;
+    margin-bottom: 0.4em;
+    font-size: 60%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .posts-list img {
+    opacity: 1;
+  }
+
+  .posts-list img[data-src] {
+    opacity: 0;
+  }
+
+  .posts-more {
+    clear: both;
+  }
+
+
+  .posts-sidebar {
+    font-size: 16px;
+  }
+
+  .posts-sidebar h3 {
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  .sidebar-section {
+    margin-bottom: 30px;
+  }
+
+  .categories ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .categories li {
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 0;
+  }
+
+  .categories li>a {
+    border-bottom: none;
+  }
+
+  .categories li>a:hover {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  }
+
+  .categories .active {
+    font-weight: 600;
+  }
+
+  .categories .category-count {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+
+  @media(min-width: 768px) {
+    .posts-list .post-preview h2 {
+      font-size: 26px;
+    }
+    .posts-list .post-preview .thumbnail {
+      float: right;
+      width: 30%;
+      margin-bottom: 0;
+    }
+    .posts-list .post-preview .description {
+      float: left;
+      width: 45%;
+    }
+    .posts-list .post-preview .metadata {
+      float: left;
+      width: 20%;
+      margin-top: 8px;
+    }
+    .posts-list .post-preview p {
+      margin: 0 0 12px 0;
+      line-height: 1.5em;
+      font-size: 16px;
+    }
+    .posts-with-sidebar .posts-list {
+      float: left;
+      width: 75%;
+    }
+    .posts-with-sidebar .posts-sidebar {
+      float: right;
+      width: 20%;
+      margin-top: 60px;
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+  }
+
+
+  /* Improve display for browsers without grid (IE/Edge <= 15) */
+
+  .downlevel {
+    line-height: 1.6em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+  }
+
+  .downlevel .d-title {
+    padding-top: 6rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .downlevel .d-title h1 {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.1em;
+    margin: 0 0 0.5rem;
+  }
+
+  .downlevel .d-title p {
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.55em;
+    margin-top: 0;
+  }
+
+  .downlevel .d-byline {
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    font-size: 0.8rem;
+    line-height: 1.8em;
+  }
+
+  .downlevel .section-separator {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .downlevel .d-article {
+    font-size: 1.06rem;
+    line-height: 1.7em;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+
+
+  .downlevel .d-appendix {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: none;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.5);
+    padding-top: 40px;
+    padding-bottom: 48px;
+  }
+
+  .downlevel .footnotes ol {
+    padding-left: 13px;
+  }
+
+  .downlevel .base-grid,
+  .downlevel .distill-header,
+  .downlevel .d-title,
+  .downlevel .d-abstract,
+  .downlevel .d-article,
+  .downlevel .d-appendix,
+  .downlevel .distill-appendix,
+  .downlevel .d-byline,
+  .downlevel .d-footnote-list,
+  .downlevel .d-citation-list,
+  .downlevel .distill-footer,
+  .downlevel .appendix-bottom,
+  .downlevel .posts-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  @media(min-width: 768px) {
+    .downlevel .base-grid,
+    .downlevel .distill-header,
+    .downlevel .d-title,
+    .downlevel .d-abstract,
+    .downlevel .d-article,
+    .downlevel .d-appendix,
+    .downlevel .distill-appendix,
+    .downlevel .d-byline,
+    .downlevel .d-footnote-list,
+    .downlevel .d-citation-list,
+    .downlevel .distill-footer,
+    .downlevel .appendix-bottom,
+    .downlevel .posts-container {
+    padding-left: 150px;
+    padding-right: 150px;
+    max-width: 900px;
+  }
+  }
+
+  .downlevel pre code {
+    display: block;
+    border-left: 2px solid rgba(0, 0, 0, .1);
+    padding: 0 0 0 20px;
+    font-size: 14px;
+  }
+
+  .downlevel code, .downlevel pre {
+    color: black;
+    background: none;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+
+  .downlevel .posts-list .post-preview {
+    color: inherit;
+  }
+
+
+
+  </style>
+
+  <script type="application/javascript">
+
+  function is_downlevel_browser() {
+    if (bowser.isUnsupportedBrowser({ msie: "12", msedge: "16"},
+                                   window.navigator.userAgent)) {
+      return true;
+    } else {
+      return window.load_distill_framework === undefined;
+    }
+  }
+
+  // show body when load is complete
+  function on_load_complete() {
+
+    // add anchors
+    if (window.anchors) {
+      window.anchors.options.placement = 'left';
+      window.anchors.add('d-article > h2, d-article > h3, d-article > h4, d-article > h5');
+    }
+
+
+    // set body to visible
+    document.body.style.visibility = 'visible';
+
+    // force redraw for leaflet widgets
+    if (window.HTMLWidgets) {
+      var maps = window.HTMLWidgets.findAll(".leaflet");
+      $.each(maps, function(i, el) {
+        var map = this.getMap();
+        map.invalidateSize();
+        map.eachLayer(function(layer) {
+          if (layer instanceof L.TileLayer)
+            layer.redraw();
+        });
+      });
+    }
+
+    // trigger 'shown' so htmlwidgets resize
+    $('d-article').trigger('shown');
+  }
+
+  function init_distill() {
+
+    init_common();
+
+    // create front matter
+    var front_matter = $('<d-front-matter></d-front-matter>');
+    $('#distill-front-matter').wrap(front_matter);
+
+    // create d-title
+    $('.d-title').changeElementType('d-title');
+
+    // create d-byline
+    var byline = $('<d-byline></d-byline>');
+    $('.d-byline').replaceWith(byline);
+
+    // create d-article
+    var article = $('<d-article></d-article>');
+    $('.d-article').wrap(article).children().unwrap();
+
+    // move posts container into article
+    $('.posts-container').appendTo($('d-article'));
+
+    // create d-appendix
+    $('.d-appendix').changeElementType('d-appendix');
+
+    // flag indicating that we have appendix items
+    var appendix = $('.appendix-bottom').children('h3').length > 0;
+
+    // replace footnotes with <d-footnote>
+    $('.footnote-ref').each(function(i, val) {
+      appendix = true;
+      var href = $(this).attr('href');
+      var id = href.replace('#', '');
+      var fn = $('#' + id);
+      var fn_p = $('#' + id + '>p');
+      fn_p.find('.footnote-back').remove();
+      var text = fn_p.html();
+      var dtfn = $('<d-footnote></d-footnote>');
+      dtfn.html(text);
+      $(this).replaceWith(dtfn);
+    });
+    // remove footnotes
+    $('.footnotes').remove();
+
+    // move refs into #references-listing
+    $('#references-listing').replaceWith($('#refs'));
+
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      var id = $(this).attr('id');
+      $('.d-contents a[href="#' + id + '"]').parent().remove();
+      appendix = true;
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('d-appendix'));
+    });
+
+    // show d-appendix if we have appendix content
+    $("d-appendix").css('display', appendix ? 'grid' : 'none');
+
+    // localize layout chunks to just output
+    $('.layout-chunk').each(function(i, val) {
+
+      // capture layout
+      var layout = $(this).attr('data-layout');
+
+      // apply layout to markdown level block elements
+      var elements = $(this).children().not('details, div.sourceCode, pre, script');
+      elements.each(function(i, el) {
+        var layout_div = $('<div class="' + layout + '"></div>');
+        if (layout_div.hasClass('shaded')) {
+          var shaded_content = $('<div class="shaded-content"></div>');
+          $(this).wrap(shaded_content);
+          $(this).parent().wrap(layout_div);
+        } else {
+          $(this).wrap(layout_div);
+        }
+      });
+
+
+      // unwrap the layout-chunk div
+      $(this).children().unwrap();
+    });
+
+    // remove code block used to force  highlighting css
+    $('.distill-force-highlighting-css').parent().remove();
+
+    // remove empty line numbers inserted by pandoc when using a
+    // custom syntax highlighting theme
+    $('code.sourceCode a:empty').remove();
+
+    // load distill framework
+    load_distill_framework();
+
+    // wait for window.distillRunlevel == 4 to do post processing
+    function distill_post_process() {
+
+      if (!window.distillRunlevel || window.distillRunlevel < 4)
+        return;
+
+      // hide author/affiliations entirely if we have no authors
+      var front_matter = JSON.parse($("#distill-front-matter").html());
+      var have_authors = front_matter.authors && front_matter.authors.length > 0;
+      if (!have_authors)
+        $('d-byline').addClass('hidden');
+
+      // article with toc class
+      $('.d-contents').parent().addClass('d-article-with-toc');
+
+      // strip links that point to #
+      $('.authors-affiliations').find('a[href="#"]').removeAttr('href');
+
+      // add orcid ids
+      $('.authors-affiliations').find('.author').each(function(i, el) {
+        var orcid_id = front_matter.authors[i].orcidID;
+        if (orcid_id) {
+          var a = $('<a></a>');
+          a.attr('href', 'https://orcid.org/' + orcid_id);
+          var img = $('<img></img>');
+          img.addClass('orcid-id');
+          img.attr('alt', 'ORCID ID');
+          img.attr('src','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==');
+          a.append(img);
+          $(this).append(a);
+        }
+      });
+
+      // hide elements of author/affiliations grid that have no value
+      function hide_byline_column(caption) {
+        $('d-byline').find('h3:contains("' + caption + '")').parent().css('visibility', 'hidden');
+      }
+
+      // affiliations
+      var have_affiliations = false;
+      for (var i = 0; i<front_matter.authors.length; ++i) {
+        var author = front_matter.authors[i];
+        if (author.affiliation !== "&nbsp;") {
+          have_affiliations = true;
+          break;
+        }
+      }
+      if (!have_affiliations)
+        $('d-byline').find('h3:contains("Affiliations")').css('visibility', 'hidden');
+
+      // published date
+      if (!front_matter.publishedDate)
+        hide_byline_column("Published");
+
+      // document object identifier
+      var doi = $('d-byline').find('h3:contains("DOI")');
+      var doi_p = doi.next().empty();
+      if (!front_matter.doi) {
+        // if we have a citation and valid citationText then link to that
+        if ($('#citation').length > 0 && front_matter.citationText) {
+          doi.html('Citation');
+          $('<a href="#citation"></a>')
+            .text(front_matter.citationText)
+            .appendTo(doi_p);
+        } else {
+          hide_byline_column("DOI");
+        }
+      } else {
+        $('<a></a>')
+           .attr('href', "https://doi.org/" + front_matter.doi)
+           .html(front_matter.doi)
+           .appendTo(doi_p);
+      }
+
+       // change plural form of authors/affiliations
+      if (front_matter.authors.length === 1) {
+        var grid = $('.authors-affiliations');
+        grid.children('h3:contains("Authors")').text('Author');
+        grid.children('h3:contains("Affiliations")').text('Affiliation');
+      }
+
+      // remove d-appendix and d-footnote-list local styles
+      $('d-appendix > style:first-child').remove();
+      $('d-footnote-list > style:first-child').remove();
+
+      // move appendix-bottom entries to the bottom
+      $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
+      $('.appendix-bottom').remove();
+
+      // hoverable references
+      $('span.citation[data-cites]').each(function() {
+        var refs = $(this).attr('data-cites').split(" ");
+        var refHtml = refs.map(function(ref) {
+          return "<p>" + $('#ref-' + ref).html() + "</p>";
+        }).join("\n");
+        window.tippy(this, {
+          allowHTML: true,
+          content: refHtml,
+          maxWidth: 500,
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        });
+      });
+
+      // clear polling timer
+      clearInterval(tid);
+
+      // show body now that everything is ready
+      on_load_complete();
+    }
+
+    var tid = setInterval(distill_post_process, 50);
+    distill_post_process();
+
+  }
+
+  function init_downlevel() {
+
+    init_common();
+
+     // insert hr after d-title
+    $('.d-title').after($('<hr class="section-separator"/>'));
+
+    // check if we have authors
+    var front_matter = JSON.parse($("#distill-front-matter").html());
+    var have_authors = front_matter.authors && front_matter.authors.length > 0;
+
+    // manage byline/border
+    if (!have_authors)
+      $('.d-byline').remove();
+    $('.d-byline').after($('<hr class="section-separator"/>'));
+    $('.d-byline a').remove();
+
+    // remove toc
+    $('.d-contents').remove();
+
+    // move appendix elements
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('.d-appendix'));
+    });
+
+
+    // inject headers into references and footnotes
+    var refs_header = $('<h3></h3>');
+    refs_header.text('References');
+    $('#refs').prepend(refs_header);
+
+    var footnotes_header = $('<h3></h3');
+    footnotes_header.text('Footnotes');
+    $('.footnotes').children('hr').first().replaceWith(footnotes_header);
+
+    // move appendix-bottom entries to the bottom
+    $('.appendix-bottom').appendTo('.d-appendix').children().unwrap();
+    $('.appendix-bottom').remove();
+
+    // remove appendix if it's empty
+    if ($('.d-appendix').children().length === 0)
+      $('.d-appendix').remove();
+
+    // prepend separator above appendix
+    $('.d-appendix').before($('<hr class="section-separator" style="clear: both"/>'));
+
+    // trim code
+    $('pre>code').each(function(i, val) {
+      $(this).html($.trim($(this).html()));
+    });
+
+    // move posts-container right before article
+    $('.posts-container').insertBefore($('.d-article'));
+
+    $('body').addClass('downlevel');
+
+    on_load_complete();
+  }
+
+
+  function init_common() {
+
+    // jquery plugin to change element types
+    (function($) {
+      $.fn.changeElementType = function(newType) {
+        var attrs = {};
+
+        $.each(this[0].attributes, function(idx, attr) {
+          attrs[attr.nodeName] = attr.nodeValue;
+        });
+
+        this.replaceWith(function() {
+          return $("<" + newType + "/>", attrs).append($(this).contents());
+        });
+      };
+    })(jQuery);
+
+    // prevent underline for linked images
+    $('a > img').parent().css({'border-bottom' : 'none'});
+
+    // mark non-body figures created by knitr chunks as 100% width
+    $('.layout-chunk').each(function(i, val) {
+      var figures = $(this).find('img, .html-widget');
+      if ($(this).attr('data-layout') !== "l-body") {
+        figures.css('width', '100%');
+      } else {
+        figures.css('max-width', '100%');
+        figures.filter("[width]").each(function(i, val) {
+          var fig = $(this);
+          fig.css('width', fig.attr('width') + 'px');
+        });
+
+      }
+    });
+
+    // auto-append index.html to post-preview links in file: protocol
+    // and in rstudio ide preview
+    $('.post-preview').each(function(i, val) {
+      if (window.location.protocol === "file:")
+        $(this).attr('href', $(this).attr('href') + "index.html");
+    });
+
+    // get rid of index.html references in header
+    if (window.location.protocol !== "file:") {
+      $('.distill-site-header a[href]').each(function(i,val) {
+        $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+      });
+    }
+
+    // add class to pandoc style tables
+    $('tr.header').parent('thead').parent('table').addClass('pandoc-table');
+    $('.kable-table').children('table').addClass('pandoc-table');
+
+    // add figcaption style to table captions
+    $('caption').parent('table').addClass("figcaption");
+
+    // initialize posts list
+    if (window.init_posts_list)
+      window.init_posts_list();
+
+    // implmement disqus comment link
+    $('.disqus-comment-count').click(function() {
+      window.headroom_prevent_pin = true;
+      $('#disqus_thread').toggleClass('hidden');
+      if (!$('#disqus_thread').hasClass('hidden')) {
+        var offset = $(this).offset();
+        $(window).resize();
+        $('html, body').animate({
+          scrollTop: offset.top - 35
+        });
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    if (is_downlevel_browser())
+      init_downlevel();
+    else
+      window.addEventListener('WebComponentsReady', init_distill);
+  });
+
+  </script>
+
+  <!--/radix_placeholder_distill-->
+  <script src="manipuler-des-donnees_files/header-attrs-2.11/header-attrs.js"></script>
+  <script src="manipuler-des-donnees_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+  <script src="manipuler-des-donnees_files/popper-2.6.0/popper.min.js"></script>
+  <link href="manipuler-des-donnees_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="manipuler-des-donnees_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="manipuler-des-donnees_files/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="manipuler-des-donnees_files/anchor-4.2.2/anchor.min.js"></script>
+  <script src="manipuler-des-donnees_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="manipuler-des-donnees_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="manipuler-des-donnees_files/distill-2.2.21/template.v2.js"></script>
+  <!--radix_placeholder_site_in_header-->
+  <!--/radix_placeholder_site_in_header-->
+
+
+</head>
+
+<body>
+
+<!--radix_placeholder_front_matter-->
+
+<script id="distill-front-matter" type="text/json">
+{"title":"Les bases de la manipulation de données","description":"Sélectrionner, modifier et mettre en forme vos données.","authors":[{"author":"Sandra Angers-Blondin","authorURL":"https://ourcodingclub.github.io/tutorials/data-manip-intro","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""},{"author":"Jonathan Kitt (adaptation)","authorURL":{},"affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2022-05-02T00:00:00.000+02:00","citationText":"Angers-Blondin & (adaptation), 2022"}
+</script>
+
+<!--/radix_placeholder_front_matter-->
+<!--radix_placeholder_navigation_before_body-->
+<!--/radix_placeholder_navigation_before_body-->
+<!--radix_placeholder_site_before_body-->
+<!--/radix_placeholder_site_before_body-->
+
+<div class="d-title">
+<h1>Les bases de la manipulation de données</h1>
+<!--radix_placeholder_categories-->
+<div class="dt-tags">
+<div class="dt=tag">R</div>
+<div class="dt=tag">RStudio</div>
+<div class="dt=tag">Données</div>
+<div class="dt=tag">Tidyverse</div>
+</div>
+<!--/radix_placeholder_categories-->
+<p><p>Sélectrionner, modifier et mettre en forme vos données.</p></p>
+</div>
+
+<div class="d-byline">
+  Sandra Angers-Blondin <a href="https://ourcodingclub.github.io/tutorials/data-manip-intro" class="uri">https://ourcodingclub.github.io/tutorials/data-manip-intro</a> 
+  
+,   Jonathan Kitt (adaptation) true 
+  
+<br/>2022-05-02
+</div>
+
+<div class="d-article">
+<div class="d-contents d-contents-float">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#basique">La syntaxe basique de R</a></li>
+<li><a href="#tidy">Les données <strong>tidy</strong></a></li>
+<li><a href="#dplyr">Les fonctions principales de <code>dplyr</code></a></li>
+</ul>
+</nav>
+</div>
+<p><em>Ce tutoriel est adapté de <a href="https://ourcodingclub.github.io/tutorials/data-manip-intro/index.html">Basic data manipulation</a> du site <a href="https://ourcodingclub.github.io/">Our Coding Club</a>.</em></p>
+<h1 id="introduction">Introduction</h1>
+<div class="layout-chunk" data-layout="l-body-outset">
+<p><img src="img/data_cowboy.png" width="2500" /></p>
+</div>
+<p>Dessin de <a href="https://raw.githubusercontent.com/allisonhorst/stats-illustrations/master/rstats-artwork/data_cowboy.png">Allison Horst</a></p>
+<p><br></p>
+<p>Les <strong>objectifs</strong> de ce tutoriel sont les suivants :</p>
+<ol type="1">
+<li>Apprendre à manipuler des données à l’aide des opérateurs basiques de R<br />
+</li>
+<li>Nettoyer des données avec le package <code>tidyr</code></li>
+<li>Manipuler ses données à l’aide du package <code>dplyr</code></li>
+</ol>
+<p><br></p>
+<p>Voici les <strong>étapes</strong> que nous allons suivre pour y parvenir :</p>
+<ol type="1">
+<li><a href="#basique">Sélectionner, extraire et modifier des données avec les opérateurs basiques de R</a><br />
+</li>
+<li><a href="#tidy">Comment nettoyer des données</a></li>
+<li><a href="#dplyr">Explorer les principales fonctions de <code>dplyr</code></a>
+<ul>
+<li><a href="#rename"><code>rename()</code></a><br />
+</li>
+<li><a href="#filter"><code>filter()</code> et <code>select()</code></a><br />
+</li>
+<li><a href="#mutate"><code>mutate()</code></a><br />
+</li>
+<li><a href="#group"><code>group_by()</code></a><br />
+</li>
+<li><a href="#join"><code>join()</code></a></li>
+</ul></li>
+<li><a href="#defi">Défi</a></li>
+</ol>
+<p><br></p>
+<p>Un format de données qui s’avère utile et pratique pour une application spécifique ne le sera pas forcément pour une autre application. Les fonctions de R nécessitent un certain format et un certain type de données, ce qui rend la maîtrise de la mise en forme de données essentielle !</p>
+<p><br></p>
+<p>Si vous avez besoin de revoir les bases de R, vous pouvez lire le tutoriel <a href="https://codons.netlify.app/posts/premiers-pas-avec-r/">Premiers pas avec R</a>.</p>
+<p><br></p>
+<p>Dans ce tutoriel, nous allons voir comment manipuler des données en utilisant la syntaxe basique de R (vous verrez souvent des solutions en ligne avec cette syntaxe). Nous introduirons ensuite le concept de données <strong>tidy</strong>, très utiles pour la collecte et l’organisation de données. Nous utiliserons ensuite des packages du <a href="https://www.tidyverse.org/"><strong>Tidyverse</strong></a>, qui est en train de devenir la norme pour les data sciences, qui permet de coder de façon plus claire et nette que les fontions basiques de R.</p>
+<p><br></p>
+<p><strong>Cliquez sur <a href="https://github.com/KittJonathan/Codons-02-BasesManipulationDonnees">ce lien</a> pour télécharger le dossier contenant tous les fichiers dont vous aurez besoin pour ce tutoriel (rappel sur la procédure <a href="https://codons.netlify.app/posts/premiers-pas-avec-r/#téléchargez-les-données">ici</a>).</strong></p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<h1 id="basique">La syntaxe basique de R</h1>
+<p>Les <strong>data frames</strong> sont des objets qui contiennent des observations (dans les lignes) de différentes variables (dans les colonnes). Commençons par importer le fichier <code>croissance.csv</code> dans le dossier que vous avez téléchargé.</p>
+<p><strong>Créez un nouveau script, ajoutez des informations (date, titre, …) en haut du script (à l’aide de <code>#</code>).</strong></p>
+<p>Ce jeu de données représente la croissance annuelle de tiges d’arbrisseaux (<em>Empetrum nigrum</em> ou camarine noire) situés dans des dunes de sables. La colonne <code>Zone</code> correspond à des zones distinces allant de la plus proche (2) à la plus éloignée (7) de la mer.</p>
+<figure>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Empetrum_nigrum_a2.jpg/1280px-Empetrum_nigrum_a2.jpg" alt="Empetrum nigrum" /><figcaption aria-hidden="true"><strong>Empetrum nigrum</strong></figcaption>
+</figure>
+<p>Nous avons vu dans le <a href="https://codons.netlify.app/posts/premiers-pas-avec-r/">tutoriel d’introduction à R</a> comment accéder à des variables à l’aide du signe dollar <code>$</code>. Cette manière de sélectionner permet de réduire un data frame en deux dimensions en un vecteur à une dimension. Une autre manière de sélectionner des parties d’un data frame est d’utiliser des crochets : <code>[x , y]</code> sélectionnera la ligne <code>x</code> et la colonne <code>y</code>. Un espace blanc à gauche ou à droite de la virgule permet de sélectionner respectivement toutes les colonnes ou toutes les lignes du data frame.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Definir le repertoire de travail</span>
+<span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>setwd</a></span><span class='op'>(</span><span class='st'>"C:/Users/ateliers/codons_02_bases_manipulation_donnees/"</span><span class='op'>)</span>
+
+<span class='co'># Importer les donnees </span>
+<span class='va'>croissance</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"croissance.csv"</span><span class='op'>)</span>
+
+<span class='co'># Explorer les donnees</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>croissance</span><span class='op'>)</span>  <span class='co'># affiche les premieres observations</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>croissance</span><span class='op'>)</span>  <span class='co'># affiche les types des variables</span>
+<span class='va'>croissance</span><span class='op'>$</span><span class='va'>Indiv</span>  <span class='co'># affiche tous les identifiants de la variable "Indiv"</span>
+<span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>croissance</span><span class='op'>$</span><span class='va'>Indiv</span><span class='op'>)</span><span class='op'>)</span>  <span class='co'># nombre d'abrisseaux dans le jeu de données</span>
+
+<span class='co'># Selectionner des donnees</span>
+<span class='va'>croissance</span><span class='op'>[</span><span class='fl'>2</span>, <span class='fl'>5</span><span class='op'>]</span>  <span class='co'># 2e ligne et 5e colonne</span>
+<span class='va'>croissance</span><span class='op'>[</span><span class='fl'>6</span>, <span class='op'>]</span>  <span class='co'># 6e ligne</span>
+<span class='va'>croissance</span><span class='op'>[</span><span class='fl'>6</span>, <span class='op'>]</span><span class='op'>$</span><span class='va'>Indiv</span>  <span class='co'># colonne Indiv pour la 6e ligne</span>
+</code></pre>
+</div>
+</div>
+<p>La sélection à l’aide des crochets peut se révéler fastidieuse si vous travaillez sur un large jeu de données et que vous ne savez pas où se trouvent les observations qui vous intéressent. Cette façon de faire n’est pas recommandée, car si vous inscrivez des nombres dans votre code et que vous ajoutez des colonnes par la suite, il n’est pas impossible que votre sélection soit modifiée. C’est pour cette raison qu’il est préférable d’utiliser des <em>opérations logiques</em> pour sélectionner les parties des données qui répondent à nos critères.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Selectionner les valeurs pour l'individu n°603</span>
+<span class='va'>croissance</span><span class='op'>[</span><span class='va'>croissance</span><span class='op'>$</span><span class='va'>Indiv</span> <span class='op'>==</span> <span class='fl'>603</span>, <span class='op'>]</span>
+</code></pre>
+</div>
+</div>
+<p>Décortiquons cette commande : dans le data frame <code>croissance</code>, R va sélectionner (<code>[ , ]</code>) les lignes (expression à gauche de la virgule) pour lesquelles la valeur dans la colonne “Indiv” (<code>$Indiv</code>) est strictement égale à (<code>==</code>) 603. L’expression logique fonctionne car la colonne <code>Indiv</code> contient des valeurs numériques. Pour sélectionner des données de type caractère ou facteur, il faudrait utiliser des guillemets : <code>croissance$Indiv == "six-cent-trois"</code>.</p>
+<h2 id="opérateurs-logiques">Opérateurs logiques</h2>
+<p><code>==</code> : strictement égal<br />
+<code>&lt;</code>, <code>&lt;=</code> : inférieur à, inférieur ou égal à<br />
+<code>&gt;</code>, <code>&gt;=</code> : supérieur à, supérieur ou égal à<br />
+<code>!=</code> : différent de<br />
+<code>%in%</code> : appartient à (suivi d’un vecteur de valeurs possibles)<br />
+<code>&amp;</code> : et<br />
+<code>|</code> : ou<br />
+<code>!</code> : n’appartient pas à</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Une condition</span>
+<span class='va'>croissance</span><span class='op'>[</span><span class='va'>croissance</span><span class='op'>$</span><span class='va'>Zone</span> <span class='op'>&lt;</span> <span class='fl'>4</span>, <span class='op'>]</span>  <span class='co'># zones 2-3</span>
+<span class='va'>croissance</span><span class='op'>[</span><span class='va'>croissance</span><span class='op'>$</span><span class='va'>Zone</span> <span class='op'>&lt;=</span> <span class='fl'>4</span>, <span class='op'>]</span>  <span class='co'># zones 2-3-4</span>
+<span class='va'>croissance</span><span class='op'>[</span><span class='op'>!</span><span class='va'>croissance</span><span class='op'>$</span><span class='va'>Zone</span> <span class='op'>&gt;=</span> <span class='fl'>5</span>, <span class='op'>]</span>  <span class='co'># meme chose que la commande precedente</span>
+
+<span class='co'># Deux conditions</span>
+<span class='va'>croissance</span><span class='op'>[</span><span class='va'>croissance</span><span class='op'>$</span><span class='va'>Zone</span> <span class='op'>==</span> <span class='fl'>2</span> <span class='op'>|</span> <span class='va'>croissance</span><span class='op'>$</span><span class='va'>Zone</span> <span class='op'>==</span> <span class='fl'>7</span>, <span class='op'>]</span>  <span class='co'># zones 2 et 7</span>
+<span class='va'>croissance</span><span class='op'>[</span><span class='va'>croissance</span><span class='op'>$</span><span class='va'>Zone</span> <span class='op'>==</span> <span class='fl'>2</span> <span class='op'>&amp;</span> <span class='va'>croissance</span><span class='op'>$</span><span class='va'>Indiv</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>300</span><span class='op'>:</span><span class='fl'>400</span><span class='op'>)</span>, <span class='op'>]</span>  <span class='co'># zone 2 et ID entre 300 et 400</span>
+</code></pre>
+</div>
+</div>
+<p>Comme vous pouvez le voir, le code s’alourdit avec des conditions plus exigeantes. Nous verrons que des fonctions permettent d’alléger le code, mais il sera parfois nécessaire d’utiliser cette syntaxe basique, notamment pour des objets de type data frame.</p>
+<p>Revenons sur le bout de code <code>c(300:400)</code>. Nous avons vu dans notre tutoriel d’introduction à R que <code>c()</code> permet de concaténer des éléments dans un vecteur. Les <code>:</code> entre 300 et 400 permet de <strong>compter de 300 à 400</strong>.<br />
+Il existe d’autres façons de construire une séquence :<br />
+<code>seq()</code> permet de créer une séquence par incrément (par ex. <code>seq(300, 400, 10)</code>).<br />
+<code>rep()</code> permet de répéter des éléments : <code>rep(c(1, 2), 3)</code> donnera <code>1 2 1 2 1 2</code>.<br />
+Vous pouvez mélanger ces deux fonctions : que donnera <code>rep(seq(0, 30, 10), 4)</code> ?</p>
+<p><br></p>
+<h2 id="créer-et-écraser-des-objets">Créer et écraser des objets</h2>
+<p>Nous avons utilisé <code>&lt;-</code> pour créer de nouveaux objets, ce qui permet de choisir un nom et de l’assigner à un objet (vecteur, liste, data frame, …).<br />
+Gardez à l’esprit que <strong>si vous utilisez un même nom dans la même session, l’objet d’origine sera écrasé</strong>. Avec un peu de pratique, vous pourrez modifier un objet et l’écraser au fur et à mesure, pour le “mettre à jour” plutôt que de créer de multiples intermédiaires (“objet1”, “objet2”, …).<br />
+Il est préférable, pour débuter, de créer des objets intermédiaires ou tout du moins une “copie de travail” que vous pourrez ré-assigner à l’objet d’origine quand vous serez satisfait des modifications.<br />
+Nous allons voir maintenant comment utiliser la flèche <code>&lt;-</code> pour écraser des valeurs après modification.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Creer une copie de travail de l'objet</span>
+<span class='va'>croissance2</span> <span class='op'>&lt;-</span> <span class='va'>croissance</span>
+
+<span class='co'># Afficher les noms de colonnes</span>
+<span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>croissance2</span><span class='op'>)</span>
+
+<span class='co'># Modifier le nom de la premiere colonne : "Zone" devient "zone"</span>
+<span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>croissance2</span><span class='op'>)</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='st'>"zone"</span>
+
+<span class='co'># Modifier le nom de la deuxieme colonne : "Indiv" devient "ID"</span>
+<span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>croissance2</span><span class='op'>)</span><span class='op'>[</span><span class='fl'>2</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='st'>"ID"</span>
+
+<span class='co'># Modifier la valeur 5.1 pour l'individu 373 en 2008 par 5.7</span>
+<span class='co'># Option 1</span>
+<span class='va'>croissance2</span><span class='op'>[</span><span class='fl'>1</span>, <span class='fl'>4</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='fl'>5.7</span>
+<span class='co'># Option 2</span>
+<span class='va'>croissance2</span><span class='op'>[</span><span class='va'>croissance2</span><span class='op'>$</span><span class='va'>ID</span> <span class='op'>==</span> <span class='fl'>373</span>, <span class='op'>]</span><span class='op'>$</span><span class='va'>X2008</span> <span class='op'>&lt;-</span> <span class='fl'>5.7</span>
+<span class='co'>#</span>
+</code></pre>
+</div>
+</div>
+<p>L’<strong>option 1</strong> est plus compacte, mais nécessite de savoir précisément où se situe la valeur à modifier.<br />
+L’<strong>option 2</strong> est plus longue et difficile à lire mais permet un contrôle plus fin.</p>
+<p><br></p>
+<p>En procédant de la même manière, vous pouvez spécifier les classes de variables :</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Afficher les classes des variables</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>croissance2</span><span class='op'>)</span>
+
+<span class='co'># La variable "zone" contient des valeurs numériques mais il s'agit d'une variable de groupement</span>
+<span class='co'># Transformons cette variable en un facteur</span>
+<span class='va'>croissance2</span><span class='op'>$</span><span class='va'>zone</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>croissance2</span><span class='op'>$</span><span class='va'>zone</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>croissance2</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>Vous pouvez également spécifier les niveaux du facteur :</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Afficher les niveaux d'un facteur</span>
+<span class='fu'><a href='https://rdrr.io/r/base/levels.html'>levels</a></span><span class='op'>(</span><span class='va'>croissance2</span><span class='op'>$</span><span class='va'>zone</span><span class='op'>)</span>
+
+<span class='co'># Modifier les niveaux (attention à l'ordre et au nombre de niveaux !)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/levels.html'>levels</a></span><span class='op'>(</span><span class='va'>croissance2</span><span class='op'>$</span><span class='va'>zone</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"A"</span>, <span class='st'>"B"</span>, <span class='st'>"C"</span>, <span class='st'>"D"</span>, <span class='st'>"E"</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h1 id="tidy">Les données <strong>tidy</strong></h1>
+<p>Quand vous mesurez des données dans les champs ou au laboratoire, vous souhaitez avoir des tableaux préparés à l’avance à remplir au fur et à mesure. Par exemple, si vous mesurez la hauteur de semis au cours d’une expérimentation visant à mesurer les effets de la température et de la fertilisation, vous pourriez utiliser le tableau suivant :</p>
+<div class="layout-chunk" data-layout="l-body-outset">
+<p><img src="img/tidy_data_1.png" width="581" /></p>
+</div>
+<p>Si vous savez comment votre expérimentation a été menée, R n’en sait rien ! Dans l’état actuel, avec 8 mesures par ligne, vous ne pouvez pas analyser les données. Les *données tidy<strong> sont arrangées de telle sorte que </strong>chaque ligne représente une observation<strong> et </strong>chaque colonne représente une variable<strong>. Dans notre cas, voici à quoi ressemblerait des données </strong>tidy** :</p>
+<div class="layout-chunk" data-layout="l-body-outset">
+<p><img src="img/tidy_data_2.png" width="336" /></p>
+</div>
+<p>Ce format de tableau comporte plus de lignes, raison pour laquelle on parle de <em>format long</em> (le premier tableau ci-dessus est au <em>format large</em>). Si vous souhaitez comparer des groupes, des traitements, des espèces, etc., R pourra ainsi séparer les données correctement, chaque facteur de groupement ayant sa propre colonne. Notre objet <code>croissance</code> n’est pas au format <strong>tidy</strong> : les observations d’une même variable, la croissance de la tige, est répartie sur plusieurs colonnes, avec une colonne par année.</p>
+<p><br> La fonction <code>pivot_longer()</code> du package <code>tidyr</code> permet de convertir un tableau d’un format large en un format long. Nous allons pour cela créer une colonne <code>Annee</code> qui contiendra les valeurs des années (2007 à 2012) répétées pour chaque individu. Le tableau ainsi obtenu aura donc six fois plus de lignes que le tableau d’origine. Nous allons également créer une colonne <code>Croissance</code> qui contiendra les données associées à la croissance pour chaque année et chaque individu.</p>
+Commençons par installer et charger le package <code>tidyr</code>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages</a></span><span class='op'>(</span><span class='st'>"tidyr"</span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyr.tidyverse.org'>tidyr</a></span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>croissance_long</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tidyr.tidyverse.org/reference/pivot_longer.html'>pivot_longer</a></span><span class='op'>(</span>
+  data <span class='op'>=</span> <span class='va'>croissance</span>,  <span class='co'># objet a transformer</span>
+  cols <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>X2007</span>, <span class='va'>X2008</span>, <span class='va'>X2009</span>, <span class='va'>X2010</span>, <span class='va'>X2011</span>, <span class='va'>X2012</span><span class='op'>)</span>,  <span class='co'># colonnes a regrouper</span>
+  names_to <span class='op'>=</span> <span class='st'>"Annee"</span>,  <span class='co'># les annees sont regroupees dans cette colonne</span>
+  values_to <span class='op'>=</span> <span class='st'>"Croissance"</span><span class='op'>)</span>  <span class='co'># les valeurs mesurees sont regroupees dans cette colonne</span>
+</code></pre>
+</div>
+</div>
+<p>La fonction <code>pivot_wider()</code> permet d’effectuer l’opération inverse :</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>croissance_large</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tidyr.tidyverse.org/reference/pivot_wider.html'>pivot_wider</a></span><span class='op'>(</span>
+  data <span class='op'>=</span> <span class='va'>croissance_long</span>,  <span class='co'># objet a transformer</span>
+  id_cols <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>Zone</span>, <span class='va'>Indiv</span><span class='op'>)</span>,  <span class='co'># colonnes contenant les identifiants</span>
+  names_from <span class='op'>=</span> <span class='va'>Annee</span>,  <span class='co'># cette colonne sert a creer les noms de colonnes</span>
+  values_from <span class='op'>=</span> <span class='va'>Croissance</span><span class='op'>)</span>  <span class='co'># cette colonne sert a remplir les colonnes</span>
+</code></pre>
+</div>
+</div>
+<p>Nous avons utilisé les noms des colonnes pour indiquer à <code>pivot_longer()</code> quelles colonnes transformer. Cela est pratique si votre jeu de données ne comporte que quelques colonnes. Si votre jeu de données comporte un grand nombre de colonnes (par exemple 100 gènes), il est préférable de spécifier les colonnes par leurs positions :</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>croissance_long2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tidyr.tidyverse.org/reference/pivot_longer.html'>pivot_longer</a></span><span class='op'>(</span>
+  data <span class='op'>=</span> <span class='va'>croissance</span>,
+  cols <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>3</span><span class='op'>:</span><span class='fl'>8</span><span class='op'>)</span>,
+  names_to <span class='op'>=</span> <span class='st'>"Annee"</span>,
+  values_to <span class='op'>=</span> <span class='st'>"Croissance"</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>Ces fonctions ont cependant des limites et ne fonctionnent pas avec toutes les structures de données. Pour citer <a href="https://www.jstatsoft.org/article/view/v059i10">Hadley Wickham</a> (directeur scientifique pour RStudio et l’un des créateurs du tidyverse) : <em>“chaque jeu de données désordonné est désordonné à sa façon”</em>. Réfléchir en amont à la structure de vos données peut vous éviter beaucoup de frustrations par la suite !</p>
+<p>Une fois que vos données sont au bon format, leur analyse et la visualisation des résultats sera plus simple. Par exemple, si nous souhaitons savoir s’il y a une variation inter-annuelle dans la croissance de <strong>Empetrum hermaphroditum</strong>, nous pouvons rapidement créer un boxplot :</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/boxplot.html'>boxplot</a></span><span class='op'>(</span><span class='va'>Croissance</span> <span class='op'>~</span> <span class='va'>Annee</span>, data <span class='op'>=</span> <span class='va'>croissance_long</span>,
+        ylab <span class='op'>=</span> <span class='st'>"Croissance (cm)"</span>,
+        main <span class='op'>=</span> <span class='st'>"Croissance annuelle de Empetrum hermaphroditum"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="manipuler-des-donnees_files/figure-html5/unnamed-chunk-16-1.png" width="624" /></p>
+</div>
+<p>Le graphique montre un chevauchement assez important entre les valeurs de croissance par année - pas grand chose à signaler de ce point de vue-là !</p>
+<h1 id="dplyr">Les fonctions principales de <code>dplyr</code></h1>
+<p>Le package <code>dplyr</code> contient des fonctions intuitives pour la manipulation de données, nommées d’après l’action qu’elles accomplissent. Ces fonctions ont l’avantage de prendre comme premier argument le <em>data frame</em>, ce qui permet de se référer à des colonnes sans se référer à l’objet entier (vous pouvez donc laisser tomber les signes <code>$</code> !). Nous allons voir les fonctions les plus courantes et utiles pour manipuler le tableau au format long qu’on vient tout juste de créer, <code>croissance_long</code>. Commençons par charger le package.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h2 id="rename">Renommer des variables avec <code>rename()</code></h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<!--radix_placeholder_article_footer-->
+<!--/radix_placeholder_article_footer-->
+</div>
+
+<div class="d-appendix">
+</div>
+
+
+<!--radix_placeholder_site_after_body-->
+<!--/radix_placeholder_site_after_body-->
+<!--radix_placeholder_appendices-->
+<div class="appendix-bottom"></div>
+<!--/radix_placeholder_appendices-->
+<!--radix_placeholder_navigation_after_body-->
+<!--/radix_placeholder_navigation_after_body-->
+
+</body>
+
+</html>

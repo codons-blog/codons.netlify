@@ -1,0 +1,311 @@
+---
+title: "Les bases de la manipulation de données"
+description: |
+  Sélectrionner, modifier et mettre en forme vos données.
+author:
+  - name: Sandra Angers-Blondin
+    url: https://ourcodingclub.github.io/tutorials/data-manip-intro
+  - name: Jonathan Kitt (adaptation)
+    url: {}
+date: 2022-05-02
+categories:
+  - R
+  - RStudio
+  - Données
+  - Tidyverse
+output:
+  distill::distill_article:
+    toc: true
+    toc_depth: 1
+    self_contained: false
+draft:
+  false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+*Ce tutoriel est adapté de [Basic data manipulation](https://ourcodingclub.github.io/tutorials/data-manip-intro/index.html) du site [Our Coding Club](https://ourcodingclub.github.io/).* 
+
+# Introduction
+
+```{r, layout="l-body-outset"}
+knitr::include_graphics("img/data_cowboy.png")
+```
+Dessin de [Allison Horst](https://raw.githubusercontent.com/allisonhorst/stats-illustrations/master/rstats-artwork/data_cowboy.png)
+
+<br>
+
+Les **objectifs** de ce tutoriel sont les suivants :  
+
+1. Apprendre à manipuler des données à l'aide des opérateurs basiques de R  
+2. Nettoyer des données avec le package `tidyr`
+3. Manipuler ses données à l'aide du package `dplyr` 
+ 
+<br>
+
+Voici les **étapes** que nous allons suivre pour y parvenir :  
+
+1. [Sélectionner, extraire et modifier des données avec les opérateurs basiques de R](#basique)  
+2. [Comment nettoyer des données](#tidy)
+3. [Explorer les principales fonctions de `dplyr`](#dplyr)
+    - [`rename()`](#rename)  
+    - [`filter()` et `select()`](#filter)  
+    - [`mutate()`](#mutate)  
+    - [`group_by()`](#group)  
+    - [`join()`](#join) 
+4. [Défi](#defi)
+
+<br>
+
+Un format de données qui s'avère utile et pratique pour une application spécifique ne le sera pas forcément pour une autre application. Les fonctions de R nécessitent un certain format et un certain type de données, ce qui rend la maîtrise de la mise en forme de données essentielle !  
+
+<br>
+
+Si vous avez besoin de revoir les bases de R, vous pouvez lire le tutoriel [Premiers pas avec R](https://codons.netlify.app/posts/premiers-pas-avec-r/).
+
+<br>
+
+Dans ce tutoriel, nous allons voir comment manipuler des données en utilisant la syntaxe basique de R (vous verrez souvent des solutions en ligne avec cette syntaxe). Nous introduirons ensuite le concept de données **tidy**, très utiles pour la collecte et l'organisation de données. Nous utiliserons ensuite des packages du [**Tidyverse**](https://www.tidyverse.org/), qui est en train de devenir la norme pour les data sciences, qui permet de coder de façon plus claire et nette que les fontions basiques de R.
+
+<br>
+
+**Cliquez sur [ce lien](https://github.com/KittJonathan/Codons-02-BasesManipulationDonnees) pour télécharger le dossier contenant tous les fichiers dont vous aurez besoin pour ce tutoriel (rappel sur la procédure [ici](https://codons.netlify.app/posts/premiers-pas-avec-r/#téléchargez-les-données)).**
+
+```{r, echo=FALSE, eval=TRUE, warning=FALSE, message=FALSE}
+croissance <- read.csv("https://raw.githubusercontent.com/ourcodingclub/CC-3-DataManip/master/EmpetrumElongation.csv")
+```
+
+
+# La syntaxe basique de R {#basique}
+
+Les **data frames** sont des objets qui contiennent des observations (dans les lignes) de différentes variables (dans les colonnes). Commençons par importer le fichier `croissance.csv` dans le dossier que vous avez téléchargé.  
+
+**Créez un nouveau script, ajoutez des informations (date, titre, ...) en haut du script (à l'aide de `#`).**  
+
+Ce jeu de données représente la croissance annuelle de tiges d'arbrisseaux (*Empetrum nigrum* ou camarine noire) situés dans des dunes de sables. La colonne `Zone` correspond à des zones distinces allant de la plus proche (2) à la plus éloignée (7) de la mer.
+
+![**Empetrum nigrum**](https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Empetrum_nigrum_a2.jpg/1280px-Empetrum_nigrum_a2.jpg)
+
+Nous avons vu dans le [tutoriel d'introduction à R](https://codons.netlify.app/posts/premiers-pas-avec-r/) comment accéder à des variables à l'aide du signe dollar `$`. Cette manière de sélectionner permet de réduire un data frame en deux dimensions en un vecteur à une dimension. Une autre manière de sélectionner des parties d'un data frame est d'utiliser des crochets :  `[x , y]` sélectionnera la ligne `x` et la colonne `y`. Un espace blanc à gauche ou à droite de la virgule permet de sélectionner respectivement toutes les colonnes ou toutes les lignes du data frame.
+
+```{r, eval=FALSE, echo=TRUE}
+# Definir le repertoire de travail
+setwd("C:/Users/ateliers/codons_02_bases_manipulation_donnees/")
+
+# Importer les donnees 
+croissance <- read.csv("croissance.csv")
+
+# Explorer les donnees
+head(croissance)  # affiche les premieres observations
+str(croissance)  # affiche les types des variables
+croissance$Indiv  # affiche tous les identifiants de la variable "Indiv"
+length(unique(croissance$Indiv))  # nombre d'abrisseaux dans le jeu de données
+
+# Selectionner des donnees
+croissance[2, 5]  # 2e ligne et 5e colonne
+croissance[6, ]  # 6e ligne
+croissance[6, ]$Indiv  # colonne Indiv pour la 6e ligne
+```
+
+La sélection à l'aide des crochets peut se révéler fastidieuse si vous travaillez sur un large jeu de données et que vous ne savez pas où se trouvent les observations qui vous intéressent. Cette façon de faire n'est pas recommandée, car si vous inscrivez des nombres dans votre code et que vous ajoutez des colonnes par la suite, il n'est pas impossible que votre sélection soit modifiée. C'est pour cette raison qu'il est préférable d'utiliser des *opérations logiques* pour sélectionner les parties des données qui répondent à nos critères.
+
+```{r, eval=FALSE, echo=TRUE}
+# Selectionner les valeurs pour l'individu n°603
+croissance[croissance$Indiv == 603, ]
+```
+
+Décortiquons cette commande : dans le data frame `croissance`, R va sélectionner (`[ , ]`) les lignes (expression à gauche de la virgule) pour lesquelles la valeur dans la colonne "Indiv" (`$Indiv`) est strictement égale à (`==`) 603. L'expression logique fonctionne car la colonne `Indiv` contient des valeurs numériques. Pour sélectionner des données de type caractère ou facteur, il faudrait utiliser des guillemets : `croissance$Indiv == "six-cent-trois"`.
+
+## Opérateurs logiques
+
+`==` : strictement égal  
+`<`, `<=` : inférieur à, inférieur ou égal à  
+`>`, `>=` : supérieur à, supérieur ou égal à  
+`!=` : différent de  
+`%in%` : appartient à (suivi d'un vecteur de valeurs possibles)  
+`&` : et  
+`|` : ou  
+`!` : n'appartient pas à  
+
+```{r, eval=FALSE, echo=TRUE}
+# Une condition
+croissance[croissance$Zone < 4, ]  # zones 2-3
+croissance[croissance$Zone <= 4, ]  # zones 2-3-4
+croissance[!croissance$Zone >= 5, ]  # meme chose que la commande precedente
+
+# Deux conditions
+croissance[croissance$Zone == 2 | croissance$Zone == 7, ]  # zones 2 et 7
+croissance[croissance$Zone == 2 & croissance$Indiv %in% c(300:400), ]  # zone 2 et ID entre 300 et 400
+```
+
+Comme vous pouvez le voir, le code s'alourdit avec des conditions plus exigeantes. Nous verrons que des fonctions permettent d'alléger le code, mais il sera parfois nécessaire d'utiliser cette syntaxe basique, notamment pour des objets de type data frame.
+
+Revenons sur le bout de code `c(300:400)`. Nous avons vu dans notre tutoriel d'introduction à R que `c()` permet de concaténer des éléments dans un vecteur. Les `:` entre 300 et 400 permet de **compter de 300 à 400**.  
+Il existe d'autres façons de construire une séquence :  
+`seq()` permet de créer une séquence par incrément (par ex. `seq(300, 400, 10)`).  
+`rep()` permet de répéter des éléments : `rep(c(1, 2), 3)` donnera `1 2 1 2 1 2`.  
+Vous pouvez mélanger ces deux fonctions : que donnera `rep(seq(0, 30, 10), 4)` ?
+
+<br>
+
+## Créer et écraser des objets
+
+Nous avons utilisé `<-` pour créer de nouveaux objets, ce qui permet de choisir un nom et de l'assigner à un objet (vecteur, liste, data frame, ...).  
+Gardez à l'esprit que **si vous utilisez un même nom dans la même session, l'objet d'origine sera écrasé**. Avec un peu de pratique, vous pourrez modifier un objet et l'écraser au fur et à mesure, pour le "mettre à jour" plutôt que de créer de multiples intermédiaires ("objet1", "objet2", ...).  
+Il est préférable, pour débuter, de créer des objets intermédiaires ou tout du moins une "copie de travail" que vous pourrez ré-assigner à l'objet d'origine quand vous serez satisfait des modifications.  
+Nous allons voir maintenant comment utiliser la flèche `<-` pour écraser des valeurs après modification.
+
+```{r, eval=FALSE, echo=TRUE}
+# Creer une copie de travail de l'objet
+croissance2 <- croissance
+
+# Afficher les noms de colonnes
+names(croissance2)
+
+# Modifier le nom de la premiere colonne : "Zone" devient "zone"
+names(croissance2)[1] <- "zone"
+
+# Modifier le nom de la deuxieme colonne : "Indiv" devient "ID"
+names(croissance2)[2] <- "ID"
+
+# Modifier la valeur 5.1 pour l'individu 373 en 2008 par 5.7
+# Option 1
+croissance2[1, 4] <- 5.7
+# Option 2
+croissance2[croissance2$ID == 373, ]$X2008 <- 5.7
+#
+```
+
+L'**option 1** est plus compacte, mais nécessite de savoir précisément où se situe la valeur à modifier.  
+L'**option 2** est plus longue et difficile à lire mais permet un contrôle plus fin.  
+
+<br>
+
+En procédant de la même manière, vous pouvez spécifier les classes de variables : 
+
+```{r, eval=FALSE, echo=TRUE}
+# Afficher les classes des variables
+str(croissance2)
+
+# La variable "zone" contient des valeurs numériques mais il s'agit d'une variable de groupement
+# Transformons cette variable en un facteur
+croissance2$zone <- as.factor(croissance2$zone)
+str(croissance2)
+```
+
+Vous pouvez également spécifier les niveaux du facteur : 
+
+```{r, eval=FALSE, echo=TRUE}
+# Afficher les niveaux d'un facteur
+levels(croissance2$zone)
+
+# Modifier les niveaux (attention à l'ordre et au nombre de niveaux !)
+levels(croissance2$zone) <- c("A", "B", "C", "D", "E")
+```
+
+# Les données **tidy** {#tidy}
+
+Quand vous mesurez des données dans les champs ou au laboratoire, vous souhaitez avoir des tableaux préparés à l'avance à remplir au fur et à mesure. Par exemple, si vous mesurez la hauteur de semis au cours d'une expérimentation visant à mesurer les effets de la température et de la fertilisation, vous pourriez utiliser le tableau suivant :
+
+```{r, layout="l-body-outset"}
+knitr::include_graphics("img/tidy_data_1.png")
+```
+
+Si vous savez comment votre expérimentation a été menée, R n'en sait rien ! Dans l'état actuel, avec 8 mesures par ligne, vous ne pouvez pas analyser les données. Les *données tidy** sont arrangées de telle sorte que **chaque ligne représente une observation** et **chaque colonne représente une variable**. Dans notre cas, voici à quoi ressemblerait des données **tidy** :
+
+```{r, layout="l-body-outset"}
+knitr::include_graphics("img/tidy_data_2.png")
+```
+
+Ce format de tableau comporte plus de lignes, raison pour laquelle on parle de *format long* (le premier tableau ci-dessus est au *format large*). Si vous souhaitez comparer des groupes, des traitements, des espèces, etc., R pourra ainsi séparer les données correctement, chaque facteur de groupement ayant sa propre colonne.
+Notre objet `croissance` n'est pas au format **tidy** : les observations d'une même variable, la croissance de la tige, est répartie sur plusieurs colonnes, avec une colonne par année.
+
+<br>
+La fonction `pivot_longer()` du package `tidyr` permet de convertir un tableau d'un format large en un format long. Nous allons pour cela créer une colonne `Annee` qui contiendra les valeurs des années (2007 à 2012) répétées pour chaque individu. Le tableau ainsi obtenu aura donc six fois plus de lignes que le tableau d'origine. Nous allons également créer une colonne `Croissance` qui contiendra les données associées à la croissance pour chaque année et chaque individu.
+
+Commençons par installer et charger le package `tidyr`
+```{r, eval=FALSE, echo=TRUE}
+install.packages("tidyr")
+library(tidyr)
+```
+
+```{r, eval=TRUE, echo=FALSE, warning=FALSE, message=FALSE}
+library(tidyr)
+```
+
+```{r, eval=TRUE, echo=TRUE, warning=FALSE, message=FALSE}
+croissance_long <- pivot_longer(
+  data = croissance,  # objet a transformer
+  cols = c(X2007, X2008, X2009, X2010, X2011, X2012),  # colonnes a regrouper
+  names_to = "Annee",  # les annees sont regroupees dans cette colonne
+  values_to = "Croissance")  # les valeurs mesurees sont regroupees dans cette colonne
+```
+
+La fonction `pivot_wider()` permet d'effectuer l'opération inverse : 
+
+```{r, eval=TRUE, echo=TRUE, warning=FALSE, message=FALSE}
+croissance_large <- pivot_wider(
+  data = croissance_long,  # objet a transformer
+  id_cols = c(Zone, Indiv),  # colonnes contenant les identifiants
+  names_from = Annee,  # cette colonne sert a creer les noms de colonnes
+  values_from = Croissance)  # cette colonne sert a remplir les colonnes
+```
+
+Nous avons utilisé les noms des colonnes pour indiquer à `pivot_longer()` quelles colonnes transformer. Cela est pratique si votre jeu de données ne comporte que quelques colonnes. Si votre jeu de données comporte un grand nombre de colonnes (par exemple 100 gènes), il est préférable de spécifier les colonnes par leurs positions : 
+
+```{r, eval=TRUE, echo=TRUE, warning=FALSE, message=FALSE}
+croissance_long2 <- pivot_longer(
+  data = croissance,
+  cols = c(3:8),
+  names_to = "Annee",
+  values_to = "Croissance")
+```
+
+Ces fonctions ont cependant des limites et ne fonctionnent pas avec toutes les structures de données. Pour citer [Hadley Wickham](https://www.jstatsoft.org/article/view/v059i10) (directeur scientifique pour RStudio et l'un des créateurs du tidyverse) : *"chaque jeu de données désordonné est désordonné à sa façon"*. Réfléchir en amont à la structure de vos données peut vous éviter beaucoup de frustrations par la suite !
+
+Une fois que vos données sont au bon format, leur analyse et la visualisation des résultats sera plus simple. Par exemple, si nous souhaitons savoir s'il y a une variation inter-annuelle dans la croissance de **Empetrum hermaphroditum**, nous pouvons rapidement créer un boxplot : 
+
+```{r, eval=TRUE, echo=TRUE, warning=FALSE, message=FALSE}
+boxplot(Croissance ~ Annee, data = croissance_long,
+        ylab = "Croissance (cm)",
+        main = "Croissance annuelle de Empetrum hermaphroditum")
+```
+
+Le graphique montre un chevauchement assez important entre les valeurs de croissance par année - pas grand chose à signaler de ce point de vue-là !
+
+# Les fonctions principales de `dplyr` {#dplyr}
+
+Le package `dplyr` contient des fonctions intuitives pour la manipulation de données, nommées d'après l'action qu'elles accomplissent. Ces fonctions ont l'avantage de prendre comme premier argument le *data frame*, ce qui permet de se référer à des colonnes sans se référer à l'objet entier (vous pouvez donc laisser tomber les signes `$` !). Nous allons voir les fonctions les plus courantes et utiles pour manipuler le tableau au format long qu'on vient tout juste de créer, `croissance_long`. Commençons par charger le package.
+
+```{r, eval=TRUE, echo=TRUE, warning=FALSE, message=FALSE}
+library(dplyr)
+```
+
+## Renommer des variables avec `rename()` {#rename}
+
+Cette fonction vous permet de changer les noms d'une ou de plusieurs colonnes. Le premier argument est le data frame, les arguments suivants prennent la forme *Nouveau nom = Ancien nom* :
+
+```{r, eval=TRUE, echo=TRUE, warning=FALSE, message=FALSE}
+# Supprimer les majuscules dans les noms de colonnes et ecraser le data frame
+croissance_long <- rename(croissance_long,
+                          zone = Zone,
+                          indiv = Indiv,
+                          annee = Annee,
+                          croissance = Croissance)
+
+```
+
+## Filter des lignes avec `filter()` et sélectionner des colonnes avec `select()` {#filter}
+
+Ces deux fonctions vous permettent de réduire votre data frame en ne gardant que les lignes et les colonnes souhaitées. La fonction `filter()` fonctionne très bien pour sélectionner des lignes à l'aide d'opérations logiques, et la fonction `select()` vous permet de spécifier quelles colonnes garder.  
+*La fonction `select()` entre souvent en conflit avec des fonctions d'autres packages portant le même nom, il est donc recommandé de toujours utiliser la notation `dplyr::select()`.
+
+```{r, eval=TRUE, echo=TRUE, warning=FALSE, message=FALSE}
+# Conserver les observations pour les zones 2 et 3, et pour les années 2009 à 2011
+croissance_selection <- filter(croissance_long, zone %in% c(2, 3), annee %in% c("X2009", "X2010", "X2011"))
+
+# 
+```
+

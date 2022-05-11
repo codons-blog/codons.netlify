@@ -1,0 +1,3043 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+  <meta name="generator" content="distill" />
+
+  <style type="text/css">
+  /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
+  body {
+    visibility: hidden;
+  }
+  </style>
+
+ <!--radix_placeholder_import_source-->
+ <!--/radix_placeholder_import_source-->
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ad0000; } /* Alert */
+code span.an { color: #5e5e5e; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bn { color: #ad0000; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007ba5; } /* ControlFlow */
+code span.ch { color: #20794d; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #5e5e5e; } /* Comment */
+code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+code span.dt { color: #ad0000; } /* DataType */
+code span.dv { color: #ad0000; } /* DecVal */
+code span.er { color: #ad0000; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #ad0000; } /* Float */
+code span.fu { color: #4758ab; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #5e5e5e; } /* Information */
+code span.kw { color: #007ba5; } /* Keyword */
+code span.op { color: #5e5e5e; } /* Operator */
+code span.ot { color: #007ba5; } /* Other */
+code span.pp { color: #ad0000; } /* Preprocessor */
+code span.sc { color: #5e5e5e; } /* SpecialChar */
+code span.ss { color: #20794d; } /* SpecialString */
+code span.st { color: #20794d; } /* String */
+code span.va { color: #111111; } /* Variable */
+code span.vs { color: #20794d; } /* VerbatimString */
+code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+</style>
+
+
+  <!--radix_placeholder_meta_tags-->
+<title>Codon(s)!: Premiers pas avec R</title>
+
+<meta property="description" itemprop="description" content="Débuter avec R et RStudio."/>
+
+
+<!--  https://schema.org/Article -->
+<meta property="article:published" itemprop="datePublished" content="2022-05-02"/>
+<meta property="article:created" itemprop="dateCreated" content="2022-05-02"/>
+<meta name="article:author" content="Gergana Daskalova"/>
+<meta name="article:author" content="Jonathan Kitt (adaptation)"/>
+
+<!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
+<meta property="og:title" content="Codon(s)!: Premiers pas avec R"/>
+<meta property="og:type" content="article"/>
+<meta property="og:description" content="Débuter avec R et RStudio."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:site_name" content="Codon(s)!"/>
+
+<!--  https://dev.twitter.com/cards/types/summary -->
+<meta property="twitter:card" content="summary"/>
+<meta property="twitter:title" content="Codon(s)!: Premiers pas avec R"/>
+<meta property="twitter:description" content="Débuter avec R et RStudio."/>
+
+<!--/radix_placeholder_meta_tags-->
+  <!--radix_placeholder_rmarkdown_metadata-->
+
+<script type="text/json" id="radix-rmarkdown-metadata">
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","categories","output"]}},"value":[{"type":"character","attributes":{},"value":["Premiers pas avec R"]},{"type":"character","attributes":{},"value":["Débuter avec R et RStudio."]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Gergana Daskalova"]},{"type":"character","attributes":{},"value":["https://ourcodingclub.github.io/tutorials/intro-to-r/"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Jonathan Kitt (adaptation)"]}]}]},{"type":"character","attributes":{},"value":["2022-05-02"]},{"type":"character","attributes":{},"value":["R","RStudio","Introduction"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth","self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[1]},{"type":"logical","attributes":{},"value":[false]}]}]}]}
+</script>
+<!--/radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["barplot.png","barplot_amplitude.png","barplot_envergure.png","img/barplot.png","img/download_git_zip.png","img/happy-r.png","img/import_dataset.png","img/import_dataset_1.png","img/import_dataset_2.png","img/rstudio_panels.png","img/save_barplot.png","logo_r.jpg","logo_r_small.jpg","oiseaux_menaces.csv","premiers-pas-avec-r_files/anchor-4.2.2/anchor.min.js","premiers-pas-avec-r_files/bowser-1.9.3/bowser.min.js","premiers-pas-avec-r_files/distill-2.2.21/template.v2.js","premiers-pas-avec-r_files/header-attrs-2.11/header-attrs.js","premiers-pas-avec-r_files/header-attrs-2.13/header-attrs.js","premiers-pas-avec-r_files/header-attrs-2.14/header-attrs.js","premiers-pas-avec-r_files/jquery-3.6.0/jquery-3.6.0.js","premiers-pas-avec-r_files/jquery-3.6.0/jquery-3.6.0.min.js","premiers-pas-avec-r_files/jquery-3.6.0/jquery-3.6.0.min.map","premiers-pas-avec-r_files/popper-2.6.0/popper.min.js","premiers-pas-avec-r_files/tippy-6.2.7/tippy-bundle.umd.min.js","premiers-pas-avec-r_files/tippy-6.2.7/tippy-light-border.css","premiers-pas-avec-r_files/tippy-6.2.7/tippy.css","premiers-pas-avec-r_files/tippy-6.2.7/tippy.umd.min.js","premiers-pas-avec-r_files/webcomponents-2.0.0/webcomponents.js"]}
+  </script>
+  <!--radix_placeholder_navigation_in_header-->
+<meta name="distill:offset" content="../.."/>
+
+<script type="application/javascript">
+
+  window.headroom_prevent_pin = false;
+
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+
+    // initialize headroom for banner
+    var header = $('header').get(0);
+    var headerHeight = header.offsetHeight;
+    var headroom = new Headroom(header, {
+      tolerance: 5,
+      onPin : function() {
+        if (window.headroom_prevent_pin) {
+          window.headroom_prevent_pin = false;
+          headroom.unpin();
+        }
+      }
+    });
+    headroom.init();
+    if(window.location.hash)
+      headroom.unpin();
+    $(header).addClass('headroom--transition');
+
+    // offset scroll location for banner on hash change
+    // (see: https://github.com/WickyNilliams/headroom.js/issues/38)
+    window.addEventListener("hashchange", function(event) {
+      window.scrollTo(0, window.pageYOffset - (headerHeight + 25));
+    });
+
+    // responsive menu
+    $('.distill-site-header').each(function(i, val) {
+      var topnav = $(this);
+      var toggle = topnav.find('.nav-toggle');
+      toggle.on('click', function() {
+        topnav.toggleClass('responsive');
+      });
+    });
+
+    // nav dropdowns
+    $('.nav-dropbtn').click(function(e) {
+      $(this).next('.nav-dropdown-content').toggleClass('nav-dropdown-active');
+      $(this).parent().siblings('.nav-dropdown')
+         .children('.nav-dropdown-content').removeClass('nav-dropdown-active');
+    });
+    $("body").click(function(e){
+      $('.nav-dropdown-content').removeClass('nav-dropdown-active');
+    });
+    $(".nav-dropdown").click(function(e){
+      e.stopPropagation();
+    });
+  });
+</script>
+
+<style type="text/css">
+
+/* Theme (user-documented overrideables for nav appearance) */
+
+.distill-site-nav {
+  color: rgba(255, 255, 255, 0.8);
+  background-color: #0F2E3D;
+  font-size: 15px;
+  font-weight: 300;
+}
+
+.distill-site-nav a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.distill-site-nav a:hover {
+  color: white;
+}
+
+@media print {
+  .distill-site-nav {
+    display: none;
+  }
+}
+
+.distill-site-header {
+
+}
+
+.distill-site-footer {
+
+}
+
+
+/* Site Header */
+
+.distill-site-header {
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 3;
+}
+
+.distill-site-header .nav-left {
+  display: inline-block;
+  margin-left: 8px;
+}
+
+@media screen and (max-width: 768px) {
+  .distill-site-header .nav-left {
+    margin-left: 0;
+  }
+}
+
+
+.distill-site-header .nav-right {
+  float: right;
+  margin-right: 8px;
+}
+
+.distill-site-header a,
+.distill-site-header .title {
+  display: inline-block;
+  text-align: center;
+  padding: 14px 10px 14px 10px;
+}
+
+.distill-site-header .title {
+  font-size: 18px;
+  min-width: 150px;
+}
+
+.distill-site-header .logo {
+  padding: 0;
+}
+
+.distill-site-header .logo img {
+  display: none;
+  max-height: 20px;
+  width: auto;
+  margin-bottom: -4px;
+}
+
+.distill-site-header .nav-image img {
+  max-height: 18px;
+  width: auto;
+  display: inline-block;
+  margin-bottom: -3px;
+}
+
+
+
+@media screen and (min-width: 1000px) {
+  .distill-site-header .logo img {
+    display: inline-block;
+  }
+  .distill-site-header .nav-left {
+    margin-left: 20px;
+  }
+  .distill-site-header .nav-right {
+    margin-right: 20px;
+  }
+  .distill-site-header .title {
+    padding-left: 12px;
+  }
+}
+
+
+.distill-site-header .nav-toggle {
+  display: none;
+}
+
+.nav-dropdown {
+  display: inline-block;
+  position: relative;
+}
+
+.nav-dropdown .nav-dropbtn {
+  border: none;
+  outline: none;
+  color: rgba(255, 255, 255, 0.8);
+  padding: 16px 10px;
+  background-color: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+  margin-top: 1px;
+  z-index: 2;
+}
+
+.nav-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 200px;
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: 4px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+  z-index: 1;
+  margin-top: 2px;
+  white-space: nowrap;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.nav-dropdown-content hr {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.nav-dropdown-active {
+  display: block;
+}
+
+.nav-dropdown-content a, .nav-dropdown-content .nav-dropdown-header {
+  color: black;
+  padding: 6px 24px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.nav-dropdown-content .nav-dropdown-header {
+  display: block;
+  padding: 5px 24px;
+  padding-bottom: 0;
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #999999;
+  white-space: nowrap;
+}
+
+.nav-dropdown:hover .nav-dropbtn {
+  color: white;
+}
+
+.nav-dropdown-content a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.nav-right .nav-dropdown-content {
+  margin-left: -45%;
+  right: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .distill-site-header a, .distill-site-header .nav-dropdown  {display: none;}
+  .distill-site-header a.nav-toggle {
+    float: right;
+    display: block;
+  }
+  .distill-site-header .title {
+    margin-left: 0;
+  }
+  .distill-site-header .nav-right {
+    margin-right: 0;
+  }
+  .distill-site-header {
+    overflow: hidden;
+  }
+  .nav-right .nav-dropdown-content {
+    margin-left: 0;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .distill-site-header.responsive {position: relative; min-height: 500px; }
+  .distill-site-header.responsive a.nav-toggle {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .distill-site-header.responsive a,
+  .distill-site-header.responsive .nav-dropdown {
+    display: block;
+    text-align: left;
+  }
+  .distill-site-header.responsive .nav-left,
+  .distill-site-header.responsive .nav-right {
+    width: 100%;
+  }
+  .distill-site-header.responsive .nav-dropdown {float: none;}
+  .distill-site-header.responsive .nav-dropdown-content {position: relative;}
+  .distill-site-header.responsive .nav-dropdown .nav-dropbtn {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+}
+
+/* Site Footer */
+
+.distill-site-footer {
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  z-index: 3;
+  margin-top: 30px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  text-align: center;
+}
+
+/* Headroom */
+
+d-title {
+  padding-top: 6rem;
+}
+
+@media print {
+  d-title {
+    padding-top: 4rem;
+  }
+}
+
+.headroom {
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.headroom--transition {
+  transition: all .4s ease-in-out;
+}
+
+.headroom--unpinned {
+  top: -100px;
+}
+
+.headroom--pinned {
+  top: 0;
+}
+
+/* adjust viewport for navbar height */
+/* helps vertically center bootstrap (non-distill) content */
+.min-vh-100 {
+  min-height: calc(100vh - 100px) !important;
+}
+
+</style>
+
+<script src="../../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="../../site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet"/>
+<link href="../../site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet"/>
+<script src="../../site_libs/headroom-0.9.4/headroom.min.js"></script>
+<script src="../../site_libs/autocomplete-0.37.1/autocomplete.min.js"></script>
+<script src="../../site_libs/fuse-6.4.1/fuse.min.js"></script>
+
+<script type="application/javascript">
+
+function getMeta(metaName) {
+  var metas = document.getElementsByTagName('meta');
+  for (let i = 0; i < metas.length; i++) {
+    if (metas[i].getAttribute('name') === metaName) {
+      return metas[i].getAttribute('content');
+    }
+  }
+  return '';
+}
+
+function offsetURL(url) {
+  var offset = getMeta('distill:offset');
+  return offset ? offset + '/' + url : url;
+}
+
+function createFuseIndex() {
+
+  // create fuse index
+  var options = {
+    keys: [
+      { name: 'title', weight: 20 },
+      { name: 'categories', weight: 15 },
+      { name: 'description', weight: 10 },
+      { name: 'contents', weight: 5 },
+    ],
+    ignoreLocation: true,
+    threshold: 0
+  };
+  var fuse = new window.Fuse([], options);
+
+  // fetch the main search.json
+  return fetch(offsetURL('search.json'))
+    .then(function(response) {
+      if (response.status == 200) {
+        return response.json().then(function(json) {
+          // index main articles
+          json.articles.forEach(function(article) {
+            fuse.add(article);
+          });
+          // download collections and index their articles
+          return Promise.all(json.collections.map(function(collection) {
+            return fetch(offsetURL(collection)).then(function(response) {
+              if (response.status === 200) {
+                return response.json().then(function(articles) {
+                  articles.forEach(function(article) {
+                    fuse.add(article);
+                  });
+                })
+              } else {
+                return Promise.reject(
+                  new Error('Unexpected status from search index request: ' +
+                            response.status)
+                );
+              }
+            });
+          })).then(function() {
+            return fuse;
+          });
+        });
+
+      } else {
+        return Promise.reject(
+          new Error('Unexpected status from search index request: ' +
+                      response.status)
+        );
+      }
+    });
+}
+
+window.document.addEventListener("DOMContentLoaded", function (event) {
+
+  // get search element (bail if we don't have one)
+  var searchEl = window.document.getElementById('distill-search');
+  if (!searchEl)
+    return;
+
+  createFuseIndex()
+    .then(function(fuse) {
+
+      // make search box visible
+      searchEl.classList.remove('hidden');
+
+      // initialize autocomplete
+      var options = {
+        autoselect: true,
+        hint: false,
+        minLength: 2,
+      };
+      window.autocomplete(searchEl, options, [{
+        source: function(query, callback) {
+          const searchOptions = {
+            isCaseSensitive: false,
+            shouldSort: true,
+            minMatchCharLength: 2,
+            limit: 10,
+          };
+          var results = fuse.search(query, searchOptions);
+          callback(results
+            .map(function(result) { return result.item; })
+          );
+        },
+        templates: {
+          suggestion: function(suggestion) {
+            var img = suggestion.preview && Object.keys(suggestion.preview).length > 0
+              ? `<img src="${offsetURL(suggestion.preview)}"</img>`
+              : '';
+            var html = `
+              <div class="search-item">
+                <h3>${suggestion.title}</h3>
+                <div class="search-item-description">
+                  ${suggestion.description || ''}
+                </div>
+                <div class="search-item-preview">
+                  ${img}
+                </div>
+              </div>
+            `;
+            return html;
+          }
+        }
+      }]).on('autocomplete:selected', function(event, suggestion) {
+        window.location.href = offsetURL(suggestion.path);
+      });
+      // remove inline display style on autocompleter (we want to
+      // manage responsive display via css)
+      $('.algolia-autocomplete').css("display", "");
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+
+});
+
+</script>
+
+<style type="text/css">
+
+.nav-search {
+  font-size: x-small;
+}
+
+/* Algolioa Autocomplete */
+
+.algolia-autocomplete {
+  display: inline-block;
+  margin-left: 10px;
+  vertical-align: sub;
+  background-color: white;
+  color: black;
+  padding: 6px;
+  padding-top: 8px;
+  padding-bottom: 0;
+  border-radius: 6px;
+  border: 1px #0F2E3D solid;
+  width: 180px;
+}
+
+
+@media screen and (max-width: 768px) {
+  .distill-site-nav .algolia-autocomplete {
+    display: none;
+    visibility: hidden;
+  }
+  .distill-site-nav.responsive .algolia-autocomplete {
+    display: inline-block;
+    visibility: visible;
+  }
+  .distill-site-nav.responsive .algolia-autocomplete .aa-dropdown-menu {
+    margin-left: 0;
+    width: 400px;
+    max-height: 400px;
+  }
+}
+
+.algolia-autocomplete .aa-input, .algolia-autocomplete .aa-hint {
+  width: 90%;
+  outline: none;
+  border: none;
+}
+
+.algolia-autocomplete .aa-hint {
+  color: #999;
+}
+.algolia-autocomplete .aa-dropdown-menu {
+  width: 550px;
+  max-height: 70vh;
+  overflow-x: visible;
+  overflow-y: scroll;
+  padding: 5px;
+  margin-top: 3px;
+  margin-left: -150px;
+  background-color: #fff;
+  border-radius: 5px;
+  border: 1px solid #999;
+  border-top: none;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion {
+  cursor: pointer;
+  padding: 5px 4px;
+  border-bottom: 1px solid #eee;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion:last-of-type {
+  border-bottom: none;
+  margin-bottom: 2px;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item {
+  overflow: hidden;
+  font-size: 0.8em;
+  line-height: 1.4em;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item h3 {
+  font-size: 1rem;
+  margin-block-start: 0;
+  margin-block-end: 5px;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-description {
+  display: inline-block;
+  overflow: hidden;
+  height: 2.8em;
+  width: 80%;
+  margin-right: 4%;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview {
+  display: inline-block;
+  width: 15%;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview img {
+  height: 3em;
+  width: auto;
+  display: none;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview img[src] {
+  display: initial;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion.aa-cursor {
+  background-color: #eee;
+}
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion em {
+  font-weight: bold;
+  font-style: normal;
+}
+
+</style>
+
+
+<!--/radix_placeholder_navigation_in_header-->
+  <!--radix_placeholder_distill-->
+
+<style type="text/css">
+
+body {
+  background-color: white;
+}
+
+.pandoc-table {
+  width: 100%;
+}
+
+.pandoc-table>caption {
+  margin-bottom: 10px;
+}
+
+.pandoc-table th:not([align]) {
+  text-align: left;
+}
+
+.pagedtable-footer {
+  font-size: 15px;
+}
+
+d-byline .byline {
+  grid-template-columns: 2fr 2fr;
+}
+
+d-byline .byline h3 {
+  margin-block-start: 1.5em;
+}
+
+d-byline .byline .authors-affiliations h3 {
+  margin-block-start: 0.5em;
+}
+
+.authors-affiliations .orcid-id {
+  width: 16px;
+  height:16px;
+  margin-left: 4px;
+  margin-right: 4px;
+  vertical-align: middle;
+  padding-bottom: 2px;
+}
+
+d-title .dt-tags {
+  margin-top: 1em;
+  grid-column: text;
+}
+
+.dt-tags .dt-tag {
+  text-decoration: none;
+  display: inline-block;
+  color: rgba(0,0,0,0.6);
+  padding: 0em 0.4em;
+  margin-right: 0.5em;
+  margin-bottom: 0.4em;
+  font-size: 70%;
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+d-article table.gt_table td,
+d-article table.gt_table th {
+  border-bottom: none;
+}
+
+.html-widget {
+  margin-bottom: 2.0em;
+}
+
+.l-screen-inset {
+  padding-right: 16px;
+}
+
+.l-screen .caption {
+  margin-left: 10px;
+}
+
+.shaded {
+  background: rgb(247, 247, 247);
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.shaded .html-widget {
+  margin-bottom: 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.shaded .shaded-content {
+  background: white;
+}
+
+.text-output {
+  margin-top: 0;
+  line-height: 1.5em;
+}
+
+.hidden {
+  display: none !important;
+}
+
+d-article {
+  padding-top: 2.5rem;
+  padding-bottom: 30px;
+}
+
+d-appendix {
+  padding-top: 30px;
+}
+
+d-article>p>img {
+  width: 100%;
+}
+
+d-article h2 {
+  margin: 1rem 0 1.5rem 0;
+}
+
+d-article h3 {
+  margin-top: 1.5rem;
+}
+
+d-article iframe {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 2.0em;
+  width: 100%;
+}
+
+/* Tweak code blocks */
+
+d-article div.sourceCode code,
+d-article pre code {
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+}
+
+d-article pre,
+d-article div.sourceCode,
+d-article div.sourceCode pre {
+  overflow: auto;
+}
+
+d-article div.sourceCode {
+  background-color: white;
+}
+
+d-article div.sourceCode pre {
+  padding-left: 10px;
+  font-size: 12px;
+  border-left: 2px solid rgba(0,0,0,0.1);
+}
+
+d-article pre {
+  font-size: 12px;
+  color: black;
+  background: none;
+  margin-top: 0;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+d-article pre a {
+  border-bottom: none;
+}
+
+d-article pre a:hover {
+  border-bottom: none;
+  text-decoration: underline;
+}
+
+d-article details {
+  grid-column: text;
+  margin-bottom: 0.8em;
+}
+
+@media(min-width: 768px) {
+
+d-article pre,
+d-article div.sourceCode,
+d-article div.sourceCode pre {
+  overflow: visible !important;
+}
+
+d-article div.sourceCode pre {
+  padding-left: 18px;
+  font-size: 14px;
+}
+
+d-article pre {
+  font-size: 14px;
+}
+
+}
+
+figure img.external {
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+  padding: 18px;
+  box-sizing: border-box;
+}
+
+/* CSS for d-contents */
+
+.d-contents {
+  grid-column: text;
+  color: rgba(0,0,0,0.8);
+  font-size: 0.9em;
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+  padding-bottom: 0.5em;
+  margin-bottom: 1em;
+  padding-left: 0.25em;
+  justify-self: start;
+}
+
+@media(min-width: 1000px) {
+  .d-contents.d-contents-float {
+    height: 0;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    justify-self: center;
+    padding-right: 3em;
+    padding-left: 2em;
+  }
+}
+
+.d-contents nav h3 {
+  font-size: 18px;
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+.d-contents li {
+  list-style-type: none
+}
+
+.d-contents nav > ul {
+  padding-left: 0;
+}
+
+.d-contents ul {
+  padding-left: 1em
+}
+
+.d-contents nav ul li {
+  margin-top: 0.6em;
+  margin-bottom: 0.2em;
+}
+
+.d-contents nav a {
+  font-size: 13px;
+  border-bottom: none;
+  text-decoration: none
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.d-contents nav a:hover {
+  text-decoration: underline solid rgba(0, 0, 0, 0.6)
+}
+
+.d-contents nav > ul > li > a {
+  font-weight: 600;
+}
+
+.d-contents nav > ul > li > ul {
+  font-weight: inherit;
+}
+
+.d-contents nav > ul > li > ul > li {
+  margin-top: 0.2em;
+}
+
+
+.d-contents nav ul {
+  margin-top: 0;
+  margin-bottom: 0.25em;
+}
+
+.d-article-with-toc h2:nth-child(2) {
+  margin-top: 0;
+}
+
+
+/* Figure */
+
+.figure {
+  position: relative;
+  margin-bottom: 2.5em;
+  margin-top: 1.5em;
+}
+
+.figure img {
+  width: 100%;
+}
+
+.figure .caption {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 12px;
+  line-height: 1.5em;
+}
+
+.figure img.external {
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+  padding: 18px;
+  box-sizing: border-box;
+}
+
+.figure .caption a {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.figure .caption b,
+.figure .caption strong, {
+  font-weight: 600;
+  color: rgba(0, 0, 0, 1.0);
+}
+
+/* Citations */
+
+d-article .citation {
+  color: inherit;
+  cursor: inherit;
+}
+
+div.hanging-indent{
+  margin-left: 1em; text-indent: -1em;
+}
+
+/* Citation hover box */
+
+.tippy-box[data-theme~=light-border] {
+  background-color: rgba(250, 250, 250, 0.95);
+}
+
+.tippy-content > p {
+  margin-bottom: 0;
+  padding: 2px;
+}
+
+
+/* Tweak 1000px media break to show more text */
+
+@media(min-width: 1000px) {
+  .base-grid,
+  distill-header,
+  d-title,
+  d-abstract,
+  d-article,
+  d-appendix,
+  distill-appendix,
+  d-byline,
+  d-footnote-list,
+  d-citation-list,
+  distill-footer {
+    grid-template-columns: [screen-start] 1fr [page-start kicker-start] 80px [middle-start] 50px [text-start kicker-end] 65px 65px 65px 65px 65px 65px 65px 65px [text-end gutter-start] 65px [middle-end] 65px [page-end gutter-end] 1fr [screen-end];
+    grid-column-gap: 16px;
+  }
+
+  .grid {
+    grid-column-gap: 16px;
+  }
+
+  d-article {
+    font-size: 1.06rem;
+    line-height: 1.7em;
+  }
+  figure .caption, .figure .caption, figure figcaption {
+    font-size: 13px;
+  }
+}
+
+@media(min-width: 1180px) {
+  .base-grid,
+  distill-header,
+  d-title,
+  d-abstract,
+  d-article,
+  d-appendix,
+  distill-appendix,
+  d-byline,
+  d-footnote-list,
+  d-citation-list,
+  distill-footer {
+    grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+    grid-column-gap: 32px;
+  }
+
+  .grid {
+    grid-column-gap: 32px;
+  }
+}
+
+
+/* Get the citation styles for the appendix (not auto-injected on render since
+   we do our own rendering of the citation appendix) */
+
+d-appendix .citation-appendix,
+.d-appendix .citation-appendix {
+  font-size: 11px;
+  line-height: 15px;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  padding-left: 18px;
+  border: 1px solid rgba(0,0,0,0.1);
+  background: rgba(0, 0, 0, 0.02);
+  padding: 10px 18px;
+  border-radius: 3px;
+  color: rgba(150, 150, 150, 1);
+  overflow: hidden;
+  margin-top: -12px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* Include appendix styles here so they can be overridden */
+
+d-appendix {
+  contain: layout style;
+  font-size: 0.8em;
+  line-height: 1.7em;
+  margin-top: 60px;
+  margin-bottom: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  color: rgba(0,0,0,0.5);
+  padding-top: 60px;
+  padding-bottom: 48px;
+}
+
+d-appendix h3 {
+  grid-column: page-start / text-start;
+  font-size: 15px;
+  font-weight: 500;
+  margin-top: 1em;
+  margin-bottom: 0;
+  color: rgba(0,0,0,0.65);
+}
+
+d-appendix h3 + * {
+  margin-top: 1em;
+}
+
+d-appendix ol {
+  padding: 0 0 0 15px;
+}
+
+@media (min-width: 768px) {
+  d-appendix ol {
+    padding: 0 0 0 30px;
+    margin-left: -30px;
+  }
+}
+
+d-appendix li {
+  margin-bottom: 1em;
+}
+
+d-appendix a {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+d-appendix > * {
+  grid-column: text;
+}
+
+d-appendix > d-footnote-list,
+d-appendix > d-citation-list,
+d-appendix > distill-appendix {
+  grid-column: screen;
+}
+
+/* Include footnote styles here so they can be overridden */
+
+d-footnote-list {
+  contain: layout style;
+}
+
+d-footnote-list > * {
+  grid-column: text;
+}
+
+d-footnote-list a.footnote-backlink {
+  color: rgba(0,0,0,0.3);
+  padding-left: 0.5em;
+}
+
+
+
+/* Anchor.js */
+
+.anchorjs-link {
+  /*transition: all .25s linear; */
+  text-decoration: none;
+  border-bottom: none;
+}
+*:hover > .anchorjs-link {
+  margin-left: -1.125em !important;
+  text-decoration: none;
+  border-bottom: none;
+}
+
+/* Social footer */
+
+.social_footer {
+  margin-top: 30px;
+  margin-bottom: 0;
+  color: rgba(0,0,0,0.67);
+}
+
+.disqus-comments {
+  margin-right: 30px;
+}
+
+.disqus-comment-count {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+
+#disqus_thread {
+  margin-top: 30px;
+}
+
+.article-sharing a {
+  border-bottom: none;
+  margin-right: 8px;
+}
+
+.article-sharing a:hover {
+  border-bottom: none;
+}
+
+.sidebar-section.subscribe {
+  font-size: 12px;
+  line-height: 1.6em;
+}
+
+.subscribe p {
+  margin-bottom: 0.5em;
+}
+
+
+.article-footer .subscribe {
+  font-size: 15px;
+  margin-top: 45px;
+}
+
+
+.sidebar-section.custom {
+  font-size: 12px;
+  line-height: 1.6em;
+}
+
+.custom p {
+  margin-bottom: 0.5em;
+}
+
+/* Styles for listing layout (hide title) */
+.layout-listing d-title, .layout-listing .d-title {
+  display: none;
+}
+
+/* Styles for posts lists (not auto-injected) */
+
+
+.posts-with-sidebar {
+  padding-left: 45px;
+  padding-right: 45px;
+}
+
+.posts-list .description h2,
+.posts-list .description p {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+}
+
+.posts-list .description h2 {
+  font-weight: 700;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.posts-list h2.post-tag {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding-bottom: 12px;
+}
+.posts-list {
+  margin-top: 60px;
+  margin-bottom: 24px;
+}
+
+.posts-list .post-preview {
+  text-decoration: none;
+  overflow: hidden;
+  display: block;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 24px 0;
+}
+
+.post-preview-last {
+  border-bottom: none !important;
+}
+
+.posts-list .posts-list-caption {
+  grid-column: screen;
+  font-weight: 400;
+}
+
+.posts-list .post-preview h2 {
+  margin: 0 0 6px 0;
+  line-height: 1.2em;
+  font-style: normal;
+  font-size: 24px;
+}
+
+.posts-list .post-preview p {
+  margin: 0 0 12px 0;
+  line-height: 1.4em;
+  font-size: 16px;
+}
+
+.posts-list .post-preview .thumbnail {
+  box-sizing: border-box;
+  margin-bottom: 24px;
+  position: relative;
+  max-width: 500px;
+}
+.posts-list .post-preview img {
+  width: 100%;
+  display: block;
+}
+
+.posts-list .metadata {
+  font-size: 12px;
+  line-height: 1.4em;
+  margin-bottom: 18px;
+}
+
+.posts-list .metadata > * {
+  display: inline-block;
+}
+
+.posts-list .metadata .publishedDate {
+  margin-right: 2em;
+}
+
+.posts-list .metadata .dt-authors {
+  display: block;
+  margin-top: 0.3em;
+  margin-right: 2em;
+}
+
+.posts-list .dt-tags {
+  display: block;
+  line-height: 1em;
+}
+
+.posts-list .dt-tags .dt-tag {
+  display: inline-block;
+  color: rgba(0,0,0,0.6);
+  padding: 0.3em 0.4em;
+  margin-right: 0.2em;
+  margin-bottom: 0.4em;
+  font-size: 60%;
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.posts-list img {
+  opacity: 1;
+}
+
+.posts-list img[data-src] {
+  opacity: 0;
+}
+
+.posts-more {
+  clear: both;
+}
+
+
+.posts-sidebar {
+  font-size: 16px;
+}
+
+.posts-sidebar h3 {
+  font-size: 16px;
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.sidebar-section {
+  margin-bottom: 30px;
+}
+
+.categories ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.categories li {
+  color: rgba(0, 0, 0, 0.8);
+  margin-bottom: 0;
+}
+
+.categories li>a {
+  border-bottom: none;
+}
+
+.categories li>a:hover {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+.categories .active {
+  font-weight: 600;
+}
+
+.categories .category-count {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+
+@media(min-width: 768px) {
+  .posts-list .post-preview h2 {
+    font-size: 26px;
+  }
+  .posts-list .post-preview .thumbnail {
+    float: right;
+    width: 30%;
+    margin-bottom: 0;
+  }
+  .posts-list .post-preview .description {
+    float: left;
+    width: 45%;
+  }
+  .posts-list .post-preview .metadata {
+    float: left;
+    width: 20%;
+    margin-top: 8px;
+  }
+  .posts-list .post-preview p {
+    margin: 0 0 12px 0;
+    line-height: 1.5em;
+    font-size: 16px;
+  }
+  .posts-with-sidebar .posts-list {
+    float: left;
+    width: 75%;
+  }
+  .posts-with-sidebar .posts-sidebar {
+    float: right;
+    width: 20%;
+    margin-top: 60px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+}
+
+
+/* Improve display for browsers without grid (IE/Edge <= 15) */
+
+.downlevel {
+  line-height: 1.6em;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+}
+
+.downlevel .d-title {
+  padding-top: 6rem;
+  padding-bottom: 1.5rem;
+}
+
+.downlevel .d-title h1 {
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 1.1em;
+  margin: 0 0 0.5rem;
+}
+
+.downlevel .d-title p {
+  font-weight: 300;
+  font-size: 1.2rem;
+  line-height: 1.55em;
+  margin-top: 0;
+}
+
+.downlevel .d-byline {
+  padding-top: 0.8em;
+  padding-bottom: 0.8em;
+  font-size: 0.8rem;
+  line-height: 1.8em;
+}
+
+.downlevel .section-separator {
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.downlevel .d-article {
+  font-size: 1.06rem;
+  line-height: 1.7em;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
+
+
+.downlevel .d-appendix {
+  padding-left: 0;
+  padding-right: 0;
+  max-width: none;
+  font-size: 0.8em;
+  line-height: 1.7em;
+  margin-bottom: 0;
+  color: rgba(0,0,0,0.5);
+  padding-top: 40px;
+  padding-bottom: 48px;
+}
+
+.downlevel .footnotes ol {
+  padding-left: 13px;
+}
+
+.downlevel .base-grid,
+.downlevel .distill-header,
+.downlevel .d-title,
+.downlevel .d-abstract,
+.downlevel .d-article,
+.downlevel .d-appendix,
+.downlevel .distill-appendix,
+.downlevel .d-byline,
+.downlevel .d-footnote-list,
+.downlevel .d-citation-list,
+.downlevel .distill-footer,
+.downlevel .appendix-bottom,
+.downlevel .posts-container {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+@media(min-width: 768px) {
+  .downlevel .base-grid,
+  .downlevel .distill-header,
+  .downlevel .d-title,
+  .downlevel .d-abstract,
+  .downlevel .d-article,
+  .downlevel .d-appendix,
+  .downlevel .distill-appendix,
+  .downlevel .d-byline,
+  .downlevel .d-footnote-list,
+  .downlevel .d-citation-list,
+  .downlevel .distill-footer,
+  .downlevel .appendix-bottom,
+  .downlevel .posts-container {
+  padding-left: 150px;
+  padding-right: 150px;
+  max-width: 900px;
+}
+}
+
+.downlevel pre code {
+  display: block;
+  border-left: 2px solid rgba(0, 0, 0, .1);
+  padding: 0 0 0 20px;
+  font-size: 14px;
+}
+
+.downlevel code, .downlevel pre {
+  color: black;
+  background: none;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+.downlevel .posts-list .post-preview {
+  color: inherit;
+}
+
+
+
+</style>
+
+<script type="application/javascript">
+
+function is_downlevel_browser() {
+  if (bowser.isUnsupportedBrowser({ msie: "12", msedge: "16"},
+                                 window.navigator.userAgent)) {
+    return true;
+  } else {
+    return window.load_distill_framework === undefined;
+  }
+}
+
+// show body when load is complete
+function on_load_complete() {
+
+  // add anchors
+  if (window.anchors) {
+    window.anchors.options.placement = 'left';
+    window.anchors.add('d-article > h2, d-article > h3, d-article > h4, d-article > h5');
+  }
+
+
+  // set body to visible
+  document.body.style.visibility = 'visible';
+
+  // force redraw for leaflet widgets
+  if (window.HTMLWidgets) {
+    var maps = window.HTMLWidgets.findAll(".leaflet");
+    $.each(maps, function(i, el) {
+      var map = this.getMap();
+      map.invalidateSize();
+      map.eachLayer(function(layer) {
+        if (layer instanceof L.TileLayer)
+          layer.redraw();
+      });
+    });
+  }
+
+  // trigger 'shown' so htmlwidgets resize
+  $('d-article').trigger('shown');
+}
+
+function init_distill() {
+
+  init_common();
+
+  // create front matter
+  var front_matter = $('<d-front-matter></d-front-matter>');
+  $('#distill-front-matter').wrap(front_matter);
+
+  // create d-title
+  $('.d-title').changeElementType('d-title');
+
+  // create d-byline
+  var byline = $('<d-byline></d-byline>');
+  $('.d-byline').replaceWith(byline);
+
+  // create d-article
+  var article = $('<d-article></d-article>');
+  $('.d-article').wrap(article).children().unwrap();
+
+  // move posts container into article
+  $('.posts-container').appendTo($('d-article'));
+
+  // create d-appendix
+  $('.d-appendix').changeElementType('d-appendix');
+
+  // flag indicating that we have appendix items
+  var appendix = $('.appendix-bottom').children('h3').length > 0;
+
+  // replace footnotes with <d-footnote>
+  $('.footnote-ref').each(function(i, val) {
+    appendix = true;
+    var href = $(this).attr('href');
+    var id = href.replace('#', '');
+    var fn = $('#' + id);
+    var fn_p = $('#' + id + '>p');
+    fn_p.find('.footnote-back').remove();
+    var text = fn_p.html();
+    var dtfn = $('<d-footnote></d-footnote>');
+    dtfn.html(text);
+    $(this).replaceWith(dtfn);
+  });
+  // remove footnotes
+  $('.footnotes').remove();
+
+  // move refs into #references-listing
+  $('#references-listing').replaceWith($('#refs'));
+
+  $('h1.appendix, h2.appendix').each(function(i, val) {
+    $(this).changeElementType('h3');
+  });
+  $('h3.appendix').each(function(i, val) {
+    var id = $(this).attr('id');
+    $('.d-contents a[href="#' + id + '"]').parent().remove();
+    appendix = true;
+    $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('d-appendix'));
+  });
+
+  // show d-appendix if we have appendix content
+  $("d-appendix").css('display', appendix ? 'grid' : 'none');
+
+  // localize layout chunks to just output
+  $('.layout-chunk').each(function(i, val) {
+
+    // capture layout
+    var layout = $(this).attr('data-layout');
+
+    // apply layout to markdown level block elements
+    var elements = $(this).children().not('details, div.sourceCode, pre, script');
+    elements.each(function(i, el) {
+      var layout_div = $('<div class="' + layout + '"></div>');
+      if (layout_div.hasClass('shaded')) {
+        var shaded_content = $('<div class="shaded-content"></div>');
+        $(this).wrap(shaded_content);
+        $(this).parent().wrap(layout_div);
+      } else {
+        $(this).wrap(layout_div);
+      }
+    });
+
+
+    // unwrap the layout-chunk div
+    $(this).children().unwrap();
+  });
+
+  // remove code block used to force  highlighting css
+  $('.distill-force-highlighting-css').parent().remove();
+
+  // remove empty line numbers inserted by pandoc when using a
+  // custom syntax highlighting theme
+  $('code.sourceCode a:empty').remove();
+
+  // load distill framework
+  load_distill_framework();
+
+  // wait for window.distillRunlevel == 4 to do post processing
+  function distill_post_process() {
+
+    if (!window.distillRunlevel || window.distillRunlevel < 4)
+      return;
+
+    // hide author/affiliations entirely if we have no authors
+    var front_matter = JSON.parse($("#distill-front-matter").html());
+    var have_authors = front_matter.authors && front_matter.authors.length > 0;
+    if (!have_authors)
+      $('d-byline').addClass('hidden');
+
+    // article with toc class
+    $('.d-contents').parent().addClass('d-article-with-toc');
+
+    // strip links that point to #
+    $('.authors-affiliations').find('a[href="#"]').removeAttr('href');
+
+    // add orcid ids
+    $('.authors-affiliations').find('.author').each(function(i, el) {
+      var orcid_id = front_matter.authors[i].orcidID;
+      if (orcid_id) {
+        var a = $('<a></a>');
+        a.attr('href', 'https://orcid.org/' + orcid_id);
+        var img = $('<img></img>');
+        img.addClass('orcid-id');
+        img.attr('alt', 'ORCID ID');
+        img.attr('src','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==');
+        a.append(img);
+        $(this).append(a);
+      }
+    });
+
+    // hide elements of author/affiliations grid that have no value
+    function hide_byline_column(caption) {
+      $('d-byline').find('h3:contains("' + caption + '")').parent().css('visibility', 'hidden');
+    }
+
+    // affiliations
+    var have_affiliations = false;
+    for (var i = 0; i<front_matter.authors.length; ++i) {
+      var author = front_matter.authors[i];
+      if (author.affiliation !== "&nbsp;") {
+        have_affiliations = true;
+        break;
+      }
+    }
+    if (!have_affiliations)
+      $('d-byline').find('h3:contains("Affiliations")').css('visibility', 'hidden');
+
+    // published date
+    if (!front_matter.publishedDate)
+      hide_byline_column("Published");
+
+    // document object identifier
+    var doi = $('d-byline').find('h3:contains("DOI")');
+    var doi_p = doi.next().empty();
+    if (!front_matter.doi) {
+      // if we have a citation and valid citationText then link to that
+      if ($('#citation').length > 0 && front_matter.citationText) {
+        doi.html('Citation');
+        $('<a href="#citation"></a>')
+          .text(front_matter.citationText)
+          .appendTo(doi_p);
+      } else {
+        hide_byline_column("DOI");
+      }
+    } else {
+      $('<a></a>')
+         .attr('href', "https://doi.org/" + front_matter.doi)
+         .html(front_matter.doi)
+         .appendTo(doi_p);
+    }
+
+     // change plural form of authors/affiliations
+    if (front_matter.authors.length === 1) {
+      var grid = $('.authors-affiliations');
+      grid.children('h3:contains("Authors")').text('Author');
+      grid.children('h3:contains("Affiliations")').text('Affiliation');
+    }
+
+    // remove d-appendix and d-footnote-list local styles
+    $('d-appendix > style:first-child').remove();
+    $('d-footnote-list > style:first-child').remove();
+
+    // move appendix-bottom entries to the bottom
+    $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
+    $('.appendix-bottom').remove();
+
+    // hoverable references
+    $('span.citation[data-cites]').each(function() {
+      var refs = $(this).attr('data-cites').split(" ");
+      var refHtml = refs.map(function(ref) {
+        return "<p>" + $('#ref-' + ref).html() + "</p>";
+      }).join("\n");
+      window.tippy(this, {
+        allowHTML: true,
+        content: refHtml,
+        maxWidth: 500,
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'light-border',
+        placement: 'bottom-start'
+      });
+    });
+
+    // clear polling timer
+    clearInterval(tid);
+
+    // show body now that everything is ready
+    on_load_complete();
+  }
+
+  var tid = setInterval(distill_post_process, 50);
+  distill_post_process();
+
+}
+
+function init_downlevel() {
+
+  init_common();
+
+   // insert hr after d-title
+  $('.d-title').after($('<hr class="section-separator"/>'));
+
+  // check if we have authors
+  var front_matter = JSON.parse($("#distill-front-matter").html());
+  var have_authors = front_matter.authors && front_matter.authors.length > 0;
+
+  // manage byline/border
+  if (!have_authors)
+    $('.d-byline').remove();
+  $('.d-byline').after($('<hr class="section-separator"/>'));
+  $('.d-byline a').remove();
+
+  // remove toc
+  $('.d-contents').remove();
+
+  // move appendix elements
+  $('h1.appendix, h2.appendix').each(function(i, val) {
+    $(this).changeElementType('h3');
+  });
+  $('h3.appendix').each(function(i, val) {
+    $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('.d-appendix'));
+  });
+
+
+  // inject headers into references and footnotes
+  var refs_header = $('<h3></h3>');
+  refs_header.text('References');
+  $('#refs').prepend(refs_header);
+
+  var footnotes_header = $('<h3></h3');
+  footnotes_header.text('Footnotes');
+  $('.footnotes').children('hr').first().replaceWith(footnotes_header);
+
+  // move appendix-bottom entries to the bottom
+  $('.appendix-bottom').appendTo('.d-appendix').children().unwrap();
+  $('.appendix-bottom').remove();
+
+  // remove appendix if it's empty
+  if ($('.d-appendix').children().length === 0)
+    $('.d-appendix').remove();
+
+  // prepend separator above appendix
+  $('.d-appendix').before($('<hr class="section-separator" style="clear: both"/>'));
+
+  // trim code
+  $('pre>code').each(function(i, val) {
+    $(this).html($.trim($(this).html()));
+  });
+
+  // move posts-container right before article
+  $('.posts-container').insertBefore($('.d-article'));
+
+  $('body').addClass('downlevel');
+
+  on_load_complete();
+}
+
+
+function init_common() {
+
+  // jquery plugin to change element types
+  (function($) {
+    $.fn.changeElementType = function(newType) {
+      var attrs = {};
+
+      $.each(this[0].attributes, function(idx, attr) {
+        attrs[attr.nodeName] = attr.nodeValue;
+      });
+
+      this.replaceWith(function() {
+        return $("<" + newType + "/>", attrs).append($(this).contents());
+      });
+    };
+  })(jQuery);
+
+  // prevent underline for linked images
+  $('a > img').parent().css({'border-bottom' : 'none'});
+
+  // mark non-body figures created by knitr chunks as 100% width
+  $('.layout-chunk').each(function(i, val) {
+    var figures = $(this).find('img, .html-widget');
+    if ($(this).attr('data-layout') !== "l-body") {
+      figures.css('width', '100%');
+    } else {
+      figures.css('max-width', '100%');
+      figures.filter("[width]").each(function(i, val) {
+        var fig = $(this);
+        fig.css('width', fig.attr('width') + 'px');
+      });
+
+    }
+  });
+
+  // auto-append index.html to post-preview links in file: protocol
+  // and in rstudio ide preview
+  $('.post-preview').each(function(i, val) {
+    if (window.location.protocol === "file:")
+      $(this).attr('href', $(this).attr('href') + "index.html");
+  });
+
+  // get rid of index.html references in header
+  if (window.location.protocol !== "file:") {
+    $('.distill-site-header a[href]').each(function(i,val) {
+      $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+    });
+  }
+
+  // add class to pandoc style tables
+  $('tr.header').parent('thead').parent('table').addClass('pandoc-table');
+  $('.kable-table').children('table').addClass('pandoc-table');
+
+  // add figcaption style to table captions
+  $('caption').parent('table').addClass("figcaption");
+
+  // initialize posts list
+  if (window.init_posts_list)
+    window.init_posts_list();
+
+  // implmement disqus comment link
+  $('.disqus-comment-count').click(function() {
+    window.headroom_prevent_pin = true;
+    $('#disqus_thread').toggleClass('hidden');
+    if (!$('#disqus_thread').hasClass('hidden')) {
+      var offset = $(this).offset();
+      $(window).resize();
+      $('html, body').animate({
+        scrollTop: offset.top - 35
+      });
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  if (is_downlevel_browser())
+    init_downlevel();
+  else
+    window.addEventListener('WebComponentsReady', init_distill);
+});
+
+</script>
+
+<!--/radix_placeholder_distill-->
+  <script src="../../site_libs/header-attrs-2.14/header-attrs.js"></script>
+  <script src="../../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+  <script src="../../site_libs/popper-2.6.0/popper.min.js"></script>
+  <link href="../../site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="../../site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="../../site_libs/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="../../site_libs/anchor-4.2.2/anchor.min.js"></script>
+  <script src="../../site_libs/bowser-1.9.3/bowser.min.js"></script>
+  <script src="../../site_libs/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="../../site_libs/distill-2.2.21/template.v2.js"></script>
+  <!--radix_placeholder_site_in_header-->
+<style type="text/css">
+
+/* base variables */
+
+/* Edit the CSS properties in this file to create a custom
+   Distill theme. Only edit values in the right column
+   for each row; values shown are the CSS defaults.
+   To return any property to the default,
+   you may set its value to: unset
+   All rows must end with a semi-colon.                      */
+
+/* Optional: embed custom fonts here with `@import`          */
+/* This must remain at the top of this file.                 */
+
+
+
+html {
+  /*-- Main font sizes --*/
+  --title-size:      50px;
+  --body-size:       1.06rem;
+  --code-size:       14px;
+  --aside-size:      12px;
+  --fig-cap-size:    13px;
+  /*-- Main font colors --*/
+  --title-color:     #000000;
+  --header-color:    rgba(0, 0, 0, 0.8);
+  --body-color:      rgba(0, 0, 0, 0.8);
+  --aside-color:     rgba(0, 0, 0, 0.6);
+  --fig-cap-color:   rgba(0, 0, 0, 0.6);
+  /*-- Specify custom fonts ~~~ must be imported above   --*/
+  --heading-font:    sans-serif;
+  --mono-font:       monospace;
+  --body-font:       sans-serif;
+  --navbar-font:     sans-serif;  /* websites + blogs only */
+}
+
+/*-- ARTICLE METADATA --*/
+d-byline {
+  --heading-size:    0.6rem;
+  --heading-color:   rgba(0, 0, 0, 0.5);
+  --body-size:       0.8rem;
+  --body-color:      rgba(0, 0, 0, 0.8);
+}
+
+/*-- ARTICLE TABLE OF CONTENTS --*/
+.d-contents {
+  --heading-size:    18px;
+  --contents-size:   13px;
+}
+
+/*-- ARTICLE APPENDIX --*/
+d-appendix {
+  --heading-size:    15px;
+  --heading-color:   rgba(0, 0, 0, 0.65);
+  --text-size:       0.8em;
+  --text-color:      rgba(0, 0, 0, 0.5);
+}
+
+/*-- WEBSITE HEADER + FOOTER --*/
+/* These properties only apply to Distill sites and blogs  */
+
+.distill-site-header {
+  --title-size:       18px;
+  --text-color:       rgba(255, 255, 255, 0.8);
+  --text-size:        15px;
+  --hover-color:      white;
+  --bkgd-color:       #0F2E3D;
+}
+
+.distill-site-footer {
+  --text-color:       rgba(255, 255, 255, 0.8);
+  --text-size:        15px;
+  --hover-color:      white;
+  --bkgd-color:       #0F2E3D;
+}
+
+/*-- Additional custom styles --*/
+/* Add any additional CSS rules below                      */
+
+d-article p code {
+  color: black;
+  background: #dcdcdc;
+  font-weight: 400;
+  font-size: 0.9em;
+}
+</style>
+<!--/radix_placeholder_site_in_header-->
+
+
+</head>
+
+<body>
+
+<!--radix_placeholder_front_matter-->
+
+<script id="distill-front-matter" type="text/json">
+{"title":"Premiers pas avec R","description":"Débuter avec R et RStudio.","authors":[{"author":"Gergana Daskalova","authorURL":"https://ourcodingclub.github.io/tutorials/intro-to-r/","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""},{"author":"Jonathan Kitt (adaptation)","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2022-05-02T00:00:00.000+02:00","citationText":"Daskalova & (adaptation), 2022"}
+</script>
+
+<!--/radix_placeholder_front_matter-->
+<!--radix_placeholder_navigation_before_body-->
+<header class="header header--fixed" role="banner">
+<nav class="distill-site-nav distill-site-header">
+<div class="nav-left">
+<a href="../../index.html" class="title">Codon(s)!</a>
+<input id="distill-search" class="nav-search hidden" type="text" placeholder="Search..."/>
+</div>
+<div class="nav-right">
+<a href="../../index.html">Home</a>
+<a href="../../about.html">A propos</a>
+<a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
+</div>
+</nav>
+</header>
+<!--/radix_placeholder_navigation_before_body-->
+<!--radix_placeholder_site_before_body-->
+<!--/radix_placeholder_site_before_body-->
+
+<div class="d-title">
+<h1>Premiers pas avec R</h1>
+<!--radix_placeholder_categories-->
+<div class="dt-tags">
+  <a href="../../index.html#category:R" class="dt-tag">R</a>
+  <a href="../../index.html#category:RStudio" class="dt-tag">RStudio</a>
+  <a href="../../index.html#category:Introduction" class="dt-tag">Introduction</a>
+</div>
+<!--/radix_placeholder_categories-->
+<p><p>Débuter avec R et RStudio.</p></p>
+</div>
+
+<div class="d-byline">
+  Gergana Daskalova <a
+href="https://ourcodingclub.github.io/tutorials/intro-to-r/"
+class="uri">https://ourcodingclub.github.io/tutorials/intro-to-r/</a> 
+  
+,   Jonathan Kitt (adaptation)  
+  
+<br/>2022-05-02
+</div>
+
+<div class="d-article">
+<div class="d-contents d-contents-float">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#telecharger">Télécharger R et RStudio</a></li>
+<li><a href="#importer">Importer et vérifier les données</a></li>
+<li><a href="#compter">Compter le nombre d’espèces menacées</a></li>
+<li><a href="#vecteur">Créer un vecteur et le représenter</a></li>
+<li><a href="#dataframe">Créer un dataframe et le représenter</a></li>
+<li><a href="#defi">Défi</a></li>
+<li><a href="#glossaire">Glossaire</a></li>
+</ul>
+</nav>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p><em>Ce tutoriel est adapté de <a
+href="https://ourcodingclub.github.io/tutorials/intro-to-r/">Getting
+started with R and RStudio</a> du site <a
+href="https://ourcodingclub.github.io/">Our Coding Club</a>.</em></p>
+<div class="layout-chunk" data-layout="l-body-outset">
+<p><img src="img/happy-r.png" width="879" /></p>
+</div>
+<p>Dessin de <a
+href="https://raw.githubusercontent.com/allisonhorst/qmss-r-teaching-tools/main/slides/happy-r.png">Allison
+Horst</a></p>
+<h1 id="introduction">Introduction</h1>
+<p><br></p>
+<p>Les <strong>objectifs</strong> de ce tutoriel sont les suivants :</p>
+<ol type="1">
+<li>Comprendre ce qu’est R (et RStudio)<br />
+</li>
+<li>Prendre la bonne habitude de travailler avec des scripts<br />
+</li>
+<li>Apprendre à importer des données dans R<br />
+</li>
+<li>Apprendre à manipuler des objets (vecteurs et data frames)<br />
+</li>
+<li>Créer un graphique basique<br />
+<br></li>
+</ol>
+<p>Voici les <strong>étapes</strong> que nous allons suivre pour y
+parvenir :</p>
+<ol type="1">
+<li><a href="#telecharger">Télécharger R et RStudio</a><br />
+</li>
+<li><a href="#importer">Importer et vérifier les données</a></li>
+<li><a href="#compter">Compter le nombre d’espèces menacées</a><br />
+</li>
+<li><a href="#vecteur">Créer un vecteur et le représenter</a><br />
+</li>
+<li><a href="#dataframe">Créer un data frame et le représenter</a><br />
+</li>
+<li><a href="#defi">Défi</a><br />
+</li>
+<li><a href="#glossaire">Glossaire</a></li>
+</ol>
+<h2 id="quest-ce-que-r">Qu’est-ce que R?</h2>
+<p>R est un <strong>langage de programmation statistique</strong> qui a
+rapidement gagné en popularité dans de nombreux domaines scientifiques.
+Il a été développé par <strong>Ross Ihaka</strong> et <strong>Robert
+Gentleman</strong> comme implémentation libre du langage de
+programmation S.</p>
+<p><br></p>
+<p>R désigne également le <strong>logiciel</strong> qui utilise ce
+langage pour des calculs statistiques. Il dispose d’une
+<strong>communauté</strong> en ligne très active ainsi que
+d’<strong>extensions</strong> pour presque tous les domaines et
+applications possibles et imaginables.</p>
+<p><br></p>
+<p>Contrairement à d’autres logiciels de statistiques comme Minitab ou
+SPSS, R peut être exécuté entièrement en <strong>ligne de
+commande</strong> et ne nécessite pas d’interface graphique, ce qui lui
+confère une <strong>grande flexibilité</strong>.</p>
+<p><br></p>
+<p>Voici quelques avantages de R :</p>
+<ul>
+<li>C’est un outil <strong>libre et open source</strong> (tout le monde
+peut utiliser le code et voir comment il fonctionne)<br />
+</li>
+<li>C’est un langage de programmation plutôt qu’une interface graphique,
+ce qui permet à l’utilisateur de sauvegarder facilement des
+<strong>scripts</strong> sous forme de texte pour les ré-utiliser ou les
+partager<br />
+</li>
+<li>Beaucoup de personnes l’utilisent dans beaucoup de domaines
+différents - <strong>il est rare d’être confronté à un problème qui n’a
+jamais été résolu !</strong></li>
+</ul>
+<p><br></p>
+<h1 id="telecharger">Télécharger R et RStudio</h1>
+<p>La plupart des utilisateurs interagissent avec R à l’aide d’une
+<strong>interface graphique</strong>, dont la plus connue est
+<strong>RStudio</strong>. RStudio permet d’avoir accès dans une seule
+fenêtre à vos <strong>scripts</strong>, à vos <strong>données</strong>,
+à vos <strong>graphiques</strong>, à vos <strong>résultats</strong>,
+ainsi qu’à de l’<strong>aide</strong>.</p>
+<p><br></p>
+<ul>
+<li>Téléchargez R sur le <a href="https://cran.r-project.org/">site du
+CRAN</a> (The Comprehensive R Archive Network)<br />
+</li>
+<li>Téléchargez <a
+href="https://www.rstudio.com/products/rstudio/">RStudio</a> (“free open
+source desktop version”)<br />
+</li>
+<li>Sur Mac, vous aurez également besoin de <a
+href="https://www.xquartz.org/">XQuartz</a></li>
+</ul>
+<p><br></p>
+<p><strong>Ouvrez RStudio, puis cliquez sur <em>“File / New File / R
+script”</em></strong></p>
+<div class="layout-chunk" data-layout="l-body-outset">
+<p><img src="img/rstudio_panels.png" width="640" /></p>
+</div>
+<p>Vous verrez une fenêtre comme celle ci-dessus, avec quatre panneaux
+:</p>
+<p><strong>1) La console</strong> : vous pouvez y taper du code et
+l’exécuter avec <em>Entrée</em>.</p>
+<aside>
+Essayez de taper et d’exécuter <code>2+2</code>
+</aside>
+<p><strong>2) Le script</strong> : vous pouvez - et c’est préférable - y
+taper du code. Pour l’exécuter, placez-vous à la fin de la ligne et
+utilisez la combinaison de touches <em>Ctrl + R</em> (Windows) ou
+<em>Cmd + Entrée</em> (Mac).</p>
+<aside>
+Sur les ordinateurs avec une version récente de Windows,
+<code>Ctrl + Entrée</code>
+</aside>
+<p><strong>3) L’environnement</strong> : aperçu de votre espace de
+travail (données importées, objets créés, fonctions définies, …).</p>
+<p><strong>4) Fichiers / Graphiques / Packages / Aide</strong> : permet
+de naviguer dans vos dossiers, de visualiser vos graphiques, de voir
+quels packages sont installés et chargés, et d’obtenir de l’aide.</p>
+<p><em><strong>A propos des scripts : </strong> gardez bien à l’esprit
+que le code tapé directement dans la console ne sera pas sauvegardé par
+R : il disparaît une fois exécuté (vous pouvez toutefois accéder aux
+dernières commandes à l’aide de la touche <code>Flèche du haut</code> de
+votre clavier). L’utilisation d’un script pour taper votre code vous
+permet d’en garder une trace. C’est un peu comme quand vous rédigez un
+document dans Word : vous pouvez sauvegarder votre progression pour
+reprendre là où vous en étiez, ou faire des modifications. Lorsque vous
+tapez du code dans un script, pensez à le sauvegarder régulièrement
+(<code>Ctrl + S</code>).</p>
+<p>Il est fortement recommandé d’ajouter à votre code des commentaires
+décrivant les étapes. Pour cela, insérez un hashtag (<code>#</code>)
+devant une ligne de votre script (ou <code>Ctrl + Shift + C</code>).
+Toutes les lignes qui commencent par un <code>#</code> seront
+considérées par R comme du texte et non du code, et ne seront pas
+exécutées. Ces commentaires apporteront des informations précieuses pour
+toute personne qui lira votre script (y compris vous-même quand vous
+reviendrez dessus dans un certain temps !). Comme tout document écrit,
+les scripts sont plus facilement lisibles quand ils sont bien structurés
+et clairs.</p>
+<p><strong>A propos de l’espace de travail : </strong> votre espace de
+travail contient tout ce que vous utilisez lors d’une session R. En
+quittant R, vous aurez le choix de sauvegarder ou non cet espace de
+travail. Il est préférable de ne pas le faire et de démarrer chaque
+session avec en espace de travail vide. </em></p>
+<h2 id="téléchargez-les-données">Téléchargez les données</h2>
+<p>La meilleure façon d’apprendre un nouveau langage est de le
+<strong>pratiquer</strong>. Nous allons analyser une liste d’espèces
+d’oiseaux menacées en Auvergne (données de 2015 obtenues sur le site de
+la <a
+href="https://www.auvergne-rhone-alpes.developpement-durable.gouv.fr/liste-rouge-des-oiseaux-d-auvergne-a9939.html">DREAL</a>).
+Ces données se trouvent dans un fichier appelé
+<code>oiseaux.csv</code>.</p>
+<p><strong>1) Créez un nouveau dossier sur votre ordinateur</strong> :
+vous allez y télécharger les données, et vous pourrez y sauvegarder
+votre script et vos graphiques. Choisissez un nom explicite, par exemple
+<code>codons_01_intro_r</code></p>
+<aside>
+Evitez les espaces vides dans vos noms de dossiers !
+</aside>
+<p><strong>2) Cliquez sur <a
+href="https://github.com/KittJonathan/Codons-01-PremiersPasAvecR">ce
+lien</a> pour télécharger le fichier
+<code>oiseaux.csv</code></strong></p>
+<p><strong>3) Cliquez sur “Code” puis “Download ZIP”</strong> (voir
+ci-dessous)</p>
+<div class="layout-chunk" data-layout="l-body-outset">
+<p><img src="img/download_git_zip.png" width="384" /></p>
+</div>
+<p><strong>4) Choisissez comme emplacement de sauvegarde le dossier que
+vous venez de créer</strong></p>
+<p><strong>5) Dézippez le dossier</strong></p>
+<h2 id="commencez-à-écrire-votre-script">Commencez à écrire votre
+script</h2>
+<p>Pour l’instant, vous pouvez noter la date et l’objectif du tutoriel -
+compter le nombre d’espèces d’oiseaux menacées d’extinction en Auvergne.
+Vous pouvez copier l’exemple ci-dessous pour le coller et l’éditer dans
+votre propre script :</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Ateliers codon(s)!</span>
+<span class='co'># 01 - Premiers pas avec R</span>
+<span class='co'># Lundi 09/05/2022</span>
+</code></pre>
+</div>
+</div>
+<p>Les lignes suivantes dans votre script servent généralement à charger
+les <strong>packages</strong> dont vous aurez besoin pour votre analyse.
+Un package contient des commandes qui peuvent être chargées dans R pour
+apporter des fonctionnalités supplémentaires (il existe par exemple des
+packages pour formater des données ou pour créer des cartes).</p>
+<p>Un package doit tout d’abord être <strong>téléchargé et
+installé</strong> sur votre ordinateur à l’aide de la commande
+<code>install.packages("nom-du-package")</code> avant d’être
+<strong>chargé</strong> pour être utilisé à l’aide de la commande
+<code>library(nom-du-package)</code>. Un package n’a besoin d’être
+installé qu’une seule fois, vous pouvez donc le faire directement dans
+la console plutôt que de sauvegarder la ligne de code dans votre script
+et d’ainsi le ré-installer à chaque fois que vous exécutez votre script.
+Nous allons utiliser le package <strong><code>dplyr</code></strong> qui
+fournit des fonctionnalités supplémentaires pour la manipulation et le
+formatage de données.</p>
+<aside>
+Notez bien la présence de guillemets autour du nom du package dans
+l’appel à la fonction <code>install.packages()</code>, et leur absence
+dans l’appel à la fonction <code>library()</code>
+</aside>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages</a></span><span class='op'>(</span><span class='st'>"dplyr"</span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>Nous allons maintenant définir notre <strong>répertoire de
+travail</strong> - le dossier dans lequel R cherchera les données à
+importer et sauvegardera les graphiques. C’est dans notre cas le dossier
+dans lequel nous avons téléchargé les données.</p>
+<p>Quand vous aurez à travailler sur des projets plus importants, vous
+pourrez tout à fait créer un <strong>dossier racine</strong> (par ex.
+“nom_du_projet/”), le définir comme répertoire de travail, et créer des
+<strong>sous-dossiers</strong> pour organiser les fichiers (par ex.
+“nom_du_projet/donnees_brutes/”, “nom_du_projet/figures/”, …).</p>
+<p>Pour afficher le réperoire de travail, utilisez la commande
+<code>getwd()</code> (pour <em>get working directory</em>). La commande
+<code>setwd("nom-du-repertoire-de-travail")</code> (<em>set working
+directory</em>) permet de définir un nouveau répertoire de travail.</p>
+<aside>
+Faites attention au sens des <em>slashes</em> dans vos chemins de
+dossiers !
+</aside>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>setwd</a></span><span class='op'>(</span><span class='st'>"C:/User/Codons-01-PremiersPasAvecR"</span><span class='op'>)</span>
+<span class='co'># Remplacez le chemin ci-dessus par le votre</span>
+</code></pre>
+</div>
+</div>
+<aside>
+L’auto-complétion est votre alliée ! Tapez quelques lettres puis sur la
+touche <code>Tab</code> et R complètera pour vous.
+</aside>
+<h1 id="importer">Importer et vérifier les données</h1>
+<p>Pour importer les donées dans RStudio, deux options s’offrent à vous
+:</p>
+<ul>
+<li><strong>Cliquer sur le bouton Import Dataset</strong></li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="img/import_dataset_1.png" width="330" /></p>
+</div>
+<p>Indiquez quel fichier vous souhaitez importer, et RStudio vous
+proposera un aperçu de vos données. Assurez-vous qu’à côté de
+<em>Heading</em> vous avez sélectionné <em>Yes</em> (ceci indique à R
+qu’il doit considérer la première ligne de vos données comme des noms de
+colonnes). Cliquez enfin sur <em>Import</em>.</p>
+<div class="layout-chunk" data-layout="l-body-outset">
+<p><img src="img/import_dataset_2.png" width="575" /></p>
+</div>
+<p>Dans la console vous verrez le code utilisé pour importer vos
+données, y compris le chemin vers votre fichier - il est utile de copier
+cette ligne de code et de la coller dans votre script, pour que vous
+sachiez d’où vient votre jeu de données.<br />
+Vous remarquerez que le chemin vers votre fichier débute par
+<code>C:/</code>. Il s’agit du <strong>chemin absolu</strong> vers le
+fichier à importer, qui ne tient pas compte du fait que vous avez défini
+un répertoire de travail. Vous pouvez également utiliser le
+<strong>chemin relatif</strong> qui indique l’emplacement du fichier à
+partir de votre répertoire de travail (voir ci-dessous)</p>
+<ul>
+<li><strong>Utiliser la commande <code>read.csv()</code></strong> : R
+fonctionne mieux avec des fichiers <code>.csv</code> (valeurs séparées
+par des virgules). Si vous travaillez dans Excel, cliquez sur
+<em>Enregistrer sous</em> et choisissez <code>csv</code> comme extension
+de fichier.</li>
+</ul>
+<aside>
+Dans Excel, évitez les espaces dans vos noms de colonnes (ex :
+<code>nom_latin</code> plutôt que <code>nom latin</code>)
+</aside>
+<p>Certains ordinateurs utilisent le point-virgule <code>;</code> comme
+séparateur dans les fichiers <code>.csv</code>. Vous pouvez dans ce cas
+utiliser la fonction <code>read.csv2()</code>, ou préciser dans la
+fonction <code>read.csv()</code> l’argument <code>sep = ";"</code>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>oiseaux</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"Codons-01-PremiersPasAvecR-main/oiseaux.csv"</span><span class='op'>)</span>
+<span class='co'># modifiez le chemin vers le fichier si nécessaire</span>
+</code></pre>
+</div>
+</div>
+<p><em><strong>A propos des objets</strong> : R est langage orienté
+objet - cela signifie que tout ce que vous importez et créez est stocké
+dans des objets que vous allez nommer. Ici, nous avons assigné le
+fichier <code>oiseaux.csv</code> à l’objet <code>oiseaux</code> à l’aide
+de la flèche <code>&lt;-</code>. Nous aurions tout à fait pu l’appeler
+<code>mesdonnees</code> ou <code>oiseaux_liste_rouge_auvergne</code>,
+mais il est préférable de choisir un nom unique, informatif et court.
+Dans le panneau <em>Environment</em> de RStudio vous pouvez voir les
+noms de tous les objets actuellement chargés dans R. Assurez-vous que
+vous voyez bien l’objet <code>oiseaux</code>.</p>
+<p>Quand vous importez vos données dans R, il est très probable qu’elles
+deviennent un objet qu’on appelle un data frame : un tableau contenant
+des lignes (observations) et des colonnes (variables).</em></p>
+<p>Une des premières choses à faire est de <strong>vous assurer que vos
+données ont été importées sans erreur</strong>. Il est recommandé de
+toujours exécuter ce code dans la console et de vérifier le résultat -
+voyez-vous des erreurs, est-ce que les nombres/noms ont du sens ? Si
+vous passiez directement à l’analyse, vous risqueriez de vous rendre
+compte plus tard que R n’a pas importé vos données correctement et vous
+devriez recommencer, ou pire, vous pourriez analyser de mauvaises
+données sans vous en rendre compte. Pour visualiser davantage que les
+quelques premières lignes, vous pouvez également cliquer sur l’objet
+dans le panneau <em>Environment</em>, ce qui affichera un tableau dans
+un nouvel onglet à côté de votre script. Des fichiers peuvent être trop
+larges pour êtres affichés entirement, gardez donc à l’esprit qu’il peut
+y avoir des lignes ou des colonnes manquantes.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>oiseaux</span><span class='op'>)</span>  <span class='co'># affiche les premières lignes</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span><span class='op'>(</span><span class='va'>oiseaux</span><span class='op'>)</span>  <span class='co'># affiche les dernières lignes</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>oiseaux</span><span class='op'>)</span>  <span class='co'># affiche le type de variables</span>
+</code></pre>
+</div>
+</div>
+<p>La commande <code>str(nom.objet)</code> affiche la structure de vos
+données. Très souvent, les analyses ne se déroulent pas comme prévu car
+R s’est trompé de type de variable. Imaginez que vos données comportent
+quatre groupes d’étude appelés “1, 2, 3, 4”. Vous savez pertinnement
+qu’il s’agit d’une variable catégorique (un <strong>facteur</strong>),
+mais R peut considérer qu’il s’agit d’une variable numérique.</p>
+<aside>
+Pensez toujours à vérifier la structure de vos données !
+</aside>
+<p>La fonction <code>str(oiseaux)</code> nous indique que la variable
+<code>categorie</code> est une chaîne de caractères (<em>chr</em>). Nous
+préférerions que R considère cette variable comme étant catégorique - un
+facteur. Nous allons le préciser en accédant à la colonne concernée à
+l’aide du signe <em>dollar</em> <code>$</code> :</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>oiseaux</span><span class='op'>$</span><span class='va'>categorie</span><span class='op'>)</span>  <span class='co'># premiers éléments de la variable</span>
+<span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span><span class='op'>(</span><span class='va'>oiseaux</span><span class='op'>$</span><span class='va'>categorie</span><span class='op'>)</span>  <span class='co'># type de variable</span>
+<span class='va'>oiseaux</span><span class='op'>$</span><span class='va'>categorie</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>oiseaux</span><span class='op'>$</span><span class='va'>categorie</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>La dernière ligne du code ci-dessus permet de transformer la variable
+<code>categorie</code> en un facteur. La fonction
+<code>as.factor(oiseaux$categorie)</code> toute seule serait exécutée,
+mais ne modifierait pas les données stockées dans l’objet
+<code>oiseaux</code>. Il faut pour cela ré-assigner cette variable
+transformée en facteur à la variable d’origine. Pour vous assurer que
+l’opération a bien fonctionné, vous pouvez exécuter à nouveau la
+fonction <code>class(oiseaux$categorie)</code>.</p>
+<p>Les fonctions suivantes permettent d’explorer autrement vos données
+:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span><span class='op'>(</span><span class='va'>oiseaux</span><span class='op'>)</span>  <span class='co'># dimensions de l'objet</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>oiseaux</span><span class='op'>)</span>  <span class='co'># synthèse de l'objet</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>oiseaux</span><span class='op'>$</span><span class='va'>categorie</span><span class='op'>)</span>  <span class='co'># synthèse de la variable</span>
+</code></pre>
+</div>
+</div>
+<h1 id="compter">Compter le nombre d’espèces menacées</h1>
+<p>Notre objet <code>oiseaux</code> dresse une <strong>liste des espèces
+d’oiseaux menacées d’extinction en Auvergne, avec différents niveaux de
+préoccupation</strong>.</p>
+<p>Nous allons <strong>compter le nombre d’espèces pour chaque
+niveau</strong> de préoccupation et <strong>créer une
+visualisation</strong> de ce comptage.</p>
+<p>Commençons par séparer <code>oiseaux</code> en plusieurs objets, un
+pour chaque niveau de menace, à l’aide de la fonction
+<code>filter()</code> du package <code>dplyr</code>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>en_danger_critique</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>oiseaux</span>, <span class='va'>categorie</span> <span class='op'>==</span> <span class='st'>"En danger critique"</span><span class='op'>)</span>
+<span class='co'># Le 1er argument de la fonction est le data frame, </span>
+<span class='co'># Le 2e argument est la condition à appliquer au filtre</span>
+</code></pre>
+</div>
+</div>
+<aside>
+L’opérateur <strong><code>==</code></strong> permet de sélectionner les
+valeurs <strong>“strictement égales à”</strong>
+</aside>
+<p><strong>R est sensible à la casse</strong> :
+<code>filter(oiseaux, categorie == "en danger critique")</code> ne
+fonctionnera pas !</p>
+<p>Procédons de la même façon pour chaque catégorie. Si vous avez un
+doute sur le nom ou l’orthographe d’une des catégories, pensez à la
+fonction <code>summary(oiseaux$categorie)</code>.</p>
+<p>Une fois que vous avez créé tous les objets, vous allez pouvoir
+<strong>compter le nombre d’espèces</strong> pour chaque catégorie. Nous
+allons pour cela imbriquer deux fonctions : <code>unique()</code> (pour
+identifier chaque espèce) et <code>length()</code> (pour les
+compter).</p>
+<aside>
+Vous pouvez essayer ces deux fonctions séparément dans la console
+</aside>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>a</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>en_danger_critique</span><span class='op'>$</span><span class='va'>nom_francais</span><span class='op'>)</span><span class='op'>)</span>
+<span class='co'># choisissez des noms pratiques pour vos objets</span>
+<span class='co'># "a" n'est peut-être pas le plus explicite ...</span>
+</code></pre>
+</div>
+</div>
+<p>Procédez de la même façon pour toutes les catégories. Cette manière
+de procéder peut vous sembler rébarbative … Nous verrons dans un
+prochain tutoriel comment procéder de manière plus efficace !</p>
+<p>Tapez dans la console le nom d’un des objets que vous venez de créer.
+Que vous retourne-t-elle ?</p>
+<h1 id="vecteur">Créer un vecteur et le représenter</h1>
+<p>Nous allons maintenant combiner tous ces objets dans un
+<strong>vecteur</strong> - un objet à une dimension (à la différence
+d’un <em>data frame</em> qui en possède deux).</p>
+<p>Nous utilisons pour cela la fonction <code>c()</code> (pour
+<em>concaténer</em>), ainsi que la fonction <code>names()</code> pour
+ajouter des étiquettes aux valeurs.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>comptage_especes</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>a</span>,<span class='va'>b</span>, <span class='va'>c</span>, <span class='va'>d</span>, <span class='va'>e</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>comptage_especes</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"En danger critique"</span>,
+                             <span class='st'>"En danger"</span>,
+                             <span class='st'>"Vulnerable"</span>,
+                             <span class='st'>"Quasi-menacee"</span>,
+                             <span class='st'>"Preoccupation mineure"</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<aside>
+Attention à garder le même ordre !
+</aside>
+<p>Notes :<br />
+- Les espaces avant et après la flèche <code>&lt;-</code> et après la
+virgule <code>,</code> facilitent la lecture du code<br />
+- Faites attention à vérifier que les valeurs du vecteur correspondent
+bien aux étiquettes - vous ne voudriez pas inverser les espèces “En
+danger critique” avec les espèces “Quasi-menacées”! L’utilisation d’un
+script permet de revenir sur le code et de vérifier qu’on ne s’est pas
+trompé. Une bonne pratique serait de nommer les objets de façon plus
+explicite, comme <code>nb_en_danger_critique</code>,
+<code>nb_en_danger</code>, …<br />
+- Si vous cliquez à l’aide de la souris après une parenthèse, RStudio
+surlignera la parenthèse lui correspondant. Les parenthèses manquantes,
+en particulier quand vous utilisez des fonctions imbriquées comme vous
+l’avez fait avec <code>length(unique())</code> sont une des sources de
+frustration et d’erreur les plus courantes quand vous commencez à coder
+!</p>
+<p><strong>Nous pouvons maintenant visualiser le nombre d’espèces par
+catégorie à l’aide de la fonction <code>barplot()</code></strong>. Les
+graphiques s’affichent dans le panneau inférieur droit de RStudio.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span><span class='op'>(</span><span class='va'>comptage_especes</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>Et voilà votre premier graphique avec R ! Mais <strong>il y a des
+choses à modifier</strong> : il manque des titres aux axes, toutes les
+étiquettes ne sont pas visibles, et la valeur pour les espèces dans la
+catégorie “Préoccupation mineure” (n = 68) dépasse la plus grande valeur
+affichée sur l’axe Y.</p>
+<p>Pour savoir comment apporter ces modifications à votre graphique,
+utilisez la fonction <code>help(barplot)</code> ou <code>?barplot</code>
+pour afficher l’aide de la fonction. Survolez le document qui s’affiche
+et essayez de trouver des solutions.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/help.html'>help</a></span><span class='op'>(</span><span class='va'>barplot</span><span class='op'>)</span>  <span class='co'># aide de la fonction barplot</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/help.html'>help</a></span><span class='op'>(</span><span class='va'>par</span><span class='op'>)</span>  <span class='co'># aide pour les graphiques</span>
+</code></pre>
+</div>
+</div>
+<p>Nous aimerions également sauvegarder notre graphique. Là encore, vous
+avez deux options : - <strong>Cliquer sur <em>Export</em></strong> dans
+le panneau des graphiques : choisissez où sauvegarder le graphique (par
+défaut dans votre répertoire de travail) et modifiez le nom du fichier
+pour qu’il soit plus explicite que <code>Rplot01.png</code>. Vous pouvez
+aussi ajuster les dimensions de la figure.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="img/save_barplot.png" width="432" /></p>
+</div>
+<ul>
+<li><strong>Utiliser les fonctions <code>png()</code> et
+<code>dev.off()</code></strong> qui servent respectivement à ouvrir et
+fermer l’outil graphique :</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/grDevices/png.html'>png</a></span><span class='op'>(</span><span class='st'>"barplot.png"</span>,
+    width <span class='op'>=</span> <span class='fl'>1600</span>, height <span class='op'>=</span> <span class='fl'>600</span><span class='op'>)</span>
+
+<span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span><span class='op'>(</span><span class='va'>comptage_especes</span>,
+        xlab <span class='op'>=</span> <span class='st'>"Niveau de menace"</span>, ylab <span class='op'>=</span> <span class='st'>"Nombre d'espèces"</span>,
+        ylim <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>70</span><span class='op'>)</span>,
+        cex.names <span class='op'>=</span> <span class='fl'>1.5</span>, cex.axis <span class='op'>=</span> <span class='fl'>1.5</span>, cex.lab <span class='op'>=</span> <span class='fl'>1.5</span><span class='op'>)</span>
+
+<span class='fu'><a href='https://rdrr.io/r/grDevices/dev.html'>dev.off</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<aside>
+L’argument <code>cex</code> permet d’augmenter (&gt; 1) ou de diminuer
+(&lt; 1) la taille du texte
+</aside>
+<div class="layout-chunk" data-layout="l-body-outset">
+<p><img src="img/barplot.png" width="800" /></p>
+</div>
+<h1 id="dataframe">Créer un dataframe et le représenter</h1>
+<p>Nous avons travaillé jusqu’ici avec des <strong>vecteurs</strong>, un
+type d’objet bien adapté quand on manipule une seule série de valeurs à
+la fois. Dans la pratique, nous manipulons souvent plusieurs variables
+et plusieurs types de données en même temps - par exemple des valeurs
+continues et des valeurs catégoriques. Les <strong>data frames</strong>
+sont alors mieux adaptés : il s’agit de tableaux de valeurs ayant une
+structure en <strong>deux dimensions</strong>, des lignes et des
+colonnes, chaque colonne pouvant contenir un <strong>type
+différent</strong> de données.</p>
+<p>Nous pourrions par exemple avoir un tableau de données dont une
+colonne appelée “Envergure” contient des mesures d’envergures chez
+différentes espèces d’oiseaux, et une deuxième colonne appelée “Espèce”
+contient les noms des espèces dont on a mesuré l’envergure.</p>
+<p>La <strong>matrice</strong> est un autre format possible de données :
+elle peut également contenir plusieurs lignes, mais toutes les variables
+d’une matrice doivent être du même type et contenir le même nombre
+d’éléments.</p>
+<p><em><strong>Conseil de bonne pratique</strong> : conservez toujours
+une copie de vos données brutes ! Votre script R vous permet de
+manipuler et modifier ces données sans toucher aux données brutes. Si
+vous utilisez des logiciels de retouche photo, c’est un peu la même
+chose que d’ajouter des couches apportant des modifications à votre
+cliché sans modifier la photo d’origine. Ceci dit, si vos données brutes
+nécessitent un long morceau de code pour être analysables, vous pouvez
+sauvegarder une version nettoyée de vos données brutes pour ne pas avoir
+à refaire toutes les étapes de nettoyage des données.</em></p>
+<p>Nous allons utiliser deux nouvelles fonctions :
+<code>data.frame()</code> pour créer notre data frame et
+<code>write.csv()</code> pour le sauvegarder. Nous allons créer les
+objets “categories” et “comptage”, transformer l’objet “categories” en
+facteur, puis rassembler ces deux objets dans un data frame.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Creer un objet "categories"</span>
+<span class='va'>categories</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"En danger critique"</span>,
+                <span class='st'>"En danger"</span>,
+                <span class='st'>"Vulnerable"</span>,
+                <span class='st'>"Quasi-menacee"</span>,
+                <span class='st'>"Preoccupation mineure"</span><span class='op'>)</span>
+
+<span class='co'># Transformer cet objet en facteur</span>
+<span class='va'>categories_f</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>categories</span><span class='op'>)</span>
+
+<span class='co'># Creer un objet "comptage"</span>
+<span class='va'>comptage</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>a</span>, <span class='va'>b</span>, <span class='va'>c</span>, <span class='va'>d</span>, <span class='va'>e</span><span class='op'>)</span>
+
+<span class='co'># Creer un data frame avec ces deux vecteurs</span>
+<span class='va'>especes_menacees</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span><span class='va'>categories_f</span>, <span class='va'>comptage</span><span class='op'>)</span>
+
+<span class='co'># Sauvegarder le data frame</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/write.table.html'>write.csv</a></span><span class='op'>(</span><span class='va'>especes_menacees</span>, file <span class='op'>=</span> <span class='st'>"especes_menacees.csv"</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>Pour créer un barplot à partir de ce data frame, vous devrez modifier
+le code utilisé précédemment - il faut en effet préciser quelle variable
+du data frame vous souhaitez représenter.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/grDevices/png.html'>png</a></span><span class='op'>(</span><span class='st'>"barplot2.png"</span>,
+    width <span class='op'>=</span> <span class='fl'>1600</span>, height <span class='op'>=</span> <span class='fl'>600</span><span class='op'>)</span>
+
+<span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span><span class='op'>(</span><span class='va'>especes_menacees</span><span class='op'>$</span><span class='va'>comptage</span>,
+        names.arg <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"En danger critique"</span>,
+                      <span class='st'>"En danger"</span>,
+                      <span class='st'>"Vulnerable"</span>,
+                      <span class='st'>"Quasi-menacee"</span>,
+                      <span class='st'>"Preoccupation mineure"</span><span class='op'>)</span>,
+        xlab <span class='op'>=</span> <span class='st'>"Niveau   de menace"</span>, ylab <span class='op'>=</span> <span class='st'>"Nombre d'especes"</span>,
+        ylim <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>70</span><span class='op'>)</span>,
+        cex.names <span class='op'>=</span> <span class='fl'>1.5</span>, cex.axis <span class='op'>=</span> <span class='fl'>1.5</span>, cex.lab <span class='op'>=</span> <span class='fl'>1.5</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<aside>
+Il existe une manière plus simple de préciser les étiquettes …
+</aside>
+<h2 id="bilan-du-tutoriel">Bilan du tutoriel :</h2>
+<ol type="1">
+<li>Vous vous êtes familiarisé avec l’interface RStudio</li>
+<li>Vous savez comment créer et annoter un fichier de script</li>
+<li>Vous pouvez importer vos propres données dans RStudio</li>
+<li>Vous savez comment vérifier et explorer vos données</li>
+<li>Vous pouvez générer des graphiques basiques et les exporter</li>
+</ol>
+<h1 id="defi">Défi</h1>
+<p>Si c’est votre premier contact avec R, ne vous inquiétez pas si vous
+ne comprenez pas tout, tout de suite. Revenez sur les sections que vous
+avez trouvées plus difficiles à tête reposée.</p>
+<p>Voici un petit défi pour mettre en pratique ce que vous avez vu dans
+ce tutoriel.</p>
+<p>Vous verrez ci-dessous des données (fictives) de mesures d’envergure
+(en cm) pour quatre espèces différentes d’oiseaux. Essayez de créer un
+barplot de l’envergure moyenne pour chacune des espèces et
+sauvegardez-le sur votre ordinateur.</p>
+<aside>
+Il vous faudra trouver une fonction permettant de calculer une moyenne
+</aside>
+<table>
+<thead>
+<tr class="header">
+<th>espece</th>
+<th>envergure (cm)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Aigle</td>
+<td>195</td>
+</tr>
+<tr class="even">
+<td>Chouette</td>
+<td>85</td>
+</tr>
+<tr class="odd">
+<td>Colibri</td>
+<td>8</td>
+</tr>
+<tr class="even">
+<td>Moineau</td>
+<td>24</td>
+</tr>
+<tr class="odd">
+<td>Aigle</td>
+<td>201</td>
+</tr>
+<tr class="even">
+<td>Chouette</td>
+<td>102</td>
+</tr>
+<tr class="odd">
+<td>Colibri</td>
+<td>9</td>
+</tr>
+<tr class="even">
+<td>Moineau</td>
+<td>21</td>
+</tr>
+<tr class="odd">
+<td>Aigle</td>
+<td>185</td>
+</tr>
+<tr class="even">
+<td>Chouette</td>
+<td>91</td>
+</tr>
+<tr class="odd">
+<td>Colibri</td>
+<td>9</td>
+</tr>
+<tr class="even">
+<td>Moineau</td>
+<td>22</td>
+</tr>
+</tbody>
+</table>
+<h2 id="solution">Solution</h2>
+<p><strong>Ne regardez pas avant d’avoir essayé !</strong> Il n’existe
+pas une seule solution possible, plusieurs façons de procéder amèneront
+au même résultat. Les noms des objets et l’apparence du graphique seront
+sans doute différents, et cela ne pose aucun problème - du moment que
+les valeurs elles-mêmes sont correctes.</p>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Extraire les envergures pour chaque espece</span>
+<span class='va'>env_aigle</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>195</span>, <span class='fl'>201</span>, <span class='fl'>185</span><span class='op'>)</span>
+<span class='va'>env_chouette</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>85</span>, <span class='fl'>102</span>, <span class='fl'>91</span><span class='op'>)</span>
+<span class='va'>env_colibri</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>8</span>, <span class='fl'>9</span>, <span class='fl'>9</span><span class='op'>)</span>
+<span class='va'>env_moineau</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>24</span>, <span class='fl'>21</span>, <span class='fl'>22</span><span class='op'>)</span>
+
+<span class='co'># Calculer l'envergure moyenne</span>
+<span class='va'>env_moy_aigle</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>env_aigle</span><span class='op'>)</span>
+<span class='va'>env_moy_chouette</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>env_chouette</span><span class='op'>)</span>
+<span class='va'>env_moy_colibri</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>env_colibri</span><span class='op'>)</span>
+<span class='va'>env_moy_moineau</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>env_moineau</span><span class='op'>)</span>
+
+<span class='co'># Rassembler ces valeurs moyennes dans un vecteur</span>
+<span class='va'>env_moyenne</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>env_moy_aigle</span>, <span class='va'>env_moy_chouette</span>, <span class='va'>env_moy_colibri</span>, <span class='va'>env_moy_moineau</span><span class='op'>)</span>
+
+<span class='co'># Creer un vecteur avec les noms des especes (attention à l'ordre !)</span>
+<span class='va'>especes</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Aigle"</span>, <span class='st'>"Chouette"</span>, <span class='st'>"Colibri"</span>, <span class='st'>"Moineau"</span><span class='op'>)</span>
+
+<span class='co'># Transformer ce vecteur en un facteur</span>
+<span class='va'>especes_f</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>especes</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span><span class='op'>(</span><span class='va'>especes_f</span><span class='op'>)</span>
+
+<span class='co'># Combiner les deux vecteurs dans un data frame</span>
+<span class='va'>envergure</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span><span class='va'>especes_f</span>, <span class='va'>env_moyenne</span><span class='op'>)</span>
+
+<span class='co'># Sauvegarder le barplot dans un fichier</span>
+<span class='fu'><a href='https://rdrr.io/r/grDevices/png.html'>png</a></span><span class='op'>(</span><span class='st'>"barplot_envergure.png"</span>,
+    width <span class='op'>=</span> <span class='fl'>1600</span>, height <span class='op'>=</span> <span class='fl'>600</span><span class='op'>)</span>
+
+<span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span><span class='op'>(</span><span class='va'>envergure</span><span class='op'>$</span><span class='va'>env_moyenne</span>,
+        names.arg <span class='op'>=</span> <span class='va'>envergure</span><span class='op'>$</span><span class='va'>especes_f</span>,
+        xlab <span class='op'>=</span> <span class='st'>"Espèces"</span>, ylab <span class='op'>=</span> <span class='st'>"Envergure moyenne"</span>,
+        ylim <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>200</span><span class='op'>)</span>,
+        cex.names <span class='op'>=</span> <span class='fl'>1.5</span>, cex.axis <span class='op'>=</span> <span class='fl'>1.5</span>, cex.lab <span class='op'>=</span> <span class='fl'>1.5</span>,
+        col <span class='op'>=</span> <span class='st'>"gold"</span><span class='op'>)</span>  <span class='co'># modifier la couleur des barres</span>
+
+<span class='fu'><a href='https://rdrr.io/r/grDevices/dev.html'>dev.off</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+</div>
+<h1 id="glossaire">Glossaire</h1>
+<p><em> Voici quelques termes importants vus dans ce tutoriel :</p>
+<ul>
+<li><p><strong>argument</strong> : élément d’une fonction, essentiel ou
+optionnel, qui précise ou modifie la façon dont la fonction est
+exécutée. Par exemple, il peut s’agir du chemin vers un fichier qui sera
+importé, ou de l’emplacement où sera sauvegardé un fichier :
+<code>file = "chemin-vers-le-fichier</code>. Il peut aussi modifier les
+couleurs d’un graphique : <code>col = "blue"</code>. Vous pouvez trouver
+une liste des arguments d’une fonction à l’aide de la commande
+<code>?nom-de-la-fonction</code>.<br />
+</p></li>
+<li><p><strong>classe</strong> : le type de données contenu dans une
+variable : habituellement des charactères (texte/mots), des nombres
+entiers ou relatifs, ou des facteurs (des valeurs de groupement, utiles
+quand vos données contiennent de multiples observations issues de
+différents sites ou traitements).</p></li>
+<li><p><strong>commande</strong> : un morceau de code qui exécute une
+action, contient généralement une ou plusieurs fonctions. Vous pouvez
+exécuter une commande en cliquant sur “Run” ou grâce aux raccourcis
+clavier comme <code>Cmd + Entrée</code>, <code>Ctrl + Entrée</code> ou
+<code>Ctrl + R</code>.</p></li>
+<li><p><strong>commentaire</strong> : un morceau de texte dans un script
+qui débute par un hashtag <code>#</code> et qui n’est pas lu comme une
+commande. Les commentaires rendent le code plus facilement lisible pour
+d’autres personnes : utilisez-les pour créer des sections dans votre
+script et pour annoter chaque étape de votre analyse.</p></li>
+<li><p><strong>console</strong> : la fenêtre dans laquelle vous pouvez
+taper du code directement en ligne de commande (<code>2+2</code> puis
+<code>Entrée</code> retournera <code>4</code>), et où les résultats des
+commandes seront affichés.</p></li>
+<li><p><strong>data frame</strong> : un type d’objet R composé de
+nombreuses lignes et colonnes (pensez à une feuille Excel). Généralement
+les colonnes contiennent différentes variables (par exemple âge,
+couleur, poids, envergure), et les lignes les observations de ces
+variables (par exemple oiseau1, oiseau2, oiseau3).</p></li>
+<li><p><strong>espace de travail</strong> : c’est votre environnement de
+travail virtuel, il contient toutes les fonctions des packages que vous
+avez chargés, les objets que vous avez créés, et ainsi de suite. Il est
+préférable de démarrer une session de travail avec un espace de travail
+vide.</p></li>
+<li><p><strong>fichier csv</strong> : un type de fichier couramment
+utilisé pour importer des données dans R, où les valeurs des différentes
+variables sont compressées (une chaîne, ou une ligne de valeurs par
+ligne) et séparées seulement par des virgules (indiquant les colonnes).
+R peut aussi lire des fichiers Excel (.xlsx), mais cela n’est pas
+recommandé car il est difficile d’éviter les erreurs de
+formatage.</p></li>
+<li><p><strong>fonction</strong> : du code qui exécute une action,
+c’est-à-dire tout ce que vous faites dans R. Une fonction prend une
+entrée, la modifie d’une façon ou d’une autre, et retourne une sortie
+(un objet, un résultat de test, un fichier, un graphique). Il existe des
+fonctions pour importer, convertir et manipuler des données, pour
+effectuer des calculs spécifiques (essayez de deviner ce que
+retourneraient les fonctions <code>min(10, 15, 5)</code> et
+<code>max(10, 15, 5)</code>), générer des graphiques, et bien
+davantage.</p></li>
+<li><p><strong>objet</strong> : les briques de construction de R. Si R
+était un langage parlé, les fonctions seraient les verbes (actions) et
+les objets les noms (les sujets ou les objets de ces actions). On fait
+appel à un objet par son nom sans guillemets. Les objets permettent de
+stocker des données, et prennent différentes formes. Les objets les plus
+courants sont les data frames et les vecteurs, mais il en existe
+d’autres, comme les listes et les matrices.</p></li>
+<li><p><strong>package</strong> : un ensemble de fonctions qui apportent
+des fonctionnalités supplémentaires à R. De nombreux packages sont
+inclus dans R, d’autres peuvent être téléchargés pour des besoins
+spécifiques.</p></li>
+<li><p><strong>répertoire de travail</strong> : le dossier sur votre
+ordinateur associé à votre session R actuelle, contenant les données que
+vous allez importer et où vous sauvegarderez des fichiers. Vous pouvez
+le définir au début de votre session à l’aide de la fonction
+<code>setwd()</code>.</p></li>
+<li><p><strong>script</strong> : comme un éditeur de texte, un script
+vous permet d’écrire votre code et de le sauvegarder pour des usages
+futurs. Il contient un mélange de code et de commentaires et est
+sauvegardé comme un simple fichier texte que vous pouvez aisément
+partager pour que n’importe qui puisse reproduire votre
+travail.</p></li>
+<li><p><strong>vecteur</strong> : un type d’objet R qui ne contient
+qu’une seule dimension : il stocke une ligne de valeurs qui peuvent être
+des caractères, des nombres, etc.</p></li>
+</ul>
+<p></em></p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<!--radix_placeholder_article_footer-->
+<!--/radix_placeholder_article_footer-->
+</div>
+
+<div class="d-appendix">
+</div>
+
+
+<!--radix_placeholder_site_after_body-->
+<!--/radix_placeholder_site_after_body-->
+<!--radix_placeholder_appendices-->
+<div class="appendix-bottom"></div>
+<!--/radix_placeholder_appendices-->
+<!--radix_placeholder_navigation_after_body-->
+<!--/radix_placeholder_navigation_after_body-->
+
+</body>
+
+</html>
