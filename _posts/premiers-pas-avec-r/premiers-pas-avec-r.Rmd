@@ -137,7 +137,7 @@ La meilleure façon d'apprendre un nouveau langage est de le **pratiquer**. Nous
 Evitez les espaces vides dans vos noms de dossiers !
 </aside>
 
-**2) Cliquez sur [ce lien](https://github.com/KittJonathan/Codons-01-PremiersPasAvecR) pour télécharger le fichier `oiseaux.csv`**
+**2) Cliquez sur [ce lien](https://github.com/codons-blog/C-01-PremiersPas) pour télécharger le fichier `oiseaux.csv`**
 
 **3) Cliquez sur "Code" puis "Download ZIP"** (voir ci-dessous)
 
