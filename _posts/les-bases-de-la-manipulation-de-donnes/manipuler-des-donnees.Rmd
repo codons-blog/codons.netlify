@@ -306,6 +306,57 @@ Ces deux fonctions vous permettent de réduire votre data frame en ne gardant qu
 # Conserver les observations pour les zones 2 et 3, et pour les années 2009 à 2011
 croissance_selection <- filter(croissance_long, zone %in% c(2, 3), annee %in% c("X2009", "X2010", "X2011"))
 
-# 
+# A titre de comparaison, l'equivalent en R basique serait :
+croissance_long[croissance_long$zone %in% c(2, 3) & croissance_long$annee %in% c("X2009", "X2010", "X2011"), ]
 ```
 
+Notez qu'ici, nous utilisons `%in%` comme opérateur logique parce que nous cherchons une liste de valeurs exactes (caractères). Si vous vouliez garder les observations dans une gamme de valeurs *numériques*, vous pourriez utiliser soit deux opérateurs logiques dans votre fonction `filter()`, par exemple `longueur > 4 & longueur <= 6.5` soit la fonction `between()`, par exemple `between(longueur, 4, 6.5)`. 
+
+Vous voyez comment `dplyr` permet d'éviter des répétitions et d'appeler directement les noms de colonnes sans avoir besoin d'appeler à chaque fois l'objet ?
+
+### A propos des guillemets
+
+Vous avez peut-être remarqué que nous utilisons parfois des guillemets `" "` pour appeler des valeurs, et que d'autres fois nous ne les utilisons pas. Cela dépend de :
+
+- *Si la valeur est un caractère ou un nombre* : ci-dessus, `zone` est un entier, nous n'avons donc pas besoin de guillemets, alors que la variable `annee` est un caractère, et nécessite donc des guillemets.  
+- *Si vous faites appel à un objet existant ou à une valeur que R ne connaît pas encore*. Par exemple, `nouvel.objet <- croissance_long` duplique notre objet alors que `nouvel.objet <- "croissance_long"` crée un nouvel objet contenant une chaîne de caractères.
+Cela demande du temps et de la pratique pour s'habituer à ces conventions, mais vous y arriverez en gardant un oeil sur les messages d'erreur.
+
+Maintenant que nous savons sélectionner des lignes, faisons la même chose avec les colonnes !
+
+```{r, eval=FALSE, echo=TRUE}
+# Retirons la colonne zone
+croissance_sans_zone <- dplyr::select(croissance_long, indiv, annee, croissance)
+croissance_sans_zone <- dplyr::select(-zone)  # le signe moins retire la colonne
+
+# Equivalent en R basique 
+croissance_long[, -1]  # retire la premiere colonne
+
+# select() vous permet de renommer et d'ordonner les colonnes
+croissance_sans_zone <- dplyr::select(croissance_long, Annee = annee, ID.Arbrisseau = indiv,
+                                      Croissance = croissance)
+```
+
+## Créer de nouvelles colonnes avec `mutate()`
+
+Créer une nouvelle colonne peut être pratique pour réaliser une opération sur plusieurs colonnes, ou pour changer le classement d'un facteur. La fonction `mutate()` vous permet de faire cela, et vous permet également de définir le nom de la colonne. Nous utilisons ici l'objet `croissance_long` pour créer une colonne représentant la croissance totale pour la période 2007-2012 : 
+
+```{r, eval=FALSE, echo=TRUE}
+croissance_totale <- mutate(croissance, croissance.totale = X2007 + X2008 + X2009 + X2010, X2011, X2012)
+```
+
+Nous allons maintenant voir comment faire la même chose avec notre objet `croissance_long` à l'aide de deux fonctions qui vont bien ensemble : `group_by()` et `summarise()`.
+
+## Effectuer des opérations sur des portions de données à l'aide de `group_by()`
+
+La chose la plus important à comprendre avec cette fonction est que nous ne voyez pas de changement visible dans votre data frame. Elle crée une structure de groupement interne, ce qui veut dire que toutes les fonctions exécutées par la suite utiliseront ces groupes, et pas le jeu de données en entier, comme entrée. Cette fonction est très utile pour calculer des statistiques pour différents sites, traitements, espèces, etc.
+
+```{r, eval=FALSE, echo=TRUE}
+croissance_groupes <- group_by(croissance_long, indiv)  # nous regroupons nos données par individu
+```
+
+Comparez `croissance_groupes` et `croissance_long` : les deux objets semblent parfaitement identiques. Utilisons maintenant `summarise()` pour calculer la croissance totale de chaque individu au cours des années.
+
+## Calculer des statistiques avec `summarise()`
+
+Cette fonction aggrègera toujours votre data frame d'origine, c'est-à-dire que le data frame résultant sera plus court que l'original. Ici, nous allons comparer le calcul de la croissance totale sur la même période pour les données d'origine et pour les données **groupées**.
