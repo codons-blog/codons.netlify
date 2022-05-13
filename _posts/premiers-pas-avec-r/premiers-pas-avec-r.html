@@ -1439,7 +1439,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="premiers-pas-avec-r_files/header-attrs-2.14/header-attrs.js"></script>
+  <script src="premiers-pas-avec-r_files/header-attrs-2.11/header-attrs.js"></script>
   <script src="premiers-pas-avec-r_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
   <script src="premiers-pas-avec-r_files/popper-2.6.0/popper.min.js"></script>
   <link href="premiers-pas-avec-r_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
@@ -1482,9 +1482,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 
 <div class="d-byline">
-  Gergana Daskalova <a
-href="https://ourcodingclub.github.io/tutorials/intro-to-r/"
-class="uri">https://ourcodingclub.github.io/tutorials/intro-to-r/</a> 
+  Gergana Daskalova <a href="https://ourcodingclub.github.io/tutorials/intro-to-r/" class="uri">https://ourcodingclub.github.io/tutorials/intro-to-r/</a> 
   
 ,   Jonathan Kitt (adaptation)  
   
@@ -1510,16 +1508,11 @@ class="uri">https://ourcodingclub.github.io/tutorials/intro-to-r/</a>
 <div class="layout-chunk" data-layout="l-body">
 
 </div>
-<p><em>Ce tutoriel est adapté de <a
-href="https://ourcodingclub.github.io/tutorials/intro-to-r/">Getting
-started with R and RStudio</a> du site <a
-href="https://ourcodingclub.github.io/">Our Coding Club</a>.</em></p>
+<p><em>Ce tutoriel est adapté de <a href="https://ourcodingclub.github.io/tutorials/intro-to-r/">Getting started with R and RStudio</a> du site <a href="https://ourcodingclub.github.io/">Our Coding Club</a>.</em></p>
 <div class="layout-chunk" data-layout="l-body-outset">
 <p><img src="img/happy-r.png" width="879" /></p>
 </div>
-<p>Dessin de <a
-href="https://raw.githubusercontent.com/allisonhorst/qmss-r-teaching-tools/main/slides/happy-r.png">Allison
-Horst</a></p>
+<p>Dessin de <a href="https://raw.githubusercontent.com/allisonhorst/qmss-r-teaching-tools/main/slides/happy-r.png">Allison Horst</a></p>
 <h1 id="introduction">Introduction</h1>
 <p><br></p>
 <p>Les <strong>objectifs</strong> de ce tutoriel sont les suivants :</p>
@@ -1535,8 +1528,7 @@ Horst</a></p>
 <li>Créer un graphique basique<br />
 <br></li>
 </ol>
-<p>Voici les <strong>étapes</strong> que nous allons suivre pour y
-parvenir :</p>
+<p>Voici les <strong>étapes</strong> que nous allons suivre pour y parvenir :</p>
 <ol type="1">
 <li><a href="#telecharger">Télécharger R et RStudio</a><br />
 </li>
@@ -1552,141 +1544,65 @@ parvenir :</p>
 <li><a href="#glossaire">Glossaire</a></li>
 </ol>
 <h2 id="quest-ce-que-r">Qu’est-ce que R?</h2>
-<p>R est un <strong>langage de programmation statistique</strong> qui a
-rapidement gagné en popularité dans de nombreux domaines scientifiques.
-Il a été développé par <strong>Ross Ihaka</strong> et <strong>Robert
-Gentleman</strong> comme implémentation libre du langage de
-programmation S.</p>
+<p>R est un <strong>langage de programmation statistique</strong> qui a rapidement gagné en popularité dans de nombreux domaines scientifiques. Il a été développé par <strong>Ross Ihaka</strong> et <strong>Robert Gentleman</strong> comme implémentation libre du langage de programmation S.</p>
 <p><br></p>
-<p>R désigne également le <strong>logiciel</strong> qui utilise ce
-langage pour des calculs statistiques (et tout un tas d’autres
-applications !). Il dispose d’une <strong>communauté</strong> en ligne
-très active ainsi que d’<strong>extensions</strong> pour presque tous
-les domaines et applications possibles et imaginables.</p>
+<p>R désigne également le <strong>logiciel</strong> qui utilise ce langage pour des calculs statistiques (et tout un tas d’autres applications !). Il dispose d’une <strong>communauté</strong> en ligne très active ainsi que d’<strong>extensions</strong> pour presque tous les domaines et applications possibles et imaginables.</p>
 <p><br></p>
-<p>Contrairement à d’autres logiciels de statistiques comme Minitab ou
-SPSS, R peut être exécuté entièrement en <strong>ligne de
-commande</strong> et ne nécessite pas d’interface graphique, ce qui lui
-confère une <strong>grande flexibilité</strong>.</p>
+<p>Contrairement à d’autres logiciels de statistiques comme Minitab ou SPSS, R peut être exécuté entièrement en <strong>ligne de commande</strong> et ne nécessite pas d’interface graphique, ce qui lui confère une <strong>grande flexibilité</strong>.</p>
 <p><br></p>
 <p>Voici quelques avantages de R :</p>
 <ul>
-<li>C’est un outil <strong>libre et open source</strong> (tout le monde
-peut utiliser le code et voir comment il fonctionne)<br />
+<li>C’est un outil <strong>libre et open source</strong> (tout le monde peut utiliser le code et voir comment il fonctionne)<br />
 </li>
-<li>C’est un langage de programmation plutôt qu’une interface graphique,
-ce qui permet à l’utilisateur de sauvegarder facilement des
-<strong>scripts</strong> sous forme de texte pour les ré-utiliser ou les
-partager<br />
+<li>C’est un langage de programmation plutôt qu’une interface graphique, ce qui permet à l’utilisateur de sauvegarder facilement des <strong>scripts</strong> sous forme de texte pour les ré-utiliser ou les partager<br />
 </li>
-<li>Beaucoup de personnes l’utilisent dans beaucoup de domaines
-différents - <strong>il est rare d’être confronté à un problème qui n’a
-jamais été résolu !</strong></li>
+<li>Beaucoup de personnes l’utilisent dans beaucoup de domaines différents - <strong>il est rare d’être confronté à un problème qui n’a jamais été résolu !</strong></li>
 </ul>
 <p><br></p>
 <h1 id="telecharger">Télécharger R et RStudio</h1>
-<p>La plupart des utilisateurs interagissent avec R à l’aide d’une
-<strong>interface graphique</strong>, dont la plus connue est
-<strong>RStudio</strong>. RStudio permet d’avoir accès dans une seule
-fenêtre à vos <strong>scripts</strong>, à vos <strong>données</strong>,
-à vos <strong>graphiques</strong>, à vos <strong>résultats</strong>,
-ainsi qu’à de l’<strong>aide</strong>.</p>
+<p>La plupart des utilisateurs interagissent avec R à l’aide d’une <strong>interface graphique</strong>, dont la plus connue est <strong>RStudio</strong>. RStudio permet d’avoir accès dans une seule fenêtre à vos <strong>scripts</strong>, à vos <strong>données</strong>, à vos <strong>graphiques</strong>, à vos <strong>résultats</strong>, ainsi qu’à de l’<strong>aide</strong>.</p>
 <p><br></p>
 <ul>
-<li>Téléchargez R sur le <a href="https://cran.r-project.org/">site du
-CRAN</a> (The Comprehensive R Archive Network)<br />
+<li>Téléchargez R sur le <a href="https://cran.r-project.org/">site du CRAN</a> (The Comprehensive R Archive Network)<br />
 </li>
-<li>Téléchargez <a
-href="https://www.rstudio.com/products/rstudio/">RStudio</a> (“free open
-source desktop version”)<br />
+<li>Téléchargez <a href="https://www.rstudio.com/products/rstudio/">RStudio</a> (“free open source desktop version”)<br />
 </li>
-<li>Sur Mac, vous aurez également besoin de <a
-href="https://www.xquartz.org/">XQuartz</a></li>
+<li>Sur Mac, vous aurez également besoin de <a href="https://www.xquartz.org/">XQuartz</a></li>
 </ul>
 <p><br></p>
-<p><strong>Ouvrez RStudio, puis cliquez sur <em>“File / New File / R
-script”</em></strong></p>
+<p><strong>Ouvrez RStudio, puis cliquez sur <em>“File / New File / R script”</em></strong></p>
 <div class="layout-chunk" data-layout="l-body-outset">
 <p><img src="img/rstudio_panels.png" width="640" /></p>
 </div>
-<p>Vous verrez une fenêtre comme celle ci-dessus, avec quatre panneaux
-:</p>
-<p><strong>1) La console</strong> : vous pouvez y taper du code et
-l’exécuter avec <em>Entrée</em>.</p>
+<p>Vous verrez une fenêtre comme celle ci-dessus, avec quatre panneaux :</p>
+<p><strong>1) La console</strong> : vous pouvez y taper du code et l’exécuter avec <em>Entrée</em>.</p>
 <aside>
 Essayez de taper et d’exécuter <code>2+2</code>
 </aside>
-<p><strong>2) Le script</strong> : vous pouvez - et c’est préférable - y
-taper du code. Pour l’exécuter, placez-vous à la fin de la ligne et
-utilisez la combinaison de touches <em>Ctrl + R</em> (Windows) ou
-<em>Cmd + Entrée</em> (Mac).</p>
+<p><strong>2) Le script</strong> : vous pouvez - et c’est préférable - y taper du code. Pour l’exécuter, placez-vous à la fin de la ligne et utilisez la combinaison de touches <em>Ctrl + R</em> (Windows) ou <em>Cmd + Entrée</em> (Mac).</p>
 <aside>
-Sur les ordinateurs avec une version récente de Windows,
-<code>Ctrl + Entrée</code>
+Sur les ordinateurs avec une version récente de Windows, <code>Ctrl + Entrée</code>
 </aside>
-<p><strong>3) L’environnement</strong> : aperçu de votre espace de
-travail (données importées, objets créés, fonctions définies, …).</p>
-<p><strong>4) Fichiers / Graphiques / Packages / Aide</strong> : permet
-de naviguer dans vos dossiers, de visualiser vos graphiques, de voir
-quels packages sont installés et chargés, et d’obtenir de l’aide.</p>
-<p><em><strong>A propos des scripts : </strong> gardez bien à l’esprit
-que le code tapé directement dans la console ne sera pas sauvegardé par
-R : il disparaît une fois exécuté (vous pouvez toutefois accéder aux
-dernières commandes à l’aide de la touche <code>Flèche du haut</code> de
-votre clavier). L’utilisation d’un script pour taper votre code vous
-permet d’en garder une trace. C’est un peu comme quand vous rédigez un
-document dans Word : vous pouvez sauvegarder votre progression pour
-reprendre là où vous en étiez, ou faire des modifications. Lorsque vous
-tapez du code dans un script, pensez à le sauvegarder régulièrement
-(<code>Ctrl + S</code>).</p>
-<p>Il est fortement recommandé d’ajouter à votre code des commentaires
-décrivant les étapes. Pour cela, insérez un hashtag (<code>#</code>)
-devant une ligne de votre script (ou <code>Ctrl + Shift + C</code>).
-Toutes les lignes qui commencent par un <code>#</code> seront
-considérées par R comme du texte et non du code, et ne seront pas
-exécutées. Ces commentaires apporteront des informations précieuses pour
-toute personne qui lira votre script (y compris vous-même quand vous
-reviendrez dessus dans un certain temps !). Comme tout document écrit,
-les scripts sont plus facilement lisibles quand ils sont bien structurés
-et clairs.</p>
-<p><strong>A propos de l’espace de travail : </strong> votre espace de
-travail contient tout ce que vous utilisez lors d’une session R. En
-quittant R, vous aurez le choix de sauvegarder ou non cet espace de
-travail. Il est préférable de ne pas le faire et de démarrer chaque
-session avec en espace de travail vide. </em></p>
+<p><strong>3) L’environnement</strong> : aperçu de votre espace de travail (données importées, objets créés, fonctions définies, …).</p>
+<p><strong>4) Fichiers / Graphiques / Packages / Aide</strong> : permet de naviguer dans vos dossiers, de visualiser vos graphiques, de voir quels packages sont installés et chargés, et d’obtenir de l’aide.</p>
+<p><em><strong>A propos des scripts : </strong> gardez bien à l’esprit que le code tapé directement dans la console ne sera pas sauvegardé par R : il disparaît une fois exécuté (vous pouvez toutefois accéder aux dernières commandes à l’aide de la touche <code>Flèche du haut</code> de votre clavier). L’utilisation d’un script pour taper votre code vous permet d’en garder une trace. C’est un peu comme quand vous rédigez un document dans Word : vous pouvez sauvegarder votre progression pour reprendre là où vous en étiez, ou faire des modifications. Lorsque vous tapez du code dans un script, pensez à le sauvegarder régulièrement (<code>Ctrl + S</code>).</p>
+<p>Il est fortement recommandé d’ajouter à votre code des commentaires décrivant les étapes. Pour cela, insérez un hashtag (<code>#</code>) devant une ligne de votre script (ou <code>Ctrl + Shift + C</code>). Toutes les lignes qui commencent par un <code>#</code> seront considérées par R comme du texte et non du code, et ne seront pas exécutées. Ces commentaires apporteront des informations précieuses pour toute personne qui lira votre script (y compris vous-même quand vous reviendrez dessus dans un certain temps !). Comme tout document écrit, les scripts sont plus facilement lisibles quand ils sont bien structurés et clairs.</p>
+<p><strong>A propos de l’espace de travail : </strong> votre espace de travail contient tout ce que vous utilisez lors d’une session R. En quittant R, vous aurez le choix de sauvegarder ou non cet espace de travail. Il est préférable de ne pas le faire et de démarrer chaque session avec en espace de travail vide. </em></p>
 <h2 id="téléchargez-les-données">Téléchargez les données</h2>
-<p>La meilleure façon d’apprendre un nouveau langage est de le
-<strong>pratiquer</strong>. Nous allons analyser une liste d’espèces
-d’oiseaux menacées en Auvergne (données de 2015 obtenues sur le site de
-la <a
-href="https://www.auvergne-rhone-alpes.developpement-durable.gouv.fr/liste-rouge-des-oiseaux-d-auvergne-a9939.html">DREAL</a>).
-Ces données se trouvent dans un fichier appelé
-<code>oiseaux.csv</code>.</p>
-<p><strong>1) Créez un nouveau dossier sur votre ordinateur</strong> :
-vous allez y télécharger les données, et vous pourrez y sauvegarder
-votre script et vos graphiques. Choisissez un nom explicite, par exemple
-<code>codons_01_intro_r</code></p>
+<p>La meilleure façon d’apprendre un nouveau langage est de le <strong>pratiquer</strong>. Nous allons analyser une liste d’espèces d’oiseaux menacées en Auvergne (données de 2015 obtenues sur le site de la <a href="https://www.auvergne-rhone-alpes.developpement-durable.gouv.fr/liste-rouge-des-oiseaux-d-auvergne-a9939.html">DREAL</a>). Ces données se trouvent dans un fichier appelé <code>oiseaux.csv</code>.</p>
+<p><strong>1) Créez un nouveau dossier sur votre ordinateur</strong> : vous allez y télécharger les données, et vous pourrez y sauvegarder votre script et vos graphiques. Choisissez un nom explicite, par exemple <code>codons_01_intro_r</code></p>
 <aside>
 Evitez les espaces vides dans vos noms de dossiers !
 </aside>
-<p><strong>2) Cliquez sur <a
-href="https://github.com/KittJonathan/Codons-01-PremiersPasAvecR">ce
-lien</a> pour télécharger le fichier
-<code>oiseaux.csv</code></strong></p>
-<p><strong>3) Cliquez sur “Code” puis “Download ZIP”</strong> (voir
-ci-dessous)</p>
+<p><strong>2) Cliquez sur <a href="https://github.com/codons-blog/C-01-PremiersPas">ce lien</a> pour télécharger le fichier <code>oiseaux.csv</code></strong></p>
+<p><strong>3) Cliquez sur “Code” puis “Download ZIP”</strong> (voir ci-dessous)</p>
 <div class="layout-chunk" data-layout="l-body-outset">
 <p><img src="img/download_git_zip.png" width="384" /></p>
 </div>
-<p><strong>4) Choisissez comme emplacement de sauvegarde le dossier que
-vous venez de créer</strong></p>
+<p><strong>4) Choisissez comme emplacement de sauvegarde le dossier que vous venez de créer</strong></p>
 <p><strong>5) Dézippez le dossier</strong></p>
-<h2 id="commencez-à-écrire-votre-script">Commencez à écrire votre
-script</h2>
-<p>Pour l’instant, vous pouvez noter la date et l’objectif du tutoriel -
-compter le nombre d’espèces d’oiseaux menacées d’extinction en Auvergne.
-Vous pouvez copier l’exemple ci-dessous pour le coller et l’éditer dans
-votre propre script :</p>
+<h2 id="commencez-à-écrire-votre-script">Commencez à écrire votre script</h2>
+<p>Pour l’instant, vous pouvez noter la date et l’objectif du tutoriel - compter le nombre d’espèces d’oiseaux menacées d’extinction en Auvergne. Vous pouvez copier l’exemple ci-dessous pour le coller et l’éditer dans votre propre script :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Ateliers codon(s)!</span>
@@ -1695,26 +1611,10 @@ votre propre script :</p>
 </code></pre>
 </div>
 </div>
-<p>Les lignes suivantes dans votre script servent généralement à charger
-les <strong>packages</strong> dont vous aurez besoin pour votre analyse.
-Un package contient des commandes qui peuvent être chargées dans R pour
-apporter des fonctionnalités supplémentaires (il existe par exemple des
-packages pour formater des données ou pour créer des cartes).</p>
-<p>Un package doit tout d’abord être <strong>téléchargé et
-installé</strong> sur votre ordinateur à l’aide de la commande
-<code>install.packages("nom-du-package")</code> avant d’être
-<strong>chargé</strong> pour être utilisé à l’aide de la commande
-<code>library(nom-du-package)</code>. Un package n’a besoin d’être
-installé qu’une seule fois, vous pouvez donc le faire directement dans
-la console plutôt que de sauvegarder la ligne de code dans votre script
-et d’ainsi le ré-installer à chaque fois que vous exécutez votre script.
-Nous allons utiliser le package <strong><code>dplyr</code></strong> qui
-fournit des fonctionnalités supplémentaires pour la manipulation et le
-formatage de données.</p>
+<p>Les lignes suivantes dans votre script servent généralement à charger les <strong>packages</strong> dont vous aurez besoin pour votre analyse. Un package contient des commandes qui peuvent être chargées dans R pour apporter des fonctionnalités supplémentaires (il existe par exemple des packages pour formater des données ou pour créer des cartes).</p>
+<p>Un package doit tout d’abord être <strong>téléchargé et installé</strong> sur votre ordinateur à l’aide de la commande <code>install.packages("nom-du-package")</code> avant d’être <strong>chargé</strong> pour être utilisé à l’aide de la commande <code>library(nom-du-package)</code>. Un package n’a besoin d’être installé qu’une seule fois, vous pouvez donc le faire directement dans la console plutôt que de sauvegarder la ligne de code dans votre script et d’ainsi le ré-installer à chaque fois que vous exécutez votre script. Nous allons utiliser le package <strong><code>dplyr</code></strong> qui fournit des fonctionnalités supplémentaires pour la manipulation et le formatage de données.</p>
 <aside>
-Notez bien la présence de guillemets autour du nom du package dans
-l’appel à la fonction <code>install.packages()</code>, et leur absence
-dans l’appel à la fonction <code>library()</code>
+Notez bien la présence de guillemets autour du nom du package dans l’appel à la fonction <code>install.packages()</code>, et leur absence dans l’appel à la fonction <code>library()</code>
 </aside>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -1723,22 +1623,11 @@ dans l’appel à la fonction <code>library()</code>
 </code></pre>
 </div>
 </div>
-<p>Nous allons maintenant définir notre <strong>répertoire de
-travail</strong> - le dossier dans lequel R cherchera les données à
-importer et sauvegardera les graphiques. C’est dans notre cas le dossier
-dans lequel nous avons téléchargé les données.</p>
-<p>Quand vous aurez à travailler sur des projets plus importants, vous
-pourrez tout à fait créer un <strong>dossier racine</strong> (par ex.
-“nom_du_projet/”), le définir comme répertoire de travail, et créer des
-<strong>sous-dossiers</strong> pour organiser les fichiers (par ex.
-“nom_du_projet/donnees_brutes/”, “nom_du_projet/figures/”, …).</p>
-<p>Pour afficher le réperoire de travail, utilisez la commande
-<code>getwd()</code> (pour <em>get working directory</em>). La commande
-<code>setwd("nom-du-repertoire-de-travail")</code> (<em>set working
-directory</em>) permet de définir un nouveau répertoire de travail.</p>
+<p>Nous allons maintenant définir notre <strong>répertoire de travail</strong> - le dossier dans lequel R cherchera les données à importer et sauvegardera les graphiques. C’est dans notre cas le dossier dans lequel nous avons téléchargé les données.</p>
+<p>Quand vous aurez à travailler sur des projets plus importants, vous pourrez tout à fait créer un <strong>dossier racine</strong> (par ex. “nom_du_projet/”), le définir comme répertoire de travail, et créer des <strong>sous-dossiers</strong> pour organiser les fichiers (par ex. “nom_du_projet/donnees_brutes/”, “nom_du_projet/figures/”, …).</p>
+<p>Pour afficher le réperoire de travail, utilisez la commande <code>getwd()</code> (pour <em>get working directory</em>). La commande <code>setwd("nom-du-repertoire-de-travail")</code> (<em>set working directory</em>) permet de définir un nouveau répertoire de travail.</p>
 <aside>
-Faites attention au sens des <em>slashes</em> dans vos chemins de
-dossiers !
+Faites attention au sens des <em>slashes</em> dans vos chemins de dossiers !
 </aside>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -1748,51 +1637,29 @@ dossiers !
 </div>
 </div>
 <aside>
-L’auto-complétion est votre alliée ! Tapez quelques lettres puis sur la
-touche <code>Tab</code> et R complètera pour vous.
+L’auto-complétion est votre alliée ! Tapez quelques lettres puis sur la touche <code>Tab</code> et R complètera pour vous.
 </aside>
 <h1 id="importer">Importer et vérifier les données</h1>
-<p>Pour importer les données dans RStudio, deux options s’offrent à vous
-:</p>
+<p>Pour importer les données dans RStudio, deux options s’offrent à vous :</p>
 <ul>
 <li><strong>Cliquer sur le bouton Import Dataset</strong></li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/import_dataset_1.png" width="330" /></p>
 </div>
-<p>Indiquez quel fichier vous souhaitez importer, et RStudio vous
-proposera un aperçu de vos données. Assurez-vous qu’à côté de
-<em>Heading</em> vous avez sélectionné <em>Yes</em> (ceci indique à R
-qu’il doit considérer la première ligne de vos données comme des noms de
-colonnes). Cliquez enfin sur <em>Import</em>.</p>
+<p>Indiquez quel fichier vous souhaitez importer, et RStudio vous proposera un aperçu de vos données. Assurez-vous qu’à côté de <em>Heading</em> vous avez sélectionné <em>Yes</em> (ceci indique à R qu’il doit considérer la première ligne de vos données comme des noms de colonnes). Cliquez enfin sur <em>Import</em>.</p>
 <div class="layout-chunk" data-layout="l-body-outset">
 <p><img src="img/import_dataset_2.png" width="575" /></p>
 </div>
-<p>Dans la console vous verrez le code utilisé pour importer vos
-données, y compris le chemin vers votre fichier - il est utile de copier
-cette ligne de code et de la coller dans votre script, pour que vous
-sachiez d’où vient votre jeu de données.<br />
-Vous remarquerez que le chemin vers votre fichier débute par
-<code>C:/</code>. Il s’agit du <strong>chemin absolu</strong> vers le
-fichier à importer, qui ne tient pas compte du fait que vous avez défini
-un répertoire de travail. Vous pouvez également utiliser le
-<strong>chemin relatif</strong> qui indique l’emplacement du fichier à
-partir de votre répertoire de travail (voir ci-dessous)</p>
+<p>Dans la console vous verrez le code utilisé pour importer vos données, y compris le chemin vers votre fichier - il est utile de copier cette ligne de code et de la coller dans votre script, pour que vous sachiez d’où vient votre jeu de données.<br />
+Vous remarquerez que le chemin vers votre fichier débute par <code>C:/</code>. Il s’agit du <strong>chemin absolu</strong> vers le fichier à importer, qui ne tient pas compte du fait que vous avez défini un répertoire de travail. Vous pouvez également utiliser le <strong>chemin relatif</strong> qui indique l’emplacement du fichier à partir de votre répertoire de travail (voir ci-dessous)</p>
 <ul>
-<li><strong>Utiliser la commande <code>read.csv()</code></strong> : R
-fonctionne mieux avec des fichiers <code>.csv</code> (valeurs séparées
-par des virgules). Si vous travaillez dans Excel, cliquez sur
-<em>Enregistrer sous</em> et choisissez <code>csv</code> comme extension
-de fichier.</li>
+<li><strong>Utiliser la commande <code>read.csv()</code></strong> : R fonctionne mieux avec des fichiers <code>.csv</code> (valeurs séparées par des virgules). Si vous travaillez dans Excel, cliquez sur <em>Enregistrer sous</em> et choisissez <code>csv</code> comme extension de fichier.</li>
 </ul>
 <aside>
-Dans Excel, évitez les espaces dans vos noms de colonnes (ex :
-<code>nom_latin</code> plutôt que <code>nom latin</code>)
+Dans Excel, évitez les espaces dans vos noms de colonnes (ex : <code>nom_latin</code> plutôt que <code>nom latin</code>)
 </aside>
-<p>Certains ordinateurs utilisent le point-virgule <code>;</code> comme
-séparateur dans les fichiers <code>.csv</code>. Vous pouvez dans ce cas
-utiliser la fonction <code>read.csv2()</code>, ou préciser dans la
-fonction <code>read.csv()</code> l’argument <code>sep = ";"</code>.</p>
+<p>Certains ordinateurs utilisent le point-virgule <code>;</code> comme séparateur dans les fichiers <code>.csv</code>. Vous pouvez dans ce cas utiliser la fonction <code>read.csv2()</code>, ou préciser dans la fonction <code>read.csv()</code> l’argument <code>sep = ";"</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>oiseaux</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"Codons-01-PremiersPasAvecR-main/oiseaux.csv"</span><span class='op'>)</span>
@@ -1800,32 +1667,9 @@ fonction <code>read.csv()</code> l’argument <code>sep = ";"</code>.</p>
 </code></pre>
 </div>
 </div>
-<p><em><strong>A propos des objets</strong> : R est langage orienté
-objet - cela signifie que tout ce que vous importez et créez est stocké
-dans des objets que vous allez nommer. Ici, nous avons assigné le
-fichier <code>oiseaux.csv</code> à l’objet <code>oiseaux</code> à l’aide
-de la flèche <code>&lt;-</code>. Nous aurions tout à fait pu l’appeler
-<code>mesdonnees</code> ou <code>oiseaux_liste_rouge_auvergne</code>,
-mais il est préférable de choisir un nom unique, informatif et court.
-Dans le panneau <em>Environment</em> de RStudio vous pouvez voir les
-noms de tous les objets actuellement chargés dans R. Assurez-vous que
-vous voyez bien l’objet <code>oiseaux</code>.</p>
-<p>Quand vous importez vos données dans R, il est très probable qu’elles
-deviennent un objet qu’on appelle un data frame : un tableau contenant
-des lignes (observations) et des colonnes (variables).</em></p>
-<p>Une des premières choses à faire est de <strong>vous assurer que vos
-données ont été importées sans erreur</strong>. Il est recommandé de
-toujours exécuter ce code dans la console et de vérifier le résultat -
-voyez-vous des erreurs, est-ce que les nombres/noms ont du sens ? Si
-vous passiez directement à l’analyse, vous risqueriez de vous rendre
-compte plus tard que R n’a pas importé vos données correctement et vous
-devriez recommencer, ou pire, vous pourriez analyser de mauvaises
-données sans vous en rendre compte. Pour visualiser davantage que les
-quelques premières lignes, vous pouvez également cliquer sur l’objet
-dans le panneau <em>Environment</em>, ce qui affichera un tableau dans
-un nouvel onglet à côté de votre script. Des fichiers peuvent être trop
-larges pour êtres affichés entirement, gardez donc à l’esprit qu’il peut
-y avoir des lignes ou des colonnes manquantes.</p>
+<p><em><strong>A propos des objets</strong> : R est langage orienté objet - cela signifie que tout ce que vous importez et créez est stocké dans des objets que vous allez nommer. Ici, nous avons assigné le fichier <code>oiseaux.csv</code> à l’objet <code>oiseaux</code> à l’aide de la flèche <code>&lt;-</code>. Nous aurions tout à fait pu l’appeler <code>mesdonnees</code> ou <code>oiseaux_liste_rouge_auvergne</code>, mais il est préférable de choisir un nom unique, informatif et court. Dans le panneau <em>Environment</em> de RStudio vous pouvez voir les noms de tous les objets actuellement chargés dans R. Assurez-vous que vous voyez bien l’objet <code>oiseaux</code>.</p>
+<p>Quand vous importez vos données dans R, il est très probable qu’elles deviennent un objet qu’on appelle un data frame : un tableau contenant des lignes (observations) et des colonnes (variables).</em></p>
+<p>Une des premières choses à faire est de <strong>vous assurer que vos données ont été importées sans erreur</strong>. Il est recommandé de toujours exécuter ce code dans la console et de vérifier le résultat - voyez-vous des erreurs, est-ce que les nombres/noms ont du sens ? Si vous passiez directement à l’analyse, vous risqueriez de vous rendre compte plus tard que R n’a pas importé vos données correctement et vous devriez recommencer, ou pire, vous pourriez analyser de mauvaises données sans vous en rendre compte. Pour visualiser davantage que les quelques premières lignes, vous pouvez également cliquer sur l’objet dans le panneau <em>Environment</em>, ce qui affichera un tableau dans un nouvel onglet à côté de votre script. Des fichiers peuvent être trop larges pour êtres affichés entirement, gardez donc à l’esprit qu’il peut y avoir des lignes ou des colonnes manquantes.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>oiseaux</span><span class='op'>)</span>  <span class='co'># affiche les premières lignes</span>
@@ -1834,20 +1678,11 @@ y avoir des lignes ou des colonnes manquantes.</p>
 </code></pre>
 </div>
 </div>
-<p>La commande <code>str(nom.objet)</code> affiche la structure de vos
-données. Très souvent, les analyses ne se déroulent pas comme prévu car
-R s’est trompé de type de variable. Imaginez que vos données comportent
-quatre groupes d’étude appelés “1, 2, 3, 4”. Vous savez pertinnement
-qu’il s’agit d’une variable catégorique (un <strong>facteur</strong>),
-mais R peut considérer qu’il s’agit d’une variable numérique.</p>
+<p>La commande <code>str(nom.objet)</code> affiche la structure de vos données. Très souvent, les analyses ne se déroulent pas comme prévu car R s’est trompé de type de variable. Imaginez que vos données comportent quatre groupes d’étude appelés “1, 2, 3, 4”. Vous savez pertinnement qu’il s’agit d’une variable catégorique (un <strong>facteur</strong>), mais R peut considérer qu’il s’agit d’une variable numérique.</p>
 <aside>
 Pensez toujours à vérifier la structure de vos données !
 </aside>
-<p>La fonction <code>str(oiseaux)</code> nous indique que la variable
-<code>categorie</code> est une chaîne de caractères (<em>chr</em>). Nous
-préférerions que R considère cette variable comme étant catégorique - un
-facteur. Nous allons le préciser en accédant à la colonne concernée à
-l’aide du signe <em>dollar</em> <code>$</code> :</p>
+<p>La fonction <code>str(oiseaux)</code> nous indique que la variable <code>categorie</code> est une chaîne de caractères (<em>chr</em>). Nous préférerions que R considère cette variable comme étant catégorique - un facteur. Nous allons le préciser en accédant à la colonne concernée à l’aide du signe <em>dollar</em> <code>$</code> :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>oiseaux</span><span class='op'>$</span><span class='va'>categorie</span><span class='op'>)</span>  <span class='co'># premiers éléments de la variable</span>
@@ -1856,16 +1691,8 @@ l’aide du signe <em>dollar</em> <code>$</code> :</p>
 </code></pre>
 </div>
 </div>
-<p>La dernière ligne du code ci-dessus permet de transformer la variable
-<code>categorie</code> en un facteur. La fonction
-<code>as.factor(oiseaux$categorie)</code> toute seule serait exécutée,
-mais ne modifierait pas les données stockées dans l’objet
-<code>oiseaux</code>. Il faut pour cela ré-assigner cette variable
-transformée en facteur à la variable d’origine. Pour vous assurer que
-l’opération a bien fonctionné, vous pouvez exécuter à nouveau la
-fonction <code>class(oiseaux$categorie)</code>.</p>
-<p>Les fonctions suivantes permettent d’explorer autrement vos données
-:</p>
+<p>La dernière ligne du code ci-dessus permet de transformer la variable <code>categorie</code> en un facteur. La fonction <code>as.factor(oiseaux$categorie)</code> toute seule serait exécutée, mais ne modifierait pas les données stockées dans l’objet <code>oiseaux</code>. Il faut pour cela ré-assigner cette variable transformée en facteur à la variable d’origine. Pour vous assurer que l’opération a bien fonctionné, vous pouvez exécuter à nouveau la fonction <code>class(oiseaux$categorie)</code>.</p>
+<p>Les fonctions suivantes permettent d’explorer autrement vos données :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span><span class='op'>(</span><span class='va'>oiseaux</span><span class='op'>)</span>  <span class='co'># dimensions de l'objet</span>
@@ -1875,15 +1702,9 @@ fonction <code>class(oiseaux$categorie)</code>.</p>
 </div>
 </div>
 <h1 id="compter">Compter le nombre d’espèces menacées</h1>
-<p>Notre objet <code>oiseaux</code> dresse une <strong>liste des espèces
-d’oiseaux menacées d’extinction en Auvergne, avec différents niveaux de
-préoccupation</strong>.</p>
-<p>Nous allons <strong>compter le nombre d’espèces pour chaque
-niveau</strong> de préoccupation et <strong>créer une
-visualisation</strong> de ce comptage.</p>
-<p>Commençons par séparer <code>oiseaux</code> en plusieurs objets, un
-pour chaque niveau de menace, à l’aide de la fonction
-<code>filter()</code> du package <code>dplyr</code>.</p>
+<p>Notre objet <code>oiseaux</code> dresse une <strong>liste des espèces d’oiseaux menacées d’extinction en Auvergne, avec différents niveaux de préoccupation</strong>.</p>
+<p>Nous allons <strong>compter le nombre d’espèces pour chaque niveau</strong> de préoccupation et <strong>créer une visualisation</strong> de ce comptage.</p>
+<p>Commençons par séparer <code>oiseaux</code> en plusieurs objets, un pour chaque niveau de menace, à l’aide de la fonction <code>filter()</code> du package <code>dplyr</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>en_danger_critique</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>oiseaux</span>, <span class='va'>categorie</span> <span class='op'>==</span> <span class='st'>"En danger critique"</span><span class='op'>)</span>
@@ -1893,20 +1714,11 @@ pour chaque niveau de menace, à l’aide de la fonction
 </div>
 </div>
 <aside>
-L’opérateur <strong><code>==</code></strong> permet de sélectionner les
-valeurs <strong>“strictement égales à”</strong>
+L’opérateur <strong><code>==</code></strong> permet de sélectionner les valeurs <strong>“strictement égales à”</strong>
 </aside>
-<p><strong>R est sensible à la casse</strong> :
-<code>filter(oiseaux, categorie == "en danger critique")</code> ne
-fonctionnera pas !</p>
-<p>Procédons de la même façon pour chaque catégorie. Si vous avez un
-doute sur le nom ou l’orthographe d’une des catégories, pensez à la
-fonction <code>summary(oiseaux$categorie)</code>.</p>
-<p>Une fois que vous avez créé tous les objets, vous allez pouvoir
-<strong>compter le nombre d’espèces</strong> pour chaque catégorie. Nous
-allons pour cela imbriquer deux fonctions : <code>unique()</code> (pour
-identifier chaque espèce) et <code>length()</code> (pour les
-compter).</p>
+<p><strong>R est sensible à la casse</strong> : <code>filter(oiseaux, categorie == "en danger critique")</code> ne fonctionnera pas !</p>
+<p>Procédons de la même façon pour chaque catégorie. Si vous avez un doute sur le nom ou l’orthographe d’une des catégories, pensez à la fonction <code>summary(oiseaux$categorie)</code>.</p>
+<p>Une fois que vous avez créé tous les objets, vous allez pouvoir <strong>compter le nombre d’espèces</strong> pour chaque catégorie. Nous allons pour cela imbriquer deux fonctions : <code>unique()</code> (pour identifier chaque espèce) et <code>length()</code> (pour les compter).</p>
 <aside>
 Vous pouvez essayer ces deux fonctions séparément dans la console
 </aside>
@@ -1918,18 +1730,11 @@ Vous pouvez essayer ces deux fonctions séparément dans la console
 </code></pre>
 </div>
 </div>
-<p>Procédez de la même façon pour toutes les catégories. Cette manière
-de procéder peut vous sembler rébarbative … Nous verrons dans un
-prochain tutoriel comment procéder de manière plus efficace !</p>
-<p>Tapez dans la console le nom d’un des objets que vous venez de créer.
-Que vous retourne-t-elle ?</p>
+<p>Procédez de la même façon pour toutes les catégories. Cette manière de procéder peut vous sembler rébarbative … Nous verrons dans un prochain tutoriel comment procéder de manière plus efficace !</p>
+<p>Tapez dans la console le nom d’un des objets que vous venez de créer. Que vous retourne-t-elle ?</p>
 <h1 id="vecteur">Créer un vecteur et le représenter</h1>
-<p>Nous allons maintenant combiner tous ces objets dans un
-<strong>vecteur</strong> - un objet à une dimension (à la différence
-d’un <em>data frame</em> qui en possède deux).</p>
-<p>Nous utilisons pour cela la fonction <code>c()</code> (pour
-<em>concaténer</em>), ainsi que la fonction <code>names()</code> pour
-ajouter des étiquettes aux valeurs.</p>
+<p>Nous allons maintenant combiner tous ces objets dans un <strong>vecteur</strong> - un objet à une dimension (à la différence d’un <em>data frame</em> qui en possède deux).</p>
+<p>Nous utilisons pour cela la fonction <code>c()</code> (pour <em>concaténer</em>), ainsi que la fonction <code>names()</code> pour ajouter des étiquettes aux valeurs.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>comptage_especes</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>a</span>,<span class='va'>b</span>, <span class='va'>c</span>, <span class='va'>d</span>, <span class='va'>e</span><span class='op'>)</span>
@@ -1945,39 +1750,18 @@ ajouter des étiquettes aux valeurs.</p>
 Attention à garder le même ordre !
 </aside>
 <p>Notes :<br />
-- Les espaces avant et après la flèche <code>&lt;-</code> et après la
-virgule <code>,</code> facilitent la lecture du code<br />
-- Faites attention à vérifier que les valeurs du vecteur correspondent
-bien aux étiquettes - vous ne voudriez pas inverser les espèces “En
-danger critique” avec les espèces “Quasi-menacées”! L’utilisation d’un
-script permet de revenir sur le code et de vérifier qu’on ne s’est pas
-trompé. Une bonne pratique serait de nommer les objets de façon plus
-explicite, comme <code>nb_en_danger_critique</code>,
-<code>nb_en_danger</code>, …<br />
-- Si vous cliquez à l’aide de la souris après une parenthèse, RStudio
-surlignera la parenthèse lui correspondant. Les parenthèses manquantes,
-en particulier quand vous utilisez des fonctions imbriquées comme vous
-l’avez fait avec <code>length(unique())</code> sont une des sources de
-frustration et d’erreur les plus courantes quand vous commencez à coder
-!</p>
-<p><strong>Nous pouvons maintenant visualiser le nombre d’espèces par
-catégorie à l’aide de la fonction <code>barplot()</code></strong>. Les
-graphiques s’affichent dans le panneau inférieur droit de RStudio.</p>
+- Les espaces avant et après la flèche <code>&lt;-</code> et après la virgule <code>,</code> facilitent la lecture du code<br />
+- Faites attention à vérifier que les valeurs du vecteur correspondent bien aux étiquettes - vous ne voudriez pas inverser les espèces “En danger critique” avec les espèces “Quasi-menacées”! L’utilisation d’un script permet de revenir sur le code et de vérifier qu’on ne s’est pas trompé. Une bonne pratique serait de nommer les objets de façon plus explicite, comme <code>nb_en_danger_critique</code>, <code>nb_en_danger</code>, …<br />
+- Si vous cliquez à l’aide de la souris après une parenthèse, RStudio surlignera la parenthèse lui correspondant. Les parenthèses manquantes, en particulier quand vous utilisez des fonctions imbriquées comme vous l’avez fait avec <code>length(unique())</code> sont une des sources de frustration et d’erreur les plus courantes quand vous commencez à coder !</p>
+<p><strong>Nous pouvons maintenant visualiser le nombre d’espèces par catégorie à l’aide de la fonction <code>barplot()</code></strong>. Les graphiques s’affichent dans le panneau inférieur droit de RStudio.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span><span class='op'>(</span><span class='va'>comptage_especes</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
-<p>Et voilà votre premier graphique avec R ! Mais <strong>il y a des
-choses à modifier</strong> : il manque des titres aux axes, toutes les
-étiquettes ne sont pas visibles, et la valeur pour les espèces dans la
-catégorie “Préoccupation mineure” (n = 68) dépasse la plus grande valeur
-affichée sur l’axe Y.</p>
-<p>Pour savoir comment apporter ces modifications à votre graphique,
-utilisez la fonction <code>help(barplot)</code> ou <code>?barplot</code>
-pour afficher l’aide de la fonction. Survolez le document qui s’affiche
-et essayez de trouver des solutions.</p>
+<p>Et voilà votre premier graphique avec R ! Mais <strong>il y a des choses à modifier</strong> : il manque des titres aux axes, toutes les étiquettes ne sont pas visibles, et la valeur pour les espèces dans la catégorie “Préoccupation mineure” (n = 68) dépasse la plus grande valeur affichée sur l’axe Y.</p>
+<p>Pour savoir comment apporter ces modifications à votre graphique, utilisez la fonction <code>help(barplot)</code> ou <code>?barplot</code> pour afficher l’aide de la fonction. Survolez le document qui s’affiche et essayez de trouver des solutions.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/help.html'>help</a></span><span class='op'>(</span><span class='va'>barplot</span><span class='op'>)</span>  <span class='co'># aide de la fonction barplot</span>
@@ -1985,19 +1769,12 @@ et essayez de trouver des solutions.</p>
 </code></pre>
 </div>
 </div>
-<p>Nous aimerions également sauvegarder notre graphique. Là encore, vous
-avez deux options : - <strong>Cliquer sur <em>Export</em></strong> dans
-le panneau des graphiques : choisissez où sauvegarder le graphique (par
-défaut dans votre répertoire de travail) et modifiez le nom du fichier
-pour qu’il soit plus explicite que <code>Rplot01.png</code>. Vous pouvez
-aussi ajuster les dimensions de la figure.</p>
+<p>Nous aimerions également sauvegarder notre graphique. Là encore, vous avez deux options : - <strong>Cliquer sur <em>Export</em></strong> dans le panneau des graphiques : choisissez où sauvegarder le graphique (par défaut dans votre répertoire de travail) et modifiez le nom du fichier pour qu’il soit plus explicite que <code>Rplot01.png</code>. Vous pouvez aussi ajuster les dimensions de la figure.</p>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/save_barplot.png" width="432" /></p>
 </div>
 <ul>
-<li><strong>Utiliser les fonctions <code>png()</code> et
-<code>dev.off()</code></strong> qui servent respectivement à ouvrir et
-fermer l’outil graphique :</li>
+<li><strong>Utiliser les fonctions <code>png()</code> et <code>dev.off()</code></strong> qui servent respectivement à ouvrir et fermer l’outil graphique :</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2014,44 +1791,17 @@ fermer l’outil graphique :</li>
 </div>
 </div>
 <aside>
-L’argument <code>cex</code> permet d’augmenter (&gt; 1) ou de diminuer
-(&lt; 1) la taille du texte
+L’argument <code>cex</code> permet d’augmenter (&gt; 1) ou de diminuer (&lt; 1) la taille du texte
 </aside>
 <div class="layout-chunk" data-layout="l-body-outset">
 <p><img src="img/barplot.png" width="800" /></p>
 </div>
 <h1 id="dataframe">Créer un dataframe et le représenter</h1>
-<p>Nous avons travaillé jusqu’ici avec des <strong>vecteurs</strong>, un
-type d’objet bien adapté quand on manipule une seule série de valeurs à
-la fois. Dans la pratique, nous manipulons souvent plusieurs variables
-et plusieurs types de données en même temps - par exemple des valeurs
-continues et des valeurs catégoriques. Les <strong>data frames</strong>
-sont alors mieux adaptés : il s’agit de tableaux de valeurs ayant une
-structure en <strong>deux dimensions</strong>, des lignes et des
-colonnes, chaque colonne pouvant contenir un <strong>type
-différent</strong> de données.</p>
-<p>Nous pourrions par exemple avoir un tableau de données dont une
-colonne appelée “Envergure” contient des mesures d’envergures chez
-différentes espèces d’oiseaux, et une deuxième colonne appelée “Espèce”
-contient les noms des espèces dont on a mesuré l’envergure.</p>
-<p>La <strong>matrice</strong> est un autre format possible de données :
-elle peut également contenir plusieurs lignes, mais toutes les variables
-d’une matrice doivent être du même type et contenir le même nombre
-d’éléments.</p>
-<p><em><strong>Conseil de bonne pratique</strong> : conservez toujours
-une copie de vos données brutes ! Votre script R vous permet de
-manipuler et modifier ces données sans toucher aux données brutes. Si
-vous utilisez des logiciels de retouche photo, c’est un peu la même
-chose que d’ajouter des couches apportant des modifications à votre
-cliché sans modifier la photo d’origine. Ceci dit, si vos données brutes
-nécessitent un long morceau de code pour être analysables, vous pouvez
-sauvegarder une version nettoyée de vos données brutes pour ne pas avoir
-à refaire toutes les étapes de nettoyage des données.</em></p>
-<p>Nous allons utiliser deux nouvelles fonctions :
-<code>data.frame()</code> pour créer notre data frame et
-<code>write.csv()</code> pour le sauvegarder. Nous allons créer les
-objets “categories” et “comptage”, transformer l’objet “categories” en
-facteur, puis rassembler ces deux objets dans un data frame.</p>
+<p>Nous avons travaillé jusqu’ici avec des <strong>vecteurs</strong>, un type d’objet bien adapté quand on manipule une seule série de valeurs à la fois. Dans la pratique, nous manipulons souvent plusieurs variables et plusieurs types de données en même temps - par exemple des valeurs continues et des valeurs catégoriques. Les <strong>data frames</strong> sont alors mieux adaptés : il s’agit de tableaux de valeurs ayant une structure en <strong>deux dimensions</strong>, des lignes et des colonnes, chaque colonne pouvant contenir un <strong>type différent</strong> de données.</p>
+<p>Nous pourrions par exemple avoir un tableau de données dont une colonne appelée “Envergure” contient des mesures d’envergures chez différentes espèces d’oiseaux, et une deuxième colonne appelée “Espèce” contient les noms des espèces dont on a mesuré l’envergure.</p>
+<p>La <strong>matrice</strong> est un autre format possible de données : elle peut également contenir plusieurs lignes, mais toutes les variables d’une matrice doivent être du même type et contenir le même nombre d’éléments.</p>
+<p><em><strong>Conseil de bonne pratique</strong> : conservez toujours une copie de vos données brutes ! Votre script R vous permet de manipuler et modifier ces données sans toucher aux données brutes. Si vous utilisez des logiciels de retouche photo, c’est un peu la même chose que d’ajouter des couches apportant des modifications à votre cliché sans modifier la photo d’origine. Ceci dit, si vos données brutes nécessitent un long morceau de code pour être analysables, vous pouvez sauvegarder une version nettoyée de vos données brutes pour ne pas avoir à refaire toutes les étapes de nettoyage des données.</em></p>
+<p>Nous allons utiliser deux nouvelles fonctions : <code>data.frame()</code> pour créer notre data frame et <code>write.csv()</code> pour le sauvegarder. Nous allons créer les objets “categories” et “comptage”, transformer l’objet “categories” en facteur, puis rassembler ces deux objets dans un data frame.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Creer un objet "categories"</span>
@@ -2075,9 +1825,7 @@ facteur, puis rassembler ces deux objets dans un data frame.</p>
 </code></pre>
 </div>
 </div>
-<p>Pour créer un barplot à partir de ce data frame, vous devrez modifier
-le code utilisé précédemment - il faut en effet préciser quelle variable
-du data frame vous souhaitez représenter.</p>
+<p>Pour créer un barplot à partir de ce data frame, vous devrez modifier le code utilisé précédemment - il faut en effet préciser quelle variable du data frame vous souhaitez représenter.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/grDevices/png.html'>png</a></span><span class='op'>(</span><span class='st'>"barplot2.png"</span>,
@@ -2107,15 +1855,9 @@ Il existe une manière plus simple de préciser les étiquettes …
 <li>Vous pouvez générer des graphiques basiques et les exporter</li>
 </ol>
 <h1 id="defi">Défi</h1>
-<p>Si c’est votre premier contact avec R, ne vous inquiétez pas si vous
-ne comprenez pas tout, tout de suite. Revenez à tête reposée sur les
-parties que vous avez trouvées plus difficiles.</p>
-<p>Voici un petit défi pour mettre en pratique ce que vous avez vu dans
-ce tutoriel.</p>
-<p>Vous verrez ci-dessous des données (fictives) de mesures d’envergure
-(en cm) pour quatre espèces différentes d’oiseaux. Essayez de créer un
-barplot de l’envergure moyenne pour chacune des espèces et
-sauvegardez-le sur votre ordinateur.</p>
+<p>Si c’est votre premier contact avec R, ne vous inquiétez pas si vous ne comprenez pas tout, tout de suite. Revenez à tête reposée sur les parties que vous avez trouvées plus difficiles.</p>
+<p>Voici un petit défi pour mettre en pratique ce que vous avez vu dans ce tutoriel.</p>
+<p>Vous verrez ci-dessous des données (fictives) de mesures d’envergure (en cm) pour quatre espèces différentes d’oiseaux. Essayez de créer un barplot de l’envergure moyenne pour chacune des espèces et sauvegardez-le sur votre ordinateur.</p>
 <aside>
 Il vous faudra trouver une fonction permettant de calculer une moyenne
 </aside>
@@ -2178,11 +1920,7 @@ Il vous faudra trouver une fonction permettant de calculer une moyenne
 </tbody>
 </table>
 <h2 id="solution">Solution</h2>
-<p><strong>Ne regardez pas avant d’avoir essayé !</strong> Il n’existe
-pas une seule solution possible, plusieurs façons de procéder amèneront
-au même résultat. Les noms des objets et l’apparence du graphique seront
-sans doute différents, et cela ne pose aucun problème - du moment que
-les valeurs elles-mêmes sont correctes.</p>
+<p><strong>Ne regardez pas avant d’avoir essayé !</strong> Il n’existe pas une seule solution possible, plusieurs façons de procéder amèneront au même résultat. Les noms des objets et l’apparence du graphique seront sans doute différents, et cela ne pose aucun problème - du moment que les valeurs elles-mêmes sont correctes.</p>
 <div class="layout-chunk" data-layout="l-body">
 <details>
 <summary>
@@ -2233,89 +1971,24 @@ Show code
 <h1 id="glossaire">Glossaire</h1>
 <p><em> Voici quelques termes importants vus dans ce tutoriel :</p>
 <ul>
-<li><p><strong>argument</strong> : élément d’une fonction, essentiel ou
-optionnel, qui précise ou modifie la façon dont la fonction est
-exécutée. Par exemple, il peut s’agir du chemin vers un fichier qui sera
-importé, ou de l’emplacement où sera sauvegardé un fichier :
-<code>file = "chemin-vers-le-fichier</code>. Il peut aussi modifier les
-couleurs d’un graphique : <code>col = "blue"</code>. Vous pouvez trouver
-une liste des arguments d’une fonction à l’aide de la commande
-<code>?nom-de-la-fonction</code>.<br />
+<li><p><strong>argument</strong> : élément d’une fonction, essentiel ou optionnel, qui précise ou modifie la façon dont la fonction est exécutée. Par exemple, il peut s’agir du chemin vers un fichier qui sera importé, ou de l’emplacement où sera sauvegardé un fichier : <code>file = "chemin-vers-le-fichier</code>. Il peut aussi modifier les couleurs d’un graphique : <code>col = "blue"</code>. Vous pouvez trouver une liste des arguments d’une fonction à l’aide de la commande <code>?nom-de-la-fonction</code>.<br />
 </p></li>
-<li><p><strong>classe</strong> : le type de données contenu dans une
-variable : habituellement des charactères (texte/mots), des nombres
-entiers ou relatifs, ou des facteurs (des valeurs de groupement, utiles
-quand vos données contiennent de multiples observations issues de
-différents sites ou traitements).</p></li>
-<li><p><strong>commande</strong> : un morceau de code qui exécute une
-action, contient généralement une ou plusieurs fonctions. Vous pouvez
-exécuter une commande en cliquant sur “Run” ou grâce aux raccourcis
-clavier comme <code>Cmd + Entrée</code>, <code>Ctrl + Entrée</code> ou
-<code>Ctrl + R</code>.</p></li>
-<li><p><strong>commentaire</strong> : un morceau de texte dans un script
-qui débute par un hashtag <code>#</code> et qui n’est pas lu comme une
-commande. Les commentaires rendent le code plus facilement lisible pour
-d’autres personnes : utilisez-les pour créer des sections dans votre
-script et pour annoter chaque étape de votre analyse.</p></li>
-<li><p><strong>console</strong> : la fenêtre dans laquelle vous pouvez
-taper du code directement en ligne de commande (<code>2+2</code> puis
-<code>Entrée</code> retournera <code>4</code>), et où les résultats des
-commandes seront affichés.</p></li>
-<li><p><strong>data frame</strong> : un type d’objet R composé de
-nombreuses lignes et colonnes (pensez à une feuille Excel). Généralement
-les colonnes contiennent différentes variables (par exemple âge,
-couleur, poids, envergure), et les lignes les observations de ces
-variables (par exemple oiseau1, oiseau2, oiseau3).</p></li>
-<li><p><strong>espace de travail</strong> : c’est votre environnement de
-travail virtuel, il contient toutes les fonctions des packages que vous
-avez chargés, les objets que vous avez créés, et ainsi de suite. Il est
-préférable de démarrer une session de travail avec un espace de travail
-vide.</p></li>
-<li><p><strong>fichier csv</strong> : un type de fichier couramment
-utilisé pour importer des données dans R, où les valeurs des différentes
-variables sont compressées (une chaîne, ou une ligne de valeurs par
-ligne) et séparées seulement par des virgules (indiquant les colonnes).
-R peut aussi lire des fichiers Excel (.xlsx), mais cela n’est pas
-recommandé car il est difficile d’éviter les erreurs de
-formatage.</p></li>
-<li><p><strong>fonction</strong> : du code qui exécute une action,
-c’est-à-dire tout ce que vous faites dans R. Une fonction prend une
-entrée, la modifie d’une façon ou d’une autre, et retourne une sortie
-(un objet, un résultat de test, un fichier, un graphique). Il existe des
-fonctions pour importer, convertir et manipuler des données, pour
-effectuer des calculs spécifiques (essayez de deviner ce que
-retourneraient les fonctions <code>min(10, 15, 5)</code> et
-<code>max(10, 15, 5)</code>), générer des graphiques, et bien
-davantage.</p></li>
-<li><p><strong>objet</strong> : les briques de construction de R. Si R
-était un langage parlé, les fonctions seraient les verbes (actions) et
-les objets les noms (les sujets ou les objets de ces actions). On fait
-appel à un objet par son nom sans guillemets. Les objets permettent de
-stocker des données, et prennent différentes formes. Les objets les plus
-courants sont les data frames et les vecteurs, mais il en existe
-d’autres, comme les listes et les matrices.</p></li>
-<li><p><strong>package</strong> : un ensemble de fonctions qui apportent
-des fonctionnalités supplémentaires à R. De nombreux packages sont
-inclus dans R, d’autres peuvent être téléchargés pour des besoins
-spécifiques.</p></li>
-<li><p><strong>répertoire de travail</strong> : le dossier sur votre
-ordinateur associé à votre session R actuelle, contenant les données que
-vous allez importer et où vous sauvegarderez des fichiers. Vous pouvez
-le définir au début de votre session à l’aide de la fonction
-<code>setwd()</code>.</p></li>
-<li><p><strong>script</strong> : comme un éditeur de texte, un script
-vous permet d’écrire votre code et de le sauvegarder pour des usages
-futurs. Il contient un mélange de code et de commentaires et est
-sauvegardé comme un simple fichier texte que vous pouvez aisément
-partager pour que n’importe qui puisse reproduire votre
-travail.</p></li>
-<li><p><strong>vecteur</strong> : un type d’objet R qui ne contient
-qu’une seule dimension : il stocke une ligne de valeurs qui peuvent être
-des caractères, des nombres, etc.</p></li>
+<li><p><strong>classe</strong> : le type de données contenu dans une variable : habituellement des charactères (texte/mots), des nombres entiers ou relatifs, ou des facteurs (des valeurs de groupement, utiles quand vos données contiennent de multiples observations issues de différents sites ou traitements).</p></li>
+<li><p><strong>commande</strong> : un morceau de code qui exécute une action, contient généralement une ou plusieurs fonctions. Vous pouvez exécuter une commande en cliquant sur “Run” ou grâce aux raccourcis clavier comme <code>Cmd + Entrée</code>, <code>Ctrl + Entrée</code> ou <code>Ctrl + R</code>.</p></li>
+<li><p><strong>commentaire</strong> : un morceau de texte dans un script qui débute par un hashtag <code>#</code> et qui n’est pas lu comme une commande. Les commentaires rendent le code plus facilement lisible pour d’autres personnes : utilisez-les pour créer des sections dans votre script et pour annoter chaque étape de votre analyse.</p></li>
+<li><p><strong>console</strong> : la fenêtre dans laquelle vous pouvez taper du code directement en ligne de commande (<code>2+2</code> puis <code>Entrée</code> retournera <code>4</code>), et où les résultats des commandes seront affichés.</p></li>
+<li><p><strong>data frame</strong> : un type d’objet R composé de nombreuses lignes et colonnes (pensez à une feuille Excel). Généralement les colonnes contiennent différentes variables (par exemple âge, couleur, poids, envergure), et les lignes les observations de ces variables (par exemple oiseau1, oiseau2, oiseau3).</p></li>
+<li><p><strong>espace de travail</strong> : c’est votre environnement de travail virtuel, il contient toutes les fonctions des packages que vous avez chargés, les objets que vous avez créés, et ainsi de suite. Il est préférable de démarrer une session de travail avec un espace de travail vide.</p></li>
+<li><p><strong>fichier csv</strong> : un type de fichier couramment utilisé pour importer des données dans R, où les valeurs des différentes variables sont compressées (une chaîne, ou une ligne de valeurs par ligne) et séparées seulement par des virgules (indiquant les colonnes). R peut aussi lire des fichiers Excel (.xlsx), mais cela n’est pas recommandé car il est difficile d’éviter les erreurs de formatage.</p></li>
+<li><p><strong>fonction</strong> : du code qui exécute une action, c’est-à-dire tout ce que vous faites dans R. Une fonction prend une entrée, la modifie d’une façon ou d’une autre, et retourne une sortie (un objet, un résultat de test, un fichier, un graphique). Il existe des fonctions pour importer, convertir et manipuler des données, pour effectuer des calculs spécifiques (essayez de deviner ce que retourneraient les fonctions <code>min(10, 15, 5)</code> et <code>max(10, 15, 5)</code>), générer des graphiques, et bien davantage.</p></li>
+<li><p><strong>objet</strong> : les briques de construction de R. Si R était un langage parlé, les fonctions seraient les verbes (actions) et les objets les noms (les sujets ou les objets de ces actions). On fait appel à un objet par son nom sans guillemets. Les objets permettent de stocker des données, et prennent différentes formes. Les objets les plus courants sont les data frames et les vecteurs, mais il en existe d’autres, comme les listes et les matrices.</p></li>
+<li><p><strong>package</strong> : un ensemble de fonctions qui apportent des fonctionnalités supplémentaires à R. De nombreux packages sont inclus dans R, d’autres peuvent être téléchargés pour des besoins spécifiques.</p></li>
+<li><p><strong>répertoire de travail</strong> : le dossier sur votre ordinateur associé à votre session R actuelle, contenant les données que vous allez importer et où vous sauvegarderez des fichiers. Vous pouvez le définir au début de votre session à l’aide de la fonction <code>setwd()</code>.</p></li>
+<li><p><strong>script</strong> : comme un éditeur de texte, un script vous permet d’écrire votre code et de le sauvegarder pour des usages futurs. Il contient un mélange de code et de commentaires et est sauvegardé comme un simple fichier texte que vous pouvez aisément partager pour que n’importe qui puisse reproduire votre travail.</p></li>
+<li><p><strong>vecteur</strong> : un type d’objet R qui ne contient qu’une seule dimension : il stocke une ligne de valeurs qui peuvent être des caractères, des nombres, etc.</p></li>
 </ul>
 <p></em></p>
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
