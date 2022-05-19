@@ -26,185 +26,6 @@ draft:
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-*Ce tutoriel est adapté de [Basic data manipulation](https://ourcodingclub.github.io/tutorials/data-manip-intro/index.html) du site [Our Coding Club](https://ourcodingclub.github.io/).* 
-
-# Introduction
-
-```{r, layout="l-body-outset"}
-knitr::include_graphics("img/data_cowboy.png")
-```
-Dessin de [Allison Horst](https://raw.githubusercontent.com/allisonhorst/stats-illustrations/master/rstats-artwork/data_cowboy.png)
-
-<br>
-
-Les **objectifs** de ce tutoriel sont les suivants :  
-
-1. Apprendre à manipuler des données à l'aide des opérateurs basiques de R  
-2. Nettoyer des données avec le package `tidyr`
-3. Manipuler ses données à l'aide du package `dplyr` 
- 
-<br>
-
-Voici les **étapes** que nous allons suivre pour y parvenir :  
-
-1. [Sélectionner, extraire et modifier des données avec les opérateurs basiques de R](#basique)  
-2. [Comment nettoyer des données](#tidy)
-3. [Explorer les principales fonctions de `dplyr`](#dplyr)
-    - [`rename()`](#rename)  
-    - [`filter()` et `select()`](#filter)  
-    - [`mutate()`](#mutate)  
-    - [`group_by()`](#group)  
-    - [`join()`](#join) 
-4. [Défi](#defi)
-
-<br>
-
-Un format de données qui s'avère utile et pratique pour une application spécifique ne le sera pas forcément pour une autre application. Les fonctions de R nécessitent un certain format et un certain type de données, ce qui rend la maîtrise de la mise en forme de données essentielle !  
-
-<br>
-
-Si vous avez besoin de revoir les bases de R, vous pouvez lire le tutoriel [Premiers pas avec R](https://codons.netlify.app/posts/premiers-pas-avec-r/).
-
-<br>
-
-Dans ce tutoriel, nous allons voir comment manipuler des données en utilisant la syntaxe basique de R (vous verrez souvent des solutions en ligne avec cette syntaxe). Nous introduirons ensuite le concept de données **tidy**, très utiles pour la collecte et l'organisation de données. Nous utiliserons ensuite des packages du [**Tidyverse**](https://www.tidyverse.org/), qui est en train de devenir la norme pour les data sciences, qui permet de coder de façon plus claire et nette que les fontions basiques de R.
-
-<br>
-
-**Cliquez sur [ce lien](https://github.com/KittJonathan/Codons-02-BasesManipulationDonnees) pour télécharger le dossier contenant tous les fichiers dont vous aurez besoin pour ce tutoriel (rappel sur la procédure [ici](https://codons.netlify.app/posts/premiers-pas-avec-r/#téléchargez-les-données)).**
-
-```{r, echo=FALSE, eval=TRUE, warning=FALSE, message=FALSE}
-croissance <- read.csv("https://raw.githubusercontent.com/ourcodingclub/CC-3-DataManip/master/EmpetrumElongation.csv")
-```
-
-
-# La syntaxe basique de R {#basique}
-
-Les **data frames** sont des objets qui contiennent des observations (dans les lignes) de différentes variables (dans les colonnes). Commençons par importer le fichier `croissance.csv` dans le dossier que vous avez téléchargé.  
-
-**Créez un nouveau script, ajoutez des informations (date, titre, ...) en haut du script (à l'aide de `#`).**  
-
-Ce jeu de données représente la croissance annuelle de tiges d'arbrisseaux (*Empetrum nigrum* ou camarine noire) situés dans des dunes de sables. La colonne `Zone` correspond à des zones distinces allant de la plus proche (2) à la plus éloignée (7) de la mer.
-
-![**Empetrum nigrum**](https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Empetrum_nigrum_a2.jpg/1280px-Empetrum_nigrum_a2.jpg)
-
-Nous avons vu dans le [tutoriel d'introduction à R](https://codons.netlify.app/posts/premiers-pas-avec-r/) comment accéder à des variables à l'aide du signe dollar `$`. Cette manière de sélectionner permet de réduire un data frame en deux dimensions en un vecteur à une dimension. Une autre manière de sélectionner des parties d'un data frame est d'utiliser des crochets :  `[x , y]` sélectionnera la ligne `x` et la colonne `y`. Un espace blanc à gauche ou à droite de la virgule permet de sélectionner respectivement toutes les colonnes ou toutes les lignes du data frame.
-
-```{r, eval=FALSE, echo=TRUE}
-# Definir le repertoire de travail
-setwd("C:/Users/ateliers/codons_02_bases_manipulation_donnees/")
-
-# Importer les donnees 
-croissance <- read.csv("croissance.csv")
-
-# Explorer les donnees
-head(croissance)  # affiche les premieres observations
-str(croissance)  # affiche les types des variables
-croissance$Indiv  # affiche tous les identifiants de la variable "Indiv"
-length(unique(croissance$Indiv))  # nombre d'abrisseaux dans le jeu de données
-
-# Selectionner des donnees
-croissance[2, 5]  # 2e ligne et 5e colonne
-croissance[6, ]  # 6e ligne
-croissance[6, ]$Indiv  # colonne Indiv pour la 6e ligne
-```
-
-La sélection à l'aide des crochets peut se révéler fastidieuse si vous travaillez sur un large jeu de données et que vous ne savez pas où se trouvent les observations qui vous intéressent. Cette façon de faire n'est pas recommandée, car si vous inscrivez des nombres dans votre code et que vous ajoutez des colonnes par la suite, il n'est pas impossible que votre sélection soit modifiée. C'est pour cette raison qu'il est préférable d'utiliser des *opérations logiques* pour sélectionner les parties des données qui répondent à nos critères.
-
-```{r, eval=FALSE, echo=TRUE}
-# Selectionner les valeurs pour l'individu n°603
-croissance[croissance$Indiv == 603, ]
-```
-
-Décortiquons cette commande : dans le data frame `croissance`, R va sélectionner (`[ , ]`) les lignes (expression à gauche de la virgule) pour lesquelles la valeur dans la colonne "Indiv" (`$Indiv`) est strictement égale à (`==`) 603. L'expression logique fonctionne car la colonne `Indiv` contient des valeurs numériques. Pour sélectionner des données de type caractère ou facteur, il faudrait utiliser des guillemets : `croissance$Indiv == "six-cent-trois"`.
-
-## Opérateurs logiques
-
-`==` : strictement égal  
-`<`, `<=` : inférieur à, inférieur ou égal à  
-`>`, `>=` : supérieur à, supérieur ou égal à  
-`!=` : différent de  
-`%in%` : appartient à (suivi d'un vecteur de valeurs possibles)  
-`&` : et  
-`|` : ou  
-`!` : n'appartient pas à  
-
-```{r, eval=FALSE, echo=TRUE}
-# Une condition
-croissance[croissance$Zone < 4, ]  # zones 2-3
-croissance[croissance$Zone <= 4, ]  # zones 2-3-4
-croissance[!croissance$Zone >= 5, ]  # meme chose que la commande precedente
-
-# Deux conditions
-croissance[croissance$Zone == 2 | croissance$Zone == 7, ]  # zones 2 et 7
-croissance[croissance$Zone == 2 & croissance$Indiv %in% c(300:400), ]  # zone 2 et ID entre 300 et 400
-```
-
-Comme vous pouvez le voir, le code s'alourdit avec des conditions plus exigeantes. Nous verrons que des fonctions permettent d'alléger le code, mais il sera parfois nécessaire d'utiliser cette syntaxe basique, notamment pour des objets de type data frame.
-
-Revenons sur le bout de code `c(300:400)`. Nous avons vu dans notre tutoriel d'introduction à R que `c()` permet de concaténer des éléments dans un vecteur. Les `:` entre 300 et 400 permet de **compter de 300 à 400**.  
-Il existe d'autres façons de construire une séquence :  
-`seq()` permet de créer une séquence par incrément (par ex. `seq(300, 400, 10)`).  
-`rep()` permet de répéter des éléments : `rep(c(1, 2), 3)` donnera `1 2 1 2 1 2`.  
-Vous pouvez mélanger ces deux fonctions : que donnera `rep(seq(0, 30, 10), 4)` ?
-
-<br>
-
-## Créer et écraser des objets
-
-Nous avons utilisé `<-` pour créer de nouveaux objets, ce qui permet de choisir un nom et de l'assigner à un objet (vecteur, liste, data frame, ...).  
-Gardez à l'esprit que **si vous utilisez un même nom dans la même session, l'objet d'origine sera écrasé**. Avec un peu de pratique, vous pourrez modifier un objet et l'écraser au fur et à mesure, pour le "mettre à jour" plutôt que de créer de multiples intermédiaires ("objet1", "objet2", ...).  
-Il est préférable, pour débuter, de créer des objets intermédiaires ou tout du moins une "copie de travail" que vous pourrez ré-assigner à l'objet d'origine quand vous serez satisfait des modifications.  
-Nous allons voir maintenant comment utiliser la flèche `<-` pour écraser des valeurs après modification.
-
-```{r, eval=FALSE, echo=TRUE}
-# Creer une copie de travail de l'objet
-croissance2 <- croissance
-
-# Afficher les noms de colonnes
-names(croissance2)
-
-# Modifier le nom de la premiere colonne : "Zone" devient "zone"
-names(croissance2)[1] <- "zone"
-
-# Modifier le nom de la deuxieme colonne : "Indiv" devient "ID"
-names(croissance2)[2] <- "ID"
-
-# Modifier la valeur 5.1 pour l'individu 373 en 2008 par 5.7
-# Option 1
-croissance2[1, 4] <- 5.7
-# Option 2
-croissance2[croissance2$ID == 373, ]$X2008 <- 5.7
-#
-```
-
-L'**option 1** est plus compacte, mais nécessite de savoir précisément où se situe la valeur à modifier.  
-L'**option 2** est plus longue et difficile à lire mais permet un contrôle plus fin.  
-
-<br>
-
-En procédant de la même manière, vous pouvez spécifier les classes de variables : 
-
-```{r, eval=FALSE, echo=TRUE}
-# Afficher les classes des variables
-str(croissance2)
-
-# La variable "zone" contient des valeurs numériques mais il s'agit d'une variable de groupement
-# Transformons cette variable en un facteur
-croissance2$zone <- as.factor(croissance2$zone)
-str(croissance2)
-```
-
-Vous pouvez également spécifier les niveaux du facteur : 
-
-```{r, eval=FALSE, echo=TRUE}
-# Afficher les niveaux d'un facteur
-levels(croissance2$zone)
-
-# Modifier les niveaux (attention à l'ordre et au nombre de niveaux !)
-levels(croissance2$zone) <- c("A", "B", "C", "D", "E")
-```
-
 # Les données **tidy** {#tidy}
 
 Quand vous mesurez des données dans les champs ou au laboratoire, vous souhaitez avoir des tableaux préparés à l'avance à remplir au fur et à mesure. Par exemple, si vous mesurez la hauteur de semis au cours d'une expérimentation visant à mesurer les effets de la température et de la fertilisation, vous pourriez utiliser le tableau suivant :
@@ -277,11 +98,6 @@ Le graphique montre un chevauchement assez important entre les valeurs de croiss
 
 # Les fonctions principales de `dplyr` {#dplyr}
 
-Le package `dplyr` contient des fonctions intuitives pour la manipulation de données, nommées d'après l'action qu'elles accomplissent. Ces fonctions ont l'avantage de prendre comme premier argument le *data frame*, ce qui permet de se référer à des colonnes sans se référer à l'objet entier (vous pouvez donc laisser tomber les signes `$` !). Nous allons voir les fonctions les plus courantes et utiles pour manipuler le tableau au format long qu'on vient tout juste de créer, `croissance_long`. Commençons par charger le package.
-
-```{r, eval=TRUE, echo=TRUE, warning=FALSE, message=FALSE}
-library(dplyr)
-```
 
 ## Renommer des variables avec `rename()` {#rename}
 
@@ -360,3 +176,66 @@ Comparez `croissance_groupes` et `croissance_long` : les deux objets semblent pa
 ## Calculer des statistiques avec `summarise()`
 
 Cette fonction aggrègera toujours votre data frame d'origine, c'est-à-dire que le data frame résultant sera plus court que l'original. Ici, nous allons comparer le calcul de la croissance totale sur la même période pour les données d'origine et pour les données **groupées**.
+
+```{r, eval=FALSE, echo=TRUE}
+synthese1 <- summarise(croissance_long, croissance.totale = sum(croissance))
+synthese2 <- summarise(croissance_groupes, croissance.totale = sum(croissance))
+```
+
+Le premier objet, `synthese1`, contient la somme de toutes les croissances dans le jeu de données (tous les individus et toutes les annees).  
+L'objet `synthese2` contient la somme des croissance **par individu**, notre variable de groupement. Nous pouvons calculer toutes sortes de statistiques, comme la moyenne ou l'écart-type de la croissance au cours du temps : 
+
+```{r, eval=FALSE, echo=TRUE}
+synthese3 <- summarise(croissance_groupes, 
+                       croissance.totale = sum(croissance),
+                       moyenne.croissance = mean(croissance),
+                       ecart.type.croissance = sd(croissance))
+```
+
+Nous perdons toutes les autres colonnes non spécifiées dans l'étape de groupement. Par exemple, nous avons perdu la colonne `annee` car il y a 5 années pour chaque individu, et nous synthétisons les données pour obtenir une seule valeur de croissance par individu. Il est donc préférable de créer un nouvel objet pour la synthèse de données, pour ne pas perdre le jeu de données global. Vous pourrez toujours joindre des informations ultérieurement, comme nous allons le voir maintenant.
+
+## Joindre des jeux de données avec `..._join()`
+
+Parfois, vous avez de multiples fichiers de données pour un même projet : un fichier pour des mesures sur différents sites, un autre fichier avec des données climatiques pour ces sites, et parfois des métadonnées concernant votre expérimentation. En fonction des besoins de votre analyse, il peut être utile de regrouper toutes ces informations dans un seul tableau.
+
+Imaginons que les données avec lesquelles nous travaillons viennent d'une expérimentation lors de laquelle certaines plantes ont reçu un traitement à la chaleur à l'aide d'une serre portable (T), d'autres plantes ont été fertilisées (F), certaines ont reçu les deux traitements (TF) et des plantes ont servi de contrôle (C). Nous importons ces données contenues dans le fichier `traitements.csv` et joignons ce tableau avec notre jeu de données principal `croissance_long`. Nous pouvons le faire car les deux jeux de données ont une colonne représentant l'identifiant de chaque plante.
+
+Il existe différentes façons de joindre des jeux de données (ce qui vous semblera familier si vous utilisez le langage SQL), qui diffèrent par la façon de traiter les données qui ne sont pas partager par les deux tableaux, demandez-vous donc toujours quelles observations vous souhaitez conserver et quelles observations vous souhaitez supprimer, et consultez les documentations des fonctions si nécessaire (dans le doute, `full_join()` conservera toutes les observations). Dans l'exemple suivant, nous souhaitons conserver toutes les informations de `croissance_long` et répéter le code du traitement appliqué pour les cinq répétitions de chaque individu, nous utilisons donc `left_join`.
+
+```{r, eval=FALSE, echo=TRUE}
+traitements <- read.csv2("traitements.csv")  # importer le fichier
+head(traitements)  # afficher les 6 premieres lignes
+
+# Deux colonnes sont communes aux deux jeux de donnees, mais avec des noms differents.
+# L'argument "by" permet de préciser les noms propres aux deux tableaux.
+
+expe <- left_join(croissance_long, traitements,
+                  by = c("indiv" = "Indiv", "zone" = "Zone"))
+```
+
+Notre nouvel objet `expe` contient le même nombre de lignes que l'objet d'origine `croissance_long`, c'est ce que nous souhaitions. Ce nouvel objet contient bien les informations concernant les traitements appliques a chaque individu.
+
+Si les colonnes communes ont exactement le même nom, l'argument `by = ...` n'est pas necessaire car ces colonnes seront automatiquement détectées. Il est cependant recommandé de spécifier les colonnes communes.
+
+La fonction `merge()` permet d'effectuer la même chose en R basique : 
+
+```{r, eval=FALSE, echo=TRUE}
+expe2 <- merge(croissance_long, traitements,
+               by.x = c("zone", "indiv"),
+               by.y = c("Zone", "Indiv"))
+```
+
+Nous pouvons maintenant prendre en compte les traitements et générer un nouveau boxplot : 
+
+```{r, eval=FALSE, echo=TRUE}
+boxplot(croissance ~ Treatment,
+        data = expe)
+```
+
+## Bilan  du tutoriel :
+
+1. Vous savez utiliser les opérateurs `$` et `[]` pour sélectionner des éléments
+2. Vous comprenez le format **tidy** et savez comment utiliser le package `tidyr` pour transformer vos données
+3. Vous pouvez manipuler, filtrer, sélectionner, créer et joindre des données avec le package `dplyr`
+
+# Défi
