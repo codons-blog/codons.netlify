@@ -1,0 +1,153 @@
+---
+title: "Manipulation de données"
+description: |
+  Sélectionner, modifier et mettre en forme vos données à l'aide du Tidyverse.
+author:
+  - name: Sandra Angers-Blondin
+    url: https://ourcodingclub.github.io/tutorials/data-manip-intro
+  - name: Jonathan Kitt (adaptation)
+    url: {}
+date: 2022-05-19
+categories:
+  - R
+  - RStudio
+  - Données
+  - Tidyverse
+output:
+  distill::distill_article:
+    toc: true
+    toc_depth: 1
+    self_contained: false
+draft:
+  true
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+*Ce tutoriel est adapté de [Basic data manipulation](https://ourcodingclub.github.io/tutorials/data-manip-intro/index.html) du site [Our Coding Club](https://ourcodingclub.github.io/).* 
+
+# Introduction
+
+```{r, layout="l-body-outset"}
+knitr::include_graphics("img/data_cowboy.png")
+```
+Dessin de [Allison Horst](https://raw.githubusercontent.com/allisonhorst/stats-illustrations/master/rstats-artwork/data_cowboy.png)
+
+<br>
+
+Les **objectifs** de ce tutoriel sont les suivants :  
+
+1. Utiliser les outils du package `dplyr` pour manipuler des données  
+2. Mettre en forme des données à l'aide du package `tidyr`
+ 
+<br>
+
+Voici les **étapes** que nous allons suivre pour y parvenir :  
+
+1. [Explorer les principales fonctions de `dplyr`](#dplyr)   
+    - [`rename()`](#rename)  
+    - [`filter()`](#filter)  
+    - [`select()`](#select)
+    - [`arrange()`](#arrange)
+    - [`mutate()`](#mutate)  
+    - [`group_by()`](#group)  
+    - [`join()`](#join) 
+2. [Utiliser `tidyr` pour mettre en forme des données](#tidyr)
+    - [`pivot_longer()`](#pivot_longer)  
+    - [`pivot_wider()`](#pivot_wider)  
+3. [Défi](#defi)
+<br>
+
+Les données que nous manipulons peuvent se trouver sous divers formats, et un format utile et pratique pour une application ne le sera pas forcément pour une autre. C'est ce qui rend la maîtrise des outils de mise en forme des données est essentielle ! 
+
+<br>
+
+Si vous avez besoin de revoir les bases de R, vous pouvez lire le tutoriel [Premiers pas avec R](https://codons.netlify.app/posts/premiers-pas-avec-r/).
+
+<br>
+
+Nous allons voir dans ce tutoriel comment utiliser les outils du [**Tidyverse**](https://www.tidyverse.org/). Le Tidyverse est un ensemble de packages, permettant notamment d'**importer des données (`readr`)**, de les **manipuler (`dplyr` et `tidyr`)**, de créer des **graphiques (`ggplot2`)**, de **manipuler des chaînes de caractères (`stringr`)**, ... Nous mentionnerons, à titre de comparaison, les fonctions équivalentes en R basique.
+
+<br>
+
+## Définir le répertoire de travail
+
+La première chose à faire est de **définir votre répertoire de travail**, où vos scripts et vos données seront sauvegardés. Vous pouvez créer un dossier `codons_02_manipulation_donnees` puis exécuter la commande `setwd("chemin-vers-votre-repertoire-de-travail")`.
+
+# Les principales fonctions de `dplyr` {#dplyr}
+
+Les fonctions du package [`dplyr`](https://dplyr.tidyverse.org/) sont nommées d'après l'action qu'elles accomplissent, ce qui les rend plutôt intuitives.  
+La syntaxe est toujours la même : `nom.fonction(objet, ...)`. Un des avantages est d'utiliser directement les noms de colonnes, sans avoir besoin de faire référence à l'objet (plus besoin d'utiliser le signe `$` !).
+
+Commençons par installer le package `dplyr`  
+
+<aside>
+Nous pourrions également installer la suite `tidyverse`
+</aside>
+  
+  
+```{r, echo=TRUE, eval=FALSE}
+# Installer le package dplyr
+install.packages("dplyr")
+```
+
+Une fois le package installé, il faut le charger dans sa session R : 
+
+```{r, eval=TRUE, echo=TRUE, warning=FALSE, message=FALSE}
+# Charger le package dplyr
+library(dplyr)
+```
+
+Importons le jeu de données utilisé dans ce tutoriel : il s'agit d'un tableau contenant des mesures de croissance annuelle de tiges d'arbrisseaux (*Empetrum nigrum* ou camarine noire) qui poussent dans des dunes de sable. Ces arbrisseaux sont situés dans des zones, allant de la plus proche (2) à la plus éloignée (7) de la mer.
+
+```{r, out.width="10%", fig.cap="[Empetrum nigrum](https://fr.wikipedia.org/wiki/Empetrum_nigrum)"}
+knitr::include_graphics("img/empetrum.jpg")
+```
+
+![[Empetrum nigrum](https://fr.wikipedia.org/wiki/Empetrum_nigrum)](img/empetrum.jpg)
+
+```{r, echo=TRUE, eval=TRUE, warning=FALSE, message=FALSE}
+croissance <- read.csv("https://raw.githubusercontent.com/codons-blog/C-02-ManipulationDonneesBases/main/croissance.csv")
+```
+
+Explorons ces données :
+
+```{r, echo=TRUE, eval=FALSE}
+head(croissance)  # affiche les premieres lignes
+str(croissance)  # types des variables
+
+croissance$Indiv  # affiche la variable Indiv
+length(unique(croissance$Indiv))  # nombre d'individus
+```
+
+## Renommer des variables avec `rename()`
+
+Cette fonction vous permet de changer les noms d'une ou de plusieurs colonnes. Le premier argument est l'objet et les arguments suivants prennent la forme *Nouveau nom = Ancien nom* :
+
+```{r, eval=TRUE, echo=TRUE, warning=FALSE, message=FALSE}
+# Supprimer les majuscules dans les noms de colonnes et ecraser l'objet
+croissance_2 <- rename(croissance,
+                       zone = Zone,
+                       indiv = Indiv)
+
+```
+
+Cette façon de procéder s'avère rapidement fastidieuse avec de larges jeux de données (à quoi correspond la n-ième colonne ?). Il est préférable d'utiliser des **opérations logiques**
+
+Opérateur   Expression logique
+----------  -------------------
+==          strictement égal à
+<=          inférieur ou égal à
+<           inférieur à
+>=          supérieur ou égal à
+>           supérieur à
+!=          différent de
+%in%        appartient à
+&           ET
+|           OU
+!           PAS
+  
+  

@@ -1439,7 +1439,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="manipuler-des-donnees_files/header-attrs-2.11/header-attrs.js"></script>
+  <script src="manipuler-des-donnees_files/header-attrs-2.14/header-attrs.js"></script>
   <script src="manipuler-des-donnees_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
   <script src="manipuler-des-donnees_files/popper-2.6.0/popper.min.js"></script>
   <link href="manipuler-des-donnees_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
@@ -1483,7 +1483,9 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 
 <div class="d-byline">
-  Sandra Angers-Blondin <a href="https://ourcodingclub.github.io/tutorials/data-manip-intro" class="uri">https://ourcodingclub.github.io/tutorials/data-manip-intro</a> 
+  Sandra Angers-Blondin <a
+href="https://ourcodingclub.github.io/tutorials/data-manip-intro"
+class="uri">https://ourcodingclub.github.io/tutorials/data-manip-intro</a> 
   
 ,   Jonathan Kitt (adaptation) true 
   
@@ -1498,35 +1500,46 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#basique">La syntaxe basique de R</a></li>
 <li><a href="#tidy">Les données <strong>tidy</strong></a></li>
-<li><a href="#dplyr">Les fonctions principales de <code>dplyr</code></a></li>
+<li><a href="#dplyr">Les fonctions principales de
+<code>dplyr</code></a></li>
 </ul>
 </nav>
 </div>
-<p><em>Ce tutoriel est adapté de <a href="https://ourcodingclub.github.io/tutorials/data-manip-intro/index.html">Basic data manipulation</a> du site <a href="https://ourcodingclub.github.io/">Our Coding Club</a>.</em></p>
+<p><em>Ce tutoriel est adapté de <a
+href="https://ourcodingclub.github.io/tutorials/data-manip-intro/index.html">Basic
+data manipulation</a> du site <a
+href="https://ourcodingclub.github.io/">Our Coding Club</a>.</em></p>
 <h1 id="introduction">Introduction</h1>
 <div class="layout-chunk" data-layout="l-body-outset">
 <p><img src="img/data_cowboy.png" width="2500" /></p>
 </div>
-<p>Dessin de <a href="https://raw.githubusercontent.com/allisonhorst/stats-illustrations/master/rstats-artwork/data_cowboy.png">Allison Horst</a></p>
+<p>Dessin de <a
+href="https://raw.githubusercontent.com/allisonhorst/stats-illustrations/master/rstats-artwork/data_cowboy.png">Allison
+Horst</a></p>
 <p><br></p>
 <p>Les <strong>objectifs</strong> de ce tutoriel sont les suivants :</p>
 <ol type="1">
-<li>Apprendre à manipuler des données à l’aide des opérateurs basiques de R<br />
+<li>Apprendre à manipuler des données à l’aide des opérateurs basiques
+de R<br />
 </li>
 <li>Nettoyer des données avec le package <code>tidyr</code></li>
 <li>Manipuler ses données à l’aide du package <code>dplyr</code></li>
 </ol>
 <p><br></p>
-<p>Voici les <strong>étapes</strong> que nous allons suivre pour y parvenir :</p>
+<p>Voici les <strong>étapes</strong> que nous allons suivre pour y
+parvenir :</p>
 <ol type="1">
-<li><a href="#basique">Sélectionner, extraire et modifier des données avec les opérateurs basiques de R</a><br />
+<li><a href="#basique">Sélectionner, extraire et modifier des données
+avec les opérateurs basiques de R</a><br />
 </li>
 <li><a href="#tidy">Comment nettoyer des données</a></li>
-<li><a href="#dplyr">Explorer les principales fonctions de <code>dplyr</code></a>
+<li><a href="#dplyr">Explorer les principales fonctions de
+<code>dplyr</code></a>
 <ul>
 <li><a href="#rename"><code>rename()</code></a><br />
 </li>
-<li><a href="#filter"><code>filter()</code> et <code>select()</code></a><br />
+<li><a href="#filter"><code>filter()</code> et
+<code>select()</code></a><br />
 </li>
 <li><a href="#mutate"><code>mutate()</code></a><br />
 </li>
@@ -1537,24 +1550,64 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <li><a href="#defi">Défi</a></li>
 </ol>
 <p><br></p>
-<p>Un format de données qui s’avère utile et pratique pour une application spécifique ne le sera pas forcément pour une autre application. Les fonctions de R nécessitent un certain format et un certain type de données, ce qui rend la maîtrise de la mise en forme de données essentielle !</p>
+<p>Un format de données qui s’avère utile et pratique pour une
+application spécifique ne le sera pas forcément pour une autre
+application. Les fonctions de R nécessitent un certain format et un
+certain type de données, ce qui rend la maîtrise de la mise en forme de
+données essentielle !</p>
 <p><br></p>
-<p>Si vous avez besoin de revoir les bases de R, vous pouvez lire le tutoriel <a href="https://codons.netlify.app/posts/premiers-pas-avec-r/">Premiers pas avec R</a>.</p>
+<p>Si vous avez besoin de revoir les bases de R, vous pouvez lire le
+tutoriel <a
+href="https://codons.netlify.app/posts/premiers-pas-avec-r/">Premiers
+pas avec R</a>.</p>
 <p><br></p>
-<p>Dans ce tutoriel, nous allons voir comment manipuler des données en utilisant la syntaxe basique de R (vous verrez souvent des solutions en ligne avec cette syntaxe). Nous introduirons ensuite le concept de données <strong>tidy</strong>, très utiles pour la collecte et l’organisation de données. Nous utiliserons ensuite des packages du <a href="https://www.tidyverse.org/"><strong>Tidyverse</strong></a>, qui est en train de devenir la norme pour les data sciences, qui permet de coder de façon plus claire et nette que les fontions basiques de R.</p>
+<p>Dans ce tutoriel, nous allons voir comment manipuler des données en
+utilisant la syntaxe basique de R (vous verrez souvent des solutions en
+ligne avec cette syntaxe). Nous introduirons ensuite le concept de
+données <strong>tidy</strong>, très utiles pour la collecte et
+l’organisation de données. Nous utiliserons ensuite des packages du <a
+href="https://www.tidyverse.org/"><strong>Tidyverse</strong></a>, qui
+est en train de devenir la norme pour les data sciences, qui permet de
+coder de façon plus claire et nette que les fontions basiques de R.</p>
 <p><br></p>
-<p><strong>Cliquez sur <a href="https://github.com/KittJonathan/Codons-02-BasesManipulationDonnees">ce lien</a> pour télécharger le dossier contenant tous les fichiers dont vous aurez besoin pour ce tutoriel (rappel sur la procédure <a href="https://codons.netlify.app/posts/premiers-pas-avec-r/#téléchargez-les-données">ici</a>).</strong></p>
+<p><strong>Cliquez sur <a
+href="https://github.com/KittJonathan/Codons-02-BasesManipulationDonnees">ce
+lien</a> pour télécharger le dossier contenant tous les fichiers dont
+vous aurez besoin pour ce tutoriel (rappel sur la procédure <a
+href="https://codons.netlify.app/posts/premiers-pas-avec-r/#téléchargez-les-données">ici</a>).</strong></p>
 <div class="layout-chunk" data-layout="l-body">
 
 </div>
 <h1 id="basique">La syntaxe basique de R</h1>
-<p>Les <strong>data frames</strong> sont des objets qui contiennent des observations (dans les lignes) de différentes variables (dans les colonnes). Commençons par importer le fichier <code>croissance.csv</code> dans le dossier que vous avez téléchargé.</p>
-<p><strong>Créez un nouveau script, ajoutez des informations (date, titre, …) en haut du script (à l’aide de <code>#</code>).</strong></p>
-<p>Ce jeu de données représente la croissance annuelle de tiges d’arbrisseaux (<em>Empetrum nigrum</em> ou camarine noire) situés dans des dunes de sables. La colonne <code>Zone</code> correspond à des zones distinces allant de la plus proche (2) à la plus éloignée (7) de la mer.</p>
+<p>Les <strong>data frames</strong> sont des objets qui contiennent des
+observations (dans les lignes) de différentes variables (dans les
+colonnes). Commençons par importer le fichier
+<code>croissance.csv</code> dans le dossier que vous avez
+téléchargé.</p>
+<p><strong>Créez un nouveau script, ajoutez des informations (date,
+titre, …) en haut du script (à l’aide de <code>#</code>).</strong></p>
+<p>Ce jeu de données représente la croissance annuelle de tiges
+d’arbrisseaux (<em>Empetrum nigrum</em> ou camarine noire) situés dans
+des dunes de sables. La colonne <code>Zone</code> correspond à des zones
+distinces allant de la plus proche (2) à la plus éloignée (7) de la
+mer.</p>
 <figure>
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Empetrum_nigrum_a2.jpg/1280px-Empetrum_nigrum_a2.jpg" alt="Empetrum nigrum" /><figcaption aria-hidden="true"><strong>Empetrum nigrum</strong></figcaption>
+<img
+src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Empetrum_nigrum_a2.jpg/1280px-Empetrum_nigrum_a2.jpg"
+alt="Empetrum nigrum" />
+<figcaption aria-hidden="true"><strong>Empetrum
+nigrum</strong></figcaption>
 </figure>
-<p>Nous avons vu dans le <a href="https://codons.netlify.app/posts/premiers-pas-avec-r/">tutoriel d’introduction à R</a> comment accéder à des variables à l’aide du signe dollar <code>$</code>. Cette manière de sélectionner permet de réduire un data frame en deux dimensions en un vecteur à une dimension. Une autre manière de sélectionner des parties d’un data frame est d’utiliser des crochets : <code>[x , y]</code> sélectionnera la ligne <code>x</code> et la colonne <code>y</code>. Un espace blanc à gauche ou à droite de la virgule permet de sélectionner respectivement toutes les colonnes ou toutes les lignes du data frame.</p>
+<p>Nous avons vu dans le <a
+href="https://codons.netlify.app/posts/premiers-pas-avec-r/">tutoriel
+d’introduction à R</a> comment accéder à des variables à l’aide du signe
+dollar <code>$</code>. Cette manière de sélectionner permet de réduire
+un data frame en deux dimensions en un vecteur à une dimension. Une
+autre manière de sélectionner des parties d’un data frame est d’utiliser
+des crochets : <code>[x , y]</code> sélectionnera la ligne
+<code>x</code> et la colonne <code>y</code>. Un espace blanc à gauche ou
+à droite de la virgule permet de sélectionner respectivement toutes les
+colonnes ou toutes les lignes du data frame.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Definir le repertoire de travail</span>
@@ -1576,7 +1629,14 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </code></pre>
 </div>
 </div>
-<p>La sélection à l’aide des crochets peut se révéler fastidieuse si vous travaillez sur un large jeu de données et que vous ne savez pas où se trouvent les observations qui vous intéressent. Cette façon de faire n’est pas recommandée, car si vous inscrivez des nombres dans votre code et que vous ajoutez des colonnes par la suite, il n’est pas impossible que votre sélection soit modifiée. C’est pour cette raison qu’il est préférable d’utiliser des <em>opérations logiques</em> pour sélectionner les parties des données qui répondent à nos critères.</p>
+<p>La sélection à l’aide des crochets peut se révéler fastidieuse si
+vous travaillez sur un large jeu de données et que vous ne savez pas où
+se trouvent les observations qui vous intéressent. Cette façon de faire
+n’est pas recommandée, car si vous inscrivez des nombres dans votre code
+et que vous ajoutez des colonnes par la suite, il n’est pas impossible
+que votre sélection soit modifiée. C’est pour cette raison qu’il est
+préférable d’utiliser des <em>opérations logiques</em> pour sélectionner
+les parties des données qui répondent à nos critères.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Selectionner les valeurs pour l'individu n°603</span>
@@ -1584,13 +1644,23 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </code></pre>
 </div>
 </div>
-<p>Décortiquons cette commande : dans le data frame <code>croissance</code>, R va sélectionner (<code>[ , ]</code>) les lignes (expression à gauche de la virgule) pour lesquelles la valeur dans la colonne “Indiv” (<code>$Indiv</code>) est strictement égale à (<code>==</code>) 603. L’expression logique fonctionne car la colonne <code>Indiv</code> contient des valeurs numériques. Pour sélectionner des données de type caractère ou facteur, il faudrait utiliser des guillemets : <code>croissance$Indiv == "six-cent-trois"</code>.</p>
+<p>Décortiquons cette commande : dans le data frame
+<code>croissance</code>, R va sélectionner (<code>[ , ]</code>) les
+lignes (expression à gauche de la virgule) pour lesquelles la valeur
+dans la colonne “Indiv” (<code>$Indiv</code>) est strictement égale à
+(<code>==</code>) 603. L’expression logique fonctionne car la colonne
+<code>Indiv</code> contient des valeurs numériques. Pour sélectionner
+des données de type caractère ou facteur, il faudrait utiliser des
+guillemets : <code>croissance$Indiv == "six-cent-trois"</code>.</p>
 <h2 id="opérateurs-logiques">Opérateurs logiques</h2>
 <p><code>==</code> : strictement égal<br />
-<code>&lt;</code>, <code>&lt;=</code> : inférieur à, inférieur ou égal à<br />
-<code>&gt;</code>, <code>&gt;=</code> : supérieur à, supérieur ou égal à<br />
+<code>&lt;</code>, <code>&lt;=</code> : inférieur à, inférieur ou égal
+à<br />
+<code>&gt;</code>, <code>&gt;=</code> : supérieur à, supérieur ou égal
+à<br />
 <code>!=</code> : différent de<br />
-<code>%in%</code> : appartient à (suivi d’un vecteur de valeurs possibles)<br />
+<code>%in%</code> : appartient à (suivi d’un vecteur de valeurs
+possibles)<br />
 <code>&amp;</code> : et<br />
 <code>|</code> : ou<br />
 <code>!</code> : n’appartient pas à</p>
@@ -1607,18 +1677,36 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </code></pre>
 </div>
 </div>
-<p>Comme vous pouvez le voir, le code s’alourdit avec des conditions plus exigeantes. Nous verrons que des fonctions permettent d’alléger le code, mais il sera parfois nécessaire d’utiliser cette syntaxe basique, notamment pour des objets de type data frame.</p>
-<p>Revenons sur le bout de code <code>c(300:400)</code>. Nous avons vu dans notre tutoriel d’introduction à R que <code>c()</code> permet de concaténer des éléments dans un vecteur. Les <code>:</code> entre 300 et 400 permet de <strong>compter de 300 à 400</strong>.<br />
+<p>Comme vous pouvez le voir, le code s’alourdit avec des conditions
+plus exigeantes. Nous verrons que des fonctions permettent d’alléger le
+code, mais il sera parfois nécessaire d’utiliser cette syntaxe basique,
+notamment pour des objets de type data frame.</p>
+<p>Revenons sur le bout de code <code>c(300:400)</code>. Nous avons vu
+dans notre tutoriel d’introduction à R que <code>c()</code> permet de
+concaténer des éléments dans un vecteur. Les <code>:</code> entre 300 et
+400 permet de <strong>compter de 300 à 400</strong>.<br />
 Il existe d’autres façons de construire une séquence :<br />
-<code>seq()</code> permet de créer une séquence par incrément (par ex. <code>seq(300, 400, 10)</code>).<br />
-<code>rep()</code> permet de répéter des éléments : <code>rep(c(1, 2), 3)</code> donnera <code>1 2 1 2 1 2</code>.<br />
-Vous pouvez mélanger ces deux fonctions : que donnera <code>rep(seq(0, 30, 10), 4)</code> ?</p>
+<code>seq()</code> permet de créer une séquence par incrément (par ex.
+<code>seq(300, 400, 10)</code>).<br />
+<code>rep()</code> permet de répéter des éléments :
+<code>rep(c(1, 2), 3)</code> donnera <code>1 2 1 2 1 2</code>.<br />
+Vous pouvez mélanger ces deux fonctions : que donnera
+<code>rep(seq(0, 30, 10), 4)</code> ?</p>
 <p><br></p>
 <h2 id="créer-et-écraser-des-objets">Créer et écraser des objets</h2>
-<p>Nous avons utilisé <code>&lt;-</code> pour créer de nouveaux objets, ce qui permet de choisir un nom et de l’assigner à un objet (vecteur, liste, data frame, …).<br />
-Gardez à l’esprit que <strong>si vous utilisez un même nom dans la même session, l’objet d’origine sera écrasé</strong>. Avec un peu de pratique, vous pourrez modifier un objet et l’écraser au fur et à mesure, pour le “mettre à jour” plutôt que de créer de multiples intermédiaires (“objet1”, “objet2”, …).<br />
-Il est préférable, pour débuter, de créer des objets intermédiaires ou tout du moins une “copie de travail” que vous pourrez ré-assigner à l’objet d’origine quand vous serez satisfait des modifications.<br />
-Nous allons voir maintenant comment utiliser la flèche <code>&lt;-</code> pour écraser des valeurs après modification.</p>
+<p>Nous avons utilisé <code>&lt;-</code> pour créer de nouveaux objets,
+ce qui permet de choisir un nom et de l’assigner à un objet (vecteur,
+liste, data frame, …).<br />
+Gardez à l’esprit que <strong>si vous utilisez un même nom dans la même
+session, l’objet d’origine sera écrasé</strong>. Avec un peu de
+pratique, vous pourrez modifier un objet et l’écraser au fur et à
+mesure, pour le “mettre à jour” plutôt que de créer de multiples
+intermédiaires (“objet1”, “objet2”, …).<br />
+Il est préférable, pour débuter, de créer des objets intermédiaires ou
+tout du moins une “copie de travail” que vous pourrez ré-assigner à
+l’objet d’origine quand vous serez satisfait des modifications.<br />
+Nous allons voir maintenant comment utiliser la flèche
+<code>&lt;-</code> pour écraser des valeurs après modification.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Creer une copie de travail de l'objet</span>
@@ -1642,10 +1730,13 @@ Nous allons voir maintenant comment utiliser la flèche <code>&lt;-</code> pour 
 </code></pre>
 </div>
 </div>
-<p>L’<strong>option 1</strong> est plus compacte, mais nécessite de savoir précisément où se situe la valeur à modifier.<br />
-L’<strong>option 2</strong> est plus longue et difficile à lire mais permet un contrôle plus fin.</p>
+<p>L’<strong>option 1</strong> est plus compacte, mais nécessite de
+savoir précisément où se situe la valeur à modifier.<br />
+L’<strong>option 2</strong> est plus longue et difficile à lire mais
+permet un contrôle plus fin.</p>
 <p><br></p>
-<p>En procédant de la même manière, vous pouvez spécifier les classes de variables :</p>
+<p>En procédant de la même manière, vous pouvez spécifier les classes de
+variables :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Afficher les classes des variables</span>
@@ -1670,16 +1761,40 @@ L’<strong>option 2</strong> est plus longue et difficile à lire mais permet u
 </div>
 </div>
 <h1 id="tidy">Les données <strong>tidy</strong></h1>
-<p>Quand vous mesurez des données dans les champs ou au laboratoire, vous souhaitez avoir des tableaux préparés à l’avance à remplir au fur et à mesure. Par exemple, si vous mesurez la hauteur de semis au cours d’une expérimentation visant à mesurer les effets de la température et de la fertilisation, vous pourriez utiliser le tableau suivant :</p>
+<p>Quand vous mesurez des données dans les champs ou au laboratoire,
+vous souhaitez avoir des tableaux préparés à l’avance à remplir au fur
+et à mesure. Par exemple, si vous mesurez la hauteur de semis au cours
+d’une expérimentation visant à mesurer les effets de la température et
+de la fertilisation, vous pourriez utiliser le tableau suivant :</p>
 <div class="layout-chunk" data-layout="l-body-outset">
 <p><img src="img/tidy_data_1.png" width="581" /></p>
 </div>
-<p>Si vous savez comment votre expérimentation a été menée, R n’en sait rien ! Dans l’état actuel, avec 8 mesures par ligne, vous ne pouvez pas analyser les données. Les *données tidy<strong> sont arrangées de telle sorte que </strong>chaque ligne représente une observation<strong> et </strong>chaque colonne représente une variable<strong>. Dans notre cas, voici à quoi ressemblerait des données </strong>tidy** :</p>
+<p>Si vous savez comment votre expérimentation a été menée, R n’en sait
+rien ! Dans l’état actuel, avec 8 mesures par ligne, vous ne pouvez pas
+analyser les données. Les *données tidy<strong> sont arrangées de telle
+sorte que </strong>chaque ligne représente une observation<strong> et
+</strong>chaque colonne représente une variable<strong>. Dans notre cas,
+voici à quoi ressemblerait des données </strong>tidy** :</p>
 <div class="layout-chunk" data-layout="l-body-outset">
 <p><img src="img/tidy_data_2.png" width="336" /></p>
 </div>
-<p>Ce format de tableau comporte plus de lignes, raison pour laquelle on parle de <em>format long</em> (le premier tableau ci-dessus est au <em>format large</em>). Si vous souhaitez comparer des groupes, des traitements, des espèces, etc., R pourra ainsi séparer les données correctement, chaque facteur de groupement ayant sa propre colonne. Notre objet <code>croissance</code> n’est pas au format <strong>tidy</strong> : les observations d’une même variable, la croissance de la tige, est répartie sur plusieurs colonnes, avec une colonne par année.</p>
-<p><br> La fonction <code>pivot_longer()</code> du package <code>tidyr</code> permet de convertir un tableau d’un format large en un format long. Nous allons pour cela créer une colonne <code>Annee</code> qui contiendra les valeurs des années (2007 à 2012) répétées pour chaque individu. Le tableau ainsi obtenu aura donc six fois plus de lignes que le tableau d’origine. Nous allons également créer une colonne <code>Croissance</code> qui contiendra les données associées à la croissance pour chaque année et chaque individu.</p>
+<p>Ce format de tableau comporte plus de lignes, raison pour laquelle on
+parle de <em>format long</em> (le premier tableau ci-dessus est au
+<em>format large</em>). Si vous souhaitez comparer des groupes, des
+traitements, des espèces, etc., R pourra ainsi séparer les données
+correctement, chaque facteur de groupement ayant sa propre colonne.
+Notre objet <code>croissance</code> n’est pas au format
+<strong>tidy</strong> : les observations d’une même variable, la
+croissance de la tige, est répartie sur plusieurs colonnes, avec une
+colonne par année.</p>
+<p><br> La fonction <code>pivot_longer()</code> du package
+<code>tidyr</code> permet de convertir un tableau d’un format large en
+un format long. Nous allons pour cela créer une colonne
+<code>Annee</code> qui contiendra les valeurs des années (2007 à 2012)
+répétées pour chaque individu. Le tableau ainsi obtenu aura donc six
+fois plus de lignes que le tableau d’origine. Nous allons également
+créer une colonne <code>Croissance</code> qui contiendra les données
+associées à la croissance pour chaque année et chaque individu.</p>
 Commençons par installer et charger le package <code>tidyr</code>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -1701,7 +1816,8 @@ Commençons par installer et charger le package <code>tidyr</code>
 </code></pre>
 </div>
 </div>
-<p>La fonction <code>pivot_wider()</code> permet d’effectuer l’opération inverse :</p>
+<p>La fonction <code>pivot_wider()</code> permet d’effectuer l’opération
+inverse :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>croissance_large</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tidyr.tidyverse.org/reference/pivot_wider.html'>pivot_wider</a></span><span class='op'>(</span>
@@ -1712,7 +1828,12 @@ Commençons par installer et charger le package <code>tidyr</code>
 </code></pre>
 </div>
 </div>
-<p>Nous avons utilisé les noms des colonnes pour indiquer à <code>pivot_longer()</code> quelles colonnes transformer. Cela est pratique si votre jeu de données ne comporte que quelques colonnes. Si votre jeu de données comporte un grand nombre de colonnes (par exemple 100 gènes), il est préférable de spécifier les colonnes par leurs positions :</p>
+<p>Nous avons utilisé les noms des colonnes pour indiquer à
+<code>pivot_longer()</code> quelles colonnes transformer. Cela est
+pratique si votre jeu de données ne comporte que quelques colonnes. Si
+votre jeu de données comporte un grand nombre de colonnes (par exemple
+100 gènes), il est préférable de spécifier les colonnes par leurs
+positions :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>croissance_long2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tidyr.tidyverse.org/reference/pivot_longer.html'>pivot_longer</a></span><span class='op'>(</span>
@@ -1723,8 +1844,18 @@ Commençons par installer et charger le package <code>tidyr</code>
 </code></pre>
 </div>
 </div>
-<p>Ces fonctions ont cependant des limites et ne fonctionnent pas avec toutes les structures de données. Pour citer <a href="https://www.jstatsoft.org/article/view/v059i10">Hadley Wickham</a> (directeur scientifique pour RStudio et l’un des créateurs du tidyverse) : <em>“chaque jeu de données désordonné est désordonné à sa façon”</em>. Réfléchir en amont à la structure de vos données peut vous éviter beaucoup de frustrations par la suite !</p>
-<p>Une fois que vos données sont au bon format, leur analyse et la visualisation des résultats sera plus simple. Par exemple, si nous souhaitons savoir s’il y a une variation inter-annuelle dans la croissance de <strong>Empetrum hermaphroditum</strong>, nous pouvons rapidement créer un boxplot :</p>
+<p>Ces fonctions ont cependant des limites et ne fonctionnent pas avec
+toutes les structures de données. Pour citer <a
+href="https://www.jstatsoft.org/article/view/v059i10">Hadley Wickham</a>
+(directeur scientifique pour RStudio et l’un des créateurs du tidyverse)
+: <em>“chaque jeu de données désordonné est désordonné à sa façon”</em>.
+Réfléchir en amont à la structure de vos données peut vous éviter
+beaucoup de frustrations par la suite !</p>
+<p>Une fois que vos données sont au bon format, leur analyse et la
+visualisation des résultats sera plus simple. Par exemple, si nous
+souhaitons savoir s’il y a une variation inter-annuelle dans la
+croissance de <strong>Empetrum hermaphroditum</strong>, nous pouvons
+rapidement créer un boxplot :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/boxplot.html'>boxplot</a></span><span class='op'>(</span><span class='va'>Croissance</span> <span class='op'>~</span> <span class='va'>Annee</span>, data <span class='op'>=</span> <span class='va'>croissance_long</span>,
@@ -1734,9 +1865,19 @@ Commençons par installer et charger le package <code>tidyr</code>
 </div>
 <p><img src="manipuler-des-donnees_files/figure-html5/unnamed-chunk-16-1.png" width="624" /></p>
 </div>
-<p>Le graphique montre un chevauchement assez important entre les valeurs de croissance par année - pas grand chose à signaler de ce point de vue-là !</p>
+<p>Le graphique montre un chevauchement assez important entre les
+valeurs de croissance par année - pas grand chose à signaler de ce point
+de vue-là !</p>
 <h1 id="dplyr">Les fonctions principales de <code>dplyr</code></h1>
-<p>Le package <code>dplyr</code> contient des fonctions intuitives pour la manipulation de données, nommées d’après l’action qu’elles accomplissent. Ces fonctions ont l’avantage de prendre comme premier argument le <em>data frame</em>, ce qui permet de se référer à des colonnes sans se référer à l’objet entier (vous pouvez donc laisser tomber les signes <code>$</code> !). Nous allons voir les fonctions les plus courantes et utiles pour manipuler le tableau au format long qu’on vient tout juste de créer, <code>croissance_long</code>. Commençons par charger le package.</p>
+<p>Le package <code>dplyr</code> contient des fonctions intuitives pour
+la manipulation de données, nommées d’après l’action qu’elles
+accomplissent. Ces fonctions ont l’avantage de prendre comme premier
+argument le <em>data frame</em>, ce qui permet de se référer à des
+colonnes sans se référer à l’objet entier (vous pouvez donc laisser
+tomber les signes <code>$</code> !). Nous allons voir les fonctions les
+plus courantes et utiles pour manipuler le tableau au format long qu’on
+vient tout juste de créer, <code>croissance_long</code>. Commençons par
+charger le package.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
@@ -1744,7 +1885,9 @@ Commençons par installer et charger le package <code>tidyr</code>
 </div>
 </div>
 <h2 id="rename">Renommer des variables avec <code>rename()</code></h2>
-<p>Cette fonction vous permet de changer les noms d’une ou de plusieurs colonnes. Le premier argument est le data frame, les arguments suivants prennent la forme <em>Nouveau nom = Ancien nom</em> :</p>
+<p>Cette fonction vous permet de changer les noms d’une ou de plusieurs
+colonnes. Le premier argument est le data frame, les arguments suivants
+prennent la forme <em>Nouveau nom = Ancien nom</em> :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Supprimer les majuscules dans les noms de colonnes et ecraser le data frame</span>
@@ -1756,19 +1899,178 @@ Commençons par installer et charger le package <code>tidyr</code>
 </code></pre>
 </div>
 </div>
-<h2 id="filter">Filter des lignes avec <code>filter()</code> et sélectionner des colonnes avec <code>select()</code></h2>
-<p>Ces deux fonctions vous permettent de réduire votre data frame en ne gardant que les lignes et les colonnes souhaitées. La fonction <code>filter()</code> fonctionne très bien pour sélectionner des lignes à l’aide d’opérations logiques, et la fonction <code>select()</code> vous permet de spécifier quelles colonnes garder.<br />
-*La fonction <code>select()</code> entre souvent en conflit avec des fonctions d’autres packages portant le même nom, il est donc recommandé de toujours utiliser la notation <code>dplyr::select()</code>.</p>
+<h2 id="filter">Filter des lignes avec <code>filter()</code> et
+sélectionner des colonnes avec <code>select()</code></h2>
+<p>Ces deux fonctions vous permettent de réduire votre data frame en ne
+gardant que les lignes et les colonnes souhaitées. La fonction
+<code>filter()</code> fonctionne très bien pour sélectionner des lignes
+à l’aide d’opérations logiques, et la fonction <code>select()</code>
+vous permet de spécifier quelles colonnes garder.<br />
+*La fonction <code>select()</code> entre souvent en conflit avec des
+fonctions d’autres packages portant le même nom, il est donc recommandé
+de toujours utiliser la notation <code>dplyr::select()</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Conserver les observations pour les zones 2 et 3, et pour les années 2009 à 2011</span>
 <span class='va'>croissance_selection</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>croissance_long</span>, <span class='va'>zone</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>, <span class='fl'>3</span><span class='op'>)</span>, <span class='va'>annee</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"X2009"</span>, <span class='st'>"X2010"</span>, <span class='st'>"X2011"</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='co'># </span>
+<span class='co'># A titre de comparaison, l'equivalent en R basique serait :</span>
+<span class='va'>croissance_long</span><span class='op'>[</span><span class='va'>croissance_long</span><span class='op'>$</span><span class='va'>zone</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>, <span class='fl'>3</span><span class='op'>)</span> <span class='op'>&amp;</span> <span class='va'>croissance_long</span><span class='op'>$</span><span class='va'>annee</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"X2009"</span>, <span class='st'>"X2010"</span>, <span class='st'>"X2011"</span><span class='op'>)</span>, <span class='op'>]</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 102 × 4
+    zone indiv annee croissance
+   &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;dbl&gt;
+ 1     2   373 X2009        4.8
+ 2     2   373 X2010        8.7
+ 3     2   373 X2011        6.3
+ 4     2   379 X2009        8.6
+ 5     2   379 X2010        4.9
+ 6     2   379 X2011        5.9
+ 7     2   383 X2009       11.7
+ 8     2   383 X2010        7.9
+ 9     2   383 X2011        8  
+10     2   389 X2009        6.8
+# … with 92 more rows</code></pre>
+</div>
+<p>Notez qu’ici, nous utilisons <code>%in%</code> comme opérateur
+logique parce que nous cherchons une liste de valeurs exactes
+(caractères). Si vous vouliez garder les observations dans une gamme de
+valeurs <em>numériques</em>, vous pourriez utiliser soit deux opérateurs
+logiques dans votre fonction <code>filter()</code>, par exemple
+<code>longueur &gt; 4 &amp; longueur &lt;= 6.5</code> soit la fonction
+<code>between()</code>, par exemple
+<code>between(longueur, 4, 6.5)</code>.</p>
+<p>Vous voyez comment <code>dplyr</code> permet d’éviter des répétitions
+et d’appeler directement les noms de colonnes sans avoir besoin
+d’appeler à chaque fois l’objet ?</p>
+<h3 id="a-propos-des-guillemets">A propos des guillemets</h3>
+<p>Vous avez peut-être remarqué que nous utilisons parfois des
+guillemets <code>" "</code> pour appeler des valeurs, et que d’autres
+fois nous ne les utilisons pas. Cela dépend de :</p>
+<ul>
+<li><em>Si la valeur est un caractère ou un nombre</em> : ci-dessus,
+<code>zone</code> est un entier, nous n’avons donc pas besoin de
+guillemets, alors que la variable <code>annee</code> est un caractère,
+et nécessite donc des guillemets.<br />
+</li>
+<li><em>Si vous faites appel à un objet existant ou à une valeur que R
+ne connaît pas encore</em>. Par exemple,
+<code>nouvel.objet &lt;- croissance_long</code> duplique notre objet
+alors que <code>nouvel.objet &lt;- "croissance_long"</code> crée un
+nouvel objet contenant une chaîne de caractères. Cela demande du temps
+et de la pratique pour s’habituer à ces conventions, mais vous y
+arriverez en gardant un oeil sur les messages d’erreur.</li>
+</ul>
+<p>Maintenant que nous savons sélectionner des lignes, faisons la même
+chose avec les colonnes !</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Retirons la colonne zone</span>
+<span class='va'>croissance_sans_zone</span> <span class='op'>&lt;-</span> <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>croissance_long</span>, <span class='va'>indiv</span>, <span class='va'>annee</span>, <span class='va'>croissance</span><span class='op'>)</span>
+<span class='va'>croissance_sans_zone</span> <span class='op'>&lt;-</span> <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='op'>-</span><span class='va'>zone</span><span class='op'>)</span>  <span class='co'># le signe moins retire la colonne</span>
+
+<span class='co'># Equivalent en R basique </span>
+<span class='va'>croissance_long</span><span class='op'>[</span>, <span class='op'>-</span><span class='fl'>1</span><span class='op'>]</span>  <span class='co'># retire la premiere colonne</span>
+
+<span class='co'># select() vous permet de renommer et d'ordonner les colonnes</span>
+<span class='va'>croissance_sans_zone</span> <span class='op'>&lt;-</span> <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>croissance_long</span>, Annee <span class='op'>=</span> <span class='va'>annee</span>, ID.Arbrisseau <span class='op'>=</span> <span class='va'>indiv</span>,
+                                      Croissance <span class='op'>=</span> <span class='va'>croissance</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<h2 id="créer-de-nouvelles-colonnes-avec-mutate">Créer de nouvelles
+colonnes avec <code>mutate()</code></h2>
+<p>Créer une nouvelle colonne peut être pratique pour réaliser une
+opération sur plusieurs colonnes, ou pour changer le classement d’un
+facteur. La fonction <code>mutate()</code> vous permet de faire cela, et
+vous permet également de définir le nom de la colonne. Nous utilisons
+ici l’objet <code>croissance_long</code> pour créer une colonne
+représentant la croissance totale pour la période 2007-2012 :</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>croissance_totale</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span><span class='va'>croissance</span>, croissance.totale <span class='op'>=</span> <span class='va'>X2007</span> <span class='op'>+</span> <span class='va'>X2008</span> <span class='op'>+</span> <span class='va'>X2009</span> <span class='op'>+</span> <span class='va'>X2010</span>, <span class='va'>X2011</span>, <span class='va'>X2012</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>Nous allons maintenant voir comment faire la même chose avec notre
+objet <code>croissance_long</code> à l’aide de deux fonctions qui vont
+bien ensemble : <code>group_by()</code> et <code>summarise()</code>.</p>
+<h2
+id="effectuer-des-opérations-sur-des-portions-de-données-à-laide-de-group_by">Effectuer
+des opérations sur des portions de données à l’aide de
+<code>group_by()</code></h2>
+<p>La chose la plus important à comprendre avec cette fonction est que
+nous ne voyez pas de changement visible dans votre data frame. Elle crée
+une structure de groupement interne, ce qui veut dire que toutes les
+fonctions exécutées par la suite utiliseront ces groupes, et pas le jeu
+de données en entier, comme entrée. Cette fonction est très utile pour
+calculer des statistiques pour différents sites, traitements, espèces,
+etc.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>croissance_groupes</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>croissance_long</span>, <span class='va'>indiv</span><span class='op'>)</span>  <span class='co'># nous regroupons nos données par individu</span>
+</code></pre>
+</div>
+</div>
+<p>Comparez <code>croissance_groupes</code> et
+<code>croissance_long</code> : les deux objets semblent parfaitement
+identiques. Utilisons maintenant <code>summarise()</code> pour calculer
+la croissance totale de chaque individu au cours des années.</p>
+<h2 id="calculer-des-statistiques-avec-summarise">Calculer des
+statistiques avec <code>summarise()</code></h2>
+<p>Cette fonction aggrègera toujours votre data frame d’origine,
+c’est-à-dire que le data frame résultant sera plus court que l’original.
+Ici, nous allons comparer le calcul de la croissance totale sur la même
+période pour les données d’origine et pour les données
+<strong>groupées</strong>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>synthese1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span><span class='op'>(</span><span class='va'>croissance_long</span>, croissance.totale <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>croissance</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>synthese2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span><span class='op'>(</span><span class='va'>croissance_groupes</span>, croissance.totale <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>croissance</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>Le premier objet, <code>synthese1</code>, contient la somme de toutes
+les croissances dans le jeu de données (tous les individus et toutes les
+annees).<br />
+L’objet <code>synthese2</code> contient la somme des croissance
+<strong>par individu</strong>, notre variable de groupement. Nous
+pouvons calculer toutes sortes de statistiques, comme la moyenne ou
+l’écart-type de la croissance au cours du temps :</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>synthese3</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span><span class='op'>(</span><span class='va'>croissance_groupes</span>, 
+                       croissance.totale <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>croissance</span><span class='op'>)</span>,
+                       moyenne.croissance <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>croissance</span><span class='op'>)</span>,
+                       ecart.type.croissance <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>croissance</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>Nous perdons toutes les autres colonnes non spécifiées dans l’étape
+de groupement. Par exemple, nous avons perdu la colonne
+<code>annee</code> car il y a 5 années pour chaque individu, et nous
+synthétisons les données pour obtenir une seule valeur de croissance par
+individu. Il est donc préférable de créer un nouvel objet pour la
+synthèse de données, pour ne pas perdre le jeu de données global. Vous
+pourrez toujours joindre des informations ultérieurement, comme nous
+allons le voir maintenant.</p>
+<h2 id="joindre-des-jeux-de-données-avec-..._join">Joindre des jeux de
+données avec <code>..._join()</code></h2>
+<p>Parfois, vous avez de multiples fichiers de données pour un même
+projet : un fichier pour des mesures sur différents sites, un autre
+fichier avec des données climatiques pour ces sites, et parfois des
+métadonnées concernant votre expérimentation. En fonction des besoins de
+votre analyse, il peut être utile de regrouper toutes ces informations
+dans un seul tableau.</p>
+<p>Imaginons que les données avec lesquelles nous travaillons viennent
+d’une expérimentation lors de laquelle certaines plantes ont reçu un
+traitement à la chaleur à l’aide d’une serre portable (T), d’autres
+plantes ont été fertilisées (F), certaines ont reçu les deux traitements
+(TF) et des plantes ont servi de contrôle (C). Nous importons ces
+données contenues dans le fichier ``</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
