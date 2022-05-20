@@ -118,7 +118,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["img/boxplot.png","img/data_cowboy.png","img/empetrum.jpg","manipuler-donnees-tidyverse_files/anchor-4.2.2/anchor.min.js","manipuler-donnees-tidyverse_files/bowser-1.9.3/bowser.min.js","manipuler-donnees-tidyverse_files/distill-2.2.21/template.v2.js","manipuler-donnees-tidyverse_files/header-attrs-2.11/header-attrs.js","manipuler-donnees-tidyverse_files/jquery-3.6.0/jquery-3.6.0.js","manipuler-donnees-tidyverse_files/jquery-3.6.0/jquery-3.6.0.min.js","manipuler-donnees-tidyverse_files/jquery-3.6.0/jquery-3.6.0.min.map","manipuler-donnees-tidyverse_files/popper-2.6.0/popper.min.js","manipuler-donnees-tidyverse_files/tippy-6.2.7/tippy-bundle.umd.min.js","manipuler-donnees-tidyverse_files/tippy-6.2.7/tippy-light-border.css","manipuler-donnees-tidyverse_files/tippy-6.2.7/tippy.css","manipuler-donnees-tidyverse_files/tippy-6.2.7/tippy.umd.min.js","manipuler-donnees-tidyverse_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["img/boxplot.png","img/boxplot2.png","img/data_cowboy.png","img/empetrum.jpg","img/tidy_data_1.png","img/tidy_data_2.png","manipuler-donnees-tidyverse_files/anchor-4.2.2/anchor.min.js","manipuler-donnees-tidyverse_files/bowser-1.9.3/bowser.min.js","manipuler-donnees-tidyverse_files/distill-2.2.21/template.v2.js","manipuler-donnees-tidyverse_files/header-attrs-2.11/header-attrs.js","manipuler-donnees-tidyverse_files/jquery-3.6.0/jquery-3.6.0.js","manipuler-donnees-tidyverse_files/jquery-3.6.0/jquery-3.6.0.min.js","manipuler-donnees-tidyverse_files/jquery-3.6.0/jquery-3.6.0.min.map","manipuler-donnees-tidyverse_files/popper-2.6.0/popper.min.js","manipuler-donnees-tidyverse_files/tippy-6.2.7/tippy-bundle.umd.min.js","manipuler-donnees-tidyverse_files/tippy-6.2.7/tippy-light-border.css","manipuler-donnees-tidyverse_files/tippy-6.2.7/tippy.css","manipuler-donnees-tidyverse_files/tippy-6.2.7/tippy.umd.min.js","manipuler-donnees-tidyverse_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1498,7 +1498,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#basic">Manipulation de données à l’aide de la syntaxe R basique</a></li>
 <li><a href="#tidyverse">Manipuler des données à l’aide du Tidyverse</a></li>
-<li><a href="#mettre-en-forme-des-données-à-laide-de-tidyr-tidyr">Mettre en forme des données à l’aide de <code>tidyr</code> {tidyr}</a></li>
+<li><a href="#tidyr">Mettre en forme des données à l’aide de <code>tidyr</code></a></li>
+<li><a href="#defi">Défi</a></li>
 </ul>
 </nav>
 </div>
@@ -1850,9 +1851,106 @@ Que donnera <code>rep(seq(0, 30, 10), 4)</code> ?
 </div>
 </div>
 <p>Le code <code>\n</code> dans l’argument <code>main</code> permet de répartir le titre du graphique sur deux lignes.</p>
-<h1 id="mettre-en-forme-des-données-à-laide-de-tidyr-tidyr">Mettre en forme des données à l’aide de <code>tidyr</code> {tidyr}</h1>
 <div class="layout-chunk" data-layout="l-body-outset">
 <p><img src="img/boxplot.png" width="328" /></p>
+</div>
+<h1 id="tidyr">Mettre en forme des données à l’aide de <code>tidyr</code></h1>
+<p>La façon dont nous récoltons des données sur le terrain ou au laboratoire peut être très différente du format que nous aimerions utiliser dans R. Lors d’une expérimentation, nous préférons utiliser des tableaux préparés à l’avance, à remplir au fur et à mesure. Par exemple, pour suivre la hauteur de semis soumis à différents traitements, nous pourrions utiliser un tableau similaire à celui-ci :</p>
+<div class="layout-chunk" data-layout="l-body-outset">
+<p><img src="img/tidy_data_1.png" width="581" /></p>
+</div>
+<p>Ce tableau, pratique à remplir, n’est pas idéal pour une analyse (8 mesures par ligne).</p>
+<p>Il est préférable d’utiliser des données au format dit <strong>“tidy”</strong> :</p>
+<ul>
+<li>chaque ligne représente une observation<br />
+</li>
+<li>chaque colonne contient une variable</li>
+</ul>
+<p>Dans le cas présent, les mêmes données au format tidy ressembleraient à ceci :</p>
+<div class="layout-chunk" data-layout="l-body-outset">
+<p><img src="img/tidy_data_2.png" width="336" /></p>
+</div>
+<p>Ce format facilite les analyses en permettant les comparaisons entre groupes, traitements, espèces, …</p>
+<p>Le jeu de données que nous avons utilisé dans ce tutoriel, <code>croissance</code> n’est pas dans un format tidy : la même variable, la mesure de croissance, est répartie sur plusieurs colonnes représentant les années.</p>
+<p>Le package <code>tidyr</code> permet de jongler entre un format large et un format long, grâce aux fonctions <code>pivot_...()</code>.</p>
+<p>Commençons par installer et charger le package :</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Installer le package tidyr</span>
+
+<span class='fu'><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages</a></span><span class='op'>(</span><span class='st'>"tidyr"</span><span class='op'>)</span>
+
+<span class='co'># Charger le package</span>
+
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyr.tidyverse.org'>tidyr</a></span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h2 id="format-long-avec-pivot_longer">Format long avec <code>pivot_longer()</code></h2>
+<p>La fonction <code>pivot_longer()</code> permet de passer d’un format large à un format long. La syntaxe est un peu plus complexe que les fonctions que nous avons vues jusqu’à présent, car il nous préciser quelles colonnes vont être regroupées :</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Format large -&gt; format long</span>
+
+<span class='va'>croissance_long</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tidyr.tidyverse.org/reference/pivot_longer.html'>pivot_longer</a></span><span class='op'>(</span><span class='va'>croissance</span>,  <span class='co'># objet a transformer</span>
+                                cols <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>X2007</span><span class='op'>:</span><span class='va'>X2012</span><span class='op'>)</span>,  <span class='co'># colonnes a regrouper</span>
+                                names_to <span class='op'>=</span> <span class='st'>"Annee"</span>,  <span class='co'># nom de la colonne contenant les noms des colonnes regroupees</span>
+                                values_to <span class='op'>=</span> <span class='st'>"Croissance"</span><span class='op'>)</span>  <span class='co'># nom de la colonne contenant les valeurs</span>
+</code></pre>
+</div>
+</div>
+<p>Ce format long permet de visualiser facilement la croissance annuelle en fonction de l’annee :</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Boxplot de la croissance par annee</span>
+
+<span class='fu'><a href='https://rdrr.io/r/graphics/boxplot.html'>boxplot</a></span><span class='op'>(</span><span class='va'>Croissance</span> <span class='op'>~</span> <span class='va'>Annee</span>,
+        data <span class='op'>=</span> <span class='va'>croissance_long</span>,
+        main <span class='op'>=</span> <span class='st'>"Croissance annuelle"</span>,
+        ylab <span class='op'>=</span> <span class='st'>"Croissance (cm)"</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body-outset">
+<p><img src="img/boxplot2.png" width="328" /></p>
+</div>
+<h2 id="format-large-avec-pivot_wider">Format large avec <code>pivot_wider()</code></h2>
+<p>La fonction <code>pivot_wider()</code> effectue l’opération inverse :</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Format long -&gt; format large</span>
+
+<span class='va'>croissance_large</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tidyr.tidyverse.org/reference/pivot_wider.html'>pivot_wider</a></span><span class='op'>(</span><span class='va'>croissance_long</span>,
+                                names_from <span class='op'>=</span> <span class='va'>Annee</span>,  
+                                values_from <span class='op'>=</span> <span class='va'>Croissance</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h1 id="defi">Défi</h1>
+<p>Mettons en pratique ce que nous avons vu dans ce tutoriel pour tenter de répondre à la question suivante : quelle est l’effet de différentes épices sur la taille des flammes crachées par trois espèces de dragons ?</p>
+<p>Commençons par importer les données :</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>dragons</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"https://raw.githubusercontent.com/codons-blog/C-02-ManipulationDonnees/main/dragons.csv"</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>Voici les objectifs :</p>
+<ul>
+<li>mettre en forme les données (format tidy)<br />
+</li>
+<li>créer un boxplot pour chaque espèce montrant l’effet des épices sur la taille des flammes</li>
+</ul>
+<p>Malheureusement, vous apprenez que votre assistant a été peu scrupuleux lors de la collecte des données, et il vous faut corriger les erreurs suivantes :</p>
+<ul>
+<li>la quatrième épice n’était pas du paprika, mais du curcuma<br />
+</li>
+<li>l’appareil de mesure était mal calibré lors du traitement au tabasco, mais seulement pour les Magyar à pointes : les mesures sont plus courtes de 30 cm que la réalité<br />
+</li>
+<li>les tailles sont données en centimètres, alors qu’elles devraient être en mètres.</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+
 </div>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->

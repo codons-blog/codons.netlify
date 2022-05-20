@@ -354,8 +354,115 @@ boxplot(X2012 ~ Traitement, data = expe,
 
 Le code `\n` dans l'argument `main` permet de répartir le titre du graphique sur deux lignes.
 
-# Mettre en forme des données à l'aide de `tidyr` {tidyr}
-
 ```{r, layout="l-body-outset"}
 knitr::include_graphics("img/boxplot.png")
 ```
+
+# Mettre en forme des données à l'aide de `tidyr` {#tidyr}
+
+La façon dont nous récoltons des données sur le terrain ou au laboratoire peut être très différente du format que nous aimerions utiliser dans R. Lors d'une expérimentation, nous préférons utiliser des tableaux préparés à l'avance, à remplir au fur et à mesure. Par exemple, pour suivre la hauteur de semis soumis à différents traitements, nous pourrions utiliser un tableau similaire à celui-ci :  
+
+```{r, layout="l-body-outset"}
+knitr::include_graphics("img/tidy_data_1.png")
+```
+
+Ce tableau, pratique à remplir, n'est pas idéal pour une analyse (8 mesures par ligne). 
+
+Il est préférable d'utiliser des données au format dit **"tidy"** :  
+
+- chaque ligne représente une observation  
+- chaque colonne contient une variable  
+
+Dans le cas présent, les mêmes données au format tidy ressembleraient à ceci : 
+
+```{r, layout="l-body-outset"}
+knitr::include_graphics("img/tidy_data_2.png")
+```
+
+Ce format facilite les analyses en permettant les comparaisons entre groupes, traitements, espèces, ...
+
+Le jeu de données que nous avons utilisé dans ce tutoriel, `croissance` n'est pas dans un format tidy : la même variable, la mesure de croissance, est répartie sur plusieurs colonnes représentant les années.
+
+Le package `tidyr` permet de jongler entre un format large et un format long, grâce aux fonctions `pivot_...()`.
+
+Commençons par installer et charger le package : 
+
+```{r, echo=TRUE, eval=FALSE}
+# Installer le package tidyr
+
+install.packages("tidyr")
+
+# Charger le package
+
+library(tidyr)
+```
+
+## Format long avec `pivot_longer()`
+
+La fonction `pivot_longer()` permet de passer d'un format large à un format long. La syntaxe est un peu plus complexe que les fonctions que nous avons vues jusqu'à présent, car il nous préciser quelles colonnes vont être regroupées : 
+
+```{r, echo=TRUE, eval=FALSE}
+# Format large -> format long
+
+croissance_long <- pivot_longer(croissance,  # objet a transformer
+                                cols = c(X2007:X2012),  # colonnes a regrouper
+                                names_to = "Annee",  # nom de la colonne contenant les noms des colonnes regroupees
+                                values_to = "Croissance")  # nom de la colonne contenant les valeurs
+```
+
+Ce format long permet de visualiser facilement la croissance annuelle en fonction de l'annee : 
+
+```{r, echo=TRUE, eval=FALSE}
+# Boxplot de la croissance par annee
+
+boxplot(Croissance ~ Annee,
+        data = croissance_long,
+        main = "Croissance annuelle",
+        ylab = "Croissance (cm)")
+
+```
+
+```{r, layout="l-body-outset"}
+knitr::include_graphics("img/boxplot2.png")
+```
+
+## Format large avec `pivot_wider()`
+
+La fonction `pivot_wider()` effectue l'opération inverse : 
+
+```{r, echo=TRUE, eval=FALSE}
+# Format long -> format large
+
+croissance_large <- pivot_wider(croissance_long,
+                                names_from = Annee,  
+                                values_from = Croissance)
+```
+
+# Défi {#defi}
+
+Mettons en pratique ce que nous avons vu dans ce tutoriel pour tenter de répondre à la question suivante : quelle est l'effet de différentes épices sur la taille des flammes crachées par trois espèces de dragons ?
+
+Commençons par importer les données : 
+
+```{r, echo=TRUE, eval=FALSE}
+dragons <- read.csv("https://raw.githubusercontent.com/codons-blog/C-02-ManipulationDonnees/main/dragons.csv")
+```
+
+Voici les objectifs : 
+
+- mettre en forme les données (format tidy)  
+- créer un boxplot pour chaque espèce montrant l'effet des épices sur la taille des flammes
+
+Malheureusement, vous apprenez que votre assistant a été peu scrupuleux lors de la collecte des données, et il vous faut corriger les erreurs suivantes : 
+
+- la quatrième épice n'était pas du paprika, mais du curcuma  
+- l'appareil de mesure était mal calibré lors du traitement au tabasco, mais seulement pour les Magyar à pointes : les mesures sont plus courtes de 30 cm que la réalité  
+- les tailles sont données en centimètres, alors qu'elles devraient être en mètres.
+
+```{r, echo=TRUE, eval=FALSE, collapse=TRUE}
+# Importer les données
+
+dragons <- read.csv("https://raw.githubusercontent.com/codons-blog/C-02-ManipulationDonnees/main/dragons.csv")
+```
+
+
