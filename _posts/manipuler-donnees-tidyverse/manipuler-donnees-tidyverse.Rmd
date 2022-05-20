@@ -197,3 +197,13 @@ library(dplyr)
 Nous aurions également pu installer la suite `tidyverse` : `install.packages("tidyverse")`.
 
 ### Renommer des variables avec `rename()` {#rename}
+
+Cette fonction s'utilise de la façon suivante : `rename(objet, nouveau_nom = ancien_nom)`.
+
+```{r, echo=TRUE, eval=FALSE}
+# Supprimer les majuscules dans les noms de colonnes
+croissance2 <- rename(croissance,
+                      zone = Zone,
+                      indiv = Indiv)
+```
+
