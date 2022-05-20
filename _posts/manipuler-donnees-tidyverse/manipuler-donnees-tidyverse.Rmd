@@ -18,7 +18,7 @@ output:
     toc: true
     toc_depth: 1
     self_contained: false
-draft: true
+draft: false
 ---
 
 
@@ -207,3 +207,155 @@ croissance2 <- rename(croissance,
                       indiv = Indiv)
 ```
 
+### Filtrer des données avec `filter()` {#filter}
+
+Cette fonction permet de sélectionner des lignes à l'aide d'opérateurs logiques :
+
+```{r, echo=TRUE, eval=FALSE}
+# Conserver les observations pour les zones 2 et 3 et les individus dont les identifiants sont compris entre 350 et 450
+
+croissance2_filtre <- filter(croissance2,
+                             zone %in% c(2, 3),
+                             indiv %in% c(350:450))
+
+# Autre possibilité avec la fonction between()
+
+croissance2_filtre <- filter(croissance2,
+                             zone %in% c(2, 3),
+                             between(indiv, 350, 450))
+```
+
+### Sélectionner des colonnes avec `select()` {#select}
+
+Alors que `filter()` permet de sélectionner des lignes, `select()` permet de sélectionner des colonnes : 
+
+```{r, echo=TRUE, eval=FALSE}
+# Conserver ou supprimer des colonnes
+
+croissance2_selection <- select(croissance2,
+                                indiv, X2007:X2012)  # conserver des colonnes
+
+croissance2_selection <- select(croissance2,
+                                -zone)  # supprimer une colonne
+
+```
+
+La fonction `select()` permet également de renommer des colonnes et d'en modifier l'ordre : 
+
+```{r, echo=TRUE, eval=FALSE}
+# Renommer et modifier l'ordre de colonnes
+
+croissance2_selection <- select(croissance2,
+                                ID = indiv, zone, X2007:X2012)
+
+# Avec la fonction everything()
+croissance2_selection <- select(croissance2,
+                                ID = indiv, everything())
+```
+
+### Trier des données avec `arrange()` {#arrange}
+
+```{r, echo=TRUE, eval=FALSE}
+# Trier par ordre croissant sur l'annee 2007
+
+croissance2_tri <- arrange(croissance2,
+                           X2007)
+
+# Trier par ordre decroissant sur l'annee 2008
+
+croissance2_tri <- arrange(croissance2,
+                           desc(X2007))
+```
+
+### Créer de nouvelles colonnes avec `mutate()` {#mutate}
+
+La fonction `mutate()` permet de créer un nouvelle colonne, par exemple pour effectuer une opération sur plusieurs colonnes, en choisissant le nom de cette nouvelle colonne :
+
+```{r, echo=TRUE, eval=FALSE}
+# Calculer la croissance totale pour chaque individu entre 2007 et 2012
+croissance2_totale <- mutate(croissance2,
+                            croissance.totale = X2007 + X2008 + X2009 + X2010 + X2011 + X2012)
+
+```
+
+La fonction `transmute()` crée une nouvelle colonne mais supprime toutes les autres colonnes.
+
+#### Définir des groupes avec `group_by()` {#groupby}
+
+La fonction `group_by()` permet de définir des groupes dans nos données : 
+
+```{r, echo=TRUE, eval=FALSE}
+# Grouper par zone
+
+croissance2_groupes <- group_by(croissance2, zone)
+```
+
+Si vous comparez les deux objets `croissance2` et `croissance2_groupes`, vous ne verrez aucune différence, si ce n'est la mention `Groups` quand vous affichez l'objet `croissance2_groupes`. Les groupes créés sont sous-jacents, jusqu'à ce qu'on applique une autre fonction à ces groupes. 
+
+#### Agréger des lignes avec `summarise()` {#summarise}
+
+La fonction `summarise()` permet d'agréger des lignes en appliquant une fonction sur une ou plusieurs colonnes :
+
+```{r, echo=TRUE, eval=FALSE}
+# Croissance totale pour l'ensemble des individus pour l'annee 2007
+
+synthese1 <- summarise(croissance2, croisance.2007 = sum(X2007))
+
+# Croissance totale pour l'ensemble des individus groupes par zone pour l'annee 2007
+synthese2 <- summarise(croissance2_groupes, croissance.2007 = sum(X2007))
+```
+
+Les données étant agrégées, le tableau de sortie sera plus court que les données d'origine.
+
+Vous pouvez utiliser cette fonction pour calculer différentes statistiques sur vos données : 
+
+```{r, echo=TRUE, eval=FALSE}
+synthese3 <- summarise(croissance2_groupes,
+                       croissance.totale.2007 = sum(X2007),
+                       croissance.moyenne.2007 = mean(X2007),
+                       croissance.ecart.type.2007 = sd(X2007))
+```
+
+#### Joindre des données avec `..._join()` {#join}
+
+Il peut arriver que des données concernant un même projet se trouvent dans plusieurs fichiers (par exemple un fichier avec des mesures sur différents sites, et un autre fichier avec des données climatiques pour ces différents sites).
+Les fonctions `..._join()` permettent de joindre plusieurs jeux de données.
+
+Le fichier `traitements.csv` contient des informations sur des traitements appliqués aux plantes : températe (T), fertilisation (F), température + fertilisation (TF), ou contrôle (C).
+
+```{r, echo=TRUE, eval=FALSE}
+# Importer le jeu de données (attention : utilisation de read.csv2)
+traitements <- read.csv2("https://raw.githubusercontent.com/codons-blog/C-02-ManipulationDonnees/main/traitements.csv")
+```
+
+Il existe différents manières de joindre des données, selon ce qu'on souhaite faire des données qui ne sont pas partagées par les jeux de données. Nous allons utiliser la fonction `left_join()` pour garder toutes les données présentes dans `croissance2` et y ajouter les données présentes dans `traitements` : 
+
+```{r, echo=TRUE, eval=FALSE}
+# Joindre deux jeux de données
+
+expe <- left_join(croissance2, traitements,
+                  by = c("zone" = "Zone",
+                         "indiv" = "Indiv"))
+
+```
+
+Les noms des deux colonnes communes aux deux jeux de données diffèrent, nous précisons donc les équivalences dans l'argument `by()`. Si les noms avaient été strictement identiques, nous aurions pu nous passer de cet argument.
+
+Nous pouvons générer un boxplot pour vérifier si les traitements ont eu un effet sur la croissance de nos plantes en 2012 : 
+
+```{r, echo=TRUE, eval=FALSE}
+# Effet des traitements sur la croissance en 2012
+
+boxplot(X2012 ~ Traitement, data = expe,
+        main = "Effet de la température (T) et de la fertilisation (F)\nsur la croissance",
+        ylab = "Croissance totale en 2012")
+
+```
+
+Le code `\n` dans l'argument `main` permet de répartir le titre du graphique sur deux lignes.
+
+# Mettre en forme des données à l'aide de `tidyr` {tidyr}
+
+```{r, layout="l-body-outset"}
+knitr::include_graphics("img/boxplot.png")
+```
