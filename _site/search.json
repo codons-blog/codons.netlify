@@ -6,14 +6,14 @@
       "description": "Tutoriels pour apprendre à coder en R",
       "author": [],
       "contents": "\r\nLe contenu des tutoriels de ce site a été adapté du site ourcodingclub avec l’autorisation des auteurs.\r\n\r\nListe des tutoriels disponibles à ce jour :\r\nPremiers pas avec R\r\n\r\n\r\n\r\n",
-      "last_modified": "2022-05-20T16:44:47+02:00"
+      "last_modified": "2022-05-20T17:55:29+02:00"
     },
     {
       "path": "index.html",
       "title": "Tutoriels R",
       "author": [],
       "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2022-05-20T16:44:48+02:00"
+      "last_modified": "2022-05-20T17:55:30+02:00"
     },
     {
       "path": "links.html",
@@ -21,7 +21,7 @@
       "description": "Liens utiles pour approfondir",
       "author": [],
       "contents": "\r\nTélécharger R et RStudioAide-mémoiresRépertoires GitHub des tutoriels\r\nTélécharger R et RStudio\r\nThe Comprehensive R Archive NetworkRStudio\r\nAide-mémoires\r\nRStudio (anglais / français)\r\nR basique (anglais)\r\nRépertoires GitHub des tutoriels\r\nPremiers pas avec R\r\n\r\n\r\n\r\n",
-      "last_modified": "2022-05-20T16:44:49+02:00"
+      "last_modified": "2022-05-20T17:55:31+02:00"
     }
   ],
   "collections": ["posts/posts.json"]
