@@ -456,7 +456,7 @@ Voici les objectifs :
 Malheureusement, vous apprenez que votre assistant a été peu scrupuleux lors de la collecte des données, et il vous faut corriger les erreurs suivantes : 
 
 - la quatrième épice n'était pas du paprika, mais du curcuma  
-- l'appareil de mesure était mal calibré lors du traitement au tabasco, mais seulement pour les Magyar à pointes : les mesures sont plus courtes de 30 cm que la réalité  
+- l'appareil de mesure était mal calibré lors du traitement au tabasco, mais seulement pour les Magyar à pointes : les mesures sont plus longues de 30 cm que la réalité  
 - les tailles sont données en centimètres, alors qu'elles devraient être en mètres.
 
 ```{r, echo=TRUE, eval=FALSE, collapse=TRUE}
