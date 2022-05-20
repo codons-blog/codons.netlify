@@ -1497,6 +1497,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#basic">Manipulation de données à l’aide de la syntaxe R basique</a></li>
+<li><a href="#tidyverse">Manipuler des données à l’aide du Tidyverse</a></li>
 </ul>
 </nav>
 </div>
@@ -1651,6 +1652,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <aside>
 Que donnera <code>rep(seq(0, 30, 10), 4)</code> ?
 </aside>
+<h3 id="modifier-des-donnees">Modifier des donnees</h3>
 <p>Lorsqu’on manipule des données, il est préférable de créer une <strong>copie de travail</strong> de l’objet d’origine pour ne pas l’écraser.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -1679,6 +1681,23 @@ Que donnera <code>rep(seq(0, 30, 10), 4)</code> ?
 </code></pre>
 </div>
 </div>
+<h1 id="tidyverse">Manipuler des données à l’aide du Tidyverse</h1>
+<p>Le <a href="https://www.tidyverse.org/"><strong>Tidyverse</strong></a> est un ensemble de packages permettant notamment d’<strong>importer des données (<code>readr</code>)</strong>, de les <strong>manipuler (<code>dplyr</code> et <code>tidyr</code>)</strong>, de créer des <strong>graphiques (<code>ggplot2</code>)</strong>, de <strong>manipuler des chaînes de caractères (<code>stringr</code>)</strong>, …</p>
+<h2 id="dplyr">Les principales fonctions de <code>dplyr()</code></h2>
+<p>Les fonctions du package <a href="https://dplyr.tidyverse.org/"><code>dplyr</code></a> sont nommées d’après l’action qu’elles accomplissent, ce qui les rend plutôt intuitives.</p>
+<p>Commençons par installer et charger le package <code>dplyr</code> :</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Installer le package dplyr</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages</a></span><span class='op'>(</span><span class='st'>"dplyr"</span><span class='op'>)</span>
+
+<span class='co'># Charger le package dplyr</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>Nous aurions également pu installer la suite <code>tidyverse</code> : <code>install.packages("tidyverse")</code>.</p>
+<h3 id="rename">Renommer des variables avec <code>rename()</code></h3>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
