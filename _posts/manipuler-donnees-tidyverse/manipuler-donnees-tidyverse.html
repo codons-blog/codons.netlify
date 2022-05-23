@@ -118,7 +118,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["img/boxplot.png","img/boxplot2.png","img/data_cowboy.png","img/empetrum.jpg","img/tidy_data_1.png","img/tidy_data_2.png","manipuler-donnees-tidyverse_files/anchor-4.2.2/anchor.min.js","manipuler-donnees-tidyverse_files/bowser-1.9.3/bowser.min.js","manipuler-donnees-tidyverse_files/distill-2.2.21/template.v2.js","manipuler-donnees-tidyverse_files/header-attrs-2.11/header-attrs.js","manipuler-donnees-tidyverse_files/jquery-3.6.0/jquery-3.6.0.js","manipuler-donnees-tidyverse_files/jquery-3.6.0/jquery-3.6.0.min.js","manipuler-donnees-tidyverse_files/jquery-3.6.0/jquery-3.6.0.min.map","manipuler-donnees-tidyverse_files/popper-2.6.0/popper.min.js","manipuler-donnees-tidyverse_files/tippy-6.2.7/tippy-bundle.umd.min.js","manipuler-donnees-tidyverse_files/tippy-6.2.7/tippy-light-border.css","manipuler-donnees-tidyverse_files/tippy-6.2.7/tippy.css","manipuler-donnees-tidyverse_files/tippy-6.2.7/tippy.umd.min.js","manipuler-donnees-tidyverse_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["img/boxplot.png","img/boxplot2.png","img/data_cowboy.png","img/empetrum.jpg","img/tidy_data_1.png","img/tidy_data_2.png","img/tidyverse_celestial.png","manipuler-donnees-tidyverse_files/anchor-4.2.2/anchor.min.js","manipuler-donnees-tidyverse_files/bowser-1.9.3/bowser.min.js","manipuler-donnees-tidyverse_files/distill-2.2.21/template.v2.js","manipuler-donnees-tidyverse_files/header-attrs-2.11/header-attrs.js","manipuler-donnees-tidyverse_files/header-attrs-2.14/header-attrs.js","manipuler-donnees-tidyverse_files/jquery-3.6.0/jquery-3.6.0.js","manipuler-donnees-tidyverse_files/jquery-3.6.0/jquery-3.6.0.min.js","manipuler-donnees-tidyverse_files/jquery-3.6.0/jquery-3.6.0.min.map","manipuler-donnees-tidyverse_files/popper-2.6.0/popper.min.js","manipuler-donnees-tidyverse_files/tippy-6.2.7/tippy-bundle.umd.min.js","manipuler-donnees-tidyverse_files/tippy-6.2.7/tippy-light-border.css","manipuler-donnees-tidyverse_files/tippy-6.2.7/tippy.css","manipuler-donnees-tidyverse_files/tippy-6.2.7/tippy.umd.min.js","manipuler-donnees-tidyverse_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1499,10 +1499,8 @@ class="uri">https://ourcodingclub.github.io/tutorials/data-manip-intro</a>
 <h3>Contents</h3>
 <ul>
 <li><a href="#introduction">Introduction</a></li>
-<li><a href="#basic">Manipulation de données à l’aide de la syntaxe R
-basique</a></li>
-<li><a href="#tidyverse">Manipuler des données à l’aide du
-Tidyverse</a></li>
+<li><a href="#dplyr">Manipuler des données avec
+<code>dplyr</code></a></li>
 <li><a href="#tidyr">Mettre en forme des données à l’aide de
 <code>tidyr</code></a></li>
 <li><a href="#defi">Défi</a></li>
@@ -1511,6 +1509,8 @@ Tidyverse</a></li>
 </div>
 <p><em>Ce tutoriel est adapté de <a
 href="https://ourcodingclub.github.io/tutorials/data-manip-intro/index.html">Basic
+data manipulation</a> et <a
+href="https://ourcodingclub.github.io/tutorials/data-manip-efficient/">Efficient
 data manipulation</a> du site <a
 href="https://ourcodingclub.github.io/">Our Coding Club</a>.</em></p>
 <h1 id="introduction">Introduction</h1>
@@ -1522,30 +1522,24 @@ href="https://raw.githubusercontent.com/allisonhorst/stats-illustrations/master/
 Horst</a></p>
 <p><br></p>
 <p>Les formats de nos données peuvent varier, et un format utile et
-pratique dans un cas précis ne le sera pas forcément pour un autre. La
+pratique dans un cas précis ne le sera pas forcément dans un autre. La
 maîtrise des outils de manipulation et de mise en forme des données est
 donc essentielle !</p>
+<p><br></p>
 <p>Les <strong>objectifs</strong> de ce tutoriel sont les suivants :</p>
 <ol type="1">
-<li>Utiliser la <code>syntaxe R basique</code> pour manipuler des
-données</li>
 <li>Utiliser les outils du package <code>dplyr</code> pour manipuler des
 données<br />
 </li>
 <li>Mettre en forme des données à l’aide du package
 <code>tidyr</code></li>
 </ol>
+<p><br></p>
 <p>Voici les <strong>étapes</strong> que nous allons suivre pour y
 parvenir :<br />
 <br></p>
 <ol type="1">
-<li><a href="#basic">Utiliser la syntaxe R basique pour manipuler des
-données</a><br />
-</li>
-<li><a href="#tidyverse">Exploiter les outils du Tidyverse pour
-manipuler des données</a> :
-<ul>
-<li><a href="#dplyr">Explorer les principales fonctions de
+<li><p><a href="#dplyr">Explorer les principales fonctions de
 <code>dplyr</code></a> : <a href="#rename"><code>rename()</code></a>, <a
 href="#filter"><code>filter()</code></a>, <a
 href="#select"><code>select()</code></a>, <a
@@ -1553,38 +1547,75 @@ href="#arrange"><code>arrange()</code></a>, <a
 href="#mutate"><code>mutate()</code></a>, <a
 href="#groupby"><code>group_by()</code></a>, <a
 href="#summarise"><code>summarise()</code></a>, <a
-href="#join"><code>join()</code></a><br />
-</li>
-<li><a href="#tidyr">Mettre en forme des données à l’aide du package
+href="#join"><code>join()</code></a></p></li>
+<li><p><a href="#tidyr">Mettre en forme des données à l’aide du package
 <code>tidyr</code></a> : <a
 href="#pivotlonger"><code>pivot_longer()</code></a>, <a
-href="#pivotwider"><code>pivot_wider()</code></a><br />
-</li>
-</ul></li>
-<li><a href="#defi">Défi</a></li>
+href="#pivotwider"><code>pivot_wider()</code></a></p></li>
+<li><p><a href="#defi">Défi</a></p></li>
 </ol>
 <p><br></p>
 <p>Vous pouvez revoir les bases de R et RStudio dans le tutoriel <a
 href="https://codons.netlify.app/posts/premiers-pas-avec-r/">Premiers
 pas avec R</a>.</p>
 <p><br></p>
-<h2 id="importer-les-données">Importer les données</h2>
-<p>Ouvrez un nouveau script et importez le jeu de données
-<code>croissance.csv</code>. Il s’agit d’un tableau contenant des
-mesures de croissance annuelle de tiges d’arbrisseaux (<em>Empetrum
-nigrum</em> ou camarine noire) qui poussent dans des dunes de sable. Ces
-arbrisseaux sont situés dans des zones, allant de la plus proche (2) à
-la plus éloignée (7) de la mer.</p>
+<h2 id="le-tidyverse">Le Tidyverse</h2>
+<p>Le <a
+href="https://www.tidyverse.org/"><strong>Tidyverse</strong></a> est un
+ensemble de packages permettant notamment d’<strong>importer des données
+(<code>readr</code>)</strong>, de les <strong>manipuler
+(<code>dplyr</code> et <code>tidyr</code>)</strong>, de créer des
+<strong>graphiques (<code>ggplot2</code>)</strong>, de <strong>manipuler
+des chaînes de caractères (<code>stringr</code>)</strong>, de
+<strong>créer des documents (<code>rmarkdown</code>)</strong>, …</p>
+<div class="layout-chunk" data-layout="l-body-outset">
+<p><img src="img/tidyverse_celestial.png" width="1024" /></p>
+</div>
+<p>Dessin de <a
+href="https://github.com/allisonhorst/stats-illustrations/blob/master/rstats-artwork/tidyverse_celestial.png">Allison
+Horst</a></p>
+<p><br></p>
+<p>Commençons par <strong>installer la suite Tidyverse</strong> (nous
+pourrions également installer séparément les packages que nous allons
+utiliser, <code>dplyr</code> et <code>tidyr</code>) :</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Installer le Tidyverse</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages</a></span><span class='op'>(</span><span class='st'>"tidyverse"</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h1 id="dplyr">Manipuler des données avec <code>dplyr</code></h1>
+<p>Les fonctions du package <a
+href="https://dplyr.tidyverse.org/"><code>dplyr</code></a> sont
+<strong>nommées d’après l’action qu’elles accomplissent</strong>, ce qui
+les rend plutôt intuitives.</p>
+<p>Nous allons utiliser un jeu de données contenant des mesures de
+croissance annuelle de tiges d’arbrisseaux qui poussent dans des dunes
+de sable (<a
+href="https://fr.wikipedia.org/wiki/Empetrum_nigrum"><em>Empetrum
+nigrum</em></a> ou camarine noire). La distance à la mer de chaque
+individu est codée dans la variable catégorique “zone” : le chiffre 2
+représente la zone la plus proche de la mer et le chiffre 7 la zone la
+plus éloignée de la mer.</p>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/empetrum.jpg" width="100%" /></p>
 </div>
-<p><a href="https://fr.wikipedia.org/wiki/Empetrum_nigrum"><em>Empetrum
-nigrum</em> ou camarine noire</a></p>
+<p>Nous allons importer les données à l’aide du package <a
+href="https://readr.tidyverse.org/"><code>readr</code></a> inclus dans
+le Tidyverse : <code>read_csv()</code>. Cette fonction permet d’importer
+un fichier .csv directement depuis une page web en utilisant le lien de
+la page à la place du chemin vers un fichier présent sur notre
+ordinateur.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Ateliers codons!</span>
 <span class='co'># 02 - Manipulation de donnees</span>
 <span class='co'># Lundi 30/05/2022</span>
+
+<span class='co'># Charger le Tidyverse</span>
+
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>
 
 <span class='co'># Definir le repertoire de travail</span>
 
@@ -1592,38 +1623,105 @@ nigrum</em> ou camarine noire</a></p>
 
 <span class='co'># Importer le jeu de donnees</span>
 
-<span class='va'>croissance</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"https://raw.githubusercontent.com/codons-blog/C-02-ManipulationDonneesBases/main/croissance.csv"</span><span class='op'>)</span>
+<span class='va'>croissance</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"https://raw.githubusercontent.com/codons-blog/C-02-ManipulationDonneesBases/main/croissance.csv"</span><span class='op'>)</span>
 
-<span class='co'># Explorer les donnees</span>
+<span class='co'># Exploration rapide des donnees</span>
 
 <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>croissance</span><span class='op'>)</span>  <span class='co'># affiche les premieres lignes</span>
 <span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>croissance</span><span class='op'>)</span>  <span class='co'># types des variables</span>
-<span class='va'>croissance</span><span class='op'>$</span><span class='va'>Indiv</span>  <span class='co'># individus</span>
-<span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>croissance</span><span class='op'>$</span><span class='va'>Indiv</span><span class='op'>)</span><span class='op'>)</span>  <span class='co'># nombre d'individus</span>
+<span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>croissance</span><span class='op'>$</span><span class='va'>Zone</span><span class='op'>)</span>  <span class='co'># affiche les valeurs distinctes de la variable Zone</span>
+<span class='va'>croissance</span><span class='op'>$</span><span class='va'>Indiv</span>  <span class='co'># affiche toutes les valeurs de la variable Indiv</span>
+<span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>croissance</span><span class='op'>$</span><span class='va'>Indiv</span><span class='op'>)</span><span class='op'>)</span>  <span class='co'># affiche le nombre d'individus</span>
 </code></pre>
 </div>
 </div>
-<h1 id="basic">Manipulation de données à l’aide de la syntaxe R
-basique</h1>
-<p>Vous pouvez sélectionner une partie des données à l’aide des crochets
-<code>[ , ]</code> : le chiffre à gauche de la virgule désigne les
-lignes et le chiffre à droite les colonnes. Un espace vide à gauche ou à
-droite de la virgule permet de sélectionner respectivement toutes les
-lignes ou toutes les colonnes.</p>
+<p>Lorsque vous exécutez la commande <code>head(croissance)</code>, vous
+pouvez remarquer dans la console la mention “A tibble”. Un <a
+href="https://tibble.tidyverse.org/index.html"><strong>tibble</strong></a>
+est un format particulier de tableau utilisé par le Tidyverse. Il
+présente notamment l’avantage d’afficher directement sous les noms de
+colonnes les types de variables.</p>
+<h2 id="rename">Renommer des variables avec <code>rename()</code></h2>
+<p>Cette fonction s’utilise de la façon suivante :
+<code>rename(objet, nouveau_nom = ancien_nom)</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Selectionner une partie des donnees</span>
-
-<span class='va'>croissance</span><span class='op'>[</span><span class='fl'>2</span>, <span class='fl'>5</span><span class='op'>]</span>  <span class='co'># 2e ligne, 5e colonne</span>
-<span class='va'>croissance</span><span class='op'>[</span><span class='fl'>6</span>, <span class='op'>]</span>  <span class='co'># 6e ligne</span>
-<span class='va'>croissance</span><span class='op'>[</span><span class='fl'>6</span>, <span class='op'>]</span><span class='op'>$</span><span class='va'>Indiv</span>  <span class='co'># 6e ligne de la variable Indiv</span>
-<span class='va'>croissance</span><span class='op'>[</span><span class='va'>croissance</span><span class='op'>$</span><span class='va'>Indiv</span> <span class='op'>==</span> <span class='fl'>603</span>, <span class='op'>]</span>  <span class='co'># individu n°603</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Supprimer les majuscules dans les noms de colonnes</span>
+<span class='va'>croissance2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span><span class='va'>croissance</span>,
+                      zone <span class='op'>=</span> <span class='va'>Zone</span>,
+                      indiv <span class='op'>=</span> <span class='va'>Indiv</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
-<h3 id="les-opérateurs-logiques">Les opérateurs logiques</h3>
-<p>Voici les opérateurs les plus fréquemment utilisés pour sélectionner
-des données :</p>
+<p><br> Avant d’aller plus loin, nous allons voir une fonctionnalité
+extrêmement pratique : <strong>le “pipe”</strong>. Un pipe permet
+d’enchaîner les opérations, et présente plusieurs avantages, notamment
+de rendre le <strong>code plus clair et lisible</strong> et de rendre
+possible l’<strong>auto-complétion</strong> (à l’aide de la touche
+<code>Tab</code>).</p>
+<p>Le pipe fait partie du package <a
+href="https://magrittr.tidyverse.org/"><code>magrittr</code></a>, inclus
+dans le Tidyverse.</p>
+<p>Un pipe se place à la fin d’un ligne sous la forme
+<code>%&gt;%</code>, ce qui donne, si nous reprenons la dernière
+commande exécutée :</p>
+<aside>
+Raccourci clavier : <code>Ctrl + Shift + M</code>
+</aside>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Utilisation du pipe</span>
+<span class='va'>croissance2</span> <span class='op'>&lt;-</span> <span class='va'>croissance</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span>zone <span class='op'>=</span> <span class='va'>Zone</span>,
+         indiv <span class='op'>=</span> <span class='va'>Indiv</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h2 id="select">Sélectionner des colonnes avec
+<code>select()</code></h2>
+<p>Cette fonction permet de sélectionner des colonnes, en précisant
+lesquelles conserver ou supprimer :</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Conserver des colonnes</span>
+
+<span class='va'>croissance2_selection</span> <span class='op'>&lt;-</span> <span class='va'>croissance2</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>indiv</span>, <span class='va'>`2007`</span><span class='op'>:</span><span class='va'>`2012`</span><span class='op'>)</span>
+
+<span class='co'># Supprimer une colonne</span>
+
+<span class='va'>croissance2_selection</span> <span class='op'>&lt;-</span> <span class='va'>croissance2</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='op'>-</span><span class='va'>zone</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>La fonction <code>select()</code> permet également de renommer des
+colonnes et d’en modifier l’ordre :</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Renommer et modifier l'ordre de colonnes</span>
+
+<span class='va'>croissance2_selection</span> <span class='op'>&lt;-</span> <span class='va'>croissance</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span>zone <span class='op'>=</span> <span class='va'>Zone</span>, indiv <span class='op'>=</span> <span class='va'>Indiv</span>, <span class='va'>`2007`</span><span class='op'>:</span><span class='va'>`2012`</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>L’opérateur <code>:</code> permet de construire une
+<strong>séquence</strong> : dans le cas présent il permet de
+sélectionner toutes les colonnes entre 2007 et 2012.</p>
+<p>Si vous souhaitez renommer ou déplacer seulement quelques colonnes,
+vous pouvez utiliser la fonction <code>everything()</code> pour
+sélecionner toutes les colonnes restantes :</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>croissance2_selection</span> <span class='op'>&lt;-</span> <span class='va'>croissance</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span>zone <span class='op'>=</span> <span class='va'>Zone</span>, indiv <span class='op'>=</span> <span class='va'>Indiv</span>, <span class='fu'><a href='https://tidyselect.r-lib.org/reference/everything.html'>everything</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h2 id="filter">Filtrer des données avec <code>filter()</code></h2>
+<p>Cette fonction permet de sélectionner des lignes à l’aide
+d’opérateurs logiques, dont les plus courants sont les suivants :</p>
 <table>
 <thead>
 <tr class="header">
@@ -1674,6 +1772,47 @@ des données :</p>
 </tr>
 </tbody>
 </table>
+<p>Voyons comment utiliser ces opérateurs logiques :</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Selectionner l'individu n°603</span>
+
+<span class='va'>croissance2</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>indiv</span> <span class='op'>==</span> <span class='fl'>603</span><span class='op'>)</span>
+
+<span class='co'># Selectionner les zones 2, 3 et 4</span>
+
+<span class='va'>croissance2</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>zone</span> <span class='op'>&lt;=</span> <span class='fl'>4</span><span class='op'>)</span>
+<span class='va'>croissance2</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='op'>!</span><span class='va'>zone</span> <span class='op'>&gt;=</span> <span class='fl'>5</span><span class='op'>)</span>
+
+<span class='co'># Selectionner les zones 2 et 7</span>
+
+<span class='va'>croissance2</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>zone</span> <span class='op'>==</span> <span class='fl'>2</span> <span class='op'>|</span> <span class='va'>zone</span> <span class='op'>==</span> <span class='fl'>7</span><span class='op'>)</span>
+<span class='va'>croissance2</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>zone</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>, <span class='fl'>7</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='co'># Selectionner les individus dans la zone 2 avec des identifiants entre 300 et 400</span>
+<span class='va'>croissance2</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>zone</span> <span class='op'>==</span> <span class='fl'>2</span>, <span class='va'>indiv</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='fl'>300</span><span class='op'>:</span><span class='fl'>400</span><span class='op'>)</span>
+<span class='va'>croissance2</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>zone</span> <span class='op'>==</span> <span class='fl'>2</span>, <span class='fu'><a href='https://dplyr.tidyverse.org/reference/between.html'>between</a></span><span class='op'>(</span><span class='va'>indiv</span>, <span class='fl'>300</span>, <span class='fl'>400</span><span class='op'>)</span><span class='op'>)</span>
+
+
+<span class='co'># Autre possibilité avec la fonction between()</span>
+
+<span class='va'>croissance2_filtre</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>croissance2</span>,
+                             <span class='va'>zone</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>, <span class='fl'>3</span><span class='op'>)</span>,
+                             <span class='fu'><a href='https://dplyr.tidyverse.org/reference/between.html'>between</a></span><span class='op'>(</span><span class='va'>indiv</span>, <span class='fl'>350</span>, <span class='fl'>450</span><span class='op'>)</span><span class='op'>)</span>
+
+
+
+
+
+<span class='co'># Selectionner les zones 2 et 7</span>
+<span class='va'>croissance2</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>zone</span> <span class='op'>==</span> <span class='fl'>2</span> <span class='op'>|</span> <span class='va'>zone</span> <span class='op'>==</span> <span class='fl'>7</span><span class='op'>)</span>
+<span class='va'>croissance2</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>zone</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>, <span class='fl'>7</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h3 id="les-opérateurs-logiques">Les opérateurs logiques</h3>
+<p>Voici les opérateurs les plus fréquemment utilisés pour sélectionner
+des données :</p>
 <p>Voyons comment les utiliser :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -1703,126 +1842,6 @@ fois</p></li>
 <aside>
 Que donnera <code>rep(seq(0, 30, 10), 4)</code> ?
 </aside>
-<h3 id="modifier-des-donnees">Modifier des donnees</h3>
-<p>Lorsqu’on manipule des données, il est préférable de créer une
-<strong>copie de travail</strong> de l’objet d’origine pour ne pas
-l’écraser.</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Creer une copie de travail de l'objet d'origine</span>
-
-<span class='va'>croissance2</span> <span class='op'>&lt;-</span> <span class='va'>croissance</span>
-
-<span class='co'># Modifier des noms de colonnes</span>
-
-<span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>croissance2</span><span class='op'>)</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='st'>"zone"</span>  <span class='co'># 1e colonne</span>
-<span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>croissance2</span><span class='op'>)</span><span class='op'>[</span><span class='fl'>2</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='st'>"ID"</span>  <span class='co'># 2e colonne</span>
-
-<span class='co'># Modifier une valeur</span>
-
-<span class='va'>croissance2</span><span class='op'>[</span><span class='fl'>1</span>, <span class='fl'>4</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='fl'>5.7</span>  <span class='co'># remplace la valeur dans la 1e ligne, 4e colonne par 5.7</span>
-<span class='va'>croissance2</span><span class='op'>[</span><span class='va'>croissance2</span><span class='op'>$</span><span class='va'>ID</span> <span class='op'>==</span> <span class='fl'>373</span>, <span class='op'>]</span><span class='op'>$</span><span class='va'>X2008</span> <span class='op'>&lt;-</span> <span class='fl'>5.7</span>  <span class='co'># meme chose avec des operateurs logiques</span>
-
-<span class='co'># Creer un facteur</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>croissance2</span><span class='op'>)</span>  <span class='co'># types de variables</span>
-<span class='va'>croissance2</span><span class='op'>$</span><span class='va'>zone</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>croissance2</span><span class='op'>$</span><span class='va'>zone</span><span class='op'>)</span>  <span class='co'># definir la variable zone comme facteur</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>croissance2</span><span class='op'>)</span>  <span class='co'># verification</span>
-
-<span class='co'># Modifier les niveaux d'un facteur</span>
-<span class='fu'><a href='https://rdrr.io/r/base/levels.html'>levels</a></span><span class='op'>(</span><span class='va'>croissance2</span><span class='op'>$</span><span class='va'>zone</span><span class='op'>)</span>  <span class='co'># affiche les niveaux de la variable</span>
-<span class='fu'><a href='https://rdrr.io/r/base/levels.html'>levels</a></span><span class='op'>(</span><span class='va'>croissance2</span><span class='op'>$</span><span class='va'>zone</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"A"</span>, <span class='st'>"B"</span>, <span class='st'>"C"</span>, <span class='st'>"D"</span>, <span class='st'>"E"</span>, <span class='st'>"F"</span><span class='op'>)</span>
-</code></pre>
-</div>
-</div>
-<h1 id="tidyverse">Manipuler des données à l’aide du Tidyverse</h1>
-<p>Le <a
-href="https://www.tidyverse.org/"><strong>Tidyverse</strong></a> est un
-ensemble de packages permettant notamment d’<strong>importer des données
-(<code>readr</code>)</strong>, de les <strong>manipuler
-(<code>dplyr</code> et <code>tidyr</code>)</strong>, de créer des
-<strong>graphiques (<code>ggplot2</code>)</strong>, de <strong>manipuler
-des chaînes de caractères (<code>stringr</code>)</strong>, …</p>
-<h2 id="dplyr">Les principales fonctions de <code>dplyr()</code></h2>
-<p>Les fonctions du package <a
-href="https://dplyr.tidyverse.org/"><code>dplyr</code></a> sont nommées
-d’après l’action qu’elles accomplissent, ce qui les rend plutôt
-intuitives.</p>
-<p>Commençons par installer et charger le package <code>dplyr</code>
-:</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Installer le package dplyr</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages</a></span><span class='op'>(</span><span class='st'>"dplyr"</span><span class='op'>)</span>
-
-<span class='co'># Charger le package dplyr</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
-</code></pre>
-</div>
-</div>
-<p>Nous aurions également pu installer la suite <code>tidyverse</code> :
-<code>install.packages("tidyverse")</code>.</p>
-<h3 id="rename">Renommer des variables avec <code>rename()</code></h3>
-<p>Cette fonction s’utilise de la façon suivante :
-<code>rename(objet, nouveau_nom = ancien_nom)</code>.</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Supprimer les majuscules dans les noms de colonnes</span>
-<span class='va'>croissance2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span><span class='va'>croissance</span>,
-                      zone <span class='op'>=</span> <span class='va'>Zone</span>,
-                      indiv <span class='op'>=</span> <span class='va'>Indiv</span><span class='op'>)</span>
-</code></pre>
-</div>
-</div>
-<h3 id="filter">Filtrer des données avec <code>filter()</code></h3>
-<p>Cette fonction permet de sélectionner des lignes à l’aide
-d’opérateurs logiques :</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Conserver les observations pour les zones 2 et 3 et les individus dont les identifiants sont compris entre 350 et 450</span>
-
-<span class='va'>croissance2_filtre</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>croissance2</span>,
-                             <span class='va'>zone</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>, <span class='fl'>3</span><span class='op'>)</span>,
-                             <span class='va'>indiv</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>350</span><span class='op'>:</span><span class='fl'>450</span><span class='op'>)</span><span class='op'>)</span>
-
-<span class='co'># Autre possibilité avec la fonction between()</span>
-
-<span class='va'>croissance2_filtre</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>croissance2</span>,
-                             <span class='va'>zone</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>, <span class='fl'>3</span><span class='op'>)</span>,
-                             <span class='fu'><a href='https://dplyr.tidyverse.org/reference/between.html'>between</a></span><span class='op'>(</span><span class='va'>indiv</span>, <span class='fl'>350</span>, <span class='fl'>450</span><span class='op'>)</span><span class='op'>)</span>
-</code></pre>
-</div>
-</div>
-<h3 id="select">Sélectionner des colonnes avec
-<code>select()</code></h3>
-<p>Alors que <code>filter()</code> permet de sélectionner des lignes,
-<code>select()</code> permet de sélectionner des colonnes :</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Conserver ou supprimer des colonnes</span>
-
-<span class='va'>croissance2_selection</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>croissance2</span>,
-                                <span class='va'>indiv</span>, <span class='va'>X2007</span><span class='op'>:</span><span class='va'>X2012</span><span class='op'>)</span>  <span class='co'># conserver des colonnes</span>
-
-<span class='va'>croissance2_selection</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>croissance2</span>,
-                                <span class='op'>-</span><span class='va'>zone</span><span class='op'>)</span>  <span class='co'># supprimer une colonne</span>
-</code></pre>
-</div>
-</div>
-<p>La fonction <code>select()</code> permet également de renommer des
-colonnes et d’en modifier l’ordre :</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Renommer et modifier l'ordre de colonnes</span>
-
-<span class='va'>croissance2_selection</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>croissance2</span>,
-                                ID <span class='op'>=</span> <span class='va'>indiv</span>, <span class='va'>zone</span>, <span class='va'>X2007</span><span class='op'>:</span><span class='va'>X2012</span><span class='op'>)</span>
-
-<span class='co'># Avec la fonction everything()</span>
-<span class='va'>croissance2_selection</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>croissance2</span>,
-                                ID <span class='op'>=</span> <span class='va'>indiv</span>, <span class='fu'><a href='https://tidyselect.r-lib.org/reference/everything.html'>everything</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
-</code></pre>
-</div>
-</div>
 <h3 id="arrange">Trier des données avec <code>arrange()</code></h3>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
