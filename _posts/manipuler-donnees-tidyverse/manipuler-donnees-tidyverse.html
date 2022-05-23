@@ -1439,7 +1439,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="manipuler-donnees-tidyverse_files/header-attrs-2.11/header-attrs.js"></script>
+  <script src="manipuler-donnees-tidyverse_files/header-attrs-2.14/header-attrs.js"></script>
   <script src="manipuler-donnees-tidyverse_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
   <script src="manipuler-donnees-tidyverse_files/popper-2.6.0/popper.min.js"></script>
   <link href="manipuler-donnees-tidyverse_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
@@ -1479,11 +1479,14 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <div class="dt=tag">Tidyverse</div>
 </div>
 <!--/radix_placeholder_categories-->
-<p><p>Manipuler et mettre en forme vos données à l’aide du Tidyverse.</p></p>
+<p><p>Manipuler et mettre en forme vos données à l’aide du
+Tidyverse.</p></p>
 </div>
 
 <div class="d-byline">
-  Sandra Angers-Blondin <a href="https://ourcodingclub.github.io/tutorials/data-manip-intro" class="uri">https://ourcodingclub.github.io/tutorials/data-manip-intro</a> 
+  Sandra Angers-Blondin <a
+href="https://ourcodingclub.github.io/tutorials/data-manip-intro"
+class="uri">https://ourcodingclub.github.io/tutorials/data-manip-intro</a> 
   
 ,   Jonathan Kitt (adaptation) true 
   
@@ -1496,51 +1499,87 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <h3>Contents</h3>
 <ul>
 <li><a href="#introduction">Introduction</a></li>
-<li><a href="#basic">Manipulation de données à l’aide de la syntaxe R basique</a></li>
-<li><a href="#tidyverse">Manipuler des données à l’aide du Tidyverse</a></li>
-<li><a href="#tidyr">Mettre en forme des données à l’aide de <code>tidyr</code></a></li>
+<li><a href="#basic">Manipulation de données à l’aide de la syntaxe R
+basique</a></li>
+<li><a href="#tidyverse">Manipuler des données à l’aide du
+Tidyverse</a></li>
+<li><a href="#tidyr">Mettre en forme des données à l’aide de
+<code>tidyr</code></a></li>
 <li><a href="#defi">Défi</a></li>
 </ul>
 </nav>
 </div>
-<p><em>Ce tutoriel est adapté de <a href="https://ourcodingclub.github.io/tutorials/data-manip-intro/index.html">Basic data manipulation</a> du site <a href="https://ourcodingclub.github.io/">Our Coding Club</a>.</em></p>
+<p><em>Ce tutoriel est adapté de <a
+href="https://ourcodingclub.github.io/tutorials/data-manip-intro/index.html">Basic
+data manipulation</a> du site <a
+href="https://ourcodingclub.github.io/">Our Coding Club</a>.</em></p>
 <h1 id="introduction">Introduction</h1>
 <div class="layout-chunk" data-layout="l-body-outset">
 <p><img src="img/data_cowboy.png" width="2500" /></p>
 </div>
-<p>Dessin de <a href="https://raw.githubusercontent.com/allisonhorst/stats-illustrations/master/rstats-artwork/data_cowboy.png">Allison Horst</a></p>
+<p>Dessin de <a
+href="https://raw.githubusercontent.com/allisonhorst/stats-illustrations/master/rstats-artwork/data_cowboy.png">Allison
+Horst</a></p>
 <p><br></p>
-<p>Les formats de nos données peuvent varier, et un format utile et pratique dans un cas précis ne le sera pas forcément pour un autre. La maîtrise des outils de manipulation et de mise en forme des données est donc essentielle !</p>
+<p>Les formats de nos données peuvent varier, et un format utile et
+pratique dans un cas précis ne le sera pas forcément pour un autre. La
+maîtrise des outils de manipulation et de mise en forme des données est
+donc essentielle !</p>
 <p>Les <strong>objectifs</strong> de ce tutoriel sont les suivants :</p>
 <ol type="1">
-<li>Utiliser la <code>syntaxe R basique</code> pour manipuler des données</li>
-<li>Utiliser les outils du package <code>dplyr</code> pour manipuler des données<br />
+<li>Utiliser la <code>syntaxe R basique</code> pour manipuler des
+données</li>
+<li>Utiliser les outils du package <code>dplyr</code> pour manipuler des
+données<br />
 </li>
-<li>Mettre en forme des données à l’aide du package <code>tidyr</code></li>
+<li>Mettre en forme des données à l’aide du package
+<code>tidyr</code></li>
 </ol>
-<p>Voici les <strong>étapes</strong> que nous allons suivre pour y parvenir :<br />
+<p>Voici les <strong>étapes</strong> que nous allons suivre pour y
+parvenir :<br />
 <br></p>
 <ol type="1">
-<li><a href="#basic">Utiliser la syntaxe R basique pour manipuler des données</a><br />
+<li><a href="#basic">Utiliser la syntaxe R basique pour manipuler des
+données</a><br />
 </li>
-<li><a href="#tidyverse">Exploiter les outils du Tidyverse pour manipuler des données</a> :
+<li><a href="#tidyverse">Exploiter les outils du Tidyverse pour
+manipuler des données</a> :
 <ul>
-<li><a href="#dplyr">Explorer les principales fonctions de <code>dplyr</code></a> : <a href="#rename"><code>rename()</code></a>, <a href="#filter"><code>filter()</code></a>, <a href="#select"><code>select()</code></a>, <a href="#arrange"><code>arrange()</code></a>, <a href="#mutate"><code>mutate()</code></a>, <a href="#groupby"><code>group_by()</code></a>, <a href="#summarise"><code>summarise()</code></a>, <a href="#join"><code>join()</code></a><br />
+<li><a href="#dplyr">Explorer les principales fonctions de
+<code>dplyr</code></a> : <a href="#rename"><code>rename()</code></a>, <a
+href="#filter"><code>filter()</code></a>, <a
+href="#select"><code>select()</code></a>, <a
+href="#arrange"><code>arrange()</code></a>, <a
+href="#mutate"><code>mutate()</code></a>, <a
+href="#groupby"><code>group_by()</code></a>, <a
+href="#summarise"><code>summarise()</code></a>, <a
+href="#join"><code>join()</code></a><br />
 </li>
-<li><a href="#tidyr">Mettre en forme des données à l’aide du package <code>tidyr</code></a> : <a href="#pivotlonger"><code>pivot_longer()</code></a>, <a href="#pivotwider"><code>pivot_wider()</code></a><br />
+<li><a href="#tidyr">Mettre en forme des données à l’aide du package
+<code>tidyr</code></a> : <a
+href="#pivotlonger"><code>pivot_longer()</code></a>, <a
+href="#pivotwider"><code>pivot_wider()</code></a><br />
 </li>
 </ul></li>
 <li><a href="#defi">Défi</a></li>
 </ol>
 <p><br></p>
-<p>Vous pouvez revoir les bases de R et RStudio dans le tutoriel <a href="https://codons.netlify.app/posts/premiers-pas-avec-r/">Premiers pas avec R</a>.</p>
+<p>Vous pouvez revoir les bases de R et RStudio dans le tutoriel <a
+href="https://codons.netlify.app/posts/premiers-pas-avec-r/">Premiers
+pas avec R</a>.</p>
 <p><br></p>
 <h2 id="importer-les-données">Importer les données</h2>
-<p>Ouvrez un nouveau script et importez le jeu de données <code>croissance.csv</code>. Il s’agit d’un tableau contenant des mesures de croissance annuelle de tiges d’arbrisseaux (<em>Empetrum nigrum</em> ou camarine noire) qui poussent dans des dunes de sable. Ces arbrisseaux sont situés dans des zones, allant de la plus proche (2) à la plus éloignée (7) de la mer.</p>
+<p>Ouvrez un nouveau script et importez le jeu de données
+<code>croissance.csv</code>. Il s’agit d’un tableau contenant des
+mesures de croissance annuelle de tiges d’arbrisseaux (<em>Empetrum
+nigrum</em> ou camarine noire) qui poussent dans des dunes de sable. Ces
+arbrisseaux sont situés dans des zones, allant de la plus proche (2) à
+la plus éloignée (7) de la mer.</p>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/empetrum.jpg" width="100%" /></p>
 </div>
-<p><a href="https://fr.wikipedia.org/wiki/Empetrum_nigrum"><em>Empetrum nigrum</em> ou camarine noire</a></p>
+<p><a href="https://fr.wikipedia.org/wiki/Empetrum_nigrum"><em>Empetrum
+nigrum</em> ou camarine noire</a></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Ateliers codons!</span>
@@ -1564,8 +1603,13 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </code></pre>
 </div>
 </div>
-<h1 id="basic">Manipulation de données à l’aide de la syntaxe R basique</h1>
-<p>Vous pouvez sélectionner une partie des données à l’aide des crochets <code>[ , ]</code> : le chiffre à gauche de la virgule désigne les lignes et le chiffre à droite les colonnes. Un espace vide à gauche ou à droite de la virgule permet de sélectionner respectivement toutes les lignes ou toutes les colonnes.</p>
+<h1 id="basic">Manipulation de données à l’aide de la syntaxe R
+basique</h1>
+<p>Vous pouvez sélectionner une partie des données à l’aide des crochets
+<code>[ , ]</code> : le chiffre à gauche de la virgule désigne les
+lignes et le chiffre à droite les colonnes. Un espace vide à gauche ou à
+droite de la virgule permet de sélectionner respectivement toutes les
+lignes ou toutes les colonnes.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Selectionner une partie des donnees</span>
@@ -1578,7 +1622,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 </div>
 <h3 id="les-opérateurs-logiques">Les opérateurs logiques</h3>
-<p>Voici les opérateurs les plus fréquemment utilisés pour sélectionner des données :</p>
+<p>Voici les opérateurs les plus fréquemment utilisés pour sélectionner
+des données :</p>
 <table>
 <thead>
 <tr class="header">
@@ -1646,16 +1691,22 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 </div>
 <h3 id="construction-de-séquences">Construction de séquences</h3>
-<p>Dans la dernière commande, la fonction <code>c(300:400)</code> permet de sélectionner les individus ayant des identifiants entre 300 et 400. Il existe d’autres façons de construire une séquence :</p>
+<p>Dans la dernière commande, la fonction <code>c(300:400)</code> permet
+de sélectionner les individus ayant des identifiants entre 300 et 400.
+Il existe d’autres façons de construire une séquence :</p>
 <ul>
-<li><p><code>seq(300, 400, 10)</code> : de 300 à 400 par incrément de 10</p></li>
-<li><p><code>rep(c(1, 2), 3)</code> : <code>1 2</code> répété 3 fois</p></li>
+<li><p><code>seq(300, 400, 10)</code> : de 300 à 400 par incrément de
+10</p></li>
+<li><p><code>rep(c(1, 2), 3)</code> : <code>1 2</code> répété 3
+fois</p></li>
 </ul>
 <aside>
 Que donnera <code>rep(seq(0, 30, 10), 4)</code> ?
 </aside>
 <h3 id="modifier-des-donnees">Modifier des donnees</h3>
-<p>Lorsqu’on manipule des données, il est préférable de créer une <strong>copie de travail</strong> de l’objet d’origine pour ne pas l’écraser.</p>
+<p>Lorsqu’on manipule des données, il est préférable de créer une
+<strong>copie de travail</strong> de l’objet d’origine pour ne pas
+l’écraser.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Creer une copie de travail de l'objet d'origine</span>
@@ -1684,10 +1735,20 @@ Que donnera <code>rep(seq(0, 30, 10), 4)</code> ?
 </div>
 </div>
 <h1 id="tidyverse">Manipuler des données à l’aide du Tidyverse</h1>
-<p>Le <a href="https://www.tidyverse.org/"><strong>Tidyverse</strong></a> est un ensemble de packages permettant notamment d’<strong>importer des données (<code>readr</code>)</strong>, de les <strong>manipuler (<code>dplyr</code> et <code>tidyr</code>)</strong>, de créer des <strong>graphiques (<code>ggplot2</code>)</strong>, de <strong>manipuler des chaînes de caractères (<code>stringr</code>)</strong>, …</p>
+<p>Le <a
+href="https://www.tidyverse.org/"><strong>Tidyverse</strong></a> est un
+ensemble de packages permettant notamment d’<strong>importer des données
+(<code>readr</code>)</strong>, de les <strong>manipuler
+(<code>dplyr</code> et <code>tidyr</code>)</strong>, de créer des
+<strong>graphiques (<code>ggplot2</code>)</strong>, de <strong>manipuler
+des chaînes de caractères (<code>stringr</code>)</strong>, …</p>
 <h2 id="dplyr">Les principales fonctions de <code>dplyr()</code></h2>
-<p>Les fonctions du package <a href="https://dplyr.tidyverse.org/"><code>dplyr</code></a> sont nommées d’après l’action qu’elles accomplissent, ce qui les rend plutôt intuitives.</p>
-<p>Commençons par installer et charger le package <code>dplyr</code> :</p>
+<p>Les fonctions du package <a
+href="https://dplyr.tidyverse.org/"><code>dplyr</code></a> sont nommées
+d’après l’action qu’elles accomplissent, ce qui les rend plutôt
+intuitives.</p>
+<p>Commençons par installer et charger le package <code>dplyr</code>
+:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Installer le package dplyr</span>
@@ -1698,9 +1759,11 @@ Que donnera <code>rep(seq(0, 30, 10), 4)</code> ?
 </code></pre>
 </div>
 </div>
-<p>Nous aurions également pu installer la suite <code>tidyverse</code> : <code>install.packages("tidyverse")</code>.</p>
+<p>Nous aurions également pu installer la suite <code>tidyverse</code> :
+<code>install.packages("tidyverse")</code>.</p>
 <h3 id="rename">Renommer des variables avec <code>rename()</code></h3>
-<p>Cette fonction s’utilise de la façon suivante : <code>rename(objet, nouveau_nom = ancien_nom)</code>.</p>
+<p>Cette fonction s’utilise de la façon suivante :
+<code>rename(objet, nouveau_nom = ancien_nom)</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Supprimer les majuscules dans les noms de colonnes</span>
@@ -1711,7 +1774,8 @@ Que donnera <code>rep(seq(0, 30, 10), 4)</code> ?
 </div>
 </div>
 <h3 id="filter">Filtrer des données avec <code>filter()</code></h3>
-<p>Cette fonction permet de sélectionner des lignes à l’aide d’opérateurs logiques :</p>
+<p>Cette fonction permet de sélectionner des lignes à l’aide
+d’opérateurs logiques :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Conserver les observations pour les zones 2 et 3 et les individus dont les identifiants sont compris entre 350 et 450</span>
@@ -1728,8 +1792,10 @@ Que donnera <code>rep(seq(0, 30, 10), 4)</code> ?
 </code></pre>
 </div>
 </div>
-<h3 id="select">Sélectionner des colonnes avec <code>select()</code></h3>
-<p>Alors que <code>filter()</code> permet de sélectionner des lignes, <code>select()</code> permet de sélectionner des colonnes :</p>
+<h3 id="select">Sélectionner des colonnes avec
+<code>select()</code></h3>
+<p>Alors que <code>filter()</code> permet de sélectionner des lignes,
+<code>select()</code> permet de sélectionner des colonnes :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Conserver ou supprimer des colonnes</span>
@@ -1742,7 +1808,8 @@ Que donnera <code>rep(seq(0, 30, 10), 4)</code> ?
 </code></pre>
 </div>
 </div>
-<p>La fonction <code>select()</code> permet également de renommer des colonnes et d’en modifier l’ordre :</p>
+<p>La fonction <code>select()</code> permet également de renommer des
+colonnes et d’en modifier l’ordre :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Renommer et modifier l'ordre de colonnes</span>
@@ -1771,8 +1838,11 @@ Que donnera <code>rep(seq(0, 30, 10), 4)</code> ?
 </code></pre>
 </div>
 </div>
-<h3 id="mutate">Créer de nouvelles colonnes avec <code>mutate()</code></h3>
-<p>La fonction <code>mutate()</code> permet de créer un nouvelle colonne, par exemple pour effectuer une opération sur plusieurs colonnes, en choisissant le nom de cette nouvelle colonne :</p>
+<h3 id="mutate">Créer de nouvelles colonnes avec
+<code>mutate()</code></h3>
+<p>La fonction <code>mutate()</code> permet de créer un nouvelle
+colonne, par exemple pour effectuer une opération sur plusieurs
+colonnes, en choisissant le nom de cette nouvelle colonne :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Calculer la croissance totale pour chaque individu entre 2007 et 2012</span>
@@ -1781,9 +1851,11 @@ Que donnera <code>rep(seq(0, 30, 10), 4)</code> ?
 </code></pre>
 </div>
 </div>
-<p>La fonction <code>transmute()</code> crée une nouvelle colonne mais supprime toutes les autres colonnes.</p>
+<p>La fonction <code>transmute()</code> crée une nouvelle colonne mais
+supprime toutes les autres colonnes.</p>
 <h4 id="groupby">Définir des groupes avec <code>group_by()</code></h4>
-<p>La fonction <code>group_by()</code> permet de définir des groupes dans nos données :</p>
+<p>La fonction <code>group_by()</code> permet de définir des groupes
+dans nos données :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Grouper par zone</span>
@@ -1792,9 +1864,14 @@ Que donnera <code>rep(seq(0, 30, 10), 4)</code> ?
 </code></pre>
 </div>
 </div>
-<p>Si vous comparez les deux objets <code>croissance2</code> et <code>croissance2_groupes</code>, vous ne verrez aucune différence, si ce n’est la mention <code>Groups</code> quand vous affichez l’objet <code>croissance2_groupes</code>. Les groupes créés sont sous-jacents, jusqu’à ce qu’on applique une autre fonction à ces groupes.</p>
+<p>Si vous comparez les deux objets <code>croissance2</code> et
+<code>croissance2_groupes</code>, vous ne verrez aucune différence, si
+ce n’est la mention <code>Groups</code> quand vous affichez l’objet
+<code>croissance2_groupes</code>. Les groupes créés sont sous-jacents,
+jusqu’à ce qu’on applique une autre fonction à ces groupes.</p>
 <h4 id="summarise">Agréger des lignes avec <code>summarise()</code></h4>
-<p>La fonction <code>summarise()</code> permet d’agréger des lignes en appliquant une fonction sur une ou plusieurs colonnes :</p>
+<p>La fonction <code>summarise()</code> permet d’agréger des lignes en
+appliquant une fonction sur une ou plusieurs colonnes :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Croissance totale pour l'ensemble des individus pour l'annee 2007</span>
@@ -1806,8 +1883,10 @@ Que donnera <code>rep(seq(0, 30, 10), 4)</code> ?
 </code></pre>
 </div>
 </div>
-<p>Les données étant agrégées, le tableau de sortie sera plus court que les données d’origine.</p>
-<p>Vous pouvez utiliser cette fonction pour calculer différentes statistiques sur vos données :</p>
+<p>Les données étant agrégées, le tableau de sortie sera plus court que
+les données d’origine.</p>
+<p>Vous pouvez utiliser cette fonction pour calculer différentes
+statistiques sur vos données :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>synthese3</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span><span class='op'>(</span><span class='va'>croissance2_groupes</span>,
@@ -1818,8 +1897,14 @@ Que donnera <code>rep(seq(0, 30, 10), 4)</code> ?
 </div>
 </div>
 <h4 id="join">Joindre des données avec <code>..._join()</code></h4>
-<p>Il peut arriver que des données concernant un même projet se trouvent dans plusieurs fichiers (par exemple un fichier avec des mesures sur différents sites, et un autre fichier avec des données climatiques pour ces différents sites). Les fonctions <code>..._join()</code> permettent de joindre plusieurs jeux de données.</p>
-<p>Le fichier <code>traitements.csv</code> contient des informations sur des traitements appliqués aux plantes : températe (T), fertilisation (F), température + fertilisation (TF), ou contrôle (C).</p>
+<p>Il peut arriver que des données concernant un même projet se trouvent
+dans plusieurs fichiers (par exemple un fichier avec des mesures sur
+différents sites, et un autre fichier avec des données climatiques pour
+ces différents sites). Les fonctions <code>..._join()</code> permettent
+de joindre plusieurs jeux de données.</p>
+<p>Le fichier <code>traitements.csv</code> contient des informations sur
+des traitements appliqués aux plantes : températe (T), fertilisation
+(F), température + fertilisation (TF), ou contrôle (C).</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Importer le jeu de données (attention : utilisation de read.csv2)</span>
@@ -1827,7 +1912,11 @@ Que donnera <code>rep(seq(0, 30, 10), 4)</code> ?
 </code></pre>
 </div>
 </div>
-<p>Il existe différents manières de joindre des données, selon ce qu’on souhaite faire des données qui ne sont pas partagées par les jeux de données. Nous allons utiliser la fonction <code>left_join()</code> pour garder toutes les données présentes dans <code>croissance2</code> et y ajouter les données présentes dans <code>traitements</code> :</p>
+<p>Il existe différents manières de joindre des données, selon ce qu’on
+souhaite faire des données qui ne sont pas partagées par les jeux de
+données. Nous allons utiliser la fonction <code>left_join()</code> pour
+garder toutes les données présentes dans <code>croissance2</code> et y
+ajouter les données présentes dans <code>traitements</code> :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Joindre deux jeux de données</span>
@@ -1838,8 +1927,12 @@ Que donnera <code>rep(seq(0, 30, 10), 4)</code> ?
 </code></pre>
 </div>
 </div>
-<p>Les noms des deux colonnes communes aux deux jeux de données diffèrent, nous précisons donc les équivalences dans l’argument <code>by()</code>. Si les noms avaient été strictement identiques, nous aurions pu nous passer de cet argument.</p>
-<p>Nous pouvons générer un boxplot pour vérifier si les traitements ont eu un effet sur la croissance de nos plantes en 2012 :</p>
+<p>Les noms des deux colonnes communes aux deux jeux de données
+diffèrent, nous précisons donc les équivalences dans l’argument
+<code>by()</code>. Si les noms avaient été strictement identiques, nous
+aurions pu nous passer de cet argument.</p>
+<p>Nous pouvons générer un boxplot pour vérifier si les traitements ont
+eu un effet sur la croissance de nos plantes en 2012 :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Effet des traitements sur la croissance en 2012</span>
@@ -1850,29 +1943,44 @@ Que donnera <code>rep(seq(0, 30, 10), 4)</code> ?
 </code></pre>
 </div>
 </div>
-<p>Le code <code>\n</code> dans l’argument <code>main</code> permet de répartir le titre du graphique sur deux lignes.</p>
+<p>Le code <code>\n</code> dans l’argument <code>main</code> permet de
+répartir le titre du graphique sur deux lignes.</p>
 <div class="layout-chunk" data-layout="l-body-outset">
 <p><img src="img/boxplot.png" width="328" /></p>
 </div>
-<h1 id="tidyr">Mettre en forme des données à l’aide de <code>tidyr</code></h1>
-<p>La façon dont nous récoltons des données sur le terrain ou au laboratoire peut être très différente du format que nous aimerions utiliser dans R. Lors d’une expérimentation, nous préférons utiliser des tableaux préparés à l’avance, à remplir au fur et à mesure. Par exemple, pour suivre la hauteur de semis soumis à différents traitements, nous pourrions utiliser un tableau similaire à celui-ci :</p>
+<h1 id="tidyr">Mettre en forme des données à l’aide de
+<code>tidyr</code></h1>
+<p>La façon dont nous récoltons des données sur le terrain ou au
+laboratoire peut être très différente du format que nous aimerions
+utiliser dans R. Lors d’une expérimentation, nous préférons utiliser des
+tableaux préparés à l’avance, à remplir au fur et à mesure. Par exemple,
+pour suivre la hauteur de semis soumis à différents traitements, nous
+pourrions utiliser un tableau similaire à celui-ci :</p>
 <div class="layout-chunk" data-layout="l-body-outset">
 <p><img src="img/tidy_data_1.png" width="581" /></p>
 </div>
-<p>Ce tableau, pratique à remplir, n’est pas idéal pour une analyse (8 mesures par ligne).</p>
-<p>Il est préférable d’utiliser des données au format dit <strong>“tidy”</strong> :</p>
+<p>Ce tableau, pratique à remplir, n’est pas idéal pour une analyse (8
+mesures par ligne).</p>
+<p>Il est préférable d’utiliser des données au format dit
+<strong>“tidy”</strong> :</p>
 <ul>
 <li>chaque ligne représente une observation<br />
 </li>
 <li>chaque colonne contient une variable</li>
 </ul>
-<p>Dans le cas présent, les mêmes données au format tidy ressembleraient à ceci :</p>
+<p>Dans le cas présent, les mêmes données au format tidy ressembleraient
+à ceci :</p>
 <div class="layout-chunk" data-layout="l-body-outset">
 <p><img src="img/tidy_data_2.png" width="336" /></p>
 </div>
-<p>Ce format facilite les analyses en permettant les comparaisons entre groupes, traitements, espèces, …</p>
-<p>Le jeu de données que nous avons utilisé dans ce tutoriel, <code>croissance</code> n’est pas dans un format tidy : la même variable, la mesure de croissance, est répartie sur plusieurs colonnes représentant les années.</p>
-<p>Le package <code>tidyr</code> permet de jongler entre un format large et un format long, grâce aux fonctions <code>pivot_...()</code>.</p>
+<p>Ce format facilite les analyses en permettant les comparaisons entre
+groupes, traitements, espèces, …</p>
+<p>Le jeu de données que nous avons utilisé dans ce tutoriel,
+<code>croissance</code> n’est pas dans un format tidy : la même
+variable, la mesure de croissance, est répartie sur plusieurs colonnes
+représentant les années.</p>
+<p>Le package <code>tidyr</code> permet de jongler entre un format large
+et un format long, grâce aux fonctions <code>pivot_...()</code>.</p>
 <p>Commençons par installer et charger le package :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -1886,8 +1994,12 @@ Que donnera <code>rep(seq(0, 30, 10), 4)</code> ?
 </code></pre>
 </div>
 </div>
-<h2 id="format-long-avec-pivot_longer">Format long avec <code>pivot_longer()</code></h2>
-<p>La fonction <code>pivot_longer()</code> permet de passer d’un format large à un format long. La syntaxe est un peu plus complexe que les fonctions que nous avons vues jusqu’à présent, car il nous préciser quelles colonnes vont être regroupées :</p>
+<h2 id="format-long-avec-pivot_longer">Format long avec
+<code>pivot_longer()</code></h2>
+<p>La fonction <code>pivot_longer()</code> permet de passer d’un format
+large à un format long. La syntaxe est un peu plus complexe que les
+fonctions que nous avons vues jusqu’à présent, car il nous préciser
+quelles colonnes vont être regroupées :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Format large -&gt; format long</span>
@@ -1899,7 +2011,8 @@ Que donnera <code>rep(seq(0, 30, 10), 4)</code> ?
 </code></pre>
 </div>
 </div>
-<p>Ce format long permet de visualiser facilement la croissance annuelle en fonction de l’annee :</p>
+<p>Ce format long permet de visualiser facilement la croissance annuelle
+en fonction de l’annee :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Boxplot de la croissance par annee</span>
@@ -1914,8 +2027,10 @@ Que donnera <code>rep(seq(0, 30, 10), 4)</code> ?
 <div class="layout-chunk" data-layout="l-body-outset">
 <p><img src="img/boxplot2.png" width="328" /></p>
 </div>
-<h2 id="format-large-avec-pivot_wider">Format large avec <code>pivot_wider()</code></h2>
-<p>La fonction <code>pivot_wider()</code> effectue l’opération inverse :</p>
+<h2 id="format-large-avec-pivot_wider">Format large avec
+<code>pivot_wider()</code></h2>
+<p>La fonction <code>pivot_wider()</code> effectue l’opération inverse
+:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Format long -&gt; format large</span>
@@ -1927,7 +2042,10 @@ Que donnera <code>rep(seq(0, 30, 10), 4)</code> ?
 </div>
 </div>
 <h1 id="defi">Défi</h1>
-<p>Mettons en pratique ce que nous avons vu dans ce tutoriel pour tenter de répondre à la question suivante : quelle est l’effet de différentes épices sur la taille des flammes crachées par trois espèces de dragons ?</p>
+<p>Mettons en pratique ce que nous avons vu dans ce tutoriel pour tenter
+de répondre à la question suivante : quelle est l’effet de différentes
+épices sur la taille des flammes crachées par trois espèces de dragons
+?</p>
 <p>Commençons par importer les données :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -1939,15 +2057,21 @@ Que donnera <code>rep(seq(0, 30, 10), 4)</code> ?
 <ul>
 <li>mettre en forme les données (format tidy)<br />
 </li>
-<li>créer un boxplot pour chaque espèce montrant l’effet des épices sur la taille des flammes</li>
+<li>créer un boxplot pour chaque espèce montrant l’effet des épices sur
+la taille des flammes</li>
 </ul>
-<p>Malheureusement, vous apprenez que votre assistant a été peu scrupuleux lors de la collecte des données, et il vous faut corriger les erreurs suivantes :</p>
+<p>Malheureusement, vous apprenez que votre assistant a été peu
+scrupuleux lors de la collecte des données, et il vous faut corriger les
+erreurs suivantes :</p>
 <ul>
 <li>la quatrième épice n’était pas du paprika, mais du curcuma<br />
 </li>
-<li>l’appareil de mesure était mal calibré lors du traitement au tabasco, mais seulement pour les Magyar à pointes : les mesures sont plus courtes de 30 cm que la réalité<br />
+<li>l’appareil de mesure était mal calibré lors du traitement au
+tabasco, mais seulement pour les Magyar à pointes : les mesures sont
+plus longues de 30 cm que la réalité<br />
 </li>
-<li>les tailles sont données en centimètres, alors qu’elles devraient être en mètres.</li>
+<li>les tailles sont données en centimètres, alors qu’elles devraient
+être en mètres.</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -1957,7 +2081,8 @@ Que donnera <code>rep(seq(0, 30, 10), 4)</code> ?
 </code></pre>
 </div>
 </div>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
