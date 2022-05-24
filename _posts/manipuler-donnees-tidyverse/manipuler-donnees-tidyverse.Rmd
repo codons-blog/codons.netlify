@@ -272,48 +272,57 @@ La fonction `mutate()` permet de créer un nouvelle colonne, par exemple pour ef
 
 ```{r, echo=TRUE, eval=FALSE}
 # Calculer la croissance totale pour chaque individu entre 2007 et 2012
-croissance2_totale <- mutate(croissance2,
-                            croissance.totale = X2007 + X2008 + X2009 + X2010 + X2011 + X2012)
 
+croissance2_totale <- croissance2 %>% 
+  mutate(croissance.totale = `2007` + `2008` + `2009` + `2010` + `2011` + `2012`)
 ```
 
-#### Définir des groupes avec `group_by()` {#groupby}
+## Définir des groupes avec `group_by()` {#groupby}
 
-La fonction `group_by()` permet de définir des groupes dans nos données : 
-
+Cette fonction permet de créer une structure interne à nos données, par exemple des individus regroupés par zone. Les fonctions exécutées après l'appel à la fonction `group_by()` tiendront compte de cette structure interne. L'utilisation de la fonction `group_by()` associée à d'autres fonctions est très utile pour calculer des statistiques pour différents sites, traitements, espèces, ...
+ 
 ```{r, echo=TRUE, eval=FALSE}
-# Grouper par zone
+# Grouper les individus par zone
 
-croissance2_groupes <- group_by(croissance2, zone)
+croissance2_groupes <- croissance2 %>% 
+  group_by(zone)
 ```
 
-Si vous comparez les deux objets `croissance2` et `croissance2_groupes`, vous ne verrez aucune différence, si ce n'est la mention `Groups` quand vous affichez l'objet `croissance2_groupes`. Les groupes créés sont sous-jacents, jusqu'à ce qu'on applique une autre fonction à ces groupes. 
+Comparez les deux objets `croissance2` et `croissance2_groupes`. La seule différence visible est la mention `Groups` quand vous affichez l'objet possédant une structure interne. Pour l'instant les groupes créés par `group_by()` sont sous-jacents, et leur intérêt sera évident en appliquant d'autres fonctions à ces groupes.
 
-#### Agréger des lignes avec `summarise()` {#summarise}
+## Agréger des lignes et calculer des statistiques avec `summarise()` {#summarise}
 
-La fonction `summarise()` permet d'agréger des lignes en appliquant une fonction sur une ou plusieurs colonnes :
+Cette permet d'agréger des lignes en appliquant une fonction sur une ou plusieurs colonnes :
 
 ```{r, echo=TRUE, eval=FALSE}
 # Croissance totale pour l'ensemble des individus pour l'annee 2007
 
-synthese1 <- summarise(croissance2, croisance.2007 = sum(X2007))
+synthese1 <- croissance2 %>% 
+  summarise(croissance.totale.2007 = sum(`2007`))
 
 # Croissance totale pour l'ensemble des individus groupes par zone pour l'annee 2007
-synthese2 <- summarise(croissance2_groupes, croissance.2007 = sum(X2007))
+
+synthese2 <- croissance2_groupes %>% 
+  summarise(croissance.totale.2007 = sum(`2007`))
 ```
 
-Les données étant agrégées, le tableau de sortie sera plus court que les données d'origine.
+Le premier objet, `synthese1`, correspond à la somme de toutes les valeurs de croissance pour tous les individus en 2007.
+Le second objet, `synthese2`, correspond à la somme des valeurs de croissance pour les individus regroupés par zone en 2007.
 
-Vous pouvez utiliser cette fonction pour calculer différentes statistiques sur vos données : 
+<aside>
+Les données étant agrégées, le tableau de sortie sera plus court que les données d'origine.
+</aside>
+
+Vous pouvez de cette façon calculer plusieurs paramètres : 
 
 ```{r, echo=TRUE, eval=FALSE}
-synthese3 <- summarise(croissance2_groupes,
-                       croissance.totale.2007 = sum(X2007),
-                       croissance.moyenne.2007 = mean(X2007),
-                       croissance.ecart.type.2007 = sd(X2007))
+synthese3 <- croissance2_groupes %>% 
+  summarise(croissance.totale.2007 = sum(`2007`),
+            croissance.moyenne.2007 = mean(`2007`),
+            croissance.ecart.type.2007 = sd(`2007`)) 
 ```
 
-#### Joindre des données avec `..._join()` {#join}
+## Joindre des données avec `..._join()` {#join}
 
 Il peut arriver que des données concernant un même projet se trouvent dans plusieurs fichiers (par exemple un fichier avec des mesures sur différents sites, et un autre fichier avec des données climatiques pour ces différents sites).
 Les fonctions `..._join()` permettent de joindre plusieurs jeux de données.
@@ -321,11 +330,19 @@ Les fonctions `..._join()` permettent de joindre plusieurs jeux de données.
 Le fichier `traitements.csv` contient des informations sur des traitements appliqués aux plantes : températe (T), fertilisation (F), température + fertilisation (TF), ou contrôle (C).
 
 ```{r, echo=TRUE, eval=FALSE}
-# Importer le jeu de données (attention : utilisation de read.csv2)
-traitements <- read.csv2("https://raw.githubusercontent.com/codons-blog/C-02-ManipulationDonnees/main/traitements.csv")
+# Importer le jeu de données (attention : utilisation de read_csv2)
+traitements <- read_csv2("https://raw.githubusercontent.com/codons-blog/C-02-ManipulationDonnees/main/traitements.csv")
 ```
 
-Il existe différents manières de joindre des données, selon ce qu'on souhaite faire des données qui ne sont pas partagées par les jeux de données. Nous allons utiliser la fonction `left_join()` pour garder toutes les données présentes dans `croissance2` et y ajouter les données présentes dans `traitements` : 
+Il existe différents manières de joindre des données, selon ce qu'on souhaite faire des données qui ne sont pas partagées.
+
+```{r, out.width="100%"}
+knitr::include_graphics("img/join-venn.png")
+```
+
+Figure tirée de [R for Data Science](https://r4ds.had.co.nz/relational-data.html)
+
+Nous allons utiliser la fonction `left_join()` pour garder toutes les données présentes dans `croissance2` et y ajouter les données présentes dans `traitements` : 
 
 ```{r, echo=TRUE, eval=FALSE}
 # Joindre deux jeux de données
@@ -337,23 +354,6 @@ expe <- left_join(croissance2, traitements,
 ```
 
 Les noms des deux colonnes communes aux deux jeux de données diffèrent, nous précisons donc les équivalences dans l'argument `by()`. Si les noms avaient été strictement identiques, nous aurions pu nous passer de cet argument.
-
-Nous pouvons générer un boxplot pour vérifier si les traitements ont eu un effet sur la croissance de nos plantes en 2012 : 
-
-```{r, echo=TRUE, eval=FALSE}
-# Effet des traitements sur la croissance en 2012
-
-boxplot(X2012 ~ Traitement, data = expe,
-        main = "Effet de la température (T) et de la fertilisation (F)\nsur la croissance",
-        ylab = "Croissance totale en 2012")
-
-```
-
-Le code `\n` dans l'argument `main` permet de répartir le titre du graphique sur deux lignes.
-
-```{r, layout="l-body-outset"}
-knitr::include_graphics("img/boxplot.png")
-```
 
 # Mettre en forme des données à l'aide de `tidyr` {#tidyr}
 
@@ -382,18 +382,6 @@ Le jeu de données que nous avons utilisé dans ce tutoriel, `croissance` n'est 
 
 Le package `tidyr` permet de jongler entre un format large et un format long, grâce aux fonctions `pivot_...()`.
 
-Commençons par installer et charger le package : 
-
-```{r, echo=TRUE, eval=FALSE}
-# Installer le package tidyr
-
-install.packages("tidyr")
-
-# Charger le package
-
-library(tidyr)
-```
-
 ## Format long avec `pivot_longer()`
 
 La fonction `pivot_longer()` permet de passer d'un format large à un format long. La syntaxe est un peu plus complexe que les fonctions que nous avons vues jusqu'à présent, car il nous préciser quelles colonnes vont être regroupées : 
@@ -401,10 +389,10 @@ La fonction `pivot_longer()` permet de passer d'un format large à un format lon
 ```{r, echo=TRUE, eval=FALSE}
 # Format large -> format long
 
-croissance_long <- pivot_longer(croissance,  # objet a transformer
-                                cols = c(X2007:X2012),  # colonnes a regrouper
-                                names_to = "Annee",  # nom de la colonne contenant les noms des colonnes regroupees
-                                values_to = "Croissance")  # nom de la colonne contenant les valeurs
+croissance_long <- croissance %>% 
+  pivot_longer(cols = `2007`:`2012`,
+               names_to = "Annee",
+               values_to = "Croissance")
 ```
 
 Ce format long permet de visualiser facilement la croissance annuelle en fonction de l'annee : 
@@ -425,18 +413,15 @@ knitr::include_graphics("img/boxplot2.png")
 
 ## Format large avec `pivot_wider()`
 
-<iframe width="560" height="315" src="https://www.youtube.com/watch?v=ylaCmXw0fBQ" frameborder="0" allowfullscreen></iframe>
-
-
-
 La fonction `pivot_wider()` effectue l'opération inverse : 
 
 ```{r, echo=TRUE, eval=FALSE}
 # Format long -> format large
 
-croissance_large <- pivot_wider(croissance_long,
-                                names_from = Annee,  
-                                values_from = Croissance)
+croissance_large <- croissance_long %>% 
+  pivot_wider(id_cols = Zone:Indiv,
+              names_from = Annee,
+              values_from = Croissance)
 ```
 
 # Défi {#defi}
