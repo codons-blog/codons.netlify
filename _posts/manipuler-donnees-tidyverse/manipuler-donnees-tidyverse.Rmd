@@ -18,7 +18,7 @@ output:
     toc: true
     toc_depth: 1
     self_contained: false
-draft: true
+draft: false
 ---
 
 
@@ -127,7 +127,7 @@ Cette fonction s'utilise de la façon suivante : `rename(objet, nouveau_nom = an
 
 ```{r, echo=TRUE, eval=FALSE}
 # Supprimer les majuscules dans les noms de colonnes
-croissance2 <- rename(croissance,
+croissance <- rename(croissance,
                       zone = Zone,
                       indiv = Indiv)
 ```
@@ -164,6 +164,17 @@ croissance2_selection <- croissance2 %>%
 
 croissance2_selection <- croissance2 %>% 
   select(-zone)
+
+```
+
+Dans les exemples ci-dessus, nous ne montrons qu'une seule fonction à la fois. Nous pourrions également enchaîner les fonctions : 
+
+```{r, echo=TRUE, eval=FALSE}
+# Enchainer les fonctions
+
+croissance2_selection <- croissance %>% 
+  rename(zone = Zone, indiv = Indiv) %>% 
+  select(indiv, `2007`:`2012`)
 
 ```
 
@@ -222,78 +233,42 @@ croissance2 %>% filter(zone %in% c(2, 7))
 # Selectionner les individus dans la zone 2 avec des identifiants entre 300 et 400
 croissance2 %>% filter(zone == 2, indiv %in% 300:400)
 croissance2 %>% filter(zone == 2, between(indiv, 300, 400))
-
-
-# Autre possibilité avec la fonction between()
-
-croissance2_filtre <- filter(croissance2,
-                             zone %in% c(2, 3),
-                             between(indiv, 350, 450))
-
-
-
-
-
-# Selectionner les zones 2 et 7
-croissance2 %>% filter(zone == 2 | zone == 7)
-croissance2 %>% filter(zone %in% c(2, 7))
 ```
 
-### Les opérateurs logiques
-
-Voici les opérateurs les plus fréquemment utilisés pour sélectionner des données : 
-
-
-Voyons comment les utiliser : 
+La commande, `indiv %in% 300:400` permet de sélectionner les individus ayant des identifiants entre 300 et 400. Il existe différentes façons de construire ce genre de séquence : 
 
 ```{r, echo=TRUE, eval=FALSE}
-# Une seule condition
+# Sequence par increments
 
-croissance[croissance$Zone < 4, ]  # zones 2 et 3
-croissance[croissance$Zone <= 4, ]  # zones 2, 3 et 4
-croissance[!croissance$Zone >= 5, ]  # zones 2, 3 et 4
+seq(300, 400, 10)  # de 300 a 400 avec un increment de 10
 
-# Deux conditions
+# Repetition d'elements
 
-croissance[croissance$Zone == 2 | croissance$Zone == 7, ]  # zones 2 et 7
-croissance[croissance$Zone == 2 & croissance$Indiv %in% c(300:400), ]  # zone 2, identifiants entre 300 et 400
+rep(c(1, 2, 3), 3)  # "1 2 3" repete 3 fois
+
+# Combinaison des deux
+
+rep(seq(0, 30, 10), 4)
+
 ```
 
-### Construction de séquences
+## Trier des données avec `arrange()` {#arrange}
 
-Dans la dernière commande, la fonction `c(300:400)` permet de sélectionner les individus ayant des identifiants entre 300 et 400. Il existe d'autres façons de construire une séquence :  
-
-- `seq(300, 400, 10)` : de 300 à 400 par incrément de 10  
-  
-- `rep(c(1, 2), 3)` : `1 2` répété 3 fois
-
-<aside>
-Que donnera `rep(seq(0, 30, 10), 4)` ?
-</aside>
-
-
-
-
-
-
-
-### Trier des données avec `arrange()` {#arrange}
+La fonction `arrange()` permet de trier des valeurs par ordre croissant ou décroissant : 
 
 ```{r, echo=TRUE, eval=FALSE}
 # Trier par ordre croissant sur l'annee 2007
 
-croissance2_tri <- arrange(croissance2,
-                           X2007)
+croissance2 %>% arrange(`2007`)
 
 # Trier par ordre decroissant sur l'annee 2008
 
-croissance2_tri <- arrange(croissance2,
-                           desc(X2007))
+croissance2 %>% arrange(desc(`2008`))
 ```
 
-### Créer de nouvelles colonnes avec `mutate()` {#mutate}
+## Créer de nouvelles colonnes avec `mutate()` {#mutate}
 
-La fonction `mutate()` permet de créer un nouvelle colonne, par exemple pour effectuer une opération sur plusieurs colonnes, en choisissant le nom de cette nouvelle colonne :
+La fonction `mutate()` permet de créer un nouvelle colonne, par exemple pour effectuer une opération impliquant plusieurs colonnes :
 
 ```{r, echo=TRUE, eval=FALSE}
 # Calculer la croissance totale pour chaque individu entre 2007 et 2012
@@ -301,8 +276,6 @@ croissance2_totale <- mutate(croissance2,
                             croissance.totale = X2007 + X2008 + X2009 + X2010 + X2011 + X2012)
 
 ```
-
-La fonction `transmute()` crée une nouvelle colonne mais supprime toutes les autres colonnes.
 
 #### Définir des groupes avec `group_by()` {#groupby}
 
@@ -451,6 +424,10 @@ knitr::include_graphics("img/boxplot2.png")
 ```
 
 ## Format large avec `pivot_wider()`
+
+<iframe width="560" height="315" src="https://www.youtube.com/watch?v=ylaCmXw0fBQ" frameborder="0" allowfullscreen></iframe>
+
+
 
 La fonction `pivot_wider()` effectue l'opération inverse : 
 
