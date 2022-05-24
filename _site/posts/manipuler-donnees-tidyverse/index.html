@@ -2626,7 +2626,7 @@ Les données étant agrégées, le tableau de sortie sera plus court que les don
 <p><img src="img/boxplot.png" width="332" /></p>
 </div>
 <h1 id="defi">Défi</h1>
-<p>Mettons en pratique ce que nous avons vu dans ce tutoriel pour tenter de répondre à la question suivante : quelle est l’effet de différentes épices sur la taille des flammes crachées par trois espèces de dragons ?</p>
+<p>Mettons en pratique ce que nous avons vu dans ce tutoriel pour tenter de répondre à la question suivante : quelle est l’effet de différentes épices sur la taille des flammes de trois espèces de dragons ?</p>
 <p>Commençons par importer les données :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2648,13 +2648,78 @@ Les données étant agrégées, le tableau de sortie sera plus court que les don
 </li>
 <li>les tailles sont données en centimètres, alors qu’elles devraient être en mètres.</li>
 </ul>
+<p>Pour corriger les erreurs de calibration, il vous faudra accéder aux valeurs mesurées pour deux critères : l’espèce et l’épice. Il existe plusieurs façons de procéder, vous pouvez cliquer ci-dessous pour en afficher quelques-unes :</p>
 <div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Importer les données</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># 1. extraire les valeurs et les corriger</span>
 
-<span class='va'>dragons</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"https://raw.githubusercontent.com/codons-blog/C-02-ManipulationDonnees/main/dragons.csv"</span><span class='op'>)</span>
+<span class='va'>valeurs_corrigees</span> <span class='op'>&lt;-</span> <span class='va'>dragons</span><span class='op'>$</span><span class='va'>tabasco</span><span class='op'>[</span><span class='va'>dragons</span><span class='op'>$</span><span class='va'>espece</span> <span class='op'>==</span> <span class='st'>"magyar_a_pointes"</span><span class='op'>]</span> <span class='op'>-</span> <span class='fl'>30</span>
+
+<span class='co'># 2. remplacer les valeurs erronees avec ifelse()</span>
+
+<span class='va'>valeurs_corrigees</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>dragons</span><span class='op'>$</span><span class='va'>espece</span> <span class='op'>==</span> <span class='st'>"magyar_a_pointes"</span>, <span class='va'>dragons</span><span class='op'>$</span><span class='va'>tabasco</span> <span class='op'>-</span> <span class='fl'>30</span>, <span class='va'>dragons</span><span class='op'>$</span><span class='va'>tabasco</span><span class='op'>)</span>
+
+<span class='co'># 3. remplacer les valeurs erronees avec case_when()</span>
+<span class='va'>valeurs_corrigees3</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/case_when.html'>case_when</a></span><span class='op'>(</span><span class='va'>dragons</span><span class='op'>$</span><span class='va'>espece</span> <span class='op'>==</span> <span class='st'>"magyar_a_pointes"</span> <span class='op'>~</span> <span class='va'>dragons</span><span class='op'>$</span><span class='va'>tabasco</span> <span class='op'>-</span> <span class='fl'>30</span>,
+                                <span class='cn'>TRUE</span> <span class='op'>~</span> <span class='va'>dragons</span><span class='op'>$</span><span class='va'>tabasco</span><span class='op'>)</span>
 </code></pre>
 </div>
+</details>
+</div>
+<p><strong>Cliquez ci-dessous pour voir la solution</strong></p>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Importer les donnees</span>
+
+<span class='va'>dragons</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"https://raw.githubusercontent.com/codons-blog/C-02-ManipulationDonnees/main/dragons.csv"</span><span class='op'>)</span>
+
+<span class='co'># Nettoyer et corriger les donnees</span>
+
+<span class='va'>dragons_propre</span> <span class='op'>&lt;-</span> <span class='va'>dragons</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span>curcuma <span class='op'>=</span> <span class='va'>paprika</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/pivot_longer.html'>pivot_longer</a></span><span class='op'>(</span>cols <span class='op'>=</span> <span class='va'>tabasco</span><span class='op'>:</span><span class='va'>curcuma</span>,
+               names_to <span class='op'>=</span> <span class='st'>"epice"</span>,
+               values_to <span class='op'>=</span> <span class='st'>"flamme_cm"</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>flamme_cm <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/case_when.html'>case_when</a></span><span class='op'>(</span><span class='va'>espece</span> <span class='op'>==</span> <span class='st'>"magyar_a_pointes"</span> <span class='op'>&amp;</span> <span class='va'>epice</span> <span class='op'>==</span> <span class='st'>"tabasco"</span> <span class='op'>~</span> <span class='va'>flamme_cm</span> <span class='op'>-</span> <span class='fl'>30</span>,
+                               <span class='cn'>TRUE</span> <span class='op'>~</span> <span class='va'>flamme_cm</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>flamme_m <span class='op'>=</span> <span class='va'>flamme_cm</span> <span class='op'>/</span> <span class='fl'>100</span><span class='op'>)</span>
+
+<span class='va'>magyar_a_pointes</span> <span class='op'>&lt;-</span> <span class='va'>dragons_propre</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>espece</span> <span class='op'>==</span> <span class='st'>"magyar_a_pointes"</span><span class='op'>)</span>
+<span class='va'>suedois_a_museau_court</span> <span class='op'>&lt;-</span> <span class='va'>dragons_propre</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>espece</span> <span class='op'>==</span> <span class='st'>"suedois_a_museau_court"</span><span class='op'>)</span>
+<span class='va'>vert_gallois</span> <span class='op'>&lt;-</span> <span class='va'>dragons_propre</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>espece</span> <span class='op'>==</span> <span class='st'>"vert_gallois"</span><span class='op'>)</span>
+
+<span class='co'># Boxplots</span>
+
+<span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span><span class='op'>(</span>mfrow <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='fu'><a href='https://rdrr.io/r/graphics/boxplot.html'>boxplot</a></span><span class='op'>(</span><span class='va'>flamme_m</span> <span class='op'>~</span> <span class='va'>epice</span>,
+        data <span class='op'>=</span> <span class='va'>magyar_a_pointes</span>,
+        xlab <span class='op'>=</span> <span class='st'>"Epice"</span>,
+        ylab <span class='op'>=</span> <span class='st'>"Longueur flamme (m)"</span>,
+        main <span class='op'>=</span> <span class='st'>"Magyar à pointes"</span><span class='op'>)</span>
+
+<span class='fu'><a href='https://rdrr.io/r/graphics/boxplot.html'>boxplot</a></span><span class='op'>(</span><span class='va'>flamme_m</span> <span class='op'>~</span> <span class='va'>epice</span>,
+        data <span class='op'>=</span> <span class='va'>suedois_a_museau_court</span>,
+        xlab <span class='op'>=</span> <span class='st'>"Epice"</span>,
+        ylab <span class='op'>=</span> <span class='st'>"Longueur flamme (m)"</span>,
+        main <span class='op'>=</span> <span class='st'>"Suédois à museau court"</span><span class='op'>)</span>
+
+<span class='fu'><a href='https://rdrr.io/r/graphics/boxplot.html'>boxplot</a></span><span class='op'>(</span><span class='va'>flamme_m</span> <span class='op'>~</span> <span class='va'>epice</span>,
+        data <span class='op'>=</span> <span class='va'>vert_gallois</span>,
+        xlab <span class='op'>=</span> <span class='st'>"Epice"</span>,
+        ylab <span class='op'>=</span> <span class='st'>"Longueur flamme (m)"</span>,
+        main <span class='op'>=</span> <span class='st'>"Vert gallois"</span><span class='op'>)</span>
+</code></pre>
+</div>
+</details>
 </div>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
