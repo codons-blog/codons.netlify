@@ -395,25 +395,10 @@ croissance_long <- croissance %>%
                values_to = "Croissance")
 ```
 
-Ce format long permet de visualiser facilement la croissance annuelle en fonction de l'annee : 
-
-```{r, echo=TRUE, eval=FALSE}
-# Boxplot de la croissance par annee
-
-boxplot(Croissance ~ Annee,
-        data = croissance_long,
-        main = "Croissance annuelle",
-        ylab = "Croissance (cm)")
-
-```
-
-```{r, layout="l-body-outset"}
-knitr::include_graphics("img/boxplot2.png")
-```
 
 ## Format large avec `pivot_wider()`
 
-La fonction `pivot_wider()` effectue l'opération inverse : 
+Cette fonction permet d'effectuer l'opération inverse : 
 
 ```{r, echo=TRUE, eval=FALSE}
 # Format long -> format large
@@ -422,6 +407,42 @@ croissance_large <- croissance_long %>%
   pivot_wider(id_cols = Zone:Indiv,
               names_from = Annee,
               values_from = Croissance)
+```
+
+### Enchaîner les opérations
+
+Nous avons vu les principales fonctions des packages `dplyr` et `tidyr` une par une. Nous allons maintenant enchaîner les différentes opérations à l'aide d'un `pipe` : 
+
+```{r, echo=TRUE, eval=FALSE}
+croissance <- read_csv("https://raw.githubusercontent.com/codons-blog/C-02-ManipulationDonnees/main/croissance.csv")
+traitements <- read_csv2("https://raw.githubusercontent.com/codons-blog/C-02-ManipulationDonnees/main/traitements.csv")
+
+expe <- croissance %>% 
+  pivot_longer(cols = `2007`:`2012`,
+               names_to = "annee",
+               values_to = "croissance") %>% 
+  left_join(traitements) %>% 
+  rename(zone = Zone,
+         indiv = Indiv,
+         traitement = Traitement) %>% 
+  mutate(zone = as.factor(zone),
+         indiv = as.factor(indiv),
+         annee = as.numeric(annee),
+         traitement = as.factor(traitement))
+```
+
+Nous pouvons visualiser l'effet des différents traitements sur la croissance des tiges d'**Empetrum** : 
+
+```{r, echo=TRUE, eval=FALSE}
+boxplot(croissance ~ traitement, 
+        data = expe,
+        main = "Effet de la température (T) et de la fertilisation (F) sur la croissance d'Empetrum",
+        xlab = "Traitement",
+        ylab = "Croissance des tiges (cm)")
+```
+
+```{r, layout="l-body-outset"}
+knitr::include_graphics("img/boxplot.png")
 ```
 
 # Défi {#defi}

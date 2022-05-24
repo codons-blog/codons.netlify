@@ -118,7 +118,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["img/boxplot.png","img/boxplot2.png","img/data_cowboy.png","img/empetrum.jpg","img/join-venn.png","img/tidy_data_1.png","img/tidy_data_2.png","img/tidyverse_celestial.png","manipuler-donnees-tidyverse_files/anchor-4.2.2/anchor.min.js","manipuler-donnees-tidyverse_files/bowser-1.9.3/bowser.min.js","manipuler-donnees-tidyverse_files/distill-2.2.21/template.v2.js","manipuler-donnees-tidyverse_files/header-attrs-2.11/header-attrs.js","manipuler-donnees-tidyverse_files/header-attrs-2.14/header-attrs.js","manipuler-donnees-tidyverse_files/jquery-3.6.0/jquery-3.6.0.js","manipuler-donnees-tidyverse_files/jquery-3.6.0/jquery-3.6.0.min.js","manipuler-donnees-tidyverse_files/jquery-3.6.0/jquery-3.6.0.min.map","manipuler-donnees-tidyverse_files/popper-2.6.0/popper.min.js","manipuler-donnees-tidyverse_files/tippy-6.2.7/tippy-bundle.umd.min.js","manipuler-donnees-tidyverse_files/tippy-6.2.7/tippy-light-border.css","manipuler-donnees-tidyverse_files/tippy-6.2.7/tippy.css","manipuler-donnees-tidyverse_files/tippy-6.2.7/tippy.umd.min.js","manipuler-donnees-tidyverse_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["img/boxplot.png","img/data_cowboy.png","img/empetrum.jpg","img/join-venn.png","img/tidy_data_1.png","img/tidy_data_2.png","img/tidyverse_celestial.png","manipuler-donnees-tidyverse_files/anchor-4.2.2/anchor.min.js","manipuler-donnees-tidyverse_files/bowser-1.9.3/bowser.min.js","manipuler-donnees-tidyverse_files/distill-2.2.21/template.v2.js","manipuler-donnees-tidyverse_files/header-attrs-2.11/header-attrs.js","manipuler-donnees-tidyverse_files/header-attrs-2.14/header-attrs.js","manipuler-donnees-tidyverse_files/jquery-3.6.0/jquery-3.6.0.js","manipuler-donnees-tidyverse_files/jquery-3.6.0/jquery-3.6.0.min.js","manipuler-donnees-tidyverse_files/jquery-3.6.0/jquery-3.6.0.min.map","manipuler-donnees-tidyverse_files/popper-2.6.0/popper.min.js","manipuler-donnees-tidyverse_files/tippy-6.2.7/tippy-bundle.umd.min.js","manipuler-donnees-tidyverse_files/tippy-6.2.7/tippy-light-border.css","manipuler-donnees-tidyverse_files/tippy-6.2.7/tippy.css","manipuler-donnees-tidyverse_files/tippy-6.2.7/tippy.umd.min.js","manipuler-donnees-tidyverse_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1869,23 +1869,8 @@ Les données étant agrégées, le tableau de sortie sera plus court que les don
 </code></pre>
 </div>
 </div>
-<p>Ce format long permet de visualiser facilement la croissance annuelle en fonction de l’annee :</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Boxplot de la croissance par annee</span>
-
-<span class='fu'><a href='https://rdrr.io/r/graphics/boxplot.html'>boxplot</a></span><span class='op'>(</span><span class='va'>Croissance</span> <span class='op'>~</span> <span class='va'>Annee</span>,
-        data <span class='op'>=</span> <span class='va'>croissance_long</span>,
-        main <span class='op'>=</span> <span class='st'>"Croissance annuelle"</span>,
-        ylab <span class='op'>=</span> <span class='st'>"Croissance (cm)"</span><span class='op'>)</span>
-</code></pre>
-</div>
-</div>
-<div class="layout-chunk" data-layout="l-body-outset">
-<p><img src="img/boxplot2.png" width="328" /></p>
-</div>
 <h2 id="format-large-avec-pivot_wider">Format large avec <code>pivot_wider()</code></h2>
-<p>La fonction <code>pivot_wider()</code> effectue l’opération inverse :</p>
+<p>Cette fonction permet d’effectuer l’opération inverse :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Format long -&gt; format large</span>
@@ -1896,6 +1881,42 @@ Les données étant agrégées, le tableau de sortie sera plus court que les don
               values_from <span class='op'>=</span> <span class='va'>Croissance</span><span class='op'>)</span>
 </code></pre>
 </div>
+</div>
+<h3 id="enchaîner-les-opérations">Enchaîner les opérations</h3>
+<p>Nous avons vu les principales fonctions des packages <code>dplyr</code> et <code>tidyr</code> une par une. Nous allons maintenant enchaîner les différentes opérations à l’aide d’un <code>pipe</code> :</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>croissance</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"https://raw.githubusercontent.com/codons-blog/C-02-ManipulationDonnees/main/croissance.csv"</span><span class='op'>)</span>
+<span class='va'>traitements</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv2</a></span><span class='op'>(</span><span class='st'>"https://raw.githubusercontent.com/codons-blog/C-02-ManipulationDonnees/main/traitements.csv"</span><span class='op'>)</span>
+
+<span class='va'>expe</span> <span class='op'>&lt;-</span> <span class='va'>croissance</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/pivot_longer.html'>pivot_longer</a></span><span class='op'>(</span>cols <span class='op'>=</span> <span class='va'>`2007`</span><span class='op'>:</span><span class='va'>`2012`</span>,
+               names_to <span class='op'>=</span> <span class='st'>"annee"</span>,
+               values_to <span class='op'>=</span> <span class='st'>"croissance"</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate-joins.html'>left_join</a></span><span class='op'>(</span><span class='va'>traitements</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span>zone <span class='op'>=</span> <span class='va'>Zone</span>,
+         indiv <span class='op'>=</span> <span class='va'>Indiv</span>,
+         traitement <span class='op'>=</span> <span class='va'>Traitement</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>zone <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>zone</span><span class='op'>)</span>,
+         indiv <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>indiv</span><span class='op'>)</span>,
+         annee <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>annee</span><span class='op'>)</span>,
+         traitement <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>traitement</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>Nous pouvons visualiser l’effet des différents traitements sur la croissance des tiges d’<strong>Empetrum</strong> :</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/boxplot.html'>boxplot</a></span><span class='op'>(</span><span class='va'>croissance</span> <span class='op'>~</span> <span class='va'>traitement</span>, 
+        data <span class='op'>=</span> <span class='va'>expe</span>,
+        main <span class='op'>=</span> <span class='st'>"Effet de la température (T) et de la fertilisation (F) sur la croissance d'Empetrum"</span>,
+        xlab <span class='op'>=</span> <span class='st'>"Traitement"</span>,
+        ylab <span class='op'>=</span> <span class='st'>"Croissance des tiges (cm)"</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body-outset">
+<p><img src="img/boxplot.png" width="332" /></p>
 </div>
 <h1 id="defi">Défi</h1>
 <p>Mettons en pratique ce que nous avons vu dans ce tutoriel pour tenter de répondre à la question suivante : quelle est l’effet de différentes épices sur la taille des flammes crachées par trois espèces de dragons ?</p>
