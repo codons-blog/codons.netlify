@@ -410,6 +410,10 @@ Ce format **facilite les analyses** en permettant des comparaisons entre groupes
 
 Le package `tidyr` permet de jongler entre ces deux formats grâce aux fonctions `pivot_...()`.
 
+```{r, layout="l-body"}
+knitr::include_graphics("img/giphy.gif")
+```
+
 <br>
 
 ## Format long avec `pivot_longer()`
