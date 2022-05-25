@@ -30,44 +30,38 @@ knitr::opts_chunk$set(echo = FALSE)
 
 # Introduction
 
-```{r, layout="l-body-outset"}
+```{r, layout="l-body"}
 knitr::include_graphics("img/data_cowboy.png")
 ```
 Dessin de [Allison Horst](https://raw.githubusercontent.com/allisonhorst/stats-illustrations/master/rstats-artwork/data_cowboy.png)
 
 <br>
 
-Les formats de nos données peuvent varier, et un format utile et pratique dans un cas précis ne le sera pas forcément dans un autre. La maîtrise des outils de manipulation et de mise en forme des données est donc essentielle !
+Les formats de nos données peuvent varier, et un format utile et pratique dans un cas précis ne le sera pas forcément dans un autre. La **maîtrise des outils de manipulation et de mise en forme des données** est donc essentielle !
 
 <br>
 
-Les **objectifs** de ce tutoriel sont les suivants :  
-
-1. Utiliser les outils du package `dplyr` pour manipuler des données  
-2. Mettre en forme des données à l'aide du package `tidyr`
+Voici le sommaire de ce tutoriel :  
 
 <br>
 
-Voici les **étapes** que nous allons suivre pour y parvenir :  
-<br>
+**1. [Manipuler des données avec *dplyr*](#dplyr)** : [renommer des variables](#rename), [sélectionner des colonnes](#select), [filtrer des données](#filter), [trier des données](#arrange), [créer de nouvelles colonnes](#mutate), [définir des groupes](#groupby), [calculer des statistiques](#summarise), [joindre des données](#join)  
 
-1. [Explorer les principales fonctions de `dplyr`](#dplyr) : [`rename()`](#rename), [`filter()`](#filter), [`select()`](#select), [`arrange()`](#arrange), [`mutate()`](#mutate), [`group_by()`](#groupby), [`summarise()`](#summarise), [`join()`](#join)  
+**2. [Mettre en forme des données avec *tidyr*](#tidyr)** : [format long](#pivotlonger), [format large](#pivotlarger)  
 
-2. [Mettre en forme des données à l'aide du package `tidyr`](#tidyr) : [`pivot_longer()`](#pivotlonger), [`pivot_wider()`](#pivotwider)   
-
-3. [Défi](#defi)
+**3. [Défi](#defi)**
 
 <br>
 
-Vous pouvez revoir les bases de R et RStudio dans le tutoriel [Premiers pas avec R](https://codons.netlify.app/posts/premiers-pas-avec-r/).
+Vous pouvez revoir les bases de R et RStudio dans le tutoriel **[Premiers pas avec R](https://codons.netlify.app/posts/premiers-pas-avec-r/)**.
 
 <br>
 
 ## Le Tidyverse
 
-Le [**Tidyverse**](https://www.tidyverse.org/) est un ensemble de packages permettant notamment d'**importer des données (`readr`)**, de les **manipuler (`dplyr` et `tidyr`)**, de créer des **graphiques (`ggplot2`)**, de **manipuler des chaînes de caractères (`stringr`)**, de **créer des documents (`rmarkdown`)**, ...
+Le [**Tidyverse**](https://www.tidyverse.org/) est un ensemble de packages permettant notamment d'**importer des données (*readr*)**, de les **manipuler (*dplyr*)**, de les **mettre en forme (*tidyr*)**, de créer des **graphiques (*ggplot2*)**, de **manipuler des chaînes de caractères (*stringr*)**, de **rédiger des rapports (*rmarkdown*)**, ...
 
-```{r, layout="l-body-outset"}
+```{r, layout="l-body"}
 knitr::include_graphics("img/tidyverse_celestial.png")
 ```
 Dessin de [Allison Horst](https://github.com/allisonhorst/stats-illustrations/blob/master/rstats-artwork/tidyverse_celestial.png)
@@ -81,45 +75,54 @@ Commençons par **installer la suite Tidyverse** (nous pourrions également inst
 install.packages("tidyverse")
 ```
 
+<br>
+
 # Manipuler des données avec `dplyr` {#dplyr}
 
-Les fonctions du package [`dplyr`](https://dplyr.tidyverse.org/) sont **nommées d'après l'action qu'elles accomplissent**, ce qui les rend plutôt intuitives.
+Les fonctions du package [`dplyr`](https://dplyr.tidyverse.org/) sont **nommées d'après l'action qu'elles accomplissent**, ce qui rend leur utilisation assez intuitive.
 
 Nous allons utiliser un jeu de données contenant des mesures de croissance annuelle de tiges d'arbrisseaux qui poussent dans des dunes de sable ([*Empetrum nigrum*](https://fr.wikipedia.org/wiki/Empetrum_nigrum) ou camarine noire). La distance à la mer de chaque individu est codée dans la variable catégorique "zone" : le chiffre 2 représente la zone la plus proche de la mer et le chiffre 7 la zone la plus éloignée de la mer.
 
-```{r, out.width="100%"}
-knitr::include_graphics("img/empetrum.jpg")
-```
-
-Nous allons importer les données à l'aide du package [`readr`](https://readr.tidyverse.org/) inclus dans le Tidyverse : `read_csv()`. Cette fonction permet d'importer un fichier .csv directement depuis une page web en utilisant le lien de la page à la place du chemin vers un fichier présent sur notre ordinateur.
+La fonction `read_csv()` permet d'importer un fichier `.csv` depuis une page web : 
 
 ```{r, echo=TRUE, eval=FALSE}
 # Ateliers codons!
 # 02 - Manipulation de donnees
 # Lundi 30/05/2022
 
-# Charger le Tidyverse
+# Charger le Tidyverse ----
 
 library(tidyverse)
 
-# Definir le repertoire de travail
+# Definir le repertoire de travail ----
 
 setwd("C-02-ManipulationDonnees")
 
-# Importer le jeu de donnees
+# Importer les donnees ----
 
 croissance <- read_csv("https://raw.githubusercontent.com/codons-blog/C-02-ManipulationDonneesBases/main/croissance.csv")
+```
 
-# Exploration rapide des donnees
+<br>
+
+Il est toujours utile de **visualiser nos données** et leur structure : 
+
+```{r, echo=TRUE, eval=FALSE}
+# Exploration rapide des donnees ----
 
 head(croissance)  # affiche les premieres lignes
 str(croissance)  # types des variables
 unique(croissance$Zone)  # affiche les valeurs distinctes de la variable Zone
 croissance$Indiv  # affiche toutes les valeurs de la variable Indiv
 length(unique(croissance$Indiv))  # affiche le nombre d'individus
+
 ```
 
-Lorsque vous exécutez la commande `head(croissance)`, vous pouvez remarquer dans la console la mention "A tibble". Un [**tibble**](https://tibble.tidyverse.org/index.html) est un format particulier de tableau utilisé par le Tidyverse. Il présente notamment l'avantage d'afficher directement sous les noms de colonnes les types de variables. 
+<br>
+
+Lorsque vous exécutez la commande `head(croissance)`, vous pouvez remarquer dans la console la mention "A tibble". Un [**tibble**](https://tibble.tidyverse.org/index.html) est un format particulier de tableau utilisé par le Tidyverse. Il présente notamment l'avantage d'afficher les **types de variables** sous les noms de colonnes. 
+
+<br>
 
 ## Renommer des variables avec `rename()` {#rename}
 
@@ -137,18 +140,19 @@ Avant d'aller plus loin, nous allons voir une fonctionnalité extrêmement prati
 
 Le pipe fait partie du package [`magrittr`](https://magrittr.tidyverse.org/), inclus dans le Tidyverse.  
 
-Un pipe se place à la fin d'un ligne sous la forme `%>%`, ce qui donne, si nous reprenons la dernière commande exécutée : 
+Un pipe se place à la fin d'un ligne sous la forme `%>%` : 
 
 <aside>
 Raccourci clavier : `Ctrl + Shift + M`
 </aside>
 
 ```{r, echo=TRUE, eval=FALSE}
-# Utilisation du pipe
-croissance2 <- croissance %>% 
+croissance <- croissance %>% 
   rename(zone = Zone,
          indiv = Indiv)
 ```
+
+<br>
 
 ## Sélectionner des colonnes avec `select()` {#select}
 
@@ -157,48 +161,43 @@ Cette fonction permet de sélectionner des colonnes, en précisant lesquelles co
 ```{r, echo=TRUE, eval=FALSE}
 # Conserver des colonnes
 
-croissance2_selection <- croissance2 %>% 
+croissance_selection <- croissance %>% 
   select(indiv, `2007`:`2012`)
 
 # Supprimer une colonne
 
-croissance2_selection <- croissance2 %>% 
+croissance_selection <- croissance %>% 
   select(-zone)
 
 ```
 
-Dans les exemples ci-dessus, nous ne montrons qu'une seule fonction à la fois. Nous pourrions également enchaîner les fonctions : 
+<br>
 
-```{r, echo=TRUE, eval=FALSE}
-# Enchainer les fonctions
-
-croissance2_selection <- croissance %>% 
-  rename(zone = Zone, indiv = Indiv) %>% 
-  select(indiv, `2007`:`2012`)
-
-```
-
-La fonction `select()` permet également de renommer des colonnes et d'en modifier l'ordre : 
+La fonction `select()` permet également de **renommer des colonnes** et d'**en modifier l'ordre** : 
 
 ```{r, echo=TRUE, eval=FALSE}
 # Renommer et modifier l'ordre de colonnes
 
-croissance2_selection <- croissance %>% 
+croissance_selection <- croissance %>% 
   select(zone = Zone, indiv = Indiv, `2007`:`2012`)
 ```
 
+<br>
+
 L'opérateur `:` permet de construire une **séquence** : dans le cas présent il permet de sélectionner toutes les colonnes entre 2007 et 2012.  
 
-Si vous souhaitez renommer ou déplacer seulement quelques colonnes, vous pouvez utiliser la fonction `everything()` pour sélecionner toutes les colonnes restantes : 
+Si vous souhaitez renommer ou déplacer seulement quelques colonnes, la fonction `everything()` vous permet de **sélectionner toutes les colonnes restantes** : 
 
 ```{r, echo=TRUE, eval=FALSE}
 croissance2_selection <- croissance %>% 
   select(zone = Zone, indiv = Indiv, everything())
 ```
 
+<br>
+
 ## Filtrer des données avec `filter()` {#filter}
 
-Cette fonction permet de sélectionner des lignes à l'aide d'opérateurs logiques, dont les plus courants sont les suivants : 
+Cette fonction permet de sélectionner des lignes à l'aide d'**opérateurs logiques** : 
 
 Opérateur   Expression logique
 ----------  -------------------
@@ -209,102 +208,111 @@ Opérateur   Expression logique
 >           supérieur à
 !=          différent de
 %in%        appartient à
-&           ET
-|           OU
-!           PAS  
+&           et
+|           ou
+!           pas  
 
 Voyons comment utiliser ces opérateurs logiques : 
 
 ```{r, echo=TRUE, eval=FALSE}
-# Selectionner l'individu n°603
+# individu n°603
 
-croissance2 %>% filter(indiv == 603)
+croissance %>% filter(indiv == 603)
 
-# Selectionner les zones 2, 3 et 4
+# zones 2, 3 et 4
 
-croissance2 %>% filter(zone <= 4)
-croissance2 %>% filter(!zone >= 5)
+croissance %>% filter(zone <= 4)
+croissance %>% filter(zone %in% c(2, 3, 4))
+croissance %>% filter(zone %in% 2:4)
+croissance %>% filter(!zone >= 5)
 
-# Selectionner les zones 2 et 7
+# zones 2 et 7
 
 croissance2 %>% filter(zone == 2 | zone == 7)
 croissance2 %>% filter(zone %in% c(2, 7))
 
-# Selectionner les individus dans la zone 2 avec des identifiants entre 300 et 400
-croissance2 %>% filter(zone == 2, indiv %in% 300:400)
-croissance2 %>% filter(zone == 2, between(indiv, 300, 400))
+# zone 2 + individus entre 300 et 400
+
+croissance %>% filter(zone == 2 & indiv %in% 300:400)
+croissance %>% filter(zone == 2 & between(indiv, 300, 400))
 ```
 
-La commande, `indiv %in% 300:400` permet de sélectionner les individus ayant des identifiants entre 300 et 400. Il existe différentes façons de construire ce genre de séquence : 
+<br>
+
+Il existe différentes façons de **construire une séquence** :
 
 ```{r, echo=TRUE, eval=FALSE}
-# Sequence par increments
-
-seq(300, 400, 10)  # de 300 a 400 avec un increment de 10
-
-# Repetition d'elements
-
-rep(c(1, 2, 3), 3)  # "1 2 3" repete 3 fois
-
-# Combinaison des deux
-
-rep(seq(0, 30, 10), 4)
-
+seq(from = 300, to = 400, by = 10)  # de 300 a 400 avec un increment de 10
+rep(x = c(300, 350), times = 2)  # 2 repetitions du vecteur "300, 350"
+rep(x = c(300, 350), each = 2)  # chaque element du vecteur "300, 350" est repete 2 fois
+rep(seq(from = 300, to = 400, by = 10), times = 4)  # combinaison des deux
 ```
+
+<br>
 
 ## Trier des données avec `arrange()` {#arrange}
 
-La fonction `arrange()` permet de trier des valeurs par ordre croissant ou décroissant : 
+La fonction `arrange()` permet de trier des valeurs par **ordre croissant ou décroissant** : 
 
 ```{r, echo=TRUE, eval=FALSE}
 # Trier par ordre croissant sur l'annee 2007
 
-croissance2 %>% arrange(`2007`)
+croissance %>% arrange(`2007`)
 
 # Trier par ordre decroissant sur l'annee 2008
 
-croissance2 %>% arrange(desc(`2008`))
+croissance %>% arrange(desc(`2008`))
 ```
+
+<br>
 
 ## Créer de nouvelles colonnes avec `mutate()` {#mutate}
 
-La fonction `mutate()` permet de créer un nouvelle colonne, par exemple pour effectuer une opération impliquant plusieurs colonnes :
+La fonction `mutate()` permet de créer un nouvelle colonne :
 
 ```{r, echo=TRUE, eval=FALSE}
 # Calculer la croissance totale pour chaque individu entre 2007 et 2012
 
-croissance2_totale <- croissance2 %>% 
+croissance_totale <- croissance2 %>% 
   mutate(croissance.totale = `2007` + `2008` + `2009` + `2010` + `2011` + `2012`)
 ```
 
+<br>
+
 ## Définir des groupes avec `group_by()` {#groupby}
 
-Cette fonction permet de créer une structure interne à nos données, par exemple des individus regroupés par zone. Les fonctions exécutées après l'appel à la fonction `group_by()` tiendront compte de cette structure interne. L'utilisation de la fonction `group_by()` associée à d'autres fonctions est très utile pour calculer des statistiques pour différents sites, traitements, espèces, ...
+Cette fonction permet de créer une **structure interne à vos données**, par exemple des individus regroupés par zone. Les fonctions exécutées après l'appel à la fonction `group_by()` tiendront compte de cette structure interne. L'utilisation de la fonction `group_by()` associée à d'autres fonctions est très utile pour calculer des statistiques pour différents sites, traitements, espèces, ...
  
 ```{r, echo=TRUE, eval=FALSE}
 # Grouper les individus par zone
 
-croissance2_groupes <- croissance2 %>% 
+croissance_groupes <- croissance %>% 
   group_by(zone)
 ```
 
-Comparez les deux objets `croissance2` et `croissance2_groupes`. La seule différence visible est la mention `Groups` quand vous affichez l'objet possédant une structure interne. Pour l'instant les groupes créés par `group_by()` sont sous-jacents, et leur intérêt sera évident en appliquant d'autres fonctions à ces groupes.
+<br>
+
+Comparez les deux objets `croissance2` et `croissance2_groupes`. La seule différence visible est la mention `Groups` quand vous affichez l'objet possédant une structure interne. Pour l'instant, les groupes créés par `group_by()` sont **sous-jacents**, et leur intérêt sera évident en appliquant d'autres fonctions à ces groupes.
+
+<br>
 
 ## Agréger des lignes et calculer des statistiques avec `summarise()` {#summarise}
 
-Cette permet d'agréger des lignes en appliquant une fonction sur une ou plusieurs colonnes :
+Cette fonction permet d'agréger des lignes en appliquant une fonction sur une ou plusieurs colonnes :
 
 ```{r, echo=TRUE, eval=FALSE}
 # Croissance totale pour l'ensemble des individus pour l'annee 2007
 
-synthese1 <- croissance2 %>% 
+synthese1 <- croissance %>% 
   summarise(croissance.totale.2007 = sum(`2007`))
 
 # Croissance totale pour l'ensemble des individus groupes par zone pour l'annee 2007
 
-synthese2 <- croissance2_groupes %>% 
+synthese2 <- croissance_groupes %>% 
   summarise(croissance.totale.2007 = sum(`2007`))
 ```
+
+<br>
 
 Le premier objet, `synthese1`, correspond à la somme de toutes les valeurs de croissance pour tous les individus en 2007.
 Le second objet, `synthese2`, correspond à la somme des valeurs de croissance pour les individus regroupés par zone en 2007.
@@ -316,44 +324,64 @@ Les données étant agrégées, le tableau de sortie sera plus court que les don
 Vous pouvez de cette façon calculer plusieurs paramètres : 
 
 ```{r, echo=TRUE, eval=FALSE}
-synthese3 <- croissance2_groupes %>% 
+synthese3 <- croissance_groupes %>% 
   summarise(croissance.totale.2007 = sum(`2007`),
             croissance.moyenne.2007 = mean(`2007`),
             croissance.ecart.type.2007 = sd(`2007`)) 
 ```
 
+<br>
+
 ## Joindre des données avec `..._join()` {#join}
 
-Il peut arriver que des données concernant un même projet se trouvent dans plusieurs fichiers (par exemple un fichier avec des mesures sur différents sites, et un autre fichier avec des données climatiques pour ces différents sites).
-Les fonctions `..._join()` permettent de joindre plusieurs jeux de données.
+Il peut arriver que des données concernant un même projet se trouvent dans **plusieurs fichiers** (par exemple un fichier avec des mesures sur différents sites, et un autre fichier avec des données climatiques pour ces différents sites).  
 
-Le fichier `traitements.csv` contient des informations sur des traitements appliqués aux plantes : températe (T), fertilisation (F), température + fertilisation (TF), ou contrôle (C).
+<br>
+
+Les différentes fonctions `..._join()` permettent de joindre plusieux jeux de données selon ce qu'on souhaite faire des données qui ne sont pas partagées.
+
+```{r, layout="l-body"}
+knitr::include_graphics("img/join-venn.png")
+```
+Figure tirée de [Joining Data in R with dplyr](https://rpubs.com/williamsurles/293454)
+
+<br>
+
+Ces fonctions vont joindre deux tableaux : les lignes du deuxième tableau seront associées au premier tableau selon les valeurs d'une ou de plusieurs colonnes partagées (les **clés**).
+
+```{r, layout="l-body"}
+knitr::include_graphics("img/join.png")
+```
+Figure tirée de [R for Data Science](https://r4ds.had.co.nz/relational-data.html)
+
+<br>
+
+Le fichier `traitements.csv` contient des informations sur des **traitements appliqués aux plantes** : températe (T), fertilisation (F), température + fertilisation (TF), ou contrôle (C).
 
 ```{r, echo=TRUE, eval=FALSE}
 # Importer le jeu de données (attention : utilisation de read_csv2)
+
 traitements <- read_csv2("https://raw.githubusercontent.com/codons-blog/C-02-ManipulationDonnees/main/traitements.csv")
 ```
 
-Il existe différents manières de joindre des données, selon ce qu'on souhaite faire des données qui ne sont pas partagées.
+<br>
 
-```{r, out.width="100%"}
-knitr::include_graphics("img/join-venn.png")
-```
-
-Figure tirée de [R for Data Science](https://r4ds.had.co.nz/relational-data.html)
-
-Nous allons utiliser la fonction `left_join()` pour garder toutes les données présentes dans `croissance2` et y ajouter les données présentes dans `traitements` : 
+Nous allons utiliser la fonction `left_join()` pour garder toutes les données présentes dans `croissance` et y associer les données présentes dans `traitements` : 
 
 ```{r, echo=TRUE, eval=FALSE}
 # Joindre deux jeux de données
 
-expe <- left_join(croissance2, traitements,
-                  by = c("zone" = "Zone",
-                         "indiv" = "Indiv"))
-
+expe <- croissance %>% 
+  left_join(traitements,
+            by = c("zone" = "Zone",
+                   "indiv" = "Indiv"))
 ```
 
-Les noms des deux colonnes communes aux deux jeux de données diffèrent, nous précisons donc les équivalences dans l'argument `by()`. Si les noms avaient été strictement identiques, nous aurions pu nous passer de cet argument.
+<br>
+
+Si les noms des deux premières colonnes avaient été strictement identiques dans les deux tableaux, nous aurions pu nous passer de l'argument `by()`.
+
+<br>
 
 # Mettre en forme des données à l'aide de `tidyr` {#tidyr}
 
