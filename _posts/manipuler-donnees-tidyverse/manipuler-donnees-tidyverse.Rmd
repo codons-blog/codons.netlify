@@ -53,6 +53,8 @@ Voici le sommaire de ce tutoriel :
 
 <br>
 
+Vous pourrez trouver les **fichiers utilisés** dans ce tutoriel ainsi qu'un **exemple de script** [en cliquant ici](https://github.com/codons-blog/C-02-ManipulationDonnees).
+
 Vous pouvez revoir les bases de R et RStudio dans le tutoriel **[Premiers pas avec R](https://codons.netlify.app/posts/premiers-pas-avec-r/)**.
 
 <br>
@@ -500,10 +502,14 @@ knitr::include_graphics("img/boxplot.png")
 1. Vous savez utiliser les fonctions de `dplyr` pour manipuler vos données  
 2. Vous savez mettre en forme des données qui respectent les critères des tidy data avec `tidyr`
 
+<br>
+
 
 # Défi {#defi}
 
-Mettons en pratique ce que nous avons vu dans ce tutoriel pour tenter de répondre à la question suivante : quelle est l'effet de différentes épices sur la taille des flammes de trois espèces de dragons ?
+Pour ce défi, nous allons essayer de répondre à la question suivante : **quelle est l'effet de différentes épices sur la taille des flammes de trois espèces de dragons ? **
+
+<br>
 
 Commençons par importer les données : 
 
@@ -511,34 +517,49 @@ Commençons par importer les données :
 dragons <- read.csv("https://raw.githubusercontent.com/codons-blog/C-02-ManipulationDonnees/main/dragons.csv")
 ```
 
-Voici les objectifs : 
+<br>
+
+Voici les **objectifs** de ce défi :  
 
 - mettre en forme les données (format tidy)  
-- créer un boxplot pour chaque espèce montrant l'effet des épices sur la taille des flammes
 
-Malheureusement, vous apprenez que votre assistant a été peu scrupuleux lors de la collecte des données, et il vous faut corriger les erreurs suivantes : 
+- créer un boxplot pour chaque espèce montrant l'effet des épices sur la taille des flammes  
 
-- la quatrième épice n'était pas du paprika, mais du curcuma  
-- l'appareil de mesure était mal calibré lors du traitement au tabasco, mais seulement pour les Magyar à pointes : les mesures sont plus longues de 30 cm que la réalité  
-- les tailles sont données en centimètres, alors qu'elles devraient être en mètres.
+<br>
 
-Pour corriger les erreurs de calibration, il vous faudra accéder aux valeurs mesurées pour deux critères : l'espèce et l'épice. Il existe plusieurs façons de procéder, vous pouvez cliquer ci-dessous pour en afficher quelques-unes : 
+Malheureusement, vous apprenez que votre assistant a été peu scrupuleux lors de la collecte des données, et il vous faut **corriger les erreurs suivantes** : 
+
+1. La quatrième épice n'était pas du paprika, mais du curcuma  
+2. Lors des mesures avec le tabasco, l'appareil était mal calibré, mais seulement pour les Magyar à pointes : la taille des flammes a été sur-estimée de 30 cm  
+3. Les tailles sont données en centimètres, alors qu'elles devraient être en mètres.
+
+<br>
+
+**A votre tour de jouer!**
+
+<br>
+
+Si vous êtes coincé, vous pouvez cliquer ci-dessous pour afficher **quelques astuces** : 
 
 ```{r, eval=FALSE, echo=TRUE, code_folding=TRUE}
-# 1. extraire les valeurs et les corriger
+# 1. Pour renommer la colonne "paprika", utilisez la fonction rename()
 
-valeurs_corrigees <- dragons$tabasco[dragons$espece == "magyar_a_pointes"] - 30
+# 2. Il existe plusieurs facons de corriger des valeurs :
 
-# 2. remplacer les valeurs erronees avec ifelse()
+valeurs_corrigees <- dragons$tabasco[dragons$espece == "magyar_a_pointe"] - 30
+dragons$tabasco[dragons$espece == "magyar_a_pointe"] <- valeurs_corrigees
 
-valeurs_corrigees <- ifelse(dragons$espece == "magyar_a_pointes", dragons$tabasco - 30, dragons$tabasco)
+dragons <- dragons %>% 
+  mutate(tabasco = ifelse(espece == "magyar_a_pointe", tabasco - 30, tabasco))
 
-# 3. remplacer les valeurs erronees avec case_when()
-valeurs_corrigees3 <- case_when(dragons$espece == "magyar_a_pointes" ~ dragons$tabasco - 30,
-                                TRUE ~ dragons$tabasco)
+dragons <- dragons %>% 
+  mutate(tabasco = case_when(espece == "magyar_a_pointe" ~ tabasco - 30,
+                             TRUE ~ tabasco))
 
+# 3. La fonction mutate() vous permettra de convertir les centimètres en mètres
 ```
 
+<br>
 
 **Cliquez ci-dessous pour voir la solution**
 
@@ -549,7 +570,7 @@ dragons <- read_csv("https://raw.githubusercontent.com/codons-blog/C-02-Manipula
 
 # Nettoyer et corriger les donnees
 
-dragons_propre <- dragons %>% 
+dragons_tidy <- dragons %>% 
   rename(curcuma = paprika) %>% 
   pivot_longer(cols = tabasco:curcuma,
                names_to = "epice",
@@ -558,9 +579,9 @@ dragons_propre <- dragons %>%
                                TRUE ~ flamme_cm)) %>% 
   mutate(flamme_m = flamme_cm / 100)
 
-magyar_a_pointes <- dragons_propre %>% filter(espece == "magyar_a_pointes")
-suedois_a_museau_court <- dragons_propre %>% filter(espece == "suedois_a_museau_court")
-vert_gallois <- dragons_propre %>% filter(espece == "vert_gallois")
+magyar_a_pointes <- dragons_tidy %>% filter(espece == "magyar_a_pointes")
+suedois_a_museau_court <- dragons_tidy %>% filter(espece == "suedois_a_museau_court")
+vert_gallois <- dragons_tidy %>% filter(espece == "vert_gallois")
 
 # Boxplots
 
