@@ -100,12 +100,12 @@ setwd("C-02-ManipulationDonnees")
 
 # Importer les donnees ----
 
-croissance <- read_csv("https://raw.githubusercontent.com/codons-blog/C-02-ManipulationDonneesBases/main/croissance.csv")
+croissance <- read_csv("https://raw.githubusercontent.com/codons-blog/C-02-ManipulationDonnees/main/croissance.csv")
 ```
 
 <br>
 
-Il est toujours utile de **visualiser nos données** et leur structure : 
+Il est toujours utile de **visualiser vos données** et leur structure : 
 
 ```{r, echo=TRUE, eval=FALSE}
 # Exploration rapide des donnees ----
@@ -120,7 +120,7 @@ length(unique(croissance$Indiv))  # affiche le nombre d'individus
 
 <br>
 
-Lorsque vous exécutez la commande `head(croissance)`, vous pouvez remarquer dans la console la mention "A tibble". Un [**tibble**](https://tibble.tidyverse.org/index.html) est un format particulier de tableau utilisé par le Tidyverse. Il présente notamment l'avantage d'afficher les **types de variables** sous les noms de colonnes. 
+Lorsque vous exécutez la commande `head(croissance)`, vous pouvez remarquer dans la console la mention "A tibble". Un [**tibble**](https://tibble.tidyverse.org/index.html) est un format particulier de tableau utilisé dans le Tidyverse. Il présente notamment l'avantage d'afficher les **types de variables** sous les noms de colonnes. 
 
 <br>
 
@@ -339,18 +339,10 @@ Il peut arriver que des données concernant un même projet se trouvent dans **p
 <br>
 
 Les différentes fonctions `..._join()` permettent de joindre plusieux jeux de données selon ce qu'on souhaite faire des données qui ne sont pas partagées.
+Les lignes d'un tableau seront associées à l'autre tableau selon les valeurs d'une ou de plusieurs colonnes partagées (les **clés**).
 
 ```{r, layout="l-body"}
 knitr::include_graphics("img/join-venn.png")
-```
-Figure tirée de [Joining Data in R with dplyr](https://rpubs.com/williamsurles/293454)
-
-<br>
-
-Ces fonctions vont joindre deux tableaux : les lignes du deuxième tableau seront associées au premier tableau selon les valeurs d'une ou de plusieurs colonnes partagées (les **clés**).
-
-```{r, layout="l-body"}
-knitr::include_graphics("img/join.png")
 ```
 Figure tirée de [R for Data Science](https://r4ds.had.co.nz/relational-data.html)
 
@@ -385,34 +377,46 @@ Si les noms des deux premières colonnes avaient été strictement identiques da
 
 # Mettre en forme des données à l'aide de `tidyr` {#tidyr}
 
-La façon dont nous récoltons des données sur le terrain ou au laboratoire peut être très différente du format que nous aimerions utiliser dans R. Lors d'une expérimentation, nous préférons utiliser des tableaux préparés à l'avance, à remplir au fur et à mesure. Par exemple, pour suivre la hauteur de semis soumis à différents traitements, nous pourrions utiliser un tableau similaire à celui-ci :  
+Les données que nous avons manipulées jusqu'à présent ne sont **pas dans un format idéal** (rappelez-vous la longueur du code pour calculer la croissance totale pour chaque individu).  
+
+Les valeurs mesurées sont réparties dans différentes colonnes, une par année.  
+
+Nous pourrions mettre en forme ces donnes afin d'avoir une colonne "annee" et une colonne "croissance".  
+
+C'est ce qu'on appelle des **tidy data**, concept qui repose sur trois critères :  
+
+**1. Chaque variable est située dans sa propre colonne**  
+**2. Chaque observation est située sur sa propre ligne**  
+**3. Chaque valeur est située dans sa propre cellule**
+  
+```{r, layout="l-body"}
+knitr::include_graphics("img/tidy-1.png")
+```
+Figure tirée de [R for Data Science](https://r4ds.had.co.nz/tidy-data.html)
+
+<br>
+
+Considérons les deux premières lignes de notre tableau `croissance`, voici à quoi ressemblerait un format **tidy** : 
 
 ```{r, layout="l-body-outset"}
-knitr::include_graphics("img/tidy_data_1.png")
+knitr::include_graphics("img/tidy_data.png")
 ```
 
-Ce tableau, pratique à remplir, n'est pas idéal pour une analyse (8 mesures par ligne). 
+<br>
 
-Il est préférable d'utiliser des données au format dit **"tidy"** :  
+Ce format **facilite les analyses** en permettant des comparaisons entre groupes, traitements, espèces, années, ...  
 
-- chaque ligne représente une observation  
-- chaque colonne contient une variable  
+Le package `tidyr` permet de jongler entre ces deux formats grâce aux fonctions `pivot_...()`.
 
-Dans le cas présent, les mêmes données au format tidy ressembleraient à ceci : 
-
-```{r, layout="l-body-outset"}
-knitr::include_graphics("img/tidy_data_2.png")
-```
-
-Ce format facilite les analyses en permettant les comparaisons entre groupes, traitements, espèces, ...
-
-Le jeu de données que nous avons utilisé dans ce tutoriel, `croissance` n'est pas dans un format tidy : la même variable, la mesure de croissance, est répartie sur plusieurs colonnes représentant les années.
-
-Le package `tidyr` permet de jongler entre un format large et un format long, grâce aux fonctions `pivot_...()`.
+<br>
 
 ## Format long avec `pivot_longer()`
 
 La fonction `pivot_longer()` permet de passer d'un format large à un format long. La syntaxe est un peu plus complexe que les fonctions que nous avons vues jusqu'à présent, car il nous préciser quelles colonnes vont être regroupées : 
+
+```{r, layout="l-body-outset"}
+knitr::include_graphics("img/pivot_longer.png")
+```
 
 ```{r, echo=TRUE, eval=FALSE}
 # Format large -> format long
@@ -423,27 +427,43 @@ croissance_long <- croissance %>%
                values_to = "Croissance")
 ```
 
+<br>
 
 ## Format large avec `pivot_wider()`
 
 Cette fonction permet d'effectuer l'opération inverse : 
 
+```{r, layout="l-body-outset"}
+knitr::include_graphics("img/pivot_wider.png")
+```
+
 ```{r, echo=TRUE, eval=FALSE}
 # Format long -> format large
 
 croissance_large <- croissance_long %>% 
-  pivot_wider(id_cols = Zone:Indiv,
-              names_from = Annee,
-              values_from = Croissance)
+  pivot_wider(id_cols = zone:indiv,
+              names_from = annee,
+              values_from = croissance)
 ```
 
-### Enchaîner les opérations
+<br>
 
-Nous avons vu les principales fonctions des packages `dplyr` et `tidyr` une par une. Nous allons maintenant enchaîner les différentes opérations à l'aide d'un `pipe` : 
+Dans les arguments `names_from` et `values_from` nous n'utilisons pas de guillemets car ces colonnes existent, contraitement aux arguments `names_to` et `values_to` de la fonction `pivot_longer()` qui permettent de créer des colonnes inexistantes.
+
+<br>
+
+## Résumé
+
+Nous avons vu les principales fonctions des packages `dplyr` et `tidyr` une par une. Nous allons maintenant **enchaîner les différentes opérations** depuis le début à l'aide d'un `pipe` et **visualiser l'effet des différents traitements** sur la croissance des tiges d'*Empetrum* : 
 
 ```{r, echo=TRUE, eval=FALSE}
+
+# Importer les deux fichiers
+
 croissance <- read_csv("https://raw.githubusercontent.com/codons-blog/C-02-ManipulationDonnees/main/croissance.csv")
 traitements <- read_csv2("https://raw.githubusercontent.com/codons-blog/C-02-ManipulationDonnees/main/traitements.csv")
+
+# Mettre en forme et joindre les deux fichiers
 
 expe <- croissance %>% 
   pivot_longer(cols = `2007`:`2012`,
@@ -457,11 +477,9 @@ expe <- croissance %>%
          indiv = as.factor(indiv),
          annee = as.numeric(annee),
          traitement = as.factor(traitement))
-```
 
-Nous pouvons visualiser l'effet des différents traitements sur la croissance des tiges d'**Empetrum** : 
+# Boxplot de l'effet des traitements sur la croissance
 
-```{r, echo=TRUE, eval=FALSE}
 boxplot(croissance ~ traitement, 
         data = expe,
         main = "Effet de la température (T) et de la fertilisation (F) sur la croissance d'Empetrum",
@@ -469,9 +487,19 @@ boxplot(croissance ~ traitement,
         ylab = "Croissance des tiges (cm)")
 ```
 
+<br>
+
 ```{r, layout="l-body-outset"}
 knitr::include_graphics("img/boxplot.png")
 ```
+
+<br>
+
+## Bilan du tutoriel : 
+
+1. Vous savez utiliser les fonctions de `dplyr` pour manipuler vos données  
+2. Vous savez mettre en forme des données qui respectent les critères des tidy data avec `tidyr`
+
 
 # Défi {#defi}
 
