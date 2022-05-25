@@ -119,7 +119,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["img/boxplot.png","img/data_cowboy.png","img/empetrum.jpg","img/join-venn.png","img/join.png","img/tidy_data_1.png","img/tidy_data_2.png","img/tidyverse_celestial.png","manipuler-donnees-tidyverse_files/anchor-4.2.2/anchor.min.js","manipuler-donnees-tidyverse_files/bowser-1.9.3/bowser.min.js","manipuler-donnees-tidyverse_files/distill-2.2.21/template.v2.js","manipuler-donnees-tidyverse_files/header-attrs-2.11/header-attrs.js","manipuler-donnees-tidyverse_files/header-attrs-2.14/header-attrs.js","manipuler-donnees-tidyverse_files/jquery-3.6.0/jquery-3.6.0.js","manipuler-donnees-tidyverse_files/jquery-3.6.0/jquery-3.6.0.min.js","manipuler-donnees-tidyverse_files/jquery-3.6.0/jquery-3.6.0.min.map","manipuler-donnees-tidyverse_files/popper-2.6.0/popper.min.js","manipuler-donnees-tidyverse_files/tippy-6.2.7/tippy-bundle.umd.min.js","manipuler-donnees-tidyverse_files/tippy-6.2.7/tippy-light-border.css","manipuler-donnees-tidyverse_files/tippy-6.2.7/tippy.css","manipuler-donnees-tidyverse_files/tippy-6.2.7/tippy.umd.min.js","manipuler-donnees-tidyverse_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["img/boxplot.png","img/data_cowboy.png","img/empetrum.jpg","img/join-venn.png","img/join.png","img/pivot_longer.png","img/pivot_wider.png","img/tidy-1.png","img/tidy_data.png","img/tidy_data_1.png","img/tidy_data_2.png","img/tidyverse_celestial.png","manipuler-donnees-tidyverse_files/anchor-4.2.2/anchor.min.js","manipuler-donnees-tidyverse_files/bowser-1.9.3/bowser.min.js","manipuler-donnees-tidyverse_files/distill-2.2.21/template.v2.js","manipuler-donnees-tidyverse_files/header-attrs-2.11/header-attrs.js","manipuler-donnees-tidyverse_files/header-attrs-2.14/header-attrs.js","manipuler-donnees-tidyverse_files/jquery-3.6.0/jquery-3.6.0.js","manipuler-donnees-tidyverse_files/jquery-3.6.0/jquery-3.6.0.min.js","manipuler-donnees-tidyverse_files/jquery-3.6.0/jquery-3.6.0.min.map","manipuler-donnees-tidyverse_files/popper-2.6.0/popper.min.js","manipuler-donnees-tidyverse_files/tippy-6.2.7/tippy-bundle.umd.min.js","manipuler-donnees-tidyverse_files/tippy-6.2.7/tippy-light-border.css","manipuler-donnees-tidyverse_files/tippy-6.2.7/tippy.css","manipuler-donnees-tidyverse_files/tippy-6.2.7/tippy.umd.min.js","manipuler-donnees-tidyverse_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 <meta name="distill:offset" content="../.."/>
@@ -2311,12 +2311,12 @@ plus éloignée de la mer.</p>
 
 <span class='co'># Importer les donnees ----</span>
 
-<span class='va'>croissance</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"https://raw.githubusercontent.com/codons-blog/C-02-ManipulationDonneesBases/main/croissance.csv"</span><span class='op'>)</span>
+<span class='va'>croissance</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"https://raw.githubusercontent.com/codons-blog/C-02-ManipulationDonnees/main/croissance.csv"</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
 <p><br></p>
-<p>Il est toujours utile de <strong>visualiser nos données</strong> et
+<p>Il est toujours utile de <strong>visualiser vos données</strong> et
 leur structure :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2334,7 +2334,7 @@ leur structure :</p>
 <p>Lorsque vous exécutez la commande <code>head(croissance)</code>, vous
 pouvez remarquer dans la console la mention “A tibble”. Un <a
 href="https://tibble.tidyverse.org/index.html"><strong>tibble</strong></a>
-est un format particulier de tableau utilisé par le Tidyverse. Il
+est un format particulier de tableau utilisé dans le Tidyverse. Il
 présente notamment l’avantage d’afficher les <strong>types de
 variables</strong> sous les noms de colonnes.</p>
 <p><br></p>
@@ -2612,19 +2612,11 @@ climatiques pour ces différents sites).</p>
 <p><br></p>
 <p>Les différentes fonctions <code>..._join()</code> permettent de
 joindre plusieux jeux de données selon ce qu’on souhaite faire des
-données qui ne sont pas partagées.</p>
+données qui ne sont pas partagées. Les lignes d’un tableau seront
+associées à l’autre tableau selon les valeurs d’une ou de plusieurs
+colonnes partagées (les <strong>clés</strong>).</p>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/join-venn.png" width="551" /></p>
-</div>
-<p>Figure tirée de <a
-href="https://rpubs.com/williamsurles/293454">Joining Data in R with
-dplyr</a></p>
-<p><br></p>
-<p>Ces fonctions vont joindre deux tableaux : les lignes du deuxième
-tableau seront associées au premier tableau selon les valeurs d’une ou
-de plusieurs colonnes partagées (les <strong>clés</strong>).</p>
-<div class="layout-chunk" data-layout="l-body">
-<p><img src="img/join.png" width="304" /></p>
 </div>
 <p>Figure tirée de <a
 href="https://r4ds.had.co.nz/relational-data.html">R for Data
@@ -2664,43 +2656,47 @@ l’argument <code>by()</code>.</p>
 <p><br></p>
 <h1 id="tidyr">Mettre en forme des données à l’aide de
 <code>tidyr</code></h1>
-<p>La façon dont nous récoltons des données sur le terrain ou au
-laboratoire peut être très différente du format que nous aimerions
-utiliser dans R. Lors d’une expérimentation, nous préférons utiliser des
-tableaux préparés à l’avance, à remplir au fur et à mesure. Par exemple,
-pour suivre la hauteur de semis soumis à différents traitements, nous
-pourrions utiliser un tableau similaire à celui-ci :</p>
-<div class="layout-chunk" data-layout="l-body-outset">
-<p><img src="img/tidy_data_1.png" width="581" /></p>
+<p>Les données que nous avons manipulées jusqu’à présent ne sont
+<strong>pas dans un format idéal</strong> (rappelez-vous la longueur du
+code pour calculer la croissance totale pour chaque individu).</p>
+<p>Les valeurs mesurées sont réparties dans différentes colonnes, une
+par année.</p>
+<p>Nous pourrions mettre en forme ces donnes afin d’avoir une colonne
+“annee” et une colonne “croissance”.</p>
+<p>C’est ce qu’on appelle des <strong>tidy data</strong>, concept qui
+repose sur trois critères :</p>
+<p><strong>1. Chaque variable est située dans sa propre
+colonne</strong><br />
+<strong>2. Chaque observation est située sur sa propre
+ligne</strong><br />
+<strong>3. Chaque valeur est située dans sa propre cellule</strong></p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="img/tidy-1.png" width="960" /></p>
 </div>
-<p>Ce tableau, pratique à remplir, n’est pas idéal pour une analyse (8
-mesures par ligne).</p>
-<p>Il est préférable d’utiliser des données au format dit
-<strong>“tidy”</strong> :</p>
-<ul>
-<li>chaque ligne représente une observation<br />
-</li>
-<li>chaque colonne contient une variable</li>
-</ul>
-<p>Dans le cas présent, les mêmes données au format tidy ressembleraient
-à ceci :</p>
+<p>Figure tirée de <a href="https://r4ds.had.co.nz/tidy-data.html">R for
+Data Science</a></p>
+<p><br></p>
+<p>Considérons les deux premières lignes de notre tableau
+<code>croissance</code>, voici à quoi ressemblerait un format
+<strong>tidy</strong> :</p>
 <div class="layout-chunk" data-layout="l-body-outset">
-<p><img src="img/tidy_data_2.png" width="336" /></p>
+<p><img src="img/tidy_data.png" width="560" /></p>
 </div>
-<p>Ce format facilite les analyses en permettant les comparaisons entre
-groupes, traitements, espèces, …</p>
-<p>Le jeu de données que nous avons utilisé dans ce tutoriel,
-<code>croissance</code> n’est pas dans un format tidy : la même
-variable, la mesure de croissance, est répartie sur plusieurs colonnes
-représentant les années.</p>
-<p>Le package <code>tidyr</code> permet de jongler entre un format large
-et un format long, grâce aux fonctions <code>pivot_...()</code>.</p>
+<p><br></p>
+<p>Ce format <strong>facilite les analyses</strong> en permettant des
+comparaisons entre groupes, traitements, espèces, années, …</p>
+<p>Le package <code>tidyr</code> permet de jongler entre ces deux
+formats grâce aux fonctions <code>pivot_...()</code>.</p>
+<p><br></p>
 <h2 id="format-long-avec-pivot_longer">Format long avec
 <code>pivot_longer()</code></h2>
 <p>La fonction <code>pivot_longer()</code> permet de passer d’un format
 large à un format long. La syntaxe est un peu plus complexe que les
 fonctions que nous avons vues jusqu’à présent, car il nous préciser
 quelles colonnes vont être regroupées :</p>
+<div class="layout-chunk" data-layout="l-body-outset">
+<p><img src="img/pivot_longer.png" width="550" /></p>
+</div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Format large -&gt; format long</span>
@@ -2712,29 +2708,46 @@ quelles colonnes vont être regroupées :</p>
 </code></pre>
 </div>
 </div>
+<p><br></p>
 <h2 id="format-large-avec-pivot_wider">Format large avec
 <code>pivot_wider()</code></h2>
 <p>Cette fonction permet d’effectuer l’opération inverse :</p>
+<div class="layout-chunk" data-layout="l-body-outset">
+<p><img src="img/pivot_wider.png" width="553" /></p>
+</div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Format long -&gt; format large</span>
 
 <span class='va'>croissance_large</span> <span class='op'>&lt;-</span> <span class='va'>croissance_long</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
-  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/pivot_wider.html'>pivot_wider</a></span><span class='op'>(</span>id_cols <span class='op'>=</span> <span class='va'>Zone</span><span class='op'>:</span><span class='va'>Indiv</span>,
-              names_from <span class='op'>=</span> <span class='va'>Annee</span>,
-              values_from <span class='op'>=</span> <span class='va'>Croissance</span><span class='op'>)</span>
+  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/pivot_wider.html'>pivot_wider</a></span><span class='op'>(</span>id_cols <span class='op'>=</span> <span class='va'>zone</span><span class='op'>:</span><span class='va'>indiv</span>,
+              names_from <span class='op'>=</span> <span class='va'>annee</span>,
+              values_from <span class='op'>=</span> <span class='va'>croissance</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
-<h3 id="enchaîner-les-opérations">Enchaîner les opérations</h3>
+<p><br></p>
+<p>Dans les arguments <code>names_from</code> et
+<code>values_from</code> nous n’utilisons pas de guillemets car ces
+colonnes existent, contraitement aux arguments <code>names_to</code> et
+<code>values_to</code> de la fonction <code>pivot_longer()</code> qui
+permettent de créer des colonnes inexistantes.</p>
+<p><br></p>
+<h2 id="résumé">Résumé</h2>
 <p>Nous avons vu les principales fonctions des packages
 <code>dplyr</code> et <code>tidyr</code> une par une. Nous allons
-maintenant enchaîner les différentes opérations à l’aide d’un
-<code>pipe</code> :</p>
+maintenant <strong>enchaîner les différentes opérations</strong> depuis
+le début à l’aide d’un <code>pipe</code> et <strong>visualiser l’effet
+des différents traitements</strong> sur la croissance des tiges
+d’<em>Empetrum</em> :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>croissance</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"https://raw.githubusercontent.com/codons-blog/C-02-ManipulationDonnees/main/croissance.csv"</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Importer les deux fichiers</span>
+
+<span class='va'>croissance</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"https://raw.githubusercontent.com/codons-blog/C-02-ManipulationDonnees/main/croissance.csv"</span><span class='op'>)</span>
 <span class='va'>traitements</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv2</a></span><span class='op'>(</span><span class='st'>"https://raw.githubusercontent.com/codons-blog/C-02-ManipulationDonnees/main/traitements.csv"</span><span class='op'>)</span>
+
+<span class='co'># Mettre en forme et joindre les deux fichiers</span>
 
 <span class='va'>expe</span> <span class='op'>&lt;-</span> <span class='va'>croissance</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
   <span class='fu'><a href='https://tidyr.tidyverse.org/reference/pivot_longer.html'>pivot_longer</a></span><span class='op'>(</span>cols <span class='op'>=</span> <span class='va'>`2007`</span><span class='op'>:</span><span class='va'>`2012`</span>,
@@ -2748,14 +2761,10 @@ maintenant enchaîner les différentes opérations à l’aide d’un
          indiv <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>indiv</span><span class='op'>)</span>,
          annee <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>annee</span><span class='op'>)</span>,
          traitement <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>traitement</span><span class='op'>)</span><span class='op'>)</span>
-</code></pre>
-</div>
-</div>
-<p>Nous pouvons visualiser l’effet des différents traitements sur la
-croissance des tiges d’<strong>Empetrum</strong> :</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/boxplot.html'>boxplot</a></span><span class='op'>(</span><span class='va'>croissance</span> <span class='op'>~</span> <span class='va'>traitement</span>, 
+
+<span class='co'># Boxplot de l'effet des traitements sur la croissance</span>
+
+<span class='fu'><a href='https://rdrr.io/r/graphics/boxplot.html'>boxplot</a></span><span class='op'>(</span><span class='va'>croissance</span> <span class='op'>~</span> <span class='va'>traitement</span>, 
         data <span class='op'>=</span> <span class='va'>expe</span>,
         main <span class='op'>=</span> <span class='st'>"Effet de la température (T) et de la fertilisation (F) sur la croissance d'Empetrum"</span>,
         xlab <span class='op'>=</span> <span class='st'>"Traitement"</span>,
@@ -2763,9 +2772,19 @@ croissance des tiges d’<strong>Empetrum</strong> :</p>
 </code></pre>
 </div>
 </div>
+<p><br></p>
 <div class="layout-chunk" data-layout="l-body-outset">
 <p><img src="img/boxplot.png" width="332" /></p>
 </div>
+<p><br></p>
+<h2 id="bilan-du-tutoriel">Bilan du tutoriel :</h2>
+<ol type="1">
+<li>Vous savez utiliser les fonctions de <code>dplyr</code> pour
+manipuler vos données<br />
+</li>
+<li>Vous savez mettre en forme des données qui respectent les critères
+des tidy data avec <code>tidyr</code></li>
+</ol>
 <h1 id="defi">Défi</h1>
 <p>Mettons en pratique ce que nous avons vu dans ce tutoriel pour tenter
 de répondre à la question suivante : quelle est l’effet de différentes
