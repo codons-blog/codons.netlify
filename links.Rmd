@@ -10,18 +10,41 @@ knitr::opts_chunk$set(echo = FALSE)
 
 [Télécharger R et RStudio](#download)  
 [Aide-mémoires](#cheatsheets)  
+[Livres](#books)  
 [Répertoires GitHub des tutoriels](#git)
+
+<br>
 
 # Télécharger R et RStudio {#download}
 
-[The Comprehensive R Archive Network](https://cran.r-project.org/)   
-[RStudio](https://www.rstudio.com/products/rstudio/)  
+- [The Comprehensive R Archive Network](https://cran.r-project.org/)   
+
+- [RStudio](https://www.rstudio.com/products/rstudio/)  
+
+<br>
 
 # Aide-mémoires {#cheatsheets}
 
-RStudio ([anglais](https://raw.githubusercontent.com/rstudio/cheatsheets/main/rstudio-ide.pdf) / [français](https://thinkr.fr/pdf/rstudio-french-cheatsheet.pdf))  
-R basique ([anglais](https://raw.githubusercontent.com/rstudio/cheatsheets/main/base-r.pdf))
+- RStudio ([anglais](https://raw.githubusercontent.com/rstudio/cheatsheets/main/rstudio-ide.pdf) / [français](https://thinkr.fr/pdf/rstudio-french-cheatsheet.pdf)) 
+  
+- R basique ([anglais](https://raw.githubusercontent.com/rstudio/cheatsheets/main/base-r.pdf))  
+
+- dplyr ([anglais](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-transformation.pdf) / [francais](https://thinkr.fr/pdf/dplyr-french-cheatsheet.pdf))  
+  
+- tidyr ([anglais](https://raw.githubusercontent.com/rstudio/cheatsheets/main/tidyr.pdf) / [francais](https://thinkr.fr/pdf/dplyr-french-cheatsheet.pdf))  
+
+<br>
+
+# Livres {#books}
+
+- [R for Data Science](https://cran.r-project.org/) (anglais)
+
+- [Introduction à R et au tidyverse](https://juba.github.io/tidyverse/index.html) (français)
+
+<br>
 
 # Répertoires GitHub des tutoriels {#git}
 
-[Premiers pas avec R](https://github.com/KittJonathan/Codons-01-PremiersPasAvecR)
+- [Premiers pas avec R](https://github.com/codons-blog/C-01-PremiersPas)  
+
+- [Manipulation de données](https://github.com/codons-blog/C-02-ManipulationDonnees)  
