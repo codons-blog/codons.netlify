@@ -191,7 +191,7 @@ L'opérateur `:` permet de construire une **séquence** : dans le cas présent i
 Si vous souhaitez renommer ou déplacer seulement quelques colonnes, la fonction `everything()` vous permet de **sélectionner toutes les colonnes restantes** : 
 
 ```{r, echo=TRUE, eval=FALSE}
-croissance2_selection <- croissance %>% 
+croissance_selection <- croissance %>% 
   select(zone = Zone, indiv = Indiv, everything())
 ```
 
@@ -230,8 +230,8 @@ croissance %>% filter(!zone >= 5)
 
 # zones 2 et 7
 
-croissance2 %>% filter(zone == 2 | zone == 7)
-croissance2 %>% filter(zone %in% c(2, 7))
+croissance %>% filter(zone == 2 | zone == 7)
+croissance %>% filter(zone %in% c(2, 7))
 
 # zone 2 + individus entre 300 et 400
 
@@ -275,7 +275,7 @@ La fonction `mutate()` permet de créer un nouvelle colonne :
 ```{r, echo=TRUE, eval=FALSE}
 # Calculer la croissance totale pour chaque individu entre 2007 et 2012
 
-croissance_totale <- croissance2 %>% 
+croissance_totale <- croissance %>% 
   mutate(croissance.totale = `2007` + `2008` + `2009` + `2010` + `2011` + `2012`)
 ```
 
@@ -294,7 +294,7 @@ croissance_groupes <- croissance %>%
 
 <br>
 
-Comparez les deux objets `croissance2` et `croissance2_groupes`. La seule différence visible est la mention `Groups` quand vous affichez l'objet possédant une structure interne. Pour l'instant, les groupes créés par `group_by()` sont **sous-jacents**, et leur intérêt sera évident en appliquant d'autres fonctions à ces groupes.
+Comparez les deux objets `croissance` et `croissance_groupes`. La seule différence visible est la mention `Groups` quand vous affichez l'objet possédant une structure interne. Pour l'instant, les groupes créés par `group_by()` sont **sous-jacents**, et leur intérêt sera évident en appliquant d'autres fonctions à ces groupes.
 
 <br>
 
