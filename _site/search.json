@@ -5,23 +5,23 @@
       "title": "A propos",
       "description": "Tutoriels pour apprendre à coder en R",
       "author": [],
-      "contents": "\r\nLe contenu des tutoriels de ce site a été adapté du site ourcodingclub avec\r\nl’autorisation des auteurs.\r\n\r\nListe des tutoriels disponibles à ce jour :\r\nPremiers\r\npas avec R\r\n\r\n\r\n\r\n",
-      "last_modified": "2022-05-25T16:15:37+02:00"
+      "contents": "\r\nLe contenu des tutoriels de ce site a été adapté du site ourcodingclub avec l’autorisation des auteurs.\r\n\r\nListe des tutoriels disponibles à ce jour :\r\nPremiers pas avec R\r\n\r\n\r\n\r\n",
+      "last_modified": "2022-05-30T15:10:25+02:00"
     },
     {
       "path": "index.html",
       "title": "Tutoriels R",
       "author": [],
       "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2022-05-25T16:15:38+02:00"
+      "last_modified": "2022-05-30T15:10:26+02:00"
     },
     {
       "path": "links.html",
       "title": "Liens",
       "description": "Liens utiles pour approfondir",
       "author": [],
-      "contents": "\r\nTélécharger R et RStudioAide-mémoiresLivresRépertoires GitHub des tutoriels\r\n\r\nTélécharger R et RStudio\r\nThe Comprehensive R Archive\r\nNetwork\r\nRStudio\r\n\r\nAide-mémoires\r\nRStudio (anglais\r\n/ français)\r\nR basique (anglais)\r\ndplyr (anglais\r\n/ francais)\r\ntidyr (anglais\r\n/ francais)\r\n\r\nLivres\r\nR for Data Science\r\n(anglais)\r\nIntroduction à R et\r\nau tidyverse (français)\r\n\r\nRépertoires GitHub des tutoriels\r\nPremiers pas avec\r\nR\r\nManipulation\r\nde données\r\n\r\n\r\n\r\n",
-      "last_modified": "2022-05-25T16:15:38+02:00"
+      "contents": "\r\nTélécharger R et RStudioAide-mémoiresLivresRépertoires GitHub des tutoriels\r\n\r\nTélécharger R et RStudio\r\nThe Comprehensive R Archive Network\r\nRStudio\r\n\r\nAide-mémoires\r\nRStudio (anglais / français)\r\nR basique (anglais)\r\ndplyr (anglais / francais)\r\ntidyr (anglais / francais)\r\n\r\nLivres\r\nR for Data Science (anglais)\r\nIntroduction à R et au tidyverse (français)\r\n\r\nRépertoires GitHub des tutoriels\r\nPremiers pas avec R\r\nManipulation de données\r\n\r\n\r\n\r\n",
+      "last_modified": "2022-05-30T15:10:27+02:00"
     }
   ],
   "collections": ["posts/posts.json"]
