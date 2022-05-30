@@ -429,8 +429,8 @@ knitr::include_graphics("img/pivot_longer.png")
 
 croissance_long <- croissance %>% 
   pivot_longer(cols = `2007`:`2012`,
-               names_to = "Annee",
-               values_to = "Croissance")
+               names_to = "annee",
+               values_to = "croissance")
 ```
 
 <br>
