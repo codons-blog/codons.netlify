@@ -93,12 +93,24 @@ Etape       Description                                   Notes
 
 <br>
 
-Le package `ggplot2` est très utile pour vous guider dans ces étapes. Le `gg` de `ggplot2` signifie **"grammaire des graphiques"**. L'écriture du code de votre graphique ressemblera à la construction d'une phrase avec différentes parties s'articulant logiquement. De façon shématique, il s'agit d'ajouter des couches qui contiennent les différents éléments de votre graphique. Vous commencez par créer un graphique vide, puis ajoutez une couche avec vos points, puis une couche avec les mesures d'incertitude, les axes, etc.
+Le package `ggplot2` est très utile pour vous guider dans ces étapes. Le `gg` de `ggplot2` signifie **"grammaire des graphiques"**.  
+L'écriture du code de votre graphique ressemblera à la construction d'une phrase avec différentes parties s'articulant logiquement.  
+De façon shématique, il s'agit d'ajouter des couches qui contiennent les différents éléments de votre graphique : vous commencez par créer un graphique vide, puis ajoutez une couche avec vos points, puis une couche avec les axes, etc.
 
 ```{r, layout="l-body-outset"}
-knitr::include_graphics("img/ggplot_layers.png")
+knitr::include_graphics("img/ggplot-grammar-of-graphics.png")
 ```
+Figure tirée de [ggplot2 et la grammaire des graphiques](https://larmarange.github.io/analyse-R/ggplot2.html)
 
-```{r, layout="l-body-outset"}
+<br>
+
+Le graphique ci-dessous se décompose en quatre couches :  
+
+1) Initialisation de l'outil graphique **`ggplot()`**  
+2) Paramètres esthétiques **`aes()`** : quelle variable ira sur quel axe  
+3) **`geom()`** : manière de représenter nos variables (points, lignes, ...)  
+4) **`theme_...()`** pour modifier l'apparence du graphique
+
+```{r, layout="l-page"}
 knitr::include_graphics("img/ggplot_01.gif")
 ```

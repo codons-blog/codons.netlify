@@ -122,7 +122,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["img/ggplot_01.gif","img/ggplot_layers.png","img/ggplot2_blank.png","visualiser-donnees-ggplot2_files/anchor-4.2.2/anchor.min.js","visualiser-donnees-ggplot2_files/bowser-1.9.3/bowser.min.js","visualiser-donnees-ggplot2_files/distill-2.2.21/template.v2.js","visualiser-donnees-ggplot2_files/header-attrs-2.11/header-attrs.js","visualiser-donnees-ggplot2_files/header-attrs-2.14/header-attrs.js","visualiser-donnees-ggplot2_files/jquery-3.6.0/jquery-3.6.0.js","visualiser-donnees-ggplot2_files/jquery-3.6.0/jquery-3.6.0.min.js","visualiser-donnees-ggplot2_files/jquery-3.6.0/jquery-3.6.0.min.map","visualiser-donnees-ggplot2_files/popper-2.6.0/popper.min.js","visualiser-donnees-ggplot2_files/tippy-6.2.7/tippy-bundle.umd.min.js","visualiser-donnees-ggplot2_files/tippy-6.2.7/tippy-light-border.css","visualiser-donnees-ggplot2_files/tippy-6.2.7/tippy.css","visualiser-donnees-ggplot2_files/tippy-6.2.7/tippy.umd.min.js","visualiser-donnees-ggplot2_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["img/ggplot-grammar-of-graphics.png","img/ggplot_01.gif","img/ggplot_layers.png","img/ggplot2_blank.png","visualiser-donnees-ggplot2_files/anchor-4.2.2/anchor.min.js","visualiser-donnees-ggplot2_files/bowser-1.9.3/bowser.min.js","visualiser-donnees-ggplot2_files/distill-2.2.21/template.v2.js","visualiser-donnees-ggplot2_files/header-attrs-2.11/header-attrs.js","visualiser-donnees-ggplot2_files/header-attrs-2.14/header-attrs.js","visualiser-donnees-ggplot2_files/jquery-3.6.0/jquery-3.6.0.js","visualiser-donnees-ggplot2_files/jquery-3.6.0/jquery-3.6.0.min.js","visualiser-donnees-ggplot2_files/jquery-3.6.0/jquery-3.6.0.min.map","visualiser-donnees-ggplot2_files/popper-2.6.0/popper.min.js","visualiser-donnees-ggplot2_files/tippy-6.2.7/tippy-bundle.umd.min.js","visualiser-donnees-ggplot2_files/tippy-6.2.7/tippy-light-border.css","visualiser-donnees-ggplot2_files/tippy-6.2.7/tippy.css","visualiser-donnees-ggplot2_files/tippy-6.2.7/tippy.umd.min.js","visualiser-donnees-ggplot2_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1638,17 +1638,35 @@ l’échantillon pour chaque traitement, …</td>
 <p><br></p>
 <p>Le package <code>ggplot2</code> est très utile pour vous guider dans
 ces étapes. Le <code>gg</code> de <code>ggplot2</code> signifie
-<strong>“grammaire des graphiques”</strong>. L’écriture du code de votre
-graphique ressemblera à la construction d’une phrase avec différentes
-parties s’articulant logiquement. De façon shématique, il s’agit
-d’ajouter des couches qui contiennent les différents éléments de votre
-graphique. Vous commencez par créer un graphique vide, puis ajoutez une
-couche avec vos points, puis une couche avec les mesures d’incertitude,
-les axes, etc.</p>
+<strong>“grammaire des graphiques”</strong>.<br />
+L’écriture du code de votre graphique ressemblera à la construction
+d’une phrase avec différentes parties s’articulant logiquement.<br />
+De façon shématique, il s’agit d’ajouter des couches qui contiennent les
+différents éléments de votre graphique : vous commencez par créer un
+graphique vide, puis ajoutez une couche avec vos points, puis une couche
+avec les axes, etc.</p>
 <div class="layout-chunk" data-layout="l-body-outset">
-<p><img src="img/ggplot_layers.png" width="640" /></p>
+<p><img src="img/ggplot-grammar-of-graphics.png" width="960" /></p>
 </div>
-<div class="layout-chunk" data-layout="l-body-outset">
+<p>Figure tirée de <a
+href="https://larmarange.github.io/analyse-R/ggplot2.html">ggplot2 et la
+grammaire des graphiques</a></p>
+<p><br></p>
+<p>Le graphique ci-dessous se décompose en quatre couches :</p>
+<ol type="1">
+<li>Initialisation de l’outil graphique
+<strong><code>ggplot()</code></strong><br />
+</li>
+<li>Paramètres esthétiques <strong><code>aes()</code></strong> : quelle
+variable ira sur quel axe<br />
+</li>
+<li><strong><code>geom()</code></strong> : manière de représenter nos
+variables (points, lignes, …)<br />
+</li>
+<li><strong><code>theme_...()</code></strong> pour modifier l’apparence
+du graphique</li>
+</ol>
+<div class="layout-chunk" data-layout="l-page">
 <p><img src="img/ggplot_01.gif" /><!-- --></p>
 </div>
 <div class="sourceCode" id="cb1"><pre
