@@ -122,7 +122,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["img/ggplot_layers.png","img/ggplot2_blank.png","visualiser-donnees-ggplot2_files/anchor-4.2.2/anchor.min.js","visualiser-donnees-ggplot2_files/bowser-1.9.3/bowser.min.js","visualiser-donnees-ggplot2_files/distill-2.2.21/template.v2.js","visualiser-donnees-ggplot2_files/header-attrs-2.11/header-attrs.js","visualiser-donnees-ggplot2_files/jquery-3.6.0/jquery-3.6.0.js","visualiser-donnees-ggplot2_files/jquery-3.6.0/jquery-3.6.0.min.js","visualiser-donnees-ggplot2_files/jquery-3.6.0/jquery-3.6.0.min.map","visualiser-donnees-ggplot2_files/popper-2.6.0/popper.min.js","visualiser-donnees-ggplot2_files/tippy-6.2.7/tippy-bundle.umd.min.js","visualiser-donnees-ggplot2_files/tippy-6.2.7/tippy-light-border.css","visualiser-donnees-ggplot2_files/tippy-6.2.7/tippy.css","visualiser-donnees-ggplot2_files/tippy-6.2.7/tippy.umd.min.js","visualiser-donnees-ggplot2_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["img/ggplot-grammar-of-graphics.png","img/ggplot_01.gif","img/ggplot_layers.png","img/ggplot2_blank.png","visualiser-donnees-ggplot2_files/anchor-4.2.2/anchor.min.js","visualiser-donnees-ggplot2_files/bowser-1.9.3/bowser.min.js","visualiser-donnees-ggplot2_files/distill-2.2.21/template.v2.js","visualiser-donnees-ggplot2_files/header-attrs-2.11/header-attrs.js","visualiser-donnees-ggplot2_files/header-attrs-2.14/header-attrs.js","visualiser-donnees-ggplot2_files/jquery-3.6.0/jquery-3.6.0.js","visualiser-donnees-ggplot2_files/jquery-3.6.0/jquery-3.6.0.min.js","visualiser-donnees-ggplot2_files/jquery-3.6.0/jquery-3.6.0.min.map","visualiser-donnees-ggplot2_files/popper-2.6.0/popper.min.js","visualiser-donnees-ggplot2_files/tippy-6.2.7/tippy-bundle.umd.min.js","visualiser-donnees-ggplot2_files/tippy-6.2.7/tippy-light-border.css","visualiser-donnees-ggplot2_files/tippy-6.2.7/tippy.css","visualiser-donnees-ggplot2_files/tippy-6.2.7/tippy.umd.min.js","visualiser-donnees-ggplot2_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1443,7 +1443,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="visualiser-donnees-ggplot2_files/header-attrs-2.11/header-attrs.js"></script>
+  <script src="visualiser-donnees-ggplot2_files/header-attrs-2.14/header-attrs.js"></script>
   <script src="visualiser-donnees-ggplot2_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
   <script src="visualiser-donnees-ggplot2_files/popper-2.6.0/popper.min.js"></script>
   <link href="visualiser-donnees-ggplot2_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
@@ -1496,7 +1496,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   
 ,   Beverly Tan hhttps://ourcodingclub.github.io/tutorials/datavis/ 
   
-,   Sandra Angers-Blondin hhttps://ourcodingclub.github.io/tutorials/datavis/ 
+,   Sandra
+Angers-Blondin hhttps://ourcodingclub.github.io/tutorials/datavis/ 
   
 ,   Jonathan Kitt (adaptation) true 
   
@@ -1513,32 +1514,49 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </ul>
 </nav>
 </div>
-<p><em>Ce tutoriel est adapté de <a href="https://ourcodingclub.github.io/tutorials/datavis/">Beautiful and informative data visualisation</a> et <a href="https://ourcodingclub.github.io/tutorials/data-vis-2/">Data visualisation 2</a> du site <a href="https://ourcodingclub.github.io/">Our Coding Club</a>.</em></p>
+<p><em>Ce tutoriel est adapté de <a
+href="https://ourcodingclub.github.io/tutorials/datavis/">Beautiful and
+informative data visualisation</a> et <a
+href="https://ourcodingclub.github.io/tutorials/data-vis-2/">Data
+visualisation 2</a> du site <a
+href="https://ourcodingclub.github.io/">Our Coding Club</a>.</em></p>
 <h1 id="introduction">Introduction</h1>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/ggplot2_blank.png" width="2364" /></p>
 </div>
-<p>Dessin de <a href="https://github.com/allisonhorst/stats-illustrations/blob/master/rstats-blanks/ggplot2_blank.png">Allison Horst</a></p>
+<p>Dessin de <a
+href="https://github.com/allisonhorst/stats-illustrations/blob/master/rstats-blanks/ggplot2_blank.png">Allison
+Horst</a></p>
 <p><br></p>
-<p>Nous avons vu comment <a href="https://codons.netlify.app/posts/premiers-pas-avec-r/">importer nos données dans RStudio</a>, et comment <a href="https://codons.netlify.app/posts/manipuler-donnees-tidyverse/">les manipuler et les mettre en forme</a>.<br />
-Nous allons maintenant voir comment communiquer les résultats de nos analyses - à l’aide de la <strong>visualisation de données</strong>.</p>
+<p>Nous avons vu comment <a
+href="https://codons.netlify.app/posts/premiers-pas-avec-r/">importer
+nos données dans RStudio</a>, et comment <a
+href="https://codons.netlify.app/posts/manipuler-donnees-tidyverse/">les
+manipuler et les mettre en forme</a>.<br />
+Nous allons maintenant voir comment communiquer les résultats de nos
+analyses - à l’aide de la <strong>visualisation de données</strong>.</p>
 <p><br></p>
 <p>Voici les objectifs et le sommaire de ce tutoriel :</p>
 <p><br></p>
-<p><strong>1. <a href="#syntaxe">Se familiariser avec la syntaxe <em>ggplot2</em></a></strong></p>
-<p><strong>2. <a href="#type">Choisir le bon type de graphique</a></strong></p>
-<p><strong>3. <a href="#creer">Créer des graphiques avec <em>ggplot2</em></a></strong> :</p>
+<p><strong>1. <a href="#syntaxe">Se familiariser avec la syntaxe
+<em>ggplot2</em></a></strong></p>
+<p><strong>2. <a href="#type">Choisir le bon type de
+graphique</a></strong></p>
+<p><strong>3. <a href="#creer">Créer des graphiques avec
+<em>ggplot2</em></a></strong> :</p>
 <ul>
 <li><p><a href="#hist">histogramme</a></p></li>
 <li><p><a href="#scatterplot">scatter plot</a></p></li>
 <li><p><a href="#boxplot">box plot</a></p></li>
 <li><p><a href="#barplot">bar plot</a></p></li>
 </ul>
-<p><strong>4. <a href="#panels">Arranger plusieurs graphiques et les exporter</a></strong></p>
+<p><strong>4. <a href="#panels">Arranger plusieurs graphiques et les
+exporter</a></strong></p>
 <p><strong>5. <a href="#defi">Défi</a></strong></p>
 <p><br></p>
 <h1 id="syntaxe">La syntaxe <code>ggplot2</code></h1>
-<p>Avant d’attaquer la syntaxe <code>ggplot2</code>, voyons brièvement ce que de bons graphiques ont en commun :</p>
+<p>Avant d’attaquer la syntaxe <code>ggplot2</code>, voyons brièvement
+ce que de bons graphiques ont en commun :</p>
 <table>
 <thead>
 <tr class="header">
@@ -1551,61 +1569,108 @@ Nous allons maintenant voir comment communiquer les résultats de nos analyses -
 <tr class="odd">
 <td style="text-align: left;">1</td>
 <td style="text-align: left;">Un graphique adapté aux résultats</td>
-<td style="text-align: left;">boxplot, scatterplot, régression linéaire, …</td>
+<td style="text-align: left;">boxplot, scatterplot, régression linéaire,
+…</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">2</td>
 <td style="text-align: left;">Un graphique bien organisé</td>
-<td style="text-align: left;">variable indépendante (explicative) sur l’axe x et variable dépendante (réponse) sur l’axe y</td>
+<td style="text-align: left;">variable indépendante (explicative) sur
+l’axe x et variable dépendante (réponse) sur l’axe y</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">3</td>
-<td style="text-align: left;">Les axes x et y utilisent les bonnes unités</td>
-<td style="text-align: left;">les symboles appropriés (alpha, beta, … ) et des exposants/indices quand nécessaire</td>
+<td style="text-align: left;">Les axes x et y utilisent les bonnes
+unités</td>
+<td style="text-align: left;">les symboles appropriés (alpha, beta, … )
+et des exposants/indices quand nécessaire</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">4</td>
-<td style="text-align: left;">Les axes x et y sont facilement lisibles</td>
-<td style="text-align: left;">attention aux polices originales et aux lettres trop petites</td>
+<td style="text-align: left;">Les axes x et y sont facilement
+lisibles</td>
+<td style="text-align: left;">attention aux polices originales et aux
+lettres trop petites</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">5</td>
 <td style="text-align: left;">Une légende claire et informative</td>
-<td style="text-align: left;">on différencie facilement les points/lignes</td>
+<td style="text-align: left;">on différencie facilement les
+points/lignes</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">6</td>
 <td style="text-align: left;">Un graphique aéré</td>
-<td style="text-align: left;">ne pas mettre tous les résultats sur un seul graphique, les espacer</td>
+<td style="text-align: left;">ne pas mettre tous les résultats sur un
+seul graphique, les espacer</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">7</td>
-<td style="text-align: left;">Un choix de couleurs clair et cohérent</td>
-<td style="text-align: left;">utiliser les mêmes couleurs pour les mêmes variables, éviter les combinaisons vert/rouge difficiles à distinguer pour certaines personnes</td>
+<td style="text-align: left;">Un choix de couleurs clair et
+cohérent</td>
+<td style="text-align: left;">utiliser les mêmes couleurs pour les mêmes
+variables, éviter les combinaisons vert/rouge difficiles à distinguer
+pour certaines personnes</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">8</td>
 <td style="text-align: left;">Un graphique aux bonnes dimensions</td>
-<td style="text-align: left;">éviter les superpositions d’étiquettes ou de points/lignes, ajuster la hauteur ou la largeur du graphique si nécessaire</td>
+<td style="text-align: left;">éviter les superpositions d’étiquettes ou
+de points/lignes, ajuster la hauteur ou la largeur du graphique si
+nécessaire</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">9</td>
-<td style="text-align: left;">Des mesures d’incertitude quand nécessaire</td>
-<td style="text-align: left;">barres d’erreur, intervalles de confiance, en précisant ce dont il s’agit</td>
+<td style="text-align: left;">Des mesures d’incertitude quand
+nécessaire</td>
+<td style="text-align: left;">barres d’erreur, intervalles de confiance,
+en précisant ce dont il s’agit</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">10</td>
 <td style="text-align: left;">Un texte concis et informatif</td>
-<td style="text-align: left;">préciser ce que les points représentent (données brutes ? modèles de prédiction ?), quelle est la taille de l’échantillon pour chaque traitement, …</td>
+<td style="text-align: left;">préciser ce que les points représentent
+(données brutes ? modèles de prédiction ?), quelle est la taille de
+l’échantillon pour chaque traitement, …</td>
 </tr>
 </tbody>
 </table>
 <p><br></p>
-<p>Le package <code>ggplot2</code> est très utile pour vous guider dans ces étapes. Le <code>gg</code> de <code>ggplot2</code> signifie <strong>“grammaire des graphiques”</strong>. L’écriture du code de votre graphique ressemblera à la construction d’une phrase avec différentes parties s’articulant logiquement. De façon shématique, il s’agit d’ajouter des couches qui contiennent les différents éléments de votre graphique. Vous commencez par créer un graphique vide, puis ajoutez une couche avec vos points, puis une couche avec les mesures d’incertitude, les axes, etc.</p>
+<p>Le package <code>ggplot2</code> est très utile pour vous guider dans
+ces étapes. Le <code>gg</code> de <code>ggplot2</code> signifie
+<strong>“grammaire des graphiques”</strong>.<br />
+L’écriture du code de votre graphique ressemblera à la construction
+d’une phrase avec différentes parties s’articulant logiquement.<br />
+De façon shématique, il s’agit d’ajouter des couches qui contiennent les
+différents éléments de votre graphique : vous commencez par créer un
+graphique vide, puis ajoutez une couche avec vos points, puis une couche
+avec les axes, etc.</p>
 <div class="layout-chunk" data-layout="l-body-outset">
-<p><img src="img/ggplot_layers.png" width="640" /></p>
+<p><img src="img/ggplot-grammar-of-graphics.png" width="960" /></p>
 </div>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>Figure tirée de <a
+href="https://larmarange.github.io/analyse-R/ggplot2.html">ggplot2 et la
+grammaire des graphiques</a></p>
+<p><br></p>
+<p>Le graphique ci-dessous se décompose en quatre couches :</p>
+<ol type="1">
+<li>Initialisation de l’outil graphique
+<strong><code>ggplot()</code></strong><br />
+</li>
+<li>Paramètres esthétiques <strong><code>aes()</code></strong> : quelle
+variable ira sur quel axe<br />
+</li>
+<li><strong><code>geom()</code></strong> : manière de représenter nos
+variables (points, lignes, …)<br />
+</li>
+<li><strong><code>theme_...()</code></strong> pour modifier l’apparence
+du graphique</li>
+</ol>
+<div class="layout-chunk" data-layout="l-page">
+<p><img src="img/ggplot_01.gif" /><!-- --></p>
+</div>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
