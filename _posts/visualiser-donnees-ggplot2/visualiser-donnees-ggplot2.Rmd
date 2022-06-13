@@ -98,3 +98,7 @@ Le package `ggplot2` est très utile pour vous guider dans ces étapes. Le `gg` 
 ```{r, layout="l-body-outset"}
 knitr::include_graphics("img/ggplot_layers.png")
 ```
+
+```{r, layout="l-body-outset"}
+knitr::include_graphics("img/ggplot_01.gif")
+```
