@@ -115,7 +115,7 @@ Le graphique ci-dessous se décompose en quatre couches :
 knitr::include_graphics("img/ggplot_01.gif")
 ```
 
-# Créer des graphiques avec *ggplot2* {creer}
+# Créer des graphiques avec *ggplot2* {#creer}
 
 Nous allons maintenant voir comment créer les principaux types de graphiques à l'aide de `ggplot2`.  
 
@@ -307,3 +307,7 @@ La figure ci-dessous vous montre l'effet de chaque ligne de code sur l'apparence
 ```{r, layout="l-page"}
 knitr::include_graphics("img/ggplot_02.gif")
 ```
+
+<br>
+
+## Nuage de points (scatter plot) {#scatterplot}
