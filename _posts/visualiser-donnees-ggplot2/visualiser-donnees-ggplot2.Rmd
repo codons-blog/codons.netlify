@@ -204,90 +204,69 @@ knitr::include_graphics("img/hist3.png")
 
 <br>
 
-Le paramètre `labs()` permet d'ajouter ou de modifier les titres du graphique et des axes : 
+Le paramètre `scale_fill_brewer()` permet de sélectionner d'autres palettes proposées par l'outil [ColorBrewer 2.0](https://colorbrewer2.org/#type=qualitative&scheme=Set2&n=3).  
+
+```{r, layout="l-body-outset"}
+knitr::include_graphics("img/colorbrewer2.png")
+```
+
+<br>
+
+Il existe des packages proposant de très nombreuses palettes supplémentaires ([voir cette liste](https://github.com/EmilHvitfeldt/r-color-palettes)).
+
+<br>
+
+Nous utilisons la palette **Set2** : 
 
 ```{r, echo=TRUE, eval=FALSE}
 ggplot(data = pingouins,
-                aes(x = aile_lng_mm)) +
-  geom_histogram(colour = "blue", fill = "white") +
-  labs(title = "Longueur des ailes pour trois espèces de pingouins",
-       subtitle = "Sur trois iles de l'archipel Palmer (Antarctique)",
-       x = "Longueur des ailes (mm)",
-       y = "Frequence")
+              aes(x = aile_lng_mm)) +
+    geom_histogram(aes(fill = espece),
+                   position = "identity",
+                   alpha = 0.5) +
+  scale_fill_brewer(palette = "Set2")
 ```
 
 <aside>
-```{r, layout="l-body-outset"}
-knitr::include_graphics("img/hist3.png")
-```
-</aside>
-
-
-
- 
-
-```{r, echo=TRUE, eval=FALSE}
-ggplot(data = pingouins,
-       aes(x = aile_lng_mm,
-           fill = espece)) +
-  geom_histogram(position = "identity") +
-  labs(title = "Longueur des ailes pour trois espèces de pingouins",
-       subtitle = "Sur trois iles de l'archipel Palmer (Antarctique)",
-       x = "Longueur des ailes (mm)",
-       y = "Frequence")
-```
-
-Nous avons ajouté le paramètre position = "identity" dans geom_histogram(). Il existe différentes façons de présenter des histogrammes : `position = "stack"` (par défaut), `position = "identity"`, `position = "dodge"`, ... essayez les différentes options pour voir le résultat.
-
-<aside>
-```{r, layout="l-body-outset"}
+```{r, layout="l-body"}
 knitr::include_graphics("img/hist4.png")
 ```
 </aside>
 
-Certaines barres de notre histogramme ce recouvrent. Nous pouvons utiliser le paramètre `alpha` pour modifier la transparence : 
+<br>
+
+Nous pouvons également définir les couleurs à l'aide de `scale_fill_manual()` : 
 
 ```{r, echo=TRUE, eval=FALSE}
 ggplot(data = pingouins,
-       aes(x = aile_lng_mm)) +
-  geom_histogram(aes(fill = espece),
-                 position = "identity",
-                 alpha = 0.5) +
-  labs(title = "Longueur des ailes de pingouins",
-       subtitle = "pour 3 espèces de l'archipel Palmer",
-       x = "Longueur des ailes (mm)",
-       y = "Frequence")
+              aes(x = aile_lng_mm)) +
+    geom_histogram(aes(fill = espece),
+                   position = "identity",
+                   alpha = 0.5) +
+  scale_fill_manual(values = c("darkorange", "purple", "cyan4"))
 ```
 
 <aside>
-```{r, layout="l-body-outset"}
+```{r, layout="l-body"}
 knitr::include_graphics("img/hist5.png")
 ```
 </aside>
 
-Nous pouvons choisir une autre palette de couleurs à l'aide du paramètre `scale_fill_brewer()`. Les palettes incluses sont visibles ci-contre.  
+<br>
 
-<aside>
-```{r, layout="l-body"}
-knitr::include_graphics("img/rcolorbrewer.png")
-```
-</aside>
-  
-Il existe des packages proposant de très nombreuses palettes supplémentaires ([voir cette liste](https://github.com/EmilHvitfeldt/r-color-palettes))
-
-Essayons la palette **Accent** : 
+Le paramètre `labs()` permet d'ajouter ou de modifier les titres du graphique et des axes : 
 
 ```{r, echo=TRUE, eval=FALSE}
 ggplot(data = pingouins,
-                aes(x = aile_lng_mm)) +
-  geom_histogram(aes(fill = espece),
-                 position = "identity",
-                 alpha = 0.5) +
-  labs(title = "Longueur des ailes de pingouins",
-       subtitle = "pour 3 espèces de l'archipel Palmer",
+              aes(x = aile_lng_mm)) +
+    geom_histogram(aes(fill = espece),
+                   position = "identity",
+                   alpha = 0.5) +
+  scale_fill_manual(values = c("darkorange", "purple", "cyan4"))
+  labs(title = "Longueur des ailes pour trois espèces de pingouins",
+       subtitle = "Sur trois iles de l'archipel Palmer (Antarctique)",
        x = "Longueur des ailes (mm)",
-       y = "Frequence") +
-  scale_fill_brewer(palette = "Accent")
+       y = "Frequence")
 ```
 
 <aside>
@@ -296,19 +275,23 @@ knitr::include_graphics("img/hist6.png")
 ```
 </aside>
 
-Nous pouvons préciser les couleurs à l'aide de `scale_fill_manual()` : 
+<br>
 
+Pour finir, nous pouvons modifier le **"thème"**, c'est-à-dire l'apparence générale de notre graphique, en choisissant parmi les thèmes prédéfinis : `theme_grey` (par défaut), `theme_bw()`, `theme_minimal()`, ...
+
+ 
 ```{r, echo=TRUE, eval=FALSE}
 ggplot(data = pingouins,
-                aes(x = aile_lng_mm)) +
-  geom_histogram(aes(fill = espece),
-                 position = "identity",
-                 alpha = 0.5) +
-  labs(title = "Longueur des ailes de pingouins",
-       subtitle = "pour 3 espèces de l'archipel Palmer",
+              aes(x = aile_lng_mm)) +
+    geom_histogram(aes(fill = espece),
+                   position = "identity",
+                   alpha = 0.5) +
+  scale_fill_manual(values = c("darkorange", "purple", "cyan4"))
+  labs(title = "Longueur des ailes pour trois espèces de pingouins",
+       subtitle = "Sur trois iles de l'archipel Palmer (Antarctique)",
        x = "Longueur des ailes (mm)",
        y = "Frequence") +
-  scale_fill_manual(values = c("darkorange", "purple", "cyan4"))
+    theme_minimal()
 ```
 
 <aside>
@@ -317,18 +300,10 @@ knitr::include_graphics("img/hist7.png")
 ```
 </aside>
 
-Pour finir, nous pouvons modifier le **thème** de notre graphique, c'est-à-dire son apparence générale. Différents thèmes sont disponibles : `theme_grey` (par défaut), `theme_bw()`, `theme_minimal()`, ... essayez-les !
+<br>
 
-```{r, echo=TRUE, eval=FALSE}
-ggplot(data = pingouins,
-                aes(x = aile_lng_mm)) +
-  geom_histogram(aes(fill = espece),
-                 position = "identity",
-                 alpha = 0.5) +
-  labs(title = "Longueur des ailes de pingouins",
-       subtitle = "pour 3 espèces de l'archipel Palmer",
-       x = "Longueur des ailes (mm)",
-       y = "Frequence") +
-  scale_fill_manual(values = c("darkorange", "purple", "cyan4")) +
-  theme_minimal()
+La figure ci-dessous vous montre l'effet de chaque ligne de code sur l'apparence du graphique : 
+
+```{r, layout="l-page"}
+knitr::include_graphics("img/ggplot_02.gif")
 ```
