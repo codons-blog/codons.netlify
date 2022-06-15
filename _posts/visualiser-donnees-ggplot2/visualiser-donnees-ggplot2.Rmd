@@ -138,7 +138,8 @@ pingouins <- readr::read_csv("https://raw.githubusercontent.com/codons-blog/C-04
 
 ## Histogramme {#hist}
 
-Créons un histogramme basique. Un graphique `ggplot2` se crée toujours par couches : 
+Créons un histogramme basique. Un graphique `ggplot2` se crée toujours par couches :  
+
 1. Initialisation de l'outil graphique (`ggplot()`)  
 2. Paramètres esthétiques (`aes()`)  
 3. Type de graphique `geom_histogram()`
@@ -149,10 +150,13 @@ ggplot(data = pingouins,
   geom_histogram()
 ```
 
-
+<aside>
 ```{r, layout="l-body-outset"}
 knitr::include_graphics("img/hist1.png")
 ```
+</aside>
+
+<br>
 
 Nous pouvons modifier les couleurs du graphiques à l'aide des paramètres `colour = "..."` (contour des barres) et `fill = "..."` (intérieur des barres) : 
 
@@ -162,9 +166,43 @@ ggplot(data = pingouins,
   geom_histogram(colour = "blue", fill = "white")
 ```
 
+<aside>
 ```{r, layout="l-body-outset"}
 knitr::include_graphics("img/hist2.png")
 ```
+</aside>
+
+<br>
+
+La distribution des longueurs d'ailes dépend-elle de l'espèce ? Une façon de le vérifier rapidement serait d'utiliser une couleur par espèce. Pour cela, nous utilisons `fill = espece` au sein de la parenthèse `aes()`.  
+
+Il existe deux façons d'utiliser des couleurs :  
+
+- une seule couleur pour l'ensemble des données : geom_...(colour = "...", fill = "...")  
+
+- différentes couleurs en fonction d'une variable : aes(colour = var)  
+
+En dehors de la parenthèse `aes()` (pour que cela s'applique à l'ensemble des données), nous précisons deux paramètres :  
+
+- `position = "identity"` : il existe différentes manières de positionner les barres d'un histogramme les unes par rapport aux autres.  
+
+- `alpha = 0.5` : permet de régler la transparence (entre 0 et 1, par opacité croissante)
+
+```{r, echo=TRUE, eval=FALSE}
+ggplot(data = pingouins,
+              aes(x = aile_lng_mm)) +
+    geom_histogram(aes(fill = espece),
+                   position = "identity",
+                   alpha = 0.5)
+```
+
+<aside>
+```{r, layout="l-body-outset"}
+knitr::include_graphics("img/hist3.png")
+```
+</aside>
+
+<br>
 
 Le paramètre `labs()` permet d'ajouter ou de modifier les titres du graphique et des axes : 
 
@@ -178,15 +216,15 @@ ggplot(data = pingouins,
        y = "Frequence")
 ```
 
+<aside>
 ```{r, layout="l-body-outset"}
 knitr::include_graphics("img/hist3.png")
 ```
+</aside>
 
-La distribution des longueurs d'ailes diffère-t-elle en fonction de l'espèce ? Nous pouvons le vérifier en utilisant différentes couleurs pour les différente espèces.  
-Pour cela, nous utilisons `fill = espece` au sein de la parenthèse `aes()`. Il existe deux façons de modifier les couleurs d'un graphique :  
 
-- une seule couleur pour l'ensemble des données : geom_...(colour = "...", fill = "...")  
-- couleur en fonction d'une variable : aes(colour = var)  
+
+ 
 
 ```{r, echo=TRUE, eval=FALSE}
 ggplot(data = pingouins,
@@ -201,9 +239,11 @@ ggplot(data = pingouins,
 
 Nous avons ajouté le paramètre position = "identity" dans geom_histogram(). Il existe différentes façons de présenter des histogrammes : `position = "stack"` (par défaut), `position = "identity"`, `position = "dodge"`, ... essayez les différentes options pour voir le résultat.
 
+<aside>
 ```{r, layout="l-body-outset"}
 knitr::include_graphics("img/hist4.png")
 ```
+</aside>
 
 Certaines barres de notre histogramme ce recouvrent. Nous pouvons utiliser le paramètre `alpha` pour modifier la transparence : 
 
@@ -219,16 +259,20 @@ ggplot(data = pingouins,
        y = "Frequence")
 ```
 
+<aside>
 ```{r, layout="l-body-outset"}
 knitr::include_graphics("img/hist5.png")
 ```
+</aside>
 
-Nous pouvons choisir une autre palette de couleurs à l'aide du paramètre `scale_fill_brewer()`. Les palettes incluses sont visibles ci-dessous.
+Nous pouvons choisir une autre palette de couleurs à l'aide du paramètre `scale_fill_brewer()`. Les palettes incluses sont visibles ci-contre.  
 
+<aside>
 ```{r, layout="l-body"}
 knitr::include_graphics("img/rcolorbrewer.png")
 ```
-
+</aside>
+  
 Il existe des packages proposant de très nombreuses palettes supplémentaires ([voir cette liste](https://github.com/EmilHvitfeldt/r-color-palettes))
 
 Essayons la palette **Accent** : 
@@ -246,9 +290,11 @@ ggplot(data = pingouins,
   scale_fill_brewer(palette = "Accent")
 ```
 
+<aside>
 ```{r, layout="l-body-outset"}
 knitr::include_graphics("img/hist6.png")
 ```
+</aside>
 
 Nous pouvons préciser les couleurs à l'aide de `scale_fill_manual()` : 
 
@@ -262,12 +308,14 @@ ggplot(data = pingouins,
        subtitle = "pour 3 espèces de l'archipel Palmer",
        x = "Longueur des ailes (mm)",
        y = "Frequence") +
-  scale_fill_manual(values = c("darkorange", "purple4", "cyan4"))
+  scale_fill_manual(values = c("darkorange", "purple", "cyan4"))
 ```
 
+<aside>
 ```{r, layout="l-body-outset"}
 knitr::include_graphics("img/hist7.png")
 ```
+</aside>
 
 Pour finir, nous pouvons modifier le **thème** de notre graphique, c'est-à-dire son apparence générale. Différents thèmes sont disponibles : `theme_grey` (par défaut), `theme_bw()`, `theme_minimal()`, ... essayez-les !
 
@@ -281,10 +329,6 @@ ggplot(data = pingouins,
        subtitle = "pour 3 espèces de l'archipel Palmer",
        x = "Longueur des ailes (mm)",
        y = "Frequence") +
-  scale_fill_manual(values = c("darkorange", "purple4", "cyan4")) +
+  scale_fill_manual(values = c("darkorange", "purple", "cyan4")) +
   theme_minimal()
-```
-
-```{r, layout="l-body-outset"}
-knitr::include_graphics("img/hist8.png")
 ```
