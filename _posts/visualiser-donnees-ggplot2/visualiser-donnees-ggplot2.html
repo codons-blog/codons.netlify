@@ -122,7 +122,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["img/colorbrewer2.png","img/ggplot-grammar-of-graphics.png","img/ggplot_01.gif","img/ggplot_02.gif","img/ggplot_layers.png","img/ggplot2_blank.png","img/hist1.png","img/hist2.png","img/hist3.png","img/hist4.png","img/hist5.png","img/hist6.png","img/hist7.png","img/rcolorbrewer.png","img/sp1.png","visualiser-donnees-ggplot2_files/anchor-4.2.2/anchor.min.js","visualiser-donnees-ggplot2_files/bowser-1.9.3/bowser.min.js","visualiser-donnees-ggplot2_files/distill-2.2.21/template.v2.js","visualiser-donnees-ggplot2_files/header-attrs-2.11/header-attrs.js","visualiser-donnees-ggplot2_files/header-attrs-2.14/header-attrs.js","visualiser-donnees-ggplot2_files/jquery-3.6.0/jquery-3.6.0.js","visualiser-donnees-ggplot2_files/jquery-3.6.0/jquery-3.6.0.min.js","visualiser-donnees-ggplot2_files/jquery-3.6.0/jquery-3.6.0.min.map","visualiser-donnees-ggplot2_files/popper-2.6.0/popper.min.js","visualiser-donnees-ggplot2_files/tippy-6.2.7/tippy-bundle.umd.min.js","visualiser-donnees-ggplot2_files/tippy-6.2.7/tippy-light-border.css","visualiser-donnees-ggplot2_files/tippy-6.2.7/tippy.css","visualiser-donnees-ggplot2_files/tippy-6.2.7/tippy.umd.min.js","visualiser-donnees-ggplot2_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["img/colorbrewer2.png","img/geom_point_shapes.png","img/ggplot-grammar-of-graphics.png","img/ggplot_01.gif","img/ggplot_02.gif","img/ggplot_layers.png","img/ggplot2_blank.png","img/hist1.png","img/hist2.png","img/hist3.png","img/hist4.png","img/hist5.png","img/hist6.png","img/hist7.png","img/rcolorbrewer.png","img/sp1.png","visualiser-donnees-ggplot2_files/anchor-4.2.2/anchor.min.js","visualiser-donnees-ggplot2_files/bowser-1.9.3/bowser.min.js","visualiser-donnees-ggplot2_files/distill-2.2.21/template.v2.js","visualiser-donnees-ggplot2_files/header-attrs-2.11/header-attrs.js","visualiser-donnees-ggplot2_files/header-attrs-2.14/header-attrs.js","visualiser-donnees-ggplot2_files/jquery-3.6.0/jquery-3.6.0.js","visualiser-donnees-ggplot2_files/jquery-3.6.0/jquery-3.6.0.min.js","visualiser-donnees-ggplot2_files/jquery-3.6.0/jquery-3.6.0.min.map","visualiser-donnees-ggplot2_files/popper-2.6.0/popper.min.js","visualiser-donnees-ggplot2_files/tippy-6.2.7/tippy-bundle.umd.min.js","visualiser-donnees-ggplot2_files/tippy-6.2.7/tippy-light-border.css","visualiser-donnees-ggplot2_files/tippy-6.2.7/tippy.css","visualiser-donnees-ggplot2_files/tippy-6.2.7/tippy.umd.min.js","visualiser-donnees-ggplot2_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1816,7 +1816,17 @@ De façon shématique, il s’agit d’ajouter des couches qui contiennent les d
 <p><img src="img/sp1.png" width="1920" /></p>
 </div>
 </aside>
+<p><br></p>
 <p>Comme nous l’avons fait avec l’histogramme, nous allons personnaliser ce nuage de points. La taille et la forme des points peuvent être modifiées à l’aide des paramètres <code>size</code> et <code>shape</code>.</p>
+<p>Comme pour la couleur, il existe deux façons d’utiliser ces paramètres :</p>
+<ul>
+<li><p>à l’intérieur d’une parenthèse <code>aes()</code> pour appliquer le paramètre en fonction d’une variable</p></li>
+<li><p>à l’extérieur d’une parenthèse <code>aes()</code> pour appliquer le paramètre à tous les points</p></li>
+</ul>
+<p>Il existe un code numérique permettant de définir la forme des points :</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="img/geom_point_shapes.png" width="700" /></p>
+</div>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
