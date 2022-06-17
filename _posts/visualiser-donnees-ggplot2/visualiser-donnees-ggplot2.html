@@ -122,7 +122,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["img/colorbrewer2.png","img/ggplot-grammar-of-graphics.png","img/ggplot_01.gif","img/ggplot_02.gif","img/ggplot_layers.png","img/ggplot2_blank.png","img/hist1.png","img/hist2.png","img/hist3.png","img/hist4.png","img/hist5.png","img/hist6.png","img/hist7.png","img/rcolorbrewer.png","visualiser-donnees-ggplot2_files/anchor-4.2.2/anchor.min.js","visualiser-donnees-ggplot2_files/bowser-1.9.3/bowser.min.js","visualiser-donnees-ggplot2_files/distill-2.2.21/template.v2.js","visualiser-donnees-ggplot2_files/header-attrs-2.11/header-attrs.js","visualiser-donnees-ggplot2_files/header-attrs-2.14/header-attrs.js","visualiser-donnees-ggplot2_files/jquery-3.6.0/jquery-3.6.0.js","visualiser-donnees-ggplot2_files/jquery-3.6.0/jquery-3.6.0.min.js","visualiser-donnees-ggplot2_files/jquery-3.6.0/jquery-3.6.0.min.map","visualiser-donnees-ggplot2_files/popper-2.6.0/popper.min.js","visualiser-donnees-ggplot2_files/tippy-6.2.7/tippy-bundle.umd.min.js","visualiser-donnees-ggplot2_files/tippy-6.2.7/tippy-light-border.css","visualiser-donnees-ggplot2_files/tippy-6.2.7/tippy.css","visualiser-donnees-ggplot2_files/tippy-6.2.7/tippy.umd.min.js","visualiser-donnees-ggplot2_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["img/colorbrewer2.png","img/ggplot-grammar-of-graphics.png","img/ggplot_01.gif","img/ggplot_02.gif","img/ggplot_layers.png","img/ggplot2_blank.png","img/hist1.png","img/hist2.png","img/hist3.png","img/hist4.png","img/hist5.png","img/hist6.png","img/hist7.png","img/rcolorbrewer.png","img/sp1.png","visualiser-donnees-ggplot2_files/anchor-4.2.2/anchor.min.js","visualiser-donnees-ggplot2_files/bowser-1.9.3/bowser.min.js","visualiser-donnees-ggplot2_files/distill-2.2.21/template.v2.js","visualiser-donnees-ggplot2_files/header-attrs-2.11/header-attrs.js","visualiser-donnees-ggplot2_files/header-attrs-2.14/header-attrs.js","visualiser-donnees-ggplot2_files/jquery-3.6.0/jquery-3.6.0.js","visualiser-donnees-ggplot2_files/jquery-3.6.0/jquery-3.6.0.min.js","visualiser-donnees-ggplot2_files/jquery-3.6.0/jquery-3.6.0.min.map","visualiser-donnees-ggplot2_files/popper-2.6.0/popper.min.js","visualiser-donnees-ggplot2_files/tippy-6.2.7/tippy-bundle.umd.min.js","visualiser-donnees-ggplot2_files/tippy-6.2.7/tippy-light-border.css","visualiser-donnees-ggplot2_files/tippy-6.2.7/tippy.css","visualiser-donnees-ggplot2_files/tippy-6.2.7/tippy.umd.min.js","visualiser-donnees-ggplot2_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1803,6 +1803,20 @@ De façon shématique, il s’agit d’ajouter des couches qui contiennent les d
 <p><br></p>
 <h2 id="scatterplot">Nuage de points (scatter plot)</h2>
 <p>Le paramètre <code>geom_point()</code> permet de générer un nuage de points :</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>pingouins</span>,
+       <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>bec_lng_mm</span>, y <span class='op'>=</span> <span class='va'>bec_htr_mm</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<aside>
+<div class="layout-chunk" data-layout="l-body-outset">
+<p><img src="img/sp1.png" width="1920" /></p>
+</div>
+</aside>
+<p>Comme nous l’avons fait avec l’histogramme, nous allons personnaliser ce nuage de points. La taille et la forme des points peuvent être modifiées à l’aide des paramètres <code>size</code> et <code>shape</code>.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->

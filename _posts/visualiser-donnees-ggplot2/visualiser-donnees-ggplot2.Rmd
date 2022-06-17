@@ -313,3 +313,17 @@ knitr::include_graphics("img/ggplot_02.gif")
 ## Nuage de points (scatter plot) {#scatterplot}
 
 Le paramètre `geom_point()` permet de générer un nuage de points : 
+
+```{r, echo=TRUE, eval=FALSE}
+ggplot(data = pingouins,
+       aes(x = bec_lng_mm, y = bec_htr_mm)) +
+  geom_point()
+```
+
+<aside>
+```{r, layout="l-body-outset"}
+knitr::include_graphics("img/sp1.png")
+```
+</aside>
+
+Comme nous l'avons fait avec l'histogramme, nous allons personnaliser ce nuage de points. La taille et la forme des points peuvent être modifiées à l'aide des paramètres `size` et `shape`.
