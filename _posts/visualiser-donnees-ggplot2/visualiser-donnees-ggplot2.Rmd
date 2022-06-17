@@ -311,3 +311,5 @@ knitr::include_graphics("img/ggplot_02.gif")
 <br>
 
 ## Nuage de points (scatter plot) {#scatterplot}
+
+Le paramètre `geom_point()` permet de générer un nuage de points : 
