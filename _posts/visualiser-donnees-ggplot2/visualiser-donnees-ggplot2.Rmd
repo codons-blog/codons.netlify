@@ -326,4 +326,31 @@ knitr::include_graphics("img/sp1.png")
 ```
 </aside>
 
+<br>
+
 Comme nous l'avons fait avec l'histogramme, nous allons personnaliser ce nuage de points. La taille et la forme des points peuvent être modifiées à l'aide des paramètres `size` et `shape`.
+
+Comme pour la couleur, il existe deux façons d'utiliser ces paramètres :
+
+- à l'intérieur d'une parenthèse `aes()` pour appliquer le paramètre en fonction d'une variable  
+
+- à l'extérieur d'une parenthèse `aes()` pour appliquer le paramètre à tous les points  
+
+Il existe un code numérique permettant de définir la forme des points : 
+
+```{r, layout="l-body"}
+knitr::include_graphics("img/geom_point_shapes.png")
+```
+[ggplot2 Aesthetic specifications](https://ggplot2.tidyverse.org/articles/ggplot2-specs.html)
+
+Ces 25 formes permettent différentes modifications de la couleur : 
+
+- Formes 0 à 14 : contour (`colour = "..."`)  
+
+- Formes 15 à 20 : intérieur (`colour = "..."`)  
+
+- Formes 21 à 24 : contour (`colour = "..."`) et intérieur (`fill = "..."`). Pour ces 5 formes, l'épaisseur du contour peut être ajustée à l'aide du paramètre `stroke = 1.5` par exemple.
+
+<br>
+
+Le paramètre `size()`, placé en dehors d'une parenthèse `aes()`, prend une valeur numérique entre 0 et 25. Placé dans une parenthèse `aes()`, il permet par exemple de modifier la taille des points en fonction d'une autre variable de notre jeu de donénes.
