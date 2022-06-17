@@ -1,48 +1,5 @@
 [
   {
-    "path": "posts/visualiser-donnees-ggplot2/",
-    "title": "Visualisation de données",
-    "description": "Créer des graphiques avec ggplot2.",
-    "author": [
-      {
-        "name": "Gergana Daskalova",
-        "url": "hhttps://ourcodingclub.github.io/tutorials/datavis/"
-      },
-      {
-        "name": "Elise Gallois",
-        "url": "hhttps://ourcodingclub.github.io/tutorials/datavis/"
-      },
-      {
-        "name": "Haydn Thomas",
-        "url": "hhttps://ourcodingclub.github.io/tutorials/datavis/"
-      },
-      {
-        "name": "Beverly Tan",
-        "url": "hhttps://ourcodingclub.github.io/tutorials/datavis/"
-      },
-      {
-        "name": "Sandra Angers-Blondin",
-        "url": "hhttps://ourcodingclub.github.io/tutorials/datavis/"
-      },
-      {
-        "name": "Jonathan Kitt (adaptation)",
-        "url": {}
-      }
-    ],
-    "date": "2022-06-03",
-    "categories": [
-      "R",
-      "RStudio",
-      "Graphiques",
-      "ggpplot2",
-      "Tidyverse"
-    ],
-    "contents": "\r\n\r\nContents\r\nIntroduction\r\nLa syntaxe ggplot2\r\nCréer des graphiques avec ggplot2\r\n\r\nCe tutoriel est adapté de Beautiful and informative data visualisation et Data visualisation 2 du site Our Coding Club.\r\nIntroduction\r\n\r\n\r\n\r\nDessin de Allison Horst\r\n\r\nNous avons vu comment importer nos données dans RStudio, et comment les manipuler et les mettre en forme.\r\nNous allons maintenant voir comment communiquer les résultats de nos analyses - à l’aide de la visualisation de données.\r\n\r\nVoici les objectifs et le sommaire de ce tutoriel :\r\n\r\n1. Se familiariser avec la syntaxe ggplot2\r\n2. Choisir le bon type de graphique\r\n3. Créer des graphiques avec ggplot2 :\r\nhistogramme\r\nnuage de points (scatter plot)\r\nboîtes à moustaches (box plot)\r\ndiagramme en bâtons (bar plot)\r\n4. Arranger plusieurs graphiques et les exporter\r\n5. Défi\r\n\r\nLa syntaxe ggplot2\r\nAvant d’attaquer la syntaxe ggplot2, voyons brièvement ce que de bons graphiques ont en commun :\r\nEtape\r\nDescription\r\nNotes\r\n1\r\nUn graphique adapté aux résultats\r\nboxplot, scatterplot, régression linéaire, …\r\n2\r\nUn graphique bien organisé\r\nvariable indépendante (explicative) sur l’axe x et variable dépendante (réponse) sur l’axe y\r\n3\r\nLes axes x et y utilisent les bonnes unités\r\nles symboles appropriés (alpha, beta, … ) et des exposants/indices quand nécessaire\r\n4\r\nLes axes x et y sont facilement lisibles\r\nattention aux polices originales et aux lettres trop petites\r\n5\r\nUne légende claire et informative\r\non différencie facilement les points/lignes\r\n6\r\nUn graphique aéré\r\nne pas mettre tous les résultats sur un seul graphique, les espacer\r\n7\r\nUn choix de couleurs clair et cohérent\r\nutiliser les mêmes couleurs pour les mêmes variables, éviter les combinaisons vert/rouge difficiles à distinguer pour certaines personnes\r\n8\r\nUn graphique aux bonnes dimensions\r\néviter les superpositions d’étiquettes ou de points/lignes, ajuster la hauteur ou la largeur du graphique si nécessaire\r\n9\r\nDes mesures d’incertitude quand nécessaire\r\nbarres d’erreur, intervalles de confiance, en précisant ce dont il s’agit\r\n10\r\nUn texte concis et informatif\r\npréciser ce que les points représentent (données brutes ? modèles de prédiction ?), quelle est la taille de l’échantillon pour chaque traitement, …\r\n\r\nLe package ggplot2 est très utile pour vous guider dans ces étapes. Le gg de ggplot2 signifie “grammaire des graphiques”.\r\nL’écriture du code de votre graphique ressemblera à la construction d’une phrase avec différentes parties s’articulant logiquement.\r\nDe façon shématique, il s’agit d’ajouter des couches qui contiennent les différents éléments de votre graphique : vous commencez par créer un graphique vide, puis ajoutez une couche avec vos points, puis une couche avec les axes, etc.\r\n\r\n\r\n\r\nFigure tirée de ggplot2 et la grammaire des graphiques\r\n\r\nLe graphique ci-dessous se décompose en quatre couches :\r\nInitialisation de l’outil graphique ggplot()\r\nParamètres esthétiques aes() : quelle variable ira sur quel axe\r\ngeom() : manière de représenter nos variables (points, lignes, …)\r\ntheme_...() pour modifier l’apparence du graphique\r\n\r\n\r\n\r\nCréer des graphiques avec ggplot2\r\nNous allons maintenant voir comment créer les principaux types de graphiques à l’aide de ggplot2.\r\nImporter les données\r\n\r\n\r\n# Ateliers codons!\r\n# 03 - visualisation de donnees\r\n# 2022-06-30\r\n\r\n# Charger le Tidyverse\r\nlibrary(tidyverse)\r\n\r\n# Definir l'espace de travail\r\nsetwd(\"C-04-VisualisationDonnees\")\r\n\r\n# Importer les donnees\r\npingouins <- readr::read_csv(\"https://raw.githubusercontent.com/codons-blog/C-04-VisualisationDonnees/main/data/pingouins.csv\")\r\n\r\n\r\n\r\nHistogramme\r\nCréons un histogramme basique. Un graphique ggplot2 se crée toujours par couches :\r\nInitialisation de l’outil graphique (ggplot())\r\nParamètres esthétiques (aes())\r\nType de graphique geom_histogram()\r\n\r\n\r\nggplot(data = pingouins,\r\n       aes(x = aile_lng_mm)) +\r\n  geom_histogram()\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nNous pouvons modifier les couleurs du graphiques à l’aide des paramètres colour = \"...\" (contour des barres) et fill = \"...\" (intérieur des barres) :\r\n\r\n\r\nggplot(data = pingouins,\r\n       aes(x = aile_lng_mm)) +\r\n  geom_histogram(colour = \"blue\", fill = \"white\")\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nLa distribution des longueurs d’ailes dépend-elle de l’espèce ? Une façon de le vérifier rapidement serait d’utiliser une couleur par espèce. Pour cela, nous utilisons fill = espece au sein de la parenthèse aes().\r\nIl existe deux façons d’utiliser des couleurs :\r\nune seule couleur pour l’ensemble des données : geom_…(colour = “…”, fill = “…”)\r\ndifférentes couleurs en fonction d’une variable : aes(colour = var)\r\nEn dehors de la parenthèse aes() (pour que cela s’applique à l’ensemble des données), nous précisons deux paramètres :\r\nposition = \"identity\" : il existe différentes manières de positionner les barres d’un histogramme les unes par rapport aux autres.\r\nalpha = 0.5 : permet de régler la transparence (entre 0 et 1, par opacité croissante)\r\n\r\n\r\nggplot(data = pingouins,\r\n              aes(x = aile_lng_mm)) +\r\n    geom_histogram(aes(fill = espece),\r\n                   position = \"identity\",\r\n                   alpha = 0.5)\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nLe paramètre scale_fill_brewer() permet de sélectionner d’autres palettes proposées par l’outil ColorBrewer 2.0.\r\n\r\n\r\n\r\n\r\nIl existe des packages proposant de très nombreuses palettes supplémentaires (voir cette liste).\r\n\r\nNous utilisons la palette Set2 :\r\n\r\n\r\nggplot(data = pingouins,\r\n              aes(x = aile_lng_mm)) +\r\n    geom_histogram(aes(fill = espece),\r\n                   position = \"identity\",\r\n                   alpha = 0.5) +\r\n  scale_fill_brewer(palette = \"Set2\")\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nNous pouvons également définir les couleurs à l’aide de scale_fill_manual() :\r\n\r\n\r\nggplot(data = pingouins,\r\n              aes(x = aile_lng_mm)) +\r\n    geom_histogram(aes(fill = espece),\r\n                   position = \"identity\",\r\n                   alpha = 0.5) +\r\n  scale_fill_manual(values = c(\"darkorange\", \"purple\", \"cyan4\"))\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nLe paramètre labs() permet d’ajouter ou de modifier les titres du graphique et des axes :\r\n\r\n\r\nggplot(data = pingouins,\r\n              aes(x = aile_lng_mm)) +\r\n    geom_histogram(aes(fill = espece),\r\n                   position = \"identity\",\r\n                   alpha = 0.5) +\r\n  scale_fill_manual(values = c(\"darkorange\", \"purple\", \"cyan4\"))\r\n  labs(title = \"Longueur des ailes pour trois espèces de pingouins\",\r\n       subtitle = \"Sur trois iles de l'archipel Palmer (Antarctique)\",\r\n       x = \"Longueur des ailes (mm)\",\r\n       y = \"Frequence\")\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nPour finir, nous pouvons modifier le “thème”, c’est-à-dire l’apparence générale de notre graphique, en choisissant parmi les thèmes prédéfinis : theme_grey (par défaut), theme_bw(), theme_minimal(), …\r\n\r\n\r\nggplot(data = pingouins,\r\n              aes(x = aile_lng_mm)) +\r\n    geom_histogram(aes(fill = espece),\r\n                   position = \"identity\",\r\n                   alpha = 0.5) +\r\n  scale_fill_manual(values = c(\"darkorange\", \"purple\", \"cyan4\"))\r\n  labs(title = \"Longueur des ailes pour trois espèces de pingouins\",\r\n       subtitle = \"Sur trois iles de l'archipel Palmer (Antarctique)\",\r\n       x = \"Longueur des ailes (mm)\",\r\n       y = \"Frequence\") +\r\n    theme_minimal()\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nLa figure ci-dessous vous montre l’effet de chaque ligne de code sur l’apparence du graphique :\r\n\r\n\r\n\r\n\r\nNuage de points (scatter plot)\r\nLe paramètre geom_point() permet de générer un nuage de points :\r\n\r\n\r\n\r\n",
-    "preview": "posts/visualiser-donnees-ggplot2/img/ggplot2_blank.png",
-    "last_modified": "2022-06-17T14:27:54+02:00",
-    "input_file": "visualiser-donnees-ggplot2.knit.md"
-  },
-  {
     "path": "posts/manipuler-donnees-tidyverse/",
     "title": "Manipulation de données",
     "description": "Manipuler et mettre en forme vos données à l'aide du Tidyverse.",
