@@ -21,7 +21,7 @@ draft: false
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
-knitr::opts_knit$set(root.dir='C:/Users/plasserre/Documents/R_workshops/codons.netlify/_posts/datatable/')
+knitr::opts_knit$set(root.dir='C:/Users/plasserre/Documents/R_workshops/codons.netlify/_posts/datatable')
 ```
 
 
@@ -69,7 +69,7 @@ Sommaire :
 **7. [IMPORT DE TABLE FORMAT LARGE](#wide)**: [tydiverse](#tidyverse4), [data.table](#data.table4)
 
 
-**8. [FORMATAGE DES DONNEES](#lapply)**: [Rbase](#Rbase5), [tydiverse](#tidyverse5), [data.table](#data.table5)
+**8. [FORMATAGE DES DONNEES](#lapply)**: [tydiverse](#tidyverse5), [data.table](#data.table5)
 
 <br>
 
@@ -85,7 +85,7 @@ library(stringr)
 library(data.table)
 
 #localisation donnees entree
-#dirin<-"C:/Users/plasserre/Documents/R_workshops/workshop_data.table/"
+#dirin<-"C:/Users/plasserre/Documents/R_workshops/workshop_data.table/inputs/"
 #setwd(dirin)
 ```
 <br>
@@ -197,11 +197,11 @@ fa
 
 df=data.frame(d)
 fadf=data.frame(fa)
-colnames(fadt)=c("read_id","seq")
 
 #package data.table
 dt
 fadt
+colnames(fadt)=c("read_id","seq")
 
 options("datatable.print.keys" = TRUE, "datatable.print.class" = TRUE)
 dt
@@ -453,24 +453,49 @@ time.tidy
 
 # 8-FORMATAGE DES DONNEES {#lapply}
 
-## Rbase {#Rbase5}
-
-```{r, echo=TRUE, eval=FALSE}
-# apply()
-
-```
-<br>
 ## tydiverse {#tidyverse5}
 
 ```{r, echo=TRUE, eval=FALSE}
-# mutate(across)
+# mutate sur une colonne avec tidyverse
+start.time <- Sys.time()
+d_joinU=d_join %>% head(5)%>%mutate(seq=str_replace_all(seq,"T","U"))
+time.tidy <- Sys.time() - start.time
+
+### mutate(across) sur toutes les colonnes 
+tmat_d_join=tibble(tmat_join[,1:100000])
+
+start.time <- Sys.time()
+tmat_d_joinU=tmat_d_join %>% mutate(across(everything(), ~gsub("T","U",.)))
+time.tidy <- Sys.time() - start.time
+time.tidy
+
+head(tmat_d_joinU[,c(1,2,3,4,5)], n=9)
 
 ```
 <br>
 ## data.table {#data.table5}
 
 ```{r, echo=TRUE, eval=FALSE}
-# lapply .SD .SDcols
+# str_replace sur une colonne
+start.time <- Sys.time()
+dt_joinU=dt_join[1:5,][,seq:=str_replace_all(seq,"T","U")]
+time.dt <- Sys.time() - start.time
+time.dt
+time.tidy
+
+### lapply .SD .SDcols sur 5 colonnes
+cols=c("V1","V2","V3","V4","V5")
+tmat_dt_joinU=tmat_dt_join[,(cols):=lapply(.SD, function(x) gsub("T","U",as.character(x))), .SDcols=cols]
+head(tmat_dt_joinU[,c(1,2,3,4,5)], n=9)
+
+### lapply .SD .SDcols sur toutes les colonnes 
+cols=c("V1","V2","V3","V4","V5")
+start.time <- Sys.time()
+tmat_dt_joinU=lapply(tmat_dt_join, function(x) gsub("T","U",as.character(x)) )
+time.dt <- Sys.time() - start.time
+time.dt
+
+head(tmat_dt_joinU[,c(1,2,3,4,5)], n=9)
 ```
 <br>
 
