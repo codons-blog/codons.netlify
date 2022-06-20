@@ -28,7 +28,7 @@ knitr::opts_knit$set(root.dir='C:/Users/plasserre/Documents/R_workshops/codons.n
 # Introduction
 
 ```{r, layout="l-body"}
-knitr::include_graphics("img/logo_datatable.png")
+knitr::include_graphics("img/battle.png")
 ```
 
 <br>
