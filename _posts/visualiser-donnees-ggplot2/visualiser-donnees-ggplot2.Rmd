@@ -3,19 +3,8 @@ title: "Visualisation de données"
 description: |
   Créer des graphiques avec ggplot2.
 author:
-  - name: Gergana Daskalova
-    url: hhttps://ourcodingclub.github.io/tutorials/datavis/
-  - name: Elise Gallois
-    url: hhttps://ourcodingclub.github.io/tutorials/datavis/
-  - name: Haydn Thomas
-    url: hhttps://ourcodingclub.github.io/tutorials/datavis/
-  - name: Beverly Tan
-    url: hhttps://ourcodingclub.github.io/tutorials/datavis/
-  - name: Sandra Angers-Blondin
-    url: hhttps://ourcodingclub.github.io/tutorials/datavis/
-  - name: Jonathan Kitt (adaptation)
-    url: {}
-date: 2022-06-03
+  - name: Jonathan Kitt
+date: 2022-06-30
 categories:
   - R
   - RStudio
