@@ -838,3 +838,124 @@ Ouvrez le fichier `barplot_especes.png` et comparez ce fichier avec le visuel af
 ```{r, layout="l-body"}
 knitr::include_graphics("img/barplot_especes.png")
 ```
+
+# Améliorer ses graphiques {#ameliorer}
+
+Nous avons vu comment créer les principaux types de graphiques ainsi que certains paramètres permettant de modifier leur apparence. Il existe énormément de paramètres permettant de modifier nos graphiques pour les rendre plus attractifs. Les possibilités sont pour ainsi dire infinies ! 
+
+<br>
+
+La suite de ce tutoriel vous donnera quelques éléments pour améliorer vos graphiques, n'hésitez pas à aller voir la section **Liens** du blog pour trouver d'autres ressources qui vous aideront à creuser encore davantage les possibilités de `ggplot2`.
+
+## Modifier l'arrière-plan
+
+Commençons par un paramètre assez évident, à savoir la couleur de l'arrière-plan. Les thèmes prédéfinis dans `ggplot2` vous donnent quelques possibilités, mais vous pouvez en réalité choisir n'importe quelle couleur, pour peu que vous ayiez son nom ou son code hexadécimal. 
+
+Nous allons reprendre le barplot du nombre de pingouins par espèce et y apporter des modifications, en montrant le résultat étape par étape.
+
+Le paramètre `theme()` va vous permettre d'ajuster tous les paramètres de votre graphique (et la liste est très longue !).
+
+<br>
+
+Votre graphique se compose de deux grandes parties : 
+
+- le **"panel"** qui contient les éléments de visualisation (le graphique lui-même)  
+
+- le **plot** qui contient tout ce qui est autour : titre, légende, titres des axes, ...
+
+Nous allons commencer par modifier la couleur de l'arrière-plan de la zone du graphique, à l'aide du paramètre `panel.background()`. Nous allons dans ce paramètre préciser la couleur de l'intérieur et du contour de la zone du graphique (comme nous l'avions fait plus haut en modifiant la forme et les couleurs des points) à l'aide des paramètres `fill` et `colour` au sein d'un argument `element_rect()` : 
+
+```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+# Modifier la couleur de l'arrière-plan de la zone du graphique
+pingouins %>% 
+   mutate(espece = fct_rev(fct_infreq(espece))) %>% 
+   ggplot(aes(x = espece,
+              fill = espece)) +
+   geom_bar(show.legend = FALSE,
+            width = 0.5) +
+   scale_fill_manual(values = c("Adelie" = "darkorange",
+                                "Chinstrap" = "purple",
+                                "Gentoo" = "cyan4")) +
+  labs(title = "Nombre de pingouins",
+       subtitle = "pour trois espèces de l'archipel Palmer",
+       x = "",
+       y = "") +
+   coord_flip() +
+   theme_minimal() +
+  theme(panel.background = element_rect(fill = "#1d3557", colour = NA))
+```
+
+Pour modifier la couleur de l'arrière-plan de la zone autour du graphique, nous procédons de la même façon à l'aide du paramètre **`plot.background()`** : 
+
+```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+# Modifier la couleur de l'arrière-plan de la zone autour du graphique
+pingouins %>% 
+   mutate(espece = fct_rev(fct_infreq(espece))) %>% 
+   ggplot(aes(x = espece,
+              fill = espece)) +
+   geom_bar(show.legend = FALSE,
+            width = 0.5) +
+   scale_fill_manual(values = c("Adelie" = "darkorange",
+                                "Chinstrap" = "purple",
+                                "Gentoo" = "cyan4")) +
+  labs(title = "Nombre de pingouins",
+       subtitle = "pour trois espèces de l'archipel Palmer",
+       x = "",
+       y = "") +
+   coord_flip() +
+   theme_minimal() +
+  theme(panel.background = element_rect(fill = "#1d3557", colour = NA),
+        plot.background = element_rect(fill = "#1d3557", colour = NA))
+```
+
+## Modifier la grille
+
+Certaines lignes de la grille peuvent devenir inutiles. Dans notre cas, les lignes horizontales de la grille ne sont pas nécessaires à la compréhension du graphique. Nous allons pouvoir modifier ces éléments à l'aide des paramètres `panel.grid`. : 
+
+- **`panel.grid`** : modifier toutes les lignes
+
+- **`panel.grid.major`** : modifier les lignes principales 
+
+- **`panel.grid.minor`** : modifier les lignes secondaires
+
+- **`panel.grid.major.x`** : modifier les lignes principales de l'axe x
+
+- **`panel.grid.major.y`** : modifier les lignes principales de l'axe y
+
+- **`panel.grid.minor.x`** : modifier les lignes secondaires de l'axe x
+
+- **`panel.grid.minor.y`** : modifier les lignes secondaires de l'axe y
+
+<br>
+
+Nous procédons de la façons suivante : 
+
+**1) Supprimer toutes les lignes secondaires** : `panel.grid.minor = element_blank()`  
+
+**2) Modifier les lignes principales de l'axe en lignes pointillées** : `panel.grid.major.x = element_line(linetype = "dotted)`
+
+**3) Supprimer les lignes principales de l'axe y** : `panel.grid.major.y = element_blank()`
+
+```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+# Modifier la grille
+pingouins %>% 
+  mutate(espece = fct_rev(fct_infreq(espece))) %>% 
+  ggplot(aes(x = espece,
+             fill = espece)) +
+  geom_bar(show.legend = FALSE,
+           width = 0.5) +
+  scale_fill_manual(values = c("Adelie" = "darkorange",
+                               "Chinstrap" = "purple",
+                               "Gentoo" = "cyan4")) +
+  labs(title = "Nombre de pingouins",
+       subtitle = "pour trois espèces de l'archipel Palmer",
+       x = "",
+       y = "") +
+  coord_flip() +
+  theme_minimal() +
+  theme(panel.background = element_rect(fill = "#1d3557", colour = NA),
+        plot.background = element_rect(fill = "#1d3557", colour = NA),
+        panel.grid.minor = element_blank(),
+        panel.grid.major.x = element_line(linetype = "dotted"),
+        panel.grid.major.y = element_blank())
+```
