@@ -117,7 +117,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["img/colorbrewer2.png","img/geom_point_shapes.png","img/ggplot-grammar-of-graphics.png","img/ggplot_01.gif","img/ggplot_02.gif","img/ggplot_layers.png","img/ggplot2_blank.png","img/hist1.png","img/hist2.png","img/hist3.png","img/hist4.png","img/hist5.png","img/hist6.png","img/hist7.png","img/rcolorbrewer.png","img/sp1.png","visualiser-donnees-ggplot2_files/anchor-4.2.2/anchor.min.js","visualiser-donnees-ggplot2_files/bowser-1.9.3/bowser.min.js","visualiser-donnees-ggplot2_files/distill-2.2.21/template.v2.js","visualiser-donnees-ggplot2_files/header-attrs-2.11/header-attrs.js","visualiser-donnees-ggplot2_files/header-attrs-2.14/header-attrs.js","visualiser-donnees-ggplot2_files/jquery-3.6.0/jquery-3.6.0.js","visualiser-donnees-ggplot2_files/jquery-3.6.0/jquery-3.6.0.min.js","visualiser-donnees-ggplot2_files/jquery-3.6.0/jquery-3.6.0.min.map","visualiser-donnees-ggplot2_files/popper-2.6.0/popper.min.js","visualiser-donnees-ggplot2_files/tippy-6.2.7/tippy-bundle.umd.min.js","visualiser-donnees-ggplot2_files/tippy-6.2.7/tippy-light-border.css","visualiser-donnees-ggplot2_files/tippy-6.2.7/tippy.css","visualiser-donnees-ggplot2_files/tippy-6.2.7/tippy.umd.min.js","visualiser-donnees-ggplot2_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["img/boxplot.png","img/colorbrewer2.png","img/geom_point_shapes.png","img/ggplot-grammar-of-graphics.png","img/ggplot_01.gif","img/ggplot_02.gif","img/ggplot_layers.png","img/ggplot2_blank.png","img/hist1.png","img/hist2.png","img/hist3.png","img/hist4.png","img/hist5.png","img/hist6.png","img/hist7.png","img/lter_penguins.png","img/rcolorbrewer.png","img/sp1.png","visualiser-donnees-ggplot2_files/anchor-4.2.2/anchor.min.js","visualiser-donnees-ggplot2_files/bowser-1.9.3/bowser.min.js","visualiser-donnees-ggplot2_files/distill-2.2.21/template.v2.js","visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-10-1.png","visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-11-1.png","visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-12-1.png","visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-13-1.png","visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-14-1.png","visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-15-1.png","visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-16-1.png","visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-17-1.png","visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-19-1.png","visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-21-1.png","visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-22-1.png","visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-23-1.png","visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-24-1.png","visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-25-1.png","visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-26-1.png","visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-27-1.png","visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-28-1.png","visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-29-1.png","visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-30-1.png","visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-8-1.png","visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-9-1.png","visualiser-donnees-ggplot2_files/header-attrs-2.11/header-attrs.js","visualiser-donnees-ggplot2_files/header-attrs-2.14/header-attrs.js","visualiser-donnees-ggplot2_files/jquery-3.6.0/jquery-3.6.0.js","visualiser-donnees-ggplot2_files/jquery-3.6.0/jquery-3.6.0.min.js","visualiser-donnees-ggplot2_files/jquery-3.6.0/jquery-3.6.0.min.map","visualiser-donnees-ggplot2_files/popper-2.6.0/popper.min.js","visualiser-donnees-ggplot2_files/tippy-6.2.7/tippy-bundle.umd.min.js","visualiser-donnees-ggplot2_files/tippy-6.2.7/tippy-light-border.css","visualiser-donnees-ggplot2_files/tippy-6.2.7/tippy.css","visualiser-donnees-ggplot2_files/tippy-6.2.7/tippy.umd.min.js","visualiser-donnees-ggplot2_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1495,7 +1495,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#construire">Construire un graphique <code>ggplot2</code></a></li>
-<li><a href="#creer">Créer des graphiques avec <em>ggplot2</em></a></li>
+<li><a href="#creer">Créer des graphiques basiques</a></li>
 </ul>
 </nav>
 </div>
@@ -1509,8 +1509,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p><br></p>
 <p>Dans ce tutoriel nous allons voir comment communiquer les résultats de nos analyses - à l’aide de la <strong>visualisation de données</strong> :</p>
 <p><br></p>
-<p><strong>1. <a href="#construction">Construire un graphique <em>ggplot2</em></a></strong></p>
-<p><strong>3. <a href="#creer">Créer des graphiques basiques avec <em>ggplot2</em></a></strong> :</p>
+<p><strong>1. <a href="#construction">Construire un graphique <code>ggplot2</code></a></strong></p>
+<p><strong>3. <a href="#creer">Créer des graphiques basiques</a></strong> :</p>
 <ul>
 <li><p><a href="#scatterplot">nuage de points (scatter plot)</a></p></li>
 <li><p><a href="#histogram">histogramme</a></p></li>
@@ -1539,220 +1539,528 @@ La figure ci-dessous montre de manière simplifiée comment créer un <code>ggpl
 <div class="layout-chunk" data-layout="l-page">
 <p><img src="img/ggplot_01.gif" /><!-- --></p>
 </div>
-<h1 id="creer">Créer des graphiques avec <em>ggplot2</em></h1>
-<p>Nous allons maintenant voir comment créer les principaux types de graphiques à l’aide de <code>ggplot2</code>.</p>
-<h2 id="importer-les-données">Importer les données</h2>
+<p>Vous remarquerez dans le code la présence du signe <strong>“+”</strong> à la fin de chaque ligne : c’est ce qui permet d’ajouter une couche à votre graphique.</p>
+<h1 id="creer">Créer des graphiques basiques</h1>
+<p>Commençons par ouvrir un nouveau script R et importer le jeu de données :</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>
+
+<span class='va'>pingouins</span> <span class='op'>&lt;-</span> <span class='fu'>readr</span><span class='fu'>::</span><span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"https://raw.githubusercontent.com/codons-blog/C-04-VisualisationDonnees/main/pingouins.csv"</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Ateliers codons!</span>
-<span class='co'># 03 - visualisation de donnees</span>
+<span class='co'># 04 - Visualisation de donnees avec ggplot2</span>
 <span class='co'># 2022-06-30</span>
 
-<span class='co'># Charger le Tidyverse</span>
+<span class='co'># Definir le repertoire de travail ----</span>
+
+<span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>setwd</a></span><span class='op'>(</span><span class='st'>"codons/C-04-VisualisationDonnees"</span><span class='op'>)</span>
+
+<span class='co'># Charger le Tidyverse ----</span>
+
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>
 
-<span class='co'># Definir l'espace de travail</span>
-<span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>setwd</a></span><span class='op'>(</span><span class='st'>"C-04-VisualisationDonnees"</span><span class='op'>)</span>
+<span class='co'># Importer le jeu de donnees ----</span>
 
-<span class='co'># Importer les donnees</span>
-<span class='va'>pingouins</span> <span class='op'>&lt;-</span> <span class='fu'>readr</span><span class='fu'>::</span><span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"https://raw.githubusercontent.com/codons-blog/C-04-VisualisationDonnees/main/data/pingouins.csv"</span><span class='op'>)</span>
+<span class='va'>pingouins</span> <span class='op'>&lt;-</span> <span class='fu'>readr</span><span class='fu'>::</span><span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"https://raw.githubusercontent.com/codons-blog/C-04-VisualisationDonnees/main/pingouins.csv"</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
-<h2 id="hist">Histogramme</h2>
-<p>Créons un histogramme basique. Un graphique <code>ggplot2</code> se crée toujours par couches :</p>
-<ol type="1">
-<li>Initialisation de l’outil graphique (<code>ggplot()</code>)<br />
-</li>
-<li>Paramètres esthétiques (<code>aes()</code>)<br />
-</li>
-<li>Type de graphique <code>geom_histogram()</code></li>
-</ol>
+<p><br></p>
+<p>Il est toujours utile de vérifier les données importées avant d’aller plus loin :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>pingouins</span>,
-       <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>aile_lng_mm</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>geom_histogram</a></span><span class='op'>(</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://pillar.r-lib.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='va'>pingouins</span><span class='op'>)</span>
 </code></pre>
 </div>
+<pre><code>Rows: 342
+Columns: 6
+$ espece       &lt;chr&gt; &quot;Adelie&quot;, &quot;Adelie&quot;, &quot;Adelie&quot;, &quot;Adelie&quot;, &quot;Adelie~
+$ ile          &lt;chr&gt; &quot;Torgersen&quot;, &quot;Torgersen&quot;, &quot;Torgersen&quot;, &quot;Torgers~
+$ bec_lngr_mm  &lt;dbl&gt; 39.1, 39.5, 40.3, 36.7, 39.3, 38.9, 39.2, 34.1,~
+$ bec_htr_mm   &lt;dbl&gt; 18.7, 17.4, 18.0, 19.3, 20.6, 17.8, 19.6, 18.1,~
+$ aile_lngr_mm &lt;dbl&gt; 181, 186, 195, 193, 190, 181, 195, 193, 190, 18~
+$ masse_g      &lt;dbl&gt; 3750, 3800, 3250, 3450, 3650, 3625, 4675, 3475,~</code></pre>
 </div>
-<aside>
-<div class="layout-chunk" data-layout="l-body-outset">
-<p><img src="img/hist1.png" width="1920" /></p>
-</div>
-</aside>
 <p><br></p>
-<p>Nous pouvons modifier les couleurs du graphiques à l’aide des paramètres <code>colour = "..."</code> (contour des barres) et <code>fill = "..."</code> (intérieur des barres) :</p>
+<p>Il s’agit du jeu de données <a href="https://allisonhorst.github.io/palmerpenguins/">Palmer penguins</a>, disponible dans le package R <a href="https://cloud.r-project.org/web/packages/palmerpenguins/index.html">palmerpenguins</a>.</p>
+<p>Différents paramètres ont été mesurés sur trois espèces de pingouins, sur trois îles de l’archipel Palmer en Antarctique.</p>
 <div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>pingouins</span>,
-       <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>aile_lng_mm</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>geom_histogram</a></span><span class='op'>(</span>colour <span class='op'>=</span> <span class='st'>"blue"</span>, fill <span class='op'>=</span> <span class='st'>"white"</span><span class='op'>)</span>
-</code></pre>
+<p><img src="img/lter_penguins.png" width="900" /></p>
 </div>
-</div>
-<aside>
-<div class="layout-chunk" data-layout="l-body-outset">
-<p><img src="img/hist2.png" width="1920" /></p>
-</div>
-</aside>
-<p><br></p>
-<p>La distribution des longueurs d’ailes dépend-elle de l’espèce ? Une façon de le vérifier rapidement serait d’utiliser une couleur par espèce. Pour cela, nous utilisons <code>fill = espece</code> au sein de la parenthèse <code>aes()</code>.</p>
-<p>Il existe deux façons d’utiliser des couleurs :</p>
-<ul>
-<li><p>une seule couleur pour l’ensemble des données : geom_…(colour = “…”, fill = “…”)</p></li>
-<li><p>différentes couleurs en fonction d’une variable : aes(colour = var)</p></li>
-</ul>
-<p>En dehors de la parenthèse <code>aes()</code> (pour que cela s’applique à l’ensemble des données), nous précisons deux paramètres :</p>
-<ul>
-<li><p><code>position = "identity"</code> : il existe différentes manières de positionner les barres d’un histogramme les unes par rapport aux autres.</p></li>
-<li><p><code>alpha = 0.5</code> : permet de régler la transparence (entre 0 et 1, par opacité croissante)</p></li>
-</ul>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>pingouins</span>,
-              <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>aile_lng_mm</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>geom_histogram</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>fill <span class='op'>=</span> <span class='va'>espece</span><span class='op'>)</span>,
-                   position <span class='op'>=</span> <span class='st'>"identity"</span>,
-                   alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span>
-</code></pre>
-</div>
-</div>
-<aside>
-<div class="layout-chunk" data-layout="l-body-outset">
-<p><img src="img/hist3.png" width="1920" /></p>
-</div>
-</aside>
-<p><br></p>
-<p>Le paramètre <code>scale_fill_brewer()</code> permet de sélectionner d’autres palettes proposées par l’outil <a href="https://colorbrewer2.org/#type=qualitative&amp;scheme=Set2&amp;n=3">ColorBrewer 2.0</a>.</p>
-<div class="layout-chunk" data-layout="l-body-outset">
-<p><img src="img/colorbrewer2.png" width="518" /></p>
-</div>
-<p><br></p>
-<p>Il existe des packages proposant de très nombreuses palettes supplémentaires (<a href="https://github.com/EmilHvitfeldt/r-color-palettes">voir cette liste</a>).</p>
-<p><br></p>
-<p>Nous utilisons la palette <strong>Set2</strong> :</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>pingouins</span>,
-              <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>aile_lng_mm</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>geom_histogram</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>fill <span class='op'>=</span> <span class='va'>espece</span><span class='op'>)</span>,
-                   position <span class='op'>=</span> <span class='st'>"identity"</span>,
-                   alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_brewer.html'>scale_fill_brewer</a></span><span class='op'>(</span>palette <span class='op'>=</span> <span class='st'>"Set2"</span><span class='op'>)</span>
-</code></pre>
-</div>
-</div>
-<aside>
-<div class="layout-chunk" data-layout="l-body">
-<p><img src="img/hist4.png" width="1920" /></p>
-</div>
-</aside>
-<p><br></p>
-<p>Nous pouvons également définir les couleurs à l’aide de <code>scale_fill_manual()</code> :</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>pingouins</span>,
-              <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>aile_lng_mm</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>geom_histogram</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>fill <span class='op'>=</span> <span class='va'>espece</span><span class='op'>)</span>,
-                   position <span class='op'>=</span> <span class='st'>"identity"</span>,
-                   alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>scale_fill_manual</a></span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"darkorange"</span>, <span class='st'>"purple"</span>, <span class='st'>"cyan4"</span><span class='op'>)</span><span class='op'>)</span>
-</code></pre>
-</div>
-</div>
-<aside>
-<div class="layout-chunk" data-layout="l-body">
-<p><img src="img/hist5.png" width="1920" /></p>
-</div>
-</aside>
-<p><br></p>
-<p>Le paramètre <code>labs()</code> permet d’ajouter ou de modifier les titres du graphique et des axes :</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>pingouins</span>,
-              <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>aile_lng_mm</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>geom_histogram</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>fill <span class='op'>=</span> <span class='va'>espece</span><span class='op'>)</span>,
-                   position <span class='op'>=</span> <span class='st'>"identity"</span>,
-                   alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>scale_fill_manual</a></span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"darkorange"</span>, <span class='st'>"purple"</span>, <span class='st'>"cyan4"</span><span class='op'>)</span><span class='op'>)</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Longueur des ailes pour trois espèces de pingouins"</span>,
-       subtitle <span class='op'>=</span> <span class='st'>"Sur trois iles de l'archipel Palmer (Antarctique)"</span>,
-       x <span class='op'>=</span> <span class='st'>"Longueur des ailes (mm)"</span>,
-       y <span class='op'>=</span> <span class='st'>"Frequence"</span><span class='op'>)</span>
-</code></pre>
-</div>
-</div>
-<aside>
-<div class="layout-chunk" data-layout="l-body-outset">
-<p><img src="img/hist6.png" width="1920" /></p>
-</div>
-</aside>
-<p><br></p>
-<p>Pour finir, nous pouvons modifier le <strong>“thème”</strong>, c’est-à-dire l’apparence générale de notre graphique, en choisissant parmi les thèmes prédéfinis : <code>theme_grey</code> (par défaut), <code>theme_bw()</code>, <code>theme_minimal()</code>, …</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>pingouins</span>,
-              <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>aile_lng_mm</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>geom_histogram</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>fill <span class='op'>=</span> <span class='va'>espece</span><span class='op'>)</span>,
-                   position <span class='op'>=</span> <span class='st'>"identity"</span>,
-                   alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>scale_fill_manual</a></span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"darkorange"</span>, <span class='st'>"purple"</span>, <span class='st'>"cyan4"</span><span class='op'>)</span><span class='op'>)</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Longueur des ailes pour trois espèces de pingouins"</span>,
-       subtitle <span class='op'>=</span> <span class='st'>"Sur trois iles de l'archipel Palmer (Antarctique)"</span>,
-       x <span class='op'>=</span> <span class='st'>"Longueur des ailes (mm)"</span>,
-       y <span class='op'>=</span> <span class='st'>"Frequence"</span><span class='op'>)</span> <span class='op'>+</span>
-    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_minimal</a></span><span class='op'>(</span><span class='op'>)</span>
-</code></pre>
-</div>
-</div>
-<aside>
-<div class="layout-chunk" data-layout="l-body-outset">
-<p><img src="img/hist7.png" width="1920" /></p>
-</div>
-</aside>
-<p><br></p>
-<p>La figure ci-dessous vous montre l’effet de chaque ligne de code sur l’apparence du graphique :</p>
-<div class="layout-chunk" data-layout="l-page">
-<p><img src="img/ggplot_02.gif" /><!-- --></p>
-</div>
-<p><br></p>
+<p>Dessin de <a href="https://allisonhorst.github.io/palmerpenguins/reference/figures/lter_penguins.png">Allison Horst</a></p>
 <h2 id="scatterplot">Nuage de points (scatter plot)</h2>
-<p>Le paramètre <code>geom_point()</code> permet de générer un nuage de points :</p>
+<p>Intéressons-nous au bec des pingouins en répondant à la question suivante : <strong>quelle est la distribution du rapport entre la hauteur du bec et sa longueur ?</strong>.</p>
+<p>Afin de bien comprendre comment construire un graphique avec <code>ggplot2</code>, procédons étape par étape.</p>
+<p><br></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>pingouins</span>,
-       <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>bec_lng_mm</span>, y <span class='op'>=</span> <span class='va'>bec_htr_mm</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Initialiser l'outil graphique</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>pingouins</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-8-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Paramètres esthétiques : répartition des variables sur les axes</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>pingouins</span>,
+       mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>bec_lngr_mm</span>,
+                     y <span class='op'>=</span> <span class='va'>bec_htr_mm</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-9-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Type de visualisation : points</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>pingouins</span>,
+       mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>bec_lngr_mm</span>,
+                     y <span class='op'>=</span> <span class='va'>bec_htr_mm</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
+<p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-10-1.png" width="624" /></p>
 </div>
-<aside>
-<div class="layout-chunk" data-layout="l-body-outset">
-<p><img src="img/sp1.png" width="1920" /></p>
-</div>
-</aside>
 <p><br></p>
-<p>Comme nous l’avons fait avec l’histogramme, nous allons personnaliser ce nuage de points. La taille et la forme des points peuvent être modifiées à l’aide des paramètres <code>size</code> et <code>shape</code>.</p>
-<p>Comme pour la couleur, il existe deux façons d’utiliser ces paramètres :</p>
+<p>Voilà la distribution que nous cherchons à observer. C’est un bon début, mais cela manque de couleurs …</p>
+<p>Il existe deux façons d’ajouter des couleurs à un <code>ggplot</code> :</p>
 <ul>
-<li><p>à l’intérieur d’une parenthèse <code>aes()</code> pour appliquer le paramètre en fonction d’une variable</p></li>
-<li><p>à l’extérieur d’une parenthèse <code>aes()</code> pour appliquer le paramètre à tous les points</p></li>
+<li><strong>définir une couleur pour l’ensemble des points</strong> : on placera alors le paramètre couleur <strong>en dehors de la parenthèse <code>aes()</code></strong>.</li>
 </ul>
-<p>Il existe un code numérique permettant de définir la forme des points :</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Une couleur pour l'ensemble des points</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>pingouins</span>,
+       mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>bec_lngr_mm</span>,
+                     y <span class='op'>=</span> <span class='va'>bec_htr_mm</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span>colour <span class='op'>=</span> <span class='st'>"red"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-11-1.png" width="624" /></p>
+</div>
+<ul>
+<li><strong>colorer les points en fonction d’une autre variable</strong> : on placera dans ce cas le paramètre couleur <strong>à l’intérieur de la parenthèse <code>aes()</code></strong>.</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Colorer les points en fonction de l'espece</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>pingouins</span>,
+       mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>bec_lngr_mm</span>,
+                     y <span class='op'>=</span> <span class='va'>bec_htr_mm</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>colour <span class='op'>=</span> <span class='va'>espece</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-12-1.png" width="624" /></p>
+</div>
+<p>Vous pouvez voir qu’une <strong>légende</strong> permettant de différencier les trois espèces a été ajoutée à droite du graphique.</p>
+<p>Nous aimerions utiliser les mêmes couleurs que celles de la documentation du jeu de données. Nous utilisons pour cela le paramètre <code>scale_colour_manual()</code> :</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Modifier les couleurs</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>pingouins</span>,
+       mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>bec_lngr_mm</span>,
+                     y <span class='op'>=</span> <span class='va'>bec_htr_mm</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>colour <span class='op'>=</span> <span class='va'>espece</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>scale_colour_manual</a></span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Adelie"</span> <span class='op'>=</span> <span class='st'>"darkorange"</span>,
+                                 <span class='st'>"Chinstrap"</span> <span class='op'>=</span> <span class='st'>"purple"</span>,
+                                 <span class='st'>"Gentoo"</span> <span class='op'>=</span> <span class='st'>"cyan4"</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-13-1.png" width="624" /></p>
+</div>
+<p>La taille des points nous semble trop petite : nous allons l’augmenter à l’aide de <code>size</code> :</p>
+<aside>
+Prend une valeur numérique, par défaut 1
+</aside>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Augmenter la taille des points</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>pingouins</span>,
+       mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>bec_lngr_mm</span>,
+                     y <span class='op'>=</span> <span class='va'>bec_htr_mm</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>colour <span class='op'>=</span> <span class='va'>espece</span><span class='op'>)</span>,
+             size <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>scale_colour_manual</a></span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Adelie"</span> <span class='op'>=</span> <span class='st'>"darkorange"</span>,
+                                 <span class='st'>"Chinstrap"</span> <span class='op'>=</span> <span class='st'>"purple"</span>,
+                                 <span class='st'>"Gentoo"</span> <span class='op'>=</span> <span class='st'>"cyan4"</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-14-1.png" width="624" /></p>
+</div>
+<p>Afin de rendre le graphique plus lisible, nous pouvons ajouter de la transparence aux points à l’aide du paramètre <code>alpha</code> :</p>
+<aside>
+Entre 0 et 1, par opacité croissante
+</aside>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Ajouter de la transparence</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>pingouins</span>,
+       mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>bec_lngr_mm</span>,
+                     y <span class='op'>=</span> <span class='va'>bec_htr_mm</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>colour <span class='op'>=</span> <span class='va'>espece</span><span class='op'>)</span>,
+             size <span class='op'>=</span> <span class='fl'>3</span>,
+             alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>scale_colour_manual</a></span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Adelie"</span> <span class='op'>=</span> <span class='st'>"darkorange"</span>,
+                                 <span class='st'>"Chinstrap"</span> <span class='op'>=</span> <span class='st'>"purple"</span>,
+                                 <span class='st'>"Gentoo"</span> <span class='op'>=</span> <span class='st'>"cyan4"</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-15-1.png" width="624" /></p>
+</div>
+<p>Nous allons maintenant ajouter un titre et un sous-titre à notre graphique, et modifier les titres des axes pour les rendre plus explicites :</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Ajouter ou modifier les titres du graphique et des axes</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>pingouins</span>,
+       mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>bec_lngr_mm</span>,
+                     y <span class='op'>=</span> <span class='va'>bec_htr_mm</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>colour <span class='op'>=</span> <span class='va'>espece</span><span class='op'>)</span>,
+             size <span class='op'>=</span> <span class='fl'>3</span>,
+             alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>scale_colour_manual</a></span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Adelie"</span> <span class='op'>=</span> <span class='st'>"darkorange"</span>,
+                                 <span class='st'>"Chinstrap"</span> <span class='op'>=</span> <span class='st'>"purple"</span>,
+                                 <span class='st'>"Gentoo"</span> <span class='op'>=</span> <span class='st'>"cyan4"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Rapport entre la hauteur et la longueur du bec"</span>,
+       subtitle <span class='op'>=</span> <span class='st'>"pour trois espèces de pingouins de l'archipel Palmer"</span>,
+       x <span class='op'>=</span> <span class='st'>"Longueur du bec (mm)"</span>,
+       y <span class='op'>=</span> <span class='st'>"Hauteur du bec (mm)"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-16-1.png" width="624" /></p>
+</div>
+<p>Le fond gris du graphique est proposé par défaut par <code>ggplot2</code> : il s’agit d’un <strong>thème</strong> définissant l’apparence générale du graphique (couleurs de l’arrière-plan, de la grille, présence ou non d’un cadre, …). Nous allons utiliser l’un des autres thèmes prédéfinis dans <code>ggplot2</code>, le thème <strong>“minimal”</strong> à l’aide du paramètre <code>theme_minimal()</code>.</p>
+<p><br> Il en existe d’autres : <code>theme_light()</code>, <code>theme_bw()</code>, <code>theme_void()</code>, … N’hésitez pas à les essayer pour trouver celui qui vous convient le mieux !</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Changer le thème</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>pingouins</span>,
+       mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>bec_lngr_mm</span>,
+                     y <span class='op'>=</span> <span class='va'>bec_htr_mm</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>colour <span class='op'>=</span> <span class='va'>espece</span><span class='op'>)</span>,
+             size <span class='op'>=</span> <span class='fl'>3</span>,
+             alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>scale_colour_manual</a></span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Adelie"</span> <span class='op'>=</span> <span class='st'>"darkorange"</span>,
+                                 <span class='st'>"Chinstrap"</span> <span class='op'>=</span> <span class='st'>"purple"</span>,
+                                 <span class='st'>"Gentoo"</span> <span class='op'>=</span> <span class='st'>"cyan4"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Rapport entre la hauteur et la longueur du bec"</span>,
+       subtitle <span class='op'>=</span> <span class='st'>"pour trois espèces de pingouins de l'archipel Palmer"</span>,
+       x <span class='op'>=</span> <span class='st'>"Longueur du bec (mm)"</span>,
+       y <span class='op'>=</span> <span class='st'>"Hauteur du bec (mm)"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_minimal</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-17-1.png" width="624" /></p>
+</div>
+<h3 id="une-note-sur-les-formes-et-les-couleurs">Une note sur les formes et les couleurs</h3>
+<p>Nous pourrions également modifier la forme de nos points, à l’aide du paramètre <code>shape</code>. Il existe 25 types de points, comme montré ci-dessous.</p>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/geom_point_shapes.png" width="700" /></p>
 </div>
-<p><a href="https://ggplot2.tidyverse.org/articles/ggplot2-specs.html">ggplot2 Aesthetic specifications</a></p>
-<p>Ces 25 formes permettent différentes modifications de la couleur :</p>
+<p>La façon de colorer les points dépend de la forme choisie :</p>
 <ul>
-<li><p>Formes 0 à 14 : contour (<code>colour = "..."</code>)</p></li>
-<li><p>Formes 15 à 20 : intérieur (<code>colour = "..."</code>)</p></li>
-<li><p>Formes 21 à 24 : contour (<code>colour = "..."</code>) et intérieur (<code>fill = "..."</code>). Pour ces 5 formes, l’épaisseur du contour peut être ajustée à l’aide du paramètre <code>stroke = 1.5</code> par exemple.</p></li>
+<li><p>couleur appliquée au <strong>contour</strong> pour les formes <strong>0 à 14</strong> à l’aide de <code>colour = ...</code></p></li>
+<li><p>couleur appliquée à l’<strong>intérieur</strong> pour les formes <strong>15 à 20</strong> à l’aide de <code>fill = ...</code></p></li>
+<li><p>couleur appliquée <strong>au contour et à l’intérieur</strong> pour les formes <strong>21 à 24</strong> à l’aide de ces deux paramètres, avec la même couleur ou des couleurs différentes. Pour ces cinq formes, la largeur du contour peut être modifiée à l’aide de <code>stroke = ...</code> (prend une valeur numérique).</p></li>
 </ul>
+<p>Pour donner un exemple, nous pouvons ajouter à nos points un contour noir :</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Changer la forme des points</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>pingouins</span>,
+       mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>bec_lngr_mm</span>,
+                     y <span class='op'>=</span> <span class='va'>bec_htr_mm</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>fill <span class='op'>=</span> <span class='va'>espece</span><span class='op'>)</span>,
+             shape <span class='op'>=</span> <span class='fl'>23</span>,
+             stroke <span class='op'>=</span> <span class='fl'>2</span>,
+             colour <span class='op'>=</span> <span class='st'>"black"</span>,
+             size <span class='op'>=</span> <span class='fl'>3</span>,
+             alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>scale_fill_manual</a></span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Adelie"</span> <span class='op'>=</span> <span class='st'>"darkorange"</span>,
+                                 <span class='st'>"Chinstrap"</span> <span class='op'>=</span> <span class='st'>"purple"</span>,
+                                 <span class='st'>"Gentoo"</span> <span class='op'>=</span> <span class='st'>"cyan4"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Rapport entre la hauteur et la longueur du bec"</span>,
+       subtitle <span class='op'>=</span> <span class='st'>"pour trois espèces de pingouins de l'archipel Palmer"</span>,
+       x <span class='op'>=</span> <span class='st'>"Longueur du bec (mm)"</span>,
+       y <span class='op'>=</span> <span class='st'>"Hauteur du bec (mm)"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_minimal</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-19-1.png" width="624" /></p>
+</div>
+<p><strong>Attention à la logique du code !!</strong> Nous avons choisi de colorer l’intérieur de nos points en fonction de l’espèce : <code>geom_point(aes(fill = espece))</code>. Il faut donc modifier la ligne qui nous permet de changer les couleurs : <strong><code>scale_fill_manual()</code></strong> remplace <code>scale_colour_manual()</code> utilisé précédemment.</p>
 <p><br></p>
-<p>Le paramètre <code>size()</code>, placé en dehors d’une parenthèse <code>aes()</code>, prend une valeur numérique entre 0 et 25. Placé dans une parenthèse <code>aes()</code>, il permet par exemple de modifier la taille des points en fonction d’une autre variable de notre jeu de donénes.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>Le package <code>ggplot2</code> propose de nombreuses palettes de couleurs :</p>
+<aside>
+<a href="http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#rcolorbrewer-palette-chart">Palettes prédéfinies dans <code>ggplot2</code></a>
+</aside>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="img/rcolorbrewer.png" width="198" /></p>
+</div>
+<p>Ces différentes palettes peuvent être utilisées à l’aide de <code>scale_colour_brewer()</code> ou <code>scale_fill_brewer()</code>. Essayons la palette <em>Set3</em> :</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Utiliser une palette de couleurs</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>pingouins</span>,
+       mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>bec_lngr_mm</span>,
+                     y <span class='op'>=</span> <span class='va'>bec_htr_mm</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>colour <span class='op'>=</span> <span class='va'>espece</span><span class='op'>)</span>,
+             size <span class='op'>=</span> <span class='fl'>3</span>,
+             alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_brewer.html'>scale_colour_brewer</a></span><span class='op'>(</span>palette <span class='op'>=</span> <span class='st'>"Set3"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Rapport entre la hauteur et la longueur du bec"</span>,
+       subtitle <span class='op'>=</span> <span class='st'>"pour trois espèces de pingouins de l'archipel Palmer"</span>,
+       x <span class='op'>=</span> <span class='st'>"Longueur du bec (mm)"</span>,
+       y <span class='op'>=</span> <span class='st'>"Hauteur du bec (mm)"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_minimal</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-21-1.png" width="624" /></p>
+</div>
+<p>Il existe beaucoup d’autres palettes, accessibles via des packages, dont la liste est <a href="https://github.com/EmilHvitfeldt/r-color-palettes">accessible ici</a>.</p>
+<h2 id="histogram">Histogramme</h2>
+<p>Essayons maintenant de répondre à la question suivante : <strong>quelle est la distribution de la longueur des ailes ?</strong>. <br> Nous allons pour cela générer un histogramme à l’aide de <code>geom_histogram()</code> :</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Histogramme</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>pingouins</span>,
+       mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>aile_lngr_mm</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>geom_histogram</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>fill <span class='op'>=</span> <span class='va'>espece</span><span class='op'>)</span>,
+                 alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>scale_fill_manual</a></span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Adelie"</span> <span class='op'>=</span> <span class='st'>"darkorange"</span>,
+                                 <span class='st'>"Chinstrap"</span> <span class='op'>=</span> <span class='st'>"purple"</span>,
+                                 <span class='st'>"Gentoo"</span> <span class='op'>=</span> <span class='st'>"cyan4"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Distribution de la longueur des ailes"</span>,
+       subtitle <span class='op'>=</span> <span class='st'>"pour trois espèces de pingouins de l'archipel Palmer"</span>,
+       x <span class='op'>=</span> <span class='st'>"Longueur des ailes (mm)"</span>,
+       y <span class='op'>=</span> <span class='st'>"Fréquence"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_minimal</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-22-1.png" width="624" /></p>
+</div>
+<p>Il existe trois manières d’arranger la position des histogrammes des différents groupes :</p>
+<p><strong>1) <code>position = "stack</code> (par défaut)</strong> : voir ci-dessus.</p>
+<strong>2) <code>position = "identity</code></strong> :
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Histogramme - position = "identity"</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>pingouins</span>,
+       mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>aile_lngr_mm</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>geom_histogram</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>fill <span class='op'>=</span> <span class='va'>espece</span><span class='op'>)</span>,
+                 alpha <span class='op'>=</span> <span class='fl'>0.5</span>,
+                 position <span class='op'>=</span> <span class='st'>"identity"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>scale_fill_manual</a></span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Adelie"</span> <span class='op'>=</span> <span class='st'>"darkorange"</span>,
+                                 <span class='st'>"Chinstrap"</span> <span class='op'>=</span> <span class='st'>"purple"</span>,
+                                 <span class='st'>"Gentoo"</span> <span class='op'>=</span> <span class='st'>"cyan4"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Distribution de la longueur des ailes"</span>,
+       subtitle <span class='op'>=</span> <span class='st'>"pour trois espèces de pingouins de l'archipel Palmer"</span>,
+       x <span class='op'>=</span> <span class='st'>"Longueur des ailes (mm)"</span>,
+       y <span class='op'>=</span> <span class='st'>"Fréquence"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_minimal</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-23-1.png" width="624" /></p>
+</div>
+<strong>3) <code>position = "dodge</code></strong>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Histogramme - position = "dodge"</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>pingouins</span>,
+       mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>aile_lngr_mm</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>geom_histogram</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>fill <span class='op'>=</span> <span class='va'>espece</span><span class='op'>)</span>,
+                 alpha <span class='op'>=</span> <span class='fl'>0.5</span>,
+                 position <span class='op'>=</span> <span class='st'>"dodge"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>scale_fill_manual</a></span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Adelie"</span> <span class='op'>=</span> <span class='st'>"darkorange"</span>,
+                                 <span class='st'>"Chinstrap"</span> <span class='op'>=</span> <span class='st'>"purple"</span>,
+                                 <span class='st'>"Gentoo"</span> <span class='op'>=</span> <span class='st'>"cyan4"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Distribution de la longueur des ailes"</span>,
+       subtitle <span class='op'>=</span> <span class='st'>"pour trois espèces de pingouins de l'archipel Palmer"</span>,
+       x <span class='op'>=</span> <span class='st'>"Longueur des ailes (mm)"</span>,
+       y <span class='op'>=</span> <span class='st'>"Fréquence"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_minimal</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-24-1.png" width="624" /></p>
+</div>
+<p>Lorsque vous exécutez ce code, vous pouvez lire le message suivant dans la console : <strong><code>stat_bin()</code> using <code>bins = 30</code>. Pick better value with <code>binwidth</code>.</strong></p>
+<p><br></p>
+<p>Cela vous signale que le nombre de classes (bins) choisi pour l’histogramme n’est peut-être pas idéal.</p>
+<p><br></p>
+<p>Vous pouvez modifier ces classes de deux façons :</p>
+<p><strong>1) en modifiant la largeur de chaque classe sur l’axe x : <code>binwidth = ...</code></strong></p>
+<p><strong>2) en modifiant le nombre de classes à afficher : <code>bins = ...</code></strong></p>
+<p><br></p>
+<p>Modifions ces paramètres pour voir le résultat :</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Histogramme - position = "identity" - binwidth = 0.5</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>pingouins</span>,
+       mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>aile_lngr_mm</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>geom_histogram</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>fill <span class='op'>=</span> <span class='va'>espece</span><span class='op'>)</span>,
+                 alpha <span class='op'>=</span> <span class='fl'>0.5</span>,
+                 position <span class='op'>=</span> <span class='st'>"identity"</span>,
+                 binwidth <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>scale_fill_manual</a></span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Adelie"</span> <span class='op'>=</span> <span class='st'>"darkorange"</span>,
+                                 <span class='st'>"Chinstrap"</span> <span class='op'>=</span> <span class='st'>"purple"</span>,
+                                 <span class='st'>"Gentoo"</span> <span class='op'>=</span> <span class='st'>"cyan4"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Distribution de la longueur des ailes"</span>,
+       subtitle <span class='op'>=</span> <span class='st'>"pour trois espèces de pingouins de l'archipel Palmer"</span>,
+       x <span class='op'>=</span> <span class='st'>"Longueur des ailes (mm)"</span>,
+       y <span class='op'>=</span> <span class='st'>"Fréquence"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_minimal</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-25-1.png" width="624" /></p>
+</div>
+<p><br></p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Histogramme - position = "identity" - bins = 15</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>pingouins</span>,
+       mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>aile_lngr_mm</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>geom_histogram</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>fill <span class='op'>=</span> <span class='va'>espece</span><span class='op'>)</span>,
+                 alpha <span class='op'>=</span> <span class='fl'>0.5</span>,
+                 position <span class='op'>=</span> <span class='st'>"identity"</span>,
+                 bins <span class='op'>=</span> <span class='fl'>15</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>scale_fill_manual</a></span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Adelie"</span> <span class='op'>=</span> <span class='st'>"darkorange"</span>,
+                                 <span class='st'>"Chinstrap"</span> <span class='op'>=</span> <span class='st'>"purple"</span>,
+                                 <span class='st'>"Gentoo"</span> <span class='op'>=</span> <span class='st'>"cyan4"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Distribution de la longueur des ailes"</span>,
+       subtitle <span class='op'>=</span> <span class='st'>"pour trois espèces de pingouins de l'archipel Palmer"</span>,
+       x <span class='op'>=</span> <span class='st'>"Longueur des ailes (mm)"</span>,
+       y <span class='op'>=</span> <span class='st'>"Fréquence"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_minimal</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-26-1.png" width="624" /></p>
+</div>
+<h2 id="boxplot">Boîtes à moustaches (box plot)</h2>
+<p>Intéressons-nous maintenant à la masse de nos pingouins : <strong>les masses des trois espèces sont-elles similaires ?</strong></p>
+<p><br></p>
+<p>Nous allons créer un graphique en boîte à moustaches à l’aide de <code>geom_boxplot()</code> :</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Boxplots</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>pingouins</span>,
+       mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>espece</span>,
+                     y <span class='op'>=</span> <span class='va'>masse_g</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_boxplot.html'>geom_boxplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>colour <span class='op'>=</span> <span class='va'>espece</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>scale_colour_manual</a></span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Adelie"</span> <span class='op'>=</span> <span class='st'>"darkorange"</span>,
+                                 <span class='st'>"Chinstrap"</span> <span class='op'>=</span> <span class='st'>"purple"</span>,
+                                 <span class='st'>"Gentoo"</span> <span class='op'>=</span> <span class='st'>"cyan4"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Distribution de la masse corporelle"</span>,
+       subtitle <span class='op'>=</span> <span class='st'>"pour trois espèces de pingouins de l'archipel Palmer"</span>,
+       x <span class='op'>=</span> <span class='st'>"Espèce"</span>,
+       y <span class='op'>=</span> <span class='st'>"Masse (g)"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_minimal</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-27-1.png" width="624" /></p>
+</div>
+<p>Nous pouvons apporter quelques modifications à ce graphique :</p>
+<ul>
+<li><p>comme il y a une boîte à moustaches par espèce, nous <strong>pouvons supprimer la légende à l’aide de <code>show_legend = FALSE</code></strong></p></li>
+<li><p>pour la même raison, nous pouvons <strong>supprimer le titre de l’axe x : <code>labs(x = "")</code></strong></p></li>
+<li><p>nous pouvons <strong>supprimer les données aberrantes (outliers) : <code>outlier.shape = NA</code></strong></p></li>
+<li><p><strong>réduire la largeur des boxplots avec <code>width</code></strong></p></li>
+<li><p><strong>ajouter de la couleur à l’intérieur des boîtes à moustaches avec <code>aes(fill = espece)</code></strong> : bien penser à ajouter <code>scale_fill_manual()</code> !</p></li>
+<li><p><strong>augmenter l’épaisseur des lignes avec <code>lwd</code></strong> (line width)</p></li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Boxplots avec quelques modifications</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>pingouins</span>,
+       mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>espece</span>,
+                     y <span class='op'>=</span> <span class='va'>masse_g</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_boxplot.html'>geom_boxplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>colour <span class='op'>=</span> <span class='va'>espece</span>,
+                   fill <span class='op'>=</span> <span class='va'>espece</span><span class='op'>)</span>,
+               show.legend <span class='op'>=</span> <span class='cn'>FALSE</span>,
+               outlier.shape <span class='op'>=</span> <span class='cn'>NA</span>,
+               width <span class='op'>=</span> <span class='fl'>0.25</span>,
+               alpha <span class='op'>=</span> <span class='fl'>0.5</span>,
+               lwd <span class='op'>=</span> <span class='fl'>0.75</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>scale_colour_manual</a></span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Adelie"</span> <span class='op'>=</span> <span class='st'>"darkorange"</span>,
+                                 <span class='st'>"Chinstrap"</span> <span class='op'>=</span> <span class='st'>"purple"</span>,
+                                 <span class='st'>"Gentoo"</span> <span class='op'>=</span> <span class='st'>"cyan4"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>scale_fill_manual</a></span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Adelie"</span> <span class='op'>=</span> <span class='st'>"darkorange"</span>,
+                                 <span class='st'>"Chinstrap"</span> <span class='op'>=</span> <span class='st'>"purple"</span>,
+                                 <span class='st'>"Gentoo"</span> <span class='op'>=</span> <span class='st'>"cyan4"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Distribution de la masse corporelle"</span>,
+       subtitle <span class='op'>=</span> <span class='st'>"pour trois espèces de pingouins de l'archipel Palmer"</span>,
+       x <span class='op'>=</span> <span class='st'>""</span>,
+       y <span class='op'>=</span> <span class='st'>"Masse (g)"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_minimal</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-28-1.png" width="624" /></p>
+</div>
+<p><br></p>
+<p>Si nous préférons des boxplots horizontaux, nous pouvons procéder de deux façons :</p>
+<p><strong>1) inverser les variables x et y</strong>, en pensant bien à modifier également les titres des axes avec <code>labs()</code> :</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Boxplots horizontaux : inverser les variables x et y</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>pingouins</span>,
+       mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>masse_g</span>,
+                     y <span class='op'>=</span> <span class='va'>espece</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_boxplot.html'>geom_boxplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>colour <span class='op'>=</span> <span class='va'>espece</span>,
+                   fill <span class='op'>=</span> <span class='va'>espece</span><span class='op'>)</span>,
+               show.legend <span class='op'>=</span> <span class='cn'>FALSE</span>,
+               outlier.shape <span class='op'>=</span> <span class='cn'>NA</span>,
+               width <span class='op'>=</span> <span class='fl'>0.25</span>,
+               alpha <span class='op'>=</span> <span class='fl'>0.5</span>,
+               lwd <span class='op'>=</span> <span class='fl'>0.75</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>scale_colour_manual</a></span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Adelie"</span> <span class='op'>=</span> <span class='st'>"darkorange"</span>,
+                                 <span class='st'>"Chinstrap"</span> <span class='op'>=</span> <span class='st'>"purple"</span>,
+                                 <span class='st'>"Gentoo"</span> <span class='op'>=</span> <span class='st'>"cyan4"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>scale_fill_manual</a></span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Adelie"</span> <span class='op'>=</span> <span class='st'>"darkorange"</span>,
+                                 <span class='st'>"Chinstrap"</span> <span class='op'>=</span> <span class='st'>"purple"</span>,
+                                 <span class='st'>"Gentoo"</span> <span class='op'>=</span> <span class='st'>"cyan4"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Distribution de la masse corporelle"</span>,
+       subtitle <span class='op'>=</span> <span class='st'>"pour trois espèces de pingouins de l'archipel Palmer"</span>,
+       x <span class='op'>=</span> <span class='st'>"Masse (g)"</span>,
+       y <span class='op'>=</span> <span class='st'>""</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_minimal</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p><br></p>
+<p><strong>2) utiliser <code>coord_flip()</code></strong> pour inverser les coordonnées :</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Boxplots horizontaux : inverser les coordonnées avec coord_flip()</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>pingouins</span>,
+       mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>espece</span>,
+                     y <span class='op'>=</span> <span class='va'>masse_g</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_boxplot.html'>geom_boxplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>colour <span class='op'>=</span> <span class='va'>espece</span>,
+                   fill <span class='op'>=</span> <span class='va'>espece</span><span class='op'>)</span>,
+               show.legend <span class='op'>=</span> <span class='cn'>FALSE</span>,
+               outlier.shape <span class='op'>=</span> <span class='cn'>NA</span>,
+               width <span class='op'>=</span> <span class='fl'>0.25</span>,
+               alpha <span class='op'>=</span> <span class='fl'>0.5</span>,
+               lwd <span class='op'>=</span> <span class='fl'>0.75</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>scale_colour_manual</a></span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Adelie"</span> <span class='op'>=</span> <span class='st'>"darkorange"</span>,
+                                 <span class='st'>"Chinstrap"</span> <span class='op'>=</span> <span class='st'>"purple"</span>,
+                                 <span class='st'>"Gentoo"</span> <span class='op'>=</span> <span class='st'>"cyan4"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>scale_fill_manual</a></span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Adelie"</span> <span class='op'>=</span> <span class='st'>"darkorange"</span>,
+                                 <span class='st'>"Chinstrap"</span> <span class='op'>=</span> <span class='st'>"purple"</span>,
+                                 <span class='st'>"Gentoo"</span> <span class='op'>=</span> <span class='st'>"cyan4"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Distribution de la masse corporelle"</span>,
+       subtitle <span class='op'>=</span> <span class='st'>"pour trois espèces de pingouins de l'archipel Palmer"</span>,
+       x <span class='op'>=</span> <span class='st'>""</span>,
+       y <span class='op'>=</span> <span class='st'>"Masse (g)"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/coord_flip.html'>coord_flip</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_minimal</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-30-1.png" width="624" /></p>
+</div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

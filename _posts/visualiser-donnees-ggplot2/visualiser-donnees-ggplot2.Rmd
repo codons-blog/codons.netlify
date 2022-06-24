@@ -40,9 +40,9 @@ Dans ce tutoriel nous allons voir comment communiquer les résultats de nos anal
 
 <br>
 
-**1. [Construire un graphique *ggplot2*](#construction)**  
+**1. [Construire un graphique `ggplot2`](#construction)**  
 
-**3. [Créer des graphiques basiques avec *ggplot2*](#creer)** :  
+**3. [Créer des graphiques basiques](#creer)** :  
 
 - [nuage de points (scatter plot)](#scatterplot) 
 
@@ -90,242 +90,518 @@ La figure ci-dessous montre de manière simplifiée comment créer un `ggplot` b
 knitr::include_graphics("img/ggplot_01.gif")
 ```
 
-# Créer des graphiques avec *ggplot2* {#creer}
+Vous remarquerez dans le code la présence du signe **"+"** à la fin de chaque ligne : c'est ce qui permet d'ajouter une couche à votre graphique.
 
-Nous allons maintenant voir comment créer les principaux types de graphiques à l'aide de `ggplot2`.  
+# Créer des graphiques basiques {#creer}
 
-## Importer les données
+Commençons par ouvrir un nouveau script R et importer le jeu de données :
 
-```{r, eval=FALSE, echo=TRUE, message=FALSE, warning=FALSE}
-# Ateliers codons!
-# 03 - visualisation de donnees
-# 2022-06-30
-
-# Charger le Tidyverse
+```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
 library(tidyverse)
 
-# Definir l'espace de travail
-setwd("C-04-VisualisationDonnees")
-
-# Importer les donnees
-pingouins <- readr::read_csv("https://raw.githubusercontent.com/codons-blog/C-04-VisualisationDonnees/main/data/pingouins.csv")
+pingouins <- readr::read_csv("https://raw.githubusercontent.com/codons-blog/C-04-VisualisationDonnees/main/pingouins.csv")
 ```
 
-## Histogramme {#hist}
+```{r, echo=TRUE, eval=FALSE, message=FALSE, warning=FALSE}
+# Ateliers codons!
+# 04 - Visualisation de donnees avec ggplot2
+# 2022-06-30
 
-Créons un histogramme basique. Un graphique `ggplot2` se crée toujours par couches :  
+# Definir le repertoire de travail ----
 
-1. Initialisation de l'outil graphique (`ggplot()`)  
-2. Paramètres esthétiques (`aes()`)  
-3. Type de graphique `geom_histogram()`
+setwd("codons/C-04-VisualisationDonnees")
 
-```{r, echo=TRUE, eval=FALSE}
-ggplot(data = pingouins,
-       aes(x = aile_lng_mm)) +
-  geom_histogram()
-```
+# Charger le Tidyverse ----
 
-<aside>
-```{r, layout="l-body-outset"}
-knitr::include_graphics("img/hist1.png")
-```
-</aside>
+library(tidyverse)
 
-<br>
+# Importer le jeu de donnees ----
 
-Nous pouvons modifier les couleurs du graphiques à l'aide des paramètres `colour = "..."` (contour des barres) et `fill = "..."` (intérieur des barres) : 
-
-```{r, echo=TRUE, eval=FALSE}
-ggplot(data = pingouins,
-       aes(x = aile_lng_mm)) +
-  geom_histogram(colour = "blue", fill = "white")
-```
-
-<aside>
-```{r, layout="l-body-outset"}
-knitr::include_graphics("img/hist2.png")
-```
-</aside>
-
-<br>
-
-La distribution des longueurs d'ailes dépend-elle de l'espèce ? Une façon de le vérifier rapidement serait d'utiliser une couleur par espèce. Pour cela, nous utilisons `fill = espece` au sein de la parenthèse `aes()`.  
-
-Il existe deux façons d'utiliser des couleurs :  
-
-- une seule couleur pour l'ensemble des données : geom_...(colour = "...", fill = "...")  
-
-- différentes couleurs en fonction d'une variable : aes(colour = var)  
-
-En dehors de la parenthèse `aes()` (pour que cela s'applique à l'ensemble des données), nous précisons deux paramètres :  
-
-- `position = "identity"` : il existe différentes manières de positionner les barres d'un histogramme les unes par rapport aux autres.  
-
-- `alpha = 0.5` : permet de régler la transparence (entre 0 et 1, par opacité croissante)
-
-```{r, echo=TRUE, eval=FALSE}
-ggplot(data = pingouins,
-              aes(x = aile_lng_mm)) +
-    geom_histogram(aes(fill = espece),
-                   position = "identity",
-                   alpha = 0.5)
-```
-
-<aside>
-```{r, layout="l-body-outset"}
-knitr::include_graphics("img/hist3.png")
-```
-</aside>
-
-<br>
-
-Le paramètre `scale_fill_brewer()` permet de sélectionner d'autres palettes proposées par l'outil [ColorBrewer 2.0](https://colorbrewer2.org/#type=qualitative&scheme=Set2&n=3).  
-
-```{r, layout="l-body-outset"}
-knitr::include_graphics("img/colorbrewer2.png")
+pingouins <- readr::read_csv("https://raw.githubusercontent.com/codons-blog/C-04-VisualisationDonnees/main/pingouins.csv")
 ```
 
 <br>
 
-Il existe des packages proposant de très nombreuses palettes supplémentaires ([voir cette liste](https://github.com/EmilHvitfeldt/r-color-palettes)).
+Il est toujours utile de vérifier les données importées avant d'aller plus loin :
+
+```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+glimpse(pingouins)
+```
 
 <br>
 
-Nous utilisons la palette **Set2** : 
+Il s'agit du jeu de données [Palmer penguins](https://allisonhorst.github.io/palmerpenguins/), disponible dans le package R [palmerpenguins](https://cloud.r-project.org/web/packages/palmerpenguins/index.html).  
 
-```{r, echo=TRUE, eval=FALSE}
-ggplot(data = pingouins,
-              aes(x = aile_lng_mm)) +
-    geom_histogram(aes(fill = espece),
-                   position = "identity",
-                   alpha = 0.5) +
-  scale_fill_brewer(palette = "Set2")
-```
+Différents paramètres ont été mesurés sur trois espèces de pingouins, sur trois îles de l'archipel Palmer en Antarctique. 
 
-<aside>
 ```{r, layout="l-body"}
-knitr::include_graphics("img/hist4.png")
+knitr::include_graphics("img/lter_penguins.png")
 ```
-</aside>
+Dessin de [Allison Horst](https://allisonhorst.github.io/palmerpenguins/reference/figures/lter_penguins.png)
+
+## Nuage de points (scatter plot){#scatterplot}
+
+Intéressons-nous au bec des pingouins en répondant à la question suivante : **quelle est la distribution du rapport entre la hauteur du bec et sa longueur ?**.  
+  
+Afin de bien comprendre comment construire un graphique avec `ggplot2`, procédons étape par étape.
 
 <br>
 
-Nous pouvons également définir les couleurs à l'aide de `scale_fill_manual()` : 
+```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+# Initialiser l'outil graphique
+ggplot(data = pingouins)
+```
 
-```{r, echo=TRUE, eval=FALSE}
+```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+# Paramètres esthétiques : répartition des variables sur les axes
 ggplot(data = pingouins,
-              aes(x = aile_lng_mm)) +
-    geom_histogram(aes(fill = espece),
-                   position = "identity",
-                   alpha = 0.5) +
-  scale_fill_manual(values = c("darkorange", "purple", "cyan4"))
+       mapping = aes(x = bec_lngr_mm,
+                     y = bec_htr_mm))
 ```
 
-<aside>
-```{r, layout="l-body"}
-knitr::include_graphics("img/hist5.png")
-```
-</aside>
-
-<br>
-
-Le paramètre `labs()` permet d'ajouter ou de modifier les titres du graphique et des axes : 
-
-```{r, echo=TRUE, eval=FALSE}
+```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+# Type de visualisation : points
 ggplot(data = pingouins,
-              aes(x = aile_lng_mm)) +
-    geom_histogram(aes(fill = espece),
-                   position = "identity",
-                   alpha = 0.5) +
-  scale_fill_manual(values = c("darkorange", "purple", "cyan4"))
-  labs(title = "Longueur des ailes pour trois espèces de pingouins",
-       subtitle = "Sur trois iles de l'archipel Palmer (Antarctique)",
-       x = "Longueur des ailes (mm)",
-       y = "Frequence")
-```
-
-<aside>
-```{r, layout="l-body-outset"}
-knitr::include_graphics("img/hist6.png")
-```
-</aside>
-
-<br>
-
-Pour finir, nous pouvons modifier le **"thème"**, c'est-à-dire l'apparence générale de notre graphique, en choisissant parmi les thèmes prédéfinis : `theme_grey` (par défaut), `theme_bw()`, `theme_minimal()`, ...
-
- 
-```{r, echo=TRUE, eval=FALSE}
-ggplot(data = pingouins,
-              aes(x = aile_lng_mm)) +
-    geom_histogram(aes(fill = espece),
-                   position = "identity",
-                   alpha = 0.5) +
-  scale_fill_manual(values = c("darkorange", "purple", "cyan4"))
-  labs(title = "Longueur des ailes pour trois espèces de pingouins",
-       subtitle = "Sur trois iles de l'archipel Palmer (Antarctique)",
-       x = "Longueur des ailes (mm)",
-       y = "Frequence") +
-    theme_minimal()
-```
-
-<aside>
-```{r, layout="l-body-outset"}
-knitr::include_graphics("img/hist7.png")
-```
-</aside>
-
-<br>
-
-La figure ci-dessous vous montre l'effet de chaque ligne de code sur l'apparence du graphique : 
-
-```{r, layout="l-page"}
-knitr::include_graphics("img/ggplot_02.gif")
-```
-
-<br>
-
-## Nuage de points (scatter plot) {#scatterplot}
-
-Le paramètre `geom_point()` permet de générer un nuage de points : 
-
-```{r, echo=TRUE, eval=FALSE}
-ggplot(data = pingouins,
-       aes(x = bec_lng_mm, y = bec_htr_mm)) +
+       mapping = aes(x = bec_lngr_mm,
+                     y = bec_htr_mm)) +
   geom_point()
 ```
 
-<aside>
-```{r, layout="l-body-outset"}
-knitr::include_graphics("img/sp1.png")
-```
-</aside>
-
 <br>
 
-Comme nous l'avons fait avec l'histogramme, nous allons personnaliser ce nuage de points. La taille et la forme des points peuvent être modifiées à l'aide des paramètres `size` et `shape`.
+Voilà la distribution que nous cherchons à observer. C'est un bon début, mais cela manque de couleurs ...  
 
-Comme pour la couleur, il existe deux façons d'utiliser ces paramètres :
+Il existe deux façons d'ajouter des couleurs à un `ggplot` :  
 
-- à l'intérieur d'une parenthèse `aes()` pour appliquer le paramètre en fonction d'une variable  
+- **définir une couleur pour l'ensemble des points** : on placera alors le paramètre couleur **en dehors de la parenthèse `aes()`**.
 
-- à l'extérieur d'une parenthèse `aes()` pour appliquer le paramètre à tous les points  
+```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+# Une couleur pour l'ensemble des points
+ggplot(data = pingouins,
+       mapping = aes(x = bec_lngr_mm,
+                     y = bec_htr_mm)) +
+  geom_point(colour = "red")
+```
 
-Il existe un code numérique permettant de définir la forme des points : 
+- **colorer les points en fonction d'une autre variable** : on placera dans ce cas le paramètre couleur **à l'intérieur de la parenthèse `aes()`**.
+
+```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+# Colorer les points en fonction de l'espece
+ggplot(data = pingouins,
+       mapping = aes(x = bec_lngr_mm,
+                     y = bec_htr_mm)) +
+  geom_point(aes(colour = espece))
+```
+
+Vous pouvez voir qu'une **légende** permettant de différencier les trois espèces a été ajoutée à droite du graphique.
+
+Nous aimerions utiliser les mêmes couleurs que celles de la documentation du jeu de données. Nous utilisons pour cela le paramètre `scale_colour_manual()` : 
+
+```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+# Modifier les couleurs
+ggplot(data = pingouins,
+       mapping = aes(x = bec_lngr_mm,
+                     y = bec_htr_mm)) +
+  geom_point(aes(colour = espece)) +
+  scale_colour_manual(values = c("Adelie" = "darkorange",
+                                 "Chinstrap" = "purple",
+                                 "Gentoo" = "cyan4"))
+```
+
+La taille des points nous semble trop petite : nous allons l'augmenter à l'aide de `size` :
+
+<aside>
+Prend une valeur numérique, par défaut 1
+</aside>
+
+```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+# Augmenter la taille des points
+ggplot(data = pingouins,
+       mapping = aes(x = bec_lngr_mm,
+                     y = bec_htr_mm)) +
+  geom_point(aes(colour = espece),
+             size = 3) +
+  scale_colour_manual(values = c("Adelie" = "darkorange",
+                                 "Chinstrap" = "purple",
+                                 "Gentoo" = "cyan4"))
+```
+
+Afin de rendre le graphique plus lisible, nous pouvons ajouter de la transparence aux points à l'aide du paramètre `alpha` : 
+
+<aside>
+Entre 0 et 1, par opacité croissante
+</aside>
+
+```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+# Ajouter de la transparence
+ggplot(data = pingouins,
+       mapping = aes(x = bec_lngr_mm,
+                     y = bec_htr_mm)) +
+  geom_point(aes(colour = espece),
+             size = 3,
+             alpha = 0.5) +
+  scale_colour_manual(values = c("Adelie" = "darkorange",
+                                 "Chinstrap" = "purple",
+                                 "Gentoo" = "cyan4"))
+```
+
+Nous allons maintenant ajouter un titre et un sous-titre à notre graphique, et modifier les titres des axes pour les rendre plus explicites : 
+
+```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+# Ajouter ou modifier les titres du graphique et des axes
+ggplot(data = pingouins,
+       mapping = aes(x = bec_lngr_mm,
+                     y = bec_htr_mm)) +
+  geom_point(aes(colour = espece),
+             size = 3,
+             alpha = 0.5) +
+  scale_colour_manual(values = c("Adelie" = "darkorange",
+                                 "Chinstrap" = "purple",
+                                 "Gentoo" = "cyan4")) +
+  labs(title = "Rapport entre la hauteur et la longueur du bec",
+       subtitle = "pour trois espèces de pingouins de l'archipel Palmer",
+       x = "Longueur du bec (mm)",
+       y = "Hauteur du bec (mm)")
+```
+
+Le fond gris du graphique est proposé par défaut par `ggplot2` : il s'agit d'un **thème** définissant l'apparence générale du graphique (couleurs de l'arrière-plan, de la grille, présence ou non d'un cadre, ...).
+Nous allons utiliser l'un des autres thèmes prédéfinis dans `ggplot2`, le thème **"minimal"** à l'aide du paramètre `theme_minimal()`.
+
+<br>
+Il en existe d'autres : `theme_light()`, `theme_bw()`, `theme_void()`, ... 
+N'hésitez pas à les essayer pour trouver celui qui vous convient le mieux ! 
+
+```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+# Changer le thème
+ggplot(data = pingouins,
+       mapping = aes(x = bec_lngr_mm,
+                     y = bec_htr_mm)) +
+  geom_point(aes(colour = espece),
+             size = 3,
+             alpha = 0.5) +
+  scale_colour_manual(values = c("Adelie" = "darkorange",
+                                 "Chinstrap" = "purple",
+                                 "Gentoo" = "cyan4")) +
+  labs(title = "Rapport entre la hauteur et la longueur du bec",
+       subtitle = "pour trois espèces de pingouins de l'archipel Palmer",
+       x = "Longueur du bec (mm)",
+       y = "Hauteur du bec (mm)") +
+  theme_minimal()
+```
+
+### Une note sur les formes et les couleurs
+
+Nous pourrions également modifier la forme de nos points, à l'aide du paramètre `shape`. 
+Il existe 25 types de points, comme montré ci-dessous.
 
 ```{r, layout="l-body"}
 knitr::include_graphics("img/geom_point_shapes.png")
 ```
-[ggplot2 Aesthetic specifications](https://ggplot2.tidyverse.org/articles/ggplot2-specs.html)
 
-Ces 25 formes permettent différentes modifications de la couleur : 
+La façon de colorer les points dépend de la forme choisie : 
 
-- Formes 0 à 14 : contour (`colour = "..."`)  
+- couleur appliquée au **contour** pour les formes **0 à 14** à l'aide de `colour = ...`  
 
-- Formes 15 à 20 : intérieur (`colour = "..."`)  
+- couleur appliquée à l'**intérieur** pour les formes **15 à 20** à l'aide de `fill = ...`  
 
-- Formes 21 à 24 : contour (`colour = "..."`) et intérieur (`fill = "..."`). Pour ces 5 formes, l'épaisseur du contour peut être ajustée à l'aide du paramètre `stroke = 1.5` par exemple.
+- couleur appliquée **au contour et à l'intérieur** pour les formes **21 à 24** à l'aide de ces deux paramètres, avec la même couleur ou des couleurs différentes. Pour ces cinq formes, la largeur du contour peut être modifiée à l'aide de `stroke = ...` (prend une valeur numérique).
+
+Pour donner un exemple, nous pouvons ajouter à nos points un contour noir : 
+
+```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+# Changer la forme des points
+ggplot(data = pingouins,
+       mapping = aes(x = bec_lngr_mm,
+                     y = bec_htr_mm)) +
+  geom_point(aes(fill = espece),
+             shape = 23,
+             stroke = 2,
+             colour = "black",
+             size = 3,
+             alpha = 0.5) +
+  scale_fill_manual(values = c("Adelie" = "darkorange",
+                                 "Chinstrap" = "purple",
+                                 "Gentoo" = "cyan4")) +
+  labs(title = "Rapport entre la hauteur et la longueur du bec",
+       subtitle = "pour trois espèces de pingouins de l'archipel Palmer",
+       x = "Longueur du bec (mm)",
+       y = "Hauteur du bec (mm)") +
+  theme_minimal()
+```
+
+**Attention à la logique du code !!** Nous avons choisi de colorer l'intérieur de nos points en fonction de l'espèce : `geom_point(aes(fill = espece))`. Il faut donc modifier la ligne qui nous permet de changer les couleurs : **`scale_fill_manual()`** remplace `scale_colour_manual()` utilisé précédemment. 
 
 <br>
 
-Le paramètre `size()`, placé en dehors d'une parenthèse `aes()`, prend une valeur numérique entre 0 et 25. Placé dans une parenthèse `aes()`, il permet par exemple de modifier la taille des points en fonction d'une autre variable de notre jeu de donénes.
+Le package `ggplot2` propose de nombreuses palettes de couleurs : 
+
+<aside>
+[Palettes prédéfinies dans `ggplot2`](http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#rcolorbrewer-palette-chart)
+</aside>
+
+```{r, layout="l-body"}
+knitr::include_graphics("img/rcolorbrewer.png")
+```
+
+Ces différentes palettes peuvent être utilisées à l'aide de `scale_colour_brewer()` ou `scale_fill_brewer()`.
+Essayons la palette *Set3* : 
+
+```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+# Utiliser une palette de couleurs
+ggplot(data = pingouins,
+       mapping = aes(x = bec_lngr_mm,
+                     y = bec_htr_mm)) +
+  geom_point(aes(colour = espece),
+             size = 3,
+             alpha = 0.5) +
+  scale_colour_brewer(palette = "Set3") +
+  labs(title = "Rapport entre la hauteur et la longueur du bec",
+       subtitle = "pour trois espèces de pingouins de l'archipel Palmer",
+       x = "Longueur du bec (mm)",
+       y = "Hauteur du bec (mm)") +
+  theme_minimal()
+```
+
+Il existe beaucoup d'autres palettes, accessibles via des packages, dont la liste est [accessible ici](https://github.com/EmilHvitfeldt/r-color-palettes).
+
+## Histogramme {#histogram}
+
+Essayons maintenant de répondre à la question suivante : **quelle est la distribution de la longueur des ailes ?**.
+<br>
+Nous allons pour cela générer un histogramme à l'aide de `geom_histogram()` :
+
+```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+# Histogramme
+ggplot(data = pingouins,
+       mapping = aes(x = aile_lngr_mm)) +
+  geom_histogram(aes(fill = espece),
+                 alpha = 0.5) +
+  scale_fill_manual(values = c("Adelie" = "darkorange",
+                                 "Chinstrap" = "purple",
+                                 "Gentoo" = "cyan4")) +
+  labs(title = "Distribution de la longueur des ailes",
+       subtitle = "pour trois espèces de pingouins de l'archipel Palmer",
+       x = "Longueur des ailes (mm)",
+       y = "Fréquence") +
+  theme_minimal()
+```
+
+Il existe trois manières d'arranger la position des histogrammes des différents groupes : 
+
+**1) `position = "stack` (par défaut)** : voir ci-dessus.
+
+**2) `position = "identity`** : 
+```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+# Histogramme - position = "identity"
+ggplot(data = pingouins,
+       mapping = aes(x = aile_lngr_mm)) +
+  geom_histogram(aes(fill = espece),
+                 alpha = 0.5,
+                 position = "identity") +
+  scale_fill_manual(values = c("Adelie" = "darkorange",
+                                 "Chinstrap" = "purple",
+                                 "Gentoo" = "cyan4")) +
+  labs(title = "Distribution de la longueur des ailes",
+       subtitle = "pour trois espèces de pingouins de l'archipel Palmer",
+       x = "Longueur des ailes (mm)",
+       y = "Fréquence") +
+  theme_minimal()
+```
+
+**3) `position = "dodge`** 
+```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+# Histogramme - position = "dodge"
+ggplot(data = pingouins,
+       mapping = aes(x = aile_lngr_mm)) +
+  geom_histogram(aes(fill = espece),
+                 alpha = 0.5,
+                 position = "dodge") +
+  scale_fill_manual(values = c("Adelie" = "darkorange",
+                                 "Chinstrap" = "purple",
+                                 "Gentoo" = "cyan4")) +
+  labs(title = "Distribution de la longueur des ailes",
+       subtitle = "pour trois espèces de pingouins de l'archipel Palmer",
+       x = "Longueur des ailes (mm)",
+       y = "Fréquence") +
+  theme_minimal()
+```
+
+Lorsque vous exécutez ce code, vous pouvez lire le message suivant dans la console : **`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.**
+
+<br>
+
+Cela vous signale que le nombre de classes (bins) choisi pour l'histogramme n'est peut-être pas idéal.
+
+<br>
+
+Vous pouvez modifier ces classes de deux façons : 
+
+**1) en modifiant la largeur de chaque classe sur l'axe x : `binwidth = ...`**
+
+**2) en modifiant le nombre de classes à afficher : `bins = ...`**
+
+<br>
+
+Modifions ces paramètres pour voir le résultat : 
+
+```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+# Histogramme - position = "identity" - binwidth = 0.5
+ggplot(data = pingouins,
+       mapping = aes(x = aile_lngr_mm)) +
+  geom_histogram(aes(fill = espece),
+                 alpha = 0.5,
+                 position = "identity",
+                 binwidth = 0.5) +
+  scale_fill_manual(values = c("Adelie" = "darkorange",
+                                 "Chinstrap" = "purple",
+                                 "Gentoo" = "cyan4")) +
+  labs(title = "Distribution de la longueur des ailes",
+       subtitle = "pour trois espèces de pingouins de l'archipel Palmer",
+       x = "Longueur des ailes (mm)",
+       y = "Fréquence") +
+  theme_minimal()
+```
+
+<br>
+
+```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+# Histogramme - position = "identity" - bins = 15
+ggplot(data = pingouins,
+       mapping = aes(x = aile_lngr_mm)) +
+  geom_histogram(aes(fill = espece),
+                 alpha = 0.5,
+                 position = "identity",
+                 bins = 15) +
+  scale_fill_manual(values = c("Adelie" = "darkorange",
+                                 "Chinstrap" = "purple",
+                                 "Gentoo" = "cyan4")) +
+  labs(title = "Distribution de la longueur des ailes",
+       subtitle = "pour trois espèces de pingouins de l'archipel Palmer",
+       x = "Longueur des ailes (mm)",
+       y = "Fréquence") +
+  theme_minimal()
+```
+
+## Boîtes à moustaches (box plot) {#boxplot}
+
+Intéressons-nous maintenant à la masse de nos pingouins : **les masses des trois espèces sont-elles similaires ?**  
+
+<br>
+
+Nous allons créer un graphique en boîte à moustaches à l'aide de `geom_boxplot()` : 
+
+```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+# Boxplots
+ggplot(data = pingouins,
+       mapping = aes(x = espece,
+                     y = masse_g)) +
+  geom_boxplot(aes(colour = espece)) +
+  scale_colour_manual(values = c("Adelie" = "darkorange",
+                                 "Chinstrap" = "purple",
+                                 "Gentoo" = "cyan4")) +
+  labs(title = "Distribution de la masse corporelle",
+       subtitle = "pour trois espèces de pingouins de l'archipel Palmer",
+       x = "Espèce",
+       y = "Masse (g)") +
+  theme_minimal()
+```
+
+Nous pouvons apporter quelques modifications à ce graphique : 
+
+- comme il y a une boîte à moustaches par espèce, nous **pouvons supprimer la légende à l'aide de `show_legend = FALSE`**  
+
+- pour la même raison, nous pouvons **supprimer le titre de l'axe x : `labs(x = "")`**  
+
+- nous pouvons **supprimer les données aberrantes (outliers) : `outlier.shape = NA`**  
+
+- **réduire la largeur des boxplots avec `width`**
+
+- **ajouter de la couleur à l'intérieur des boîtes à moustaches avec `aes(fill = espece)`** : bien penser à ajouter `scale_fill_manual()` !
+
+- **augmenter l'épaisseur des lignes avec `lwd`** (line width)
+
+```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+# Boxplots avec quelques modifications
+ggplot(data = pingouins,
+       mapping = aes(x = espece,
+                     y = masse_g)) +
+  geom_boxplot(aes(colour = espece,
+                   fill = espece),
+               show.legend = FALSE,
+               outlier.shape = NA,
+               width = 0.25,
+               alpha = 0.5,
+               lwd = 0.75) +
+  scale_colour_manual(values = c("Adelie" = "darkorange",
+                                 "Chinstrap" = "purple",
+                                 "Gentoo" = "cyan4")) +
+  scale_fill_manual(values = c("Adelie" = "darkorange",
+                                 "Chinstrap" = "purple",
+                                 "Gentoo" = "cyan4")) +
+  labs(title = "Distribution de la masse corporelle",
+       subtitle = "pour trois espèces de pingouins de l'archipel Palmer",
+       x = "",
+       y = "Masse (g)") +
+  theme_minimal()
+```
+
+<br>
+
+Si nous préférons des boxplots horizontaux, nous pouvons procéder de deux façons : 
+
+**1) inverser les variables x et y**, en pensant bien à modifier également les titres des axes avec `labs()` : 
+
+```{r, echo=TRUE, eval=FALSE, message=FALSE, warning=FALSE}
+# Boxplots horizontaux : inverser les variables x et y
+ggplot(data = pingouins,
+       mapping = aes(x = masse_g,
+                     y = espece)) +
+  geom_boxplot(aes(colour = espece,
+                   fill = espece),
+               show.legend = FALSE,
+               outlier.shape = NA,
+               width = 0.25,
+               alpha = 0.5,
+               lwd = 0.75) +
+  scale_colour_manual(values = c("Adelie" = "darkorange",
+                                 "Chinstrap" = "purple",
+                                 "Gentoo" = "cyan4")) +
+  scale_fill_manual(values = c("Adelie" = "darkorange",
+                                 "Chinstrap" = "purple",
+                                 "Gentoo" = "cyan4")) +
+  labs(title = "Distribution de la masse corporelle",
+       subtitle = "pour trois espèces de pingouins de l'archipel Palmer",
+       x = "Masse (g)",
+       y = "") +
+  theme_minimal()
+```
+
+<br>
+
+**2) utiliser `coord_flip()`** pour inverser les coordonnées : 
+
+```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+# Boxplots horizontaux : inverser les coordonnées avec coord_flip()
+ggplot(data = pingouins,
+       mapping = aes(x = espece,
+                     y = masse_g)) +
+  geom_boxplot(aes(colour = espece,
+                   fill = espece),
+               show.legend = FALSE,
+               outlier.shape = NA,
+               width = 0.25,
+               alpha = 0.5,
+               lwd = 0.75) +
+  scale_colour_manual(values = c("Adelie" = "darkorange",
+                                 "Chinstrap" = "purple",
+                                 "Gentoo" = "cyan4")) +
+  scale_fill_manual(values = c("Adelie" = "darkorange",
+                                 "Chinstrap" = "purple",
+                                 "Gentoo" = "cyan4")) +
+  labs(title = "Distribution de la masse corporelle",
+       subtitle = "pour trois espèces de pingouins de l'archipel Palmer",
+       x = "",
+       y = "Masse (g)") +
+  coord_flip() +
+  theme_minimal()
+```
