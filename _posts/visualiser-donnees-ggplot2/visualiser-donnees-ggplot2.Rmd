@@ -16,7 +16,7 @@ output:
     toc: true
     toc_depth: 1
     self_contained: false
-draft: true
+draft: false
 ---
 
 ```{r setup, include=FALSE}
