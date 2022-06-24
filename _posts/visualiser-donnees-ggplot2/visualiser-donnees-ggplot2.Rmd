@@ -655,8 +655,10 @@ ggplot(data = pingouins_tri,
 
 <br>
 
-Une autre façon de procéder, tire profit du **pipe `%>%`** que nous avons vu dans le tutoriel sur le Tidyverse.
+Une autre façon de procéder tire profit du **pipe `%>%`** que nous avons vu dans le tutoriel sur le Tidyverse.
 En partant du jeu de données d'origine, nous allons affecter à la variable "espece" des niveaux par ordre décroissant de nombre d'individus, puis enchaîner avec la création du barplot.
+
+Cette façon de faire évite de multiplier les objets intermédiaires et d'encombrer son environnement de travail avec des objets avec des noms à rallonge (`pingouins_tri_taille_ailes_ordre_croissant`) ou des noms peu explicites (`test1`, `test_final`).
 
 <br>
 
@@ -681,4 +683,158 @@ pingouins %>%
        y = "") +
   coord_flip() +
   theme_minimal()
+```
+
+Les espèces sont bien triées, mais dans le mauvais ordre ! Pour corriger cela, il suffit d'ajouter la fonction `fct_rev()` à la fonction `fct_infreq()` : 
+
+```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+# Inverser l'odre des barres
+pingouins %>% 
+  mutate(espece = fct_rev(fct_infreq(espece))) %>% 
+  ggplot(aes(x = espece,
+             fill = espece)) +
+  geom_bar(show.legend = FALSE,
+           width = 0.5) +
+  scale_fill_manual(values = c("Adelie" = "darkorange",
+                               "Chinstrap" = "purple",
+                               "Gentoo" = "cyan4")) +
+  labs(title = "Nombre de pingouins",
+       subtitle = "pour trois espèces de l'archipel Palmer",
+       x = "",
+       y = "") +
+  coord_flip() +
+  theme_minimal()
+```
+
+## Graphiques multiples (facet) {#facet}
+
+Nous souhaitons étudier le **rapport entre la longueur du bec et la longueur des ailes**, mais au lieu de représenter les trois espèces sur un seul graphique, nous voudrions avoir un graphique par espèce. Nous pourrions le faire en générant un graphique par espèce à l'aide de la fonction `filter(espece == ...)` et d'un pipe `%>%`, et en répétant l'opération trois fois, une pour chaque espèce. Ou nous pouvons utiliser la fonction `facet_wrap()` qui permet de **séparer nos données en fonction de la variable espèce**.
+
+Commençons par placer les données des trois espèces sur un seul graphique : 
+
+```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+# Rapport entre la longueur du bec et la longueur des ailes - 1 seul graphique pour les trois espèces
+ggplot(data = pingouins,
+       mapping = aes(x = aile_lngr_mm,
+                     y = bec_lngr_mm)) +
+  geom_point(aes(colour = espece),
+             show.legend = FALSE) +
+  scale_colour_manual(values = c("Adelie" = "darkorange",
+                               "Chinstrap" = "purple",
+                               "Gentoo" = "cyan4")) +
+  labs(title = "Rapport entre la longueur du bec et la longueur des ailes",
+       subtitle = "pour trois espèces de l'archipel Palmer",
+       x = "Longueur de l'aile (mm)",
+       y = "Longueur du bec (mm") +
+  theme_minimal()
+```
+
+La fonction `facet_wrap()` s'utilise simplement en précisant quelle variable va nous servir à séparer nos données (la variable **espèce** dans notre cas), précédée d'un **tilde ~** : 
+
+```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+# Rapport entre la longueur du bec et la longueur des ailes - 1 graphique par espèce
+ggplot(data = pingouins,
+       mapping = aes(x = aile_lngr_mm,
+                     y = bec_lngr_mm)) +
+  geom_point(aes(colour = espece),
+             show.legend = FALSE) +
+  scale_colour_manual(values = c("Adelie" = "darkorange",
+                               "Chinstrap" = "purple",
+                               "Gentoo" = "cyan4")) +
+  labs(title = "Rapport entre la longueur du bec et la longueur des ailes",
+       subtitle = "pour trois espèces de l'archipel Palmer",
+       x = "Longueur de l'aile (mm)",
+       y = "Longueur du bec (mm") +
+  facet_wrap(~espece) +
+  theme_minimal()
+```
+
+Pour simplifier la lecture de ce graphique, nous pouvons **utiliser un autre thème** : 
+
+```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+# Changer le thème
+ggplot(data = pingouins,
+       mapping = aes(x = aile_lngr_mm,
+                     y = bec_lngr_mm)) +
+  geom_point(aes(colour = espece),
+             show.legend = FALSE) +
+  scale_colour_manual(values = c("Adelie" = "darkorange",
+                               "Chinstrap" = "purple",
+                               "Gentoo" = "cyan4")) +
+  labs(title = "Rapport entre la longueur du bec et la longueur des ailes",
+       subtitle = "pour trois espèces de l'archipel Palmer",
+       x = "Longueur de l'aile (mm)",
+       y = "Longueur du bec (mm") +
+  facet_wrap(~espece) +
+  theme_light()
+```
+
+# Exporter un graphique {#exporter}
+
+Jusqu'à présent, nos différents graphiques apparaissaient dans le panneau **Viewer** de RStudio, mais n'étaient pas sauvegardés.
+
+Il existe plusieurs façons d'exporter un graphique :  
+
+**- A partir du panneau Viewer** : en cliquant sur **Export**, vous aurez le choix entre sauvegarder votre graphique sous forme d'**image** ou de **fichier pdf**, ou vous pourrez le copier dans le presse-papiers (par exemple pour le coller dans un document). Nous allons le sauvegarder sous forme d'image.
+
+```{r, layout="l-body"}
+knitr::include_graphics("img/export_ggplot_01.png")
+```
+
+Vous aurez alors le choix entre plusieurs **formats** (`.png`, `.jpeg`, ...). Vous pourrez également **redimensionner** votre graphique (en conservant ou non le ratio des dimensions), choisir le **dossier de destination** et **renommer** votre fichier (le nom proposé par défaut n'est pas très explicite ...).
+
+```{r, layout="l-body"}
+knitr::include_graphics("img/export_ggplot_02.png")
+```
+
+<br>
+
+**- En utilisant la fonction `ggsave()` : il vous faudra d'abord assigner votre graphique dans un objet. R est ce qu'on appelle un **langage orienté objet**, ce qui veut dire que tout ce que vous manipulez dans votre session R (les fichiers importés, les transformations, les fonctions, et même les graphiques !) sont stockés dans la mémoire vive sous forme d'objet.
+
+Vous pouvez simplement ajouter un nom d'objet et une flèche d'assignation devant le code ayant servi à générer votre dernier graphique : `barplot_especes <- ggplot(...`. Votre graphique (y compris toutes les couches ajoutées et les paramètres) est stocké dans l'objet **barplot_especes**. Vous n'aurez par contre pas d'aperçu de votre graphique dans le panneau **Viewer** comme c'était le cas jusque là. Vous pouvez simplement appeler l'objet créé pour l'afficher, ou entourer l'ensemble de ce code par des parenthèses pour effectuer les deux opérations à la fois : stocker le graphique dans un objet et l'afficher dans le panneau Viewer.
+
+```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+# Assigner le bar plot à l'obet barplot_especes et l'afficher
+(barplot_especes <- pingouins %>% 
+   mutate(espece = fct_rev(fct_infreq(espece))) %>% 
+   ggplot(aes(x = espece,
+              fill = espece)) +
+   geom_bar(show.legend = FALSE,
+            width = 0.5) +
+   scale_fill_manual(values = c("Adelie" = "darkorange",
+                                "Chinstrap" = "purple",
+                                "Gentoo" = "cyan4")) +
+  labs(title = "Nombre de pingouins",
+       subtitle = "pour trois espèces de l'archipel Palmer",
+       x = "",
+       y = "") +
+   coord_flip() +
+   theme_minimal()
+)
+```
+
+Créons maintenant un répértoire **figs/** dans notre répertoire de travail (à l'aide de **New Folder** dans l'onglet **Files** dans RStudio) et sauvegardons notre graphique : 
+
+```{r, echo=TRUE, eval=FALSE, message=FALSE, warning=FALSE}
+ggsave("figs/barplot_especes.png", barplot_especes, dpi = 320, width = 12, height = 6)
+```
+
+Décortiquons cette commande pour comprendre sa syntaxe : 
+
+- **`figs/barplot_especes.png` : répertoire de destination et nom sous lequel sauvegarder le graphique
+
+- **`barplot_especes` : nom de l'objet dans lequel le graphique est stocké. Vous pouvez également utiliser la fonction `last_plot()` pour sauvegarder le dernier graphique.
+
+-**`dpi = 320`** : résolution de l'image
+
+-**`width = 12`** : largeur de l'image
+
+-**`height = 6`** : hauteur de l'image
+
+Il existe d'autres paramètres, n'hésitez pas explorer l'aide de la fonction à l'aide de la commande `?ggsave`. Vous pouvez essayer différentes options et valeurs pour voir le résultat.
+
+Ouvrez le fichier `barplot_especes.png` et comparez ce fichier avec le visuel affiché dans votre session RStudio. Il n'est pas rare d'avoir quelques surprise ! La taille des lettres peut par exemple être plus petite dans le fichier exporté que dans l'aperçu RStudio. Il est toujours utile d'exporter son graphique et de vérifier le rendu pour rectifier les paramètres si nécessaire.
+
+```{r, layout="l-body"}
+knitr::include_graphics("img/barplot_especes.png")
 ```
