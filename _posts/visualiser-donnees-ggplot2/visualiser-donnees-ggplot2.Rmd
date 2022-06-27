@@ -606,6 +606,68 @@ ggplot(data = pingouins,
   theme_minimal()
 ```
 
+Nous pouvons ajouter à ces box plots des scatter plots pour visualiser les données sous-jacentes :
+
+```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+# Boxplots + scatter plots
+ggplot(data = pingouins,
+       mapping = aes(x = espece,
+                     y = masse_g)) +
+  geom_boxplot(aes(colour = espece,
+                   fill = espece),
+               show.legend = FALSE,
+               outlier.shape = NA,
+               width = 0.25,
+               alpha = 0.5,
+               lwd = 0.75) +
+  geom_point(aes(colour = espece),
+             show.legend = FALSE,
+             alpha = 0.25) +
+  scale_colour_manual(values = c("Adelie" = "darkorange",
+                                 "Chinstrap" = "purple",
+                                 "Gentoo" = "cyan4")) +
+  scale_fill_manual(values = c("Adelie" = "darkorange",
+                                 "Chinstrap" = "purple",
+                                 "Gentoo" = "cyan4")) +
+  labs(title = "Distribution de la masse corporelle",
+       subtitle = "pour trois espèces de pingouins de l'archipel Palmer",
+       x = "",
+       y = "Masse (g)") +
+  coord_flip() +
+  theme_minimal()
+```
+
+Nous aimerions espacer un peu les points pour rendre le graphique plus lisible. Nous allons pour cela utiliser un autre type de visualisation de nuages de points : `geom_jitter()`. Les paramètres `height` et `width` permettent d'ajuster l'étalement du nuage respectivement en hauteur et en largeur. L'utilisation de l'un ou l'autre de ces paramètres dépendra de l'orientation de nos nuages de points (répartition des variables sur les axes x et y et utilisation de `coord_flip()`).
+
+```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+# Boxplots + geom_jitter()
+ggplot(data = pingouins,
+       mapping = aes(x = espece,
+                     y = masse_g)) +
+  geom_boxplot(aes(colour = espece,
+                   fill = espece),
+               show.legend = FALSE,
+               outlier.shape = NA,
+               width = 0.25,
+               alpha = 0.5,
+               lwd = 0.75) +
+  geom_jitter(aes(colour = espece),
+             show.legend = FALSE,
+             alpha = 0.25,
+             width = 0.25) +
+  scale_colour_manual(values = c("Adelie" = "darkorange",
+                                 "Chinstrap" = "purple",
+                                 "Gentoo" = "cyan4")) +
+  scale_fill_manual(values = c("Adelie" = "darkorange",
+                                 "Chinstrap" = "purple",
+                                 "Gentoo" = "cyan4")) +
+  labs(title = "Distribution de la masse corporelle",
+       subtitle = "pour trois espèces de pingouins de l'archipel Palmer",
+       x = "",
+       y = "Masse (g)") +
+  coord_flip() +
+  theme_minimal()
+```
 ## Diagramme en bâtons (bar plot) {#barplot}
 
 **Quelle espèce compte le plus de pingouins ?**  
