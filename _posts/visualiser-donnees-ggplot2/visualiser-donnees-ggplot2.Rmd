@@ -678,8 +678,7 @@ Nous allons utiliser `geom_bar()` pour visualiser le nombre de pingouins par esp
 ggplot(data = pingouins,
        mapping = aes(x = espece,
                      fill = espece)) +
-  geom_bar(show.legend = FALSE,
-           width = 0.5) +
+  geom_bar(show.legend = FALSE) +
   scale_fill_manual(values = c("Adelie" = "darkorange",
                                "Chinstrap" = "purple",
                                "Gentoo" = "cyan4")) +
@@ -687,7 +686,58 @@ ggplot(data = pingouins,
        subtitle = "pour trois espèces de l'archipel Palmer",
        x = "",
        y = "") +
-  coord_flip() +
+  theme_minimal()
+```
+
+Les espèces étant déjà notées sur l'axe x, nous utilisons `show.legend = FALSE` pour alléger le graphique.
+
+Nous souhaiterions ajouter des étiquettes de texte au-dessus des barres pour indiquer le nombre de pingouins par espèce. Nous allons pour cela ajouter une couche à l'aide de `geom_text()` : 
+
+- `aes(label = ..count..)` : indique que les étiquettes contiendront le nombre d'observations par groupe défini précédemment (les espèces).
+
+- `stat = "count"` : nécessaire pour que le code fonctionne.  
+
+- `vjust = -1` : alignement vertical des étiquettes, vous pouvez essayer différentes valeurs pour voir le résultat.
+
+```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+# Barplot + geom_text()
+ggplot(data = pingouins,
+       mapping = aes(x = espece,
+                     fill = espece)) +
+  geom_bar(show.legend = FALSE) +
+  geom_text(aes(label = ..count..),
+            stat = "count",
+            vjust = -1) +
+  scale_fill_manual(values = c("Adelie" = "darkorange",
+                               "Chinstrap" = "purple",
+                               "Gentoo" = "cyan4")) +
+  labs(title = "Nombre de pingouins",
+       subtitle = "pour trois espèces de l'archipel Palmer",
+       x = "",
+       y = "") +
+  theme_minimal()
+```
+
+Vous pouvez voir que l'étiquette pour l'espèce Adélie est coupée ... il y a plusieurs façons de régler ce problème. Nous allons simplement positionner les étiquettes à l'intérieur des barres, augmenter la taille des caractères et colorer le texte en blanc pour le rendre plus lisible.
+
+```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+# Barplot + geom_text() + texte dans les barres
+ggplot(data = pingouins,
+       mapping = aes(x = espece,
+                     fill = espece)) +
+  geom_bar(show.legend = FALSE) +
+  geom_text(aes(label = ..count..),
+            stat = "count",
+            vjust = 1.5,
+            colour = "white",
+            size = 5) +
+  scale_fill_manual(values = c("Adelie" = "darkorange",
+                               "Chinstrap" = "purple",
+                               "Gentoo" = "cyan4")) +
+  labs(title = "Nombre de pingouins",
+       subtitle = "pour trois espèces de l'archipel Palmer",
+       x = "",
+       y = "") +
   theme_minimal()
 ```
 
