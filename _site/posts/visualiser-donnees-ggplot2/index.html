@@ -18,6 +18,72 @@
  <!--radix_placeholder_import_source-->
  <!--/radix_placeholder_import_source-->
 
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ad0000; } /* Alert */
+code span.an { color: #5e5e5e; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bn { color: #ad0000; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007ba5; } /* ControlFlow */
+code span.ch { color: #20794d; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #5e5e5e; } /* Comment */
+code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+code span.dt { color: #ad0000; } /* DataType */
+code span.dv { color: #ad0000; } /* DecVal */
+code span.er { color: #ad0000; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #ad0000; } /* Float */
+code span.fu { color: #4758ab; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #5e5e5e; } /* Information */
+code span.kw { color: #007ba5; } /* Keyword */
+code span.op { color: #5e5e5e; } /* Operator */
+code span.ot { color: #007ba5; } /* Other */
+code span.pp { color: #ad0000; } /* Preprocessor */
+code span.sc { color: #5e5e5e; } /* SpecialChar */
+code span.ss { color: #20794d; } /* SpecialString */
+code span.st { color: #20794d; } /* String */
+code span.va { color: #111111; } /* Variable */
+code span.vs { color: #20794d; } /* VerbatimString */
+code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+</style>
 
 
   <!--radix_placeholder_meta_tags-->
@@ -2139,7 +2205,6 @@ d-article p code {
 <li><a href="#creer">Créer des graphiques basiques</a></li>
 <li><a href="#exporter">Exporter un graphique</a></li>
 <li><a href="#ameliorer">Améliorer ses graphiques</a></li>
-<li><a href="#modifier-la-grille-1">Modifier la grille</a></li>
 </ul>
 </nav>
 </div>
@@ -3108,37 +3173,7 @@ Nous allons utiliser <code>geom_bar()</code> pour visualiser le nombre de pingou
 </div>
 <p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-49-1.png" width="624" /></p>
 </div>
-<h1 id="modifier-la-grille-1">Modifier la grille</h1>
-<p>pingouins %&gt;% mutate(espece = fct_rev(fct_infreq(espece))) %&gt;% ggplot(aes(x = espece, fill = espece)) + geom_bar(show.legend = FALSE, width = 0.5) + scale_fill_manual(values = c(“Adelie” = “darkorange”, “Chinstrap” = “purple”, “Gentoo” = “cyan4”)) + labs(title = “Nombre de pingouins”, subtitle = “pour trois espèces de l’archipel Palmer”, x = ““, y =”“) + coord_flip() + theme_minimal() + theme(panel.background = element_rect(fill =”#1d3557”, colour = NA), plot.background = element_rect(fill = “#1d3557”, colour = NA), panel.grid.minor = element_blank(), panel.grid.major.x = element_line(linetype = “dotted”), panel.grid.major.y = element_blank())</p>
-<pre><code>&lt;div class=&quot;layout-chunk&quot; data-layout=&quot;l-body&quot;&gt;
-&lt;div class=&quot;sourceCode&quot;&gt;&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;&lt;span class=&#39;co&#39;&gt;# Modifier la grille&lt;/span&gt;
-&lt;span class=&#39;va&#39;&gt;pingouins&lt;/span&gt; &lt;span class=&#39;op&#39;&gt;&lt;a href=&#39;https://magrittr.tidyverse.org/reference/pipe.html&#39;&gt;%&amp;gt;%&lt;/a&gt;&lt;/span&gt; 
-  &lt;span class=&#39;fu&#39;&gt;&lt;a href=&#39;https://dplyr.tidyverse.org/reference/mutate.html&#39;&gt;mutate&lt;/a&gt;&lt;/span&gt;&lt;span class=&#39;op&#39;&gt;(&lt;/span&gt;espece &lt;span class=&#39;op&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;fu&#39;&gt;&lt;a href=&#39;https://forcats.tidyverse.org/reference/fct_rev.html&#39;&gt;fct_rev&lt;/a&gt;&lt;/span&gt;&lt;span class=&#39;op&#39;&gt;(&lt;/span&gt;&lt;span class=&#39;fu&#39;&gt;&lt;a href=&#39;https://forcats.tidyverse.org/reference/fct_inorder.html&#39;&gt;fct_infreq&lt;/a&gt;&lt;/span&gt;&lt;span class=&#39;op&#39;&gt;(&lt;/span&gt;&lt;span class=&#39;va&#39;&gt;espece&lt;/span&gt;&lt;span class=&#39;op&#39;&gt;)&lt;/span&gt;&lt;span class=&#39;op&#39;&gt;)&lt;/span&gt;&lt;span class=&#39;op&#39;&gt;)&lt;/span&gt; &lt;span class=&#39;op&#39;&gt;&lt;a href=&#39;https://magrittr.tidyverse.org/reference/pipe.html&#39;&gt;%&amp;gt;%&lt;/a&gt;&lt;/span&gt; 
-  &lt;span class=&#39;fu&#39;&gt;&lt;a href=&#39;https://ggplot2.tidyverse.org/reference/ggplot.html&#39;&gt;ggplot&lt;/a&gt;&lt;/span&gt;&lt;span class=&#39;op&#39;&gt;(&lt;/span&gt;&lt;span class=&#39;fu&#39;&gt;&lt;a href=&#39;https://ggplot2.tidyverse.org/reference/aes.html&#39;&gt;aes&lt;/a&gt;&lt;/span&gt;&lt;span class=&#39;op&#39;&gt;(&lt;/span&gt;x &lt;span class=&#39;op&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;va&#39;&gt;espece&lt;/span&gt;,
-             fill &lt;span class=&#39;op&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;va&#39;&gt;espece&lt;/span&gt;&lt;span class=&#39;op&#39;&gt;)&lt;/span&gt;&lt;span class=&#39;op&#39;&gt;)&lt;/span&gt; &lt;span class=&#39;op&#39;&gt;+&lt;/span&gt;
-  &lt;span class=&#39;fu&#39;&gt;&lt;a href=&#39;https://ggplot2.tidyverse.org/reference/geom_bar.html&#39;&gt;geom_bar&lt;/a&gt;&lt;/span&gt;&lt;span class=&#39;op&#39;&gt;(&lt;/span&gt;show.legend &lt;span class=&#39;op&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;cn&#39;&gt;FALSE&lt;/span&gt;,
-           width &lt;span class=&#39;op&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;fl&#39;&gt;0.5&lt;/span&gt;&lt;span class=&#39;op&#39;&gt;)&lt;/span&gt; &lt;span class=&#39;op&#39;&gt;+&lt;/span&gt;
-  &lt;span class=&#39;fu&#39;&gt;&lt;a href=&#39;https://ggplot2.tidyverse.org/reference/scale_manual.html&#39;&gt;scale_fill_manual&lt;/a&gt;&lt;/span&gt;&lt;span class=&#39;op&#39;&gt;(&lt;/span&gt;values &lt;span class=&#39;op&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;fu&#39;&gt;&lt;a href=&#39;https://rdrr.io/r/base/c.html&#39;&gt;c&lt;/a&gt;&lt;/span&gt;&lt;span class=&#39;op&#39;&gt;(&lt;/span&gt;&lt;span class=&#39;st&#39;&gt;&quot;Adelie&quot;&lt;/span&gt; &lt;span class=&#39;op&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;st&#39;&gt;&quot;darkorange&quot;&lt;/span&gt;,
-                               &lt;span class=&#39;st&#39;&gt;&quot;Chinstrap&quot;&lt;/span&gt; &lt;span class=&#39;op&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;st&#39;&gt;&quot;purple&quot;&lt;/span&gt;,
-                               &lt;span class=&#39;st&#39;&gt;&quot;Gentoo&quot;&lt;/span&gt; &lt;span class=&#39;op&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;st&#39;&gt;&quot;cyan4&quot;&lt;/span&gt;&lt;span class=&#39;op&#39;&gt;)&lt;/span&gt;&lt;span class=&#39;op&#39;&gt;)&lt;/span&gt; &lt;span class=&#39;op&#39;&gt;+&lt;/span&gt;
-  &lt;span class=&#39;fu&#39;&gt;&lt;a href=&#39;https://ggplot2.tidyverse.org/reference/labs.html&#39;&gt;labs&lt;/a&gt;&lt;/span&gt;&lt;span class=&#39;op&#39;&gt;(&lt;/span&gt;title &lt;span class=&#39;op&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;st&#39;&gt;&quot;Nombre de pingouins&quot;&lt;/span&gt;,
-       subtitle &lt;span class=&#39;op&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;st&#39;&gt;&quot;pour trois espèces de l&#39;archipel Palmer&quot;&lt;/span&gt;,
-       x &lt;span class=&#39;op&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;st&#39;&gt;&quot;&quot;&lt;/span&gt;,
-       y &lt;span class=&#39;op&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;st&#39;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&#39;op&#39;&gt;)&lt;/span&gt; &lt;span class=&#39;op&#39;&gt;+&lt;/span&gt;
-  &lt;span class=&#39;fu&#39;&gt;&lt;a href=&#39;https://ggplot2.tidyverse.org/reference/coord_flip.html&#39;&gt;coord_flip&lt;/a&gt;&lt;/span&gt;&lt;span class=&#39;op&#39;&gt;(&lt;/span&gt;&lt;span class=&#39;op&#39;&gt;)&lt;/span&gt; &lt;span class=&#39;op&#39;&gt;+&lt;/span&gt;
-  &lt;span class=&#39;fu&#39;&gt;&lt;a href=&#39;https://ggplot2.tidyverse.org/reference/ggtheme.html&#39;&gt;theme_minimal&lt;/a&gt;&lt;/span&gt;&lt;span class=&#39;op&#39;&gt;(&lt;/span&gt;&lt;span class=&#39;op&#39;&gt;)&lt;/span&gt; &lt;span class=&#39;op&#39;&gt;+&lt;/span&gt;
-  &lt;span class=&#39;fu&#39;&gt;&lt;a href=&#39;https://ggplot2.tidyverse.org/reference/theme.html&#39;&gt;theme&lt;/a&gt;&lt;/span&gt;&lt;span class=&#39;op&#39;&gt;(&lt;/span&gt;panel.background &lt;span class=&#39;op&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;fu&#39;&gt;&lt;a href=&#39;https://ggplot2.tidyverse.org/reference/element.html&#39;&gt;element_rect&lt;/a&gt;&lt;/span&gt;&lt;span class=&#39;op&#39;&gt;(&lt;/span&gt;fill &lt;span class=&#39;op&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;st&#39;&gt;&quot;#1d3557&quot;&lt;/span&gt;, colour &lt;span class=&#39;op&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;cn&#39;&gt;NA&lt;/span&gt;&lt;span class=&#39;op&#39;&gt;)&lt;/span&gt;,
-        plot.background &lt;span class=&#39;op&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;fu&#39;&gt;&lt;a href=&#39;https://ggplot2.tidyverse.org/reference/element.html&#39;&gt;element_rect&lt;/a&gt;&lt;/span&gt;&lt;span class=&#39;op&#39;&gt;(&lt;/span&gt;fill &lt;span class=&#39;op&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;st&#39;&gt;&quot;#1d3557&quot;&lt;/span&gt;, colour &lt;span class=&#39;op&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;cn&#39;&gt;NA&lt;/span&gt;&lt;span class=&#39;op&#39;&gt;)&lt;/span&gt;,
-        panel.grid.minor &lt;span class=&#39;op&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;fu&#39;&gt;&lt;a href=&#39;https://ggplot2.tidyverse.org/reference/element.html&#39;&gt;element_blank&lt;/a&gt;&lt;/span&gt;&lt;span class=&#39;op&#39;&gt;(&lt;/span&gt;&lt;span class=&#39;op&#39;&gt;)&lt;/span&gt;,
-        panel.grid.major.x &lt;span class=&#39;op&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;fu&#39;&gt;&lt;a href=&#39;https://ggplot2.tidyverse.org/reference/element.html&#39;&gt;element_line&lt;/a&gt;&lt;/span&gt;&lt;span class=&#39;op&#39;&gt;(&lt;/span&gt;linetype &lt;span class=&#39;op&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;st&#39;&gt;&quot;dotted&quot;&lt;/span&gt;&lt;span class=&#39;op&#39;&gt;)&lt;/span&gt;,
-        panel.grid.major.y &lt;span class=&#39;op&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;fu&#39;&gt;&lt;a href=&#39;https://ggplot2.tidyverse.org/reference/element.html&#39;&gt;element_blank&lt;/a&gt;&lt;/span&gt;&lt;span class=&#39;op&#39;&gt;(&lt;/span&gt;&lt;span class=&#39;op&#39;&gt;)&lt;/span&gt;&lt;span class=&#39;op&#39;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;img src=&quot;visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-50-1.png&quot; width=&quot;624&quot; /&gt;
-
-&lt;/div&gt;
-
-
-```{.r .distill-force-highlighting-css}</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
