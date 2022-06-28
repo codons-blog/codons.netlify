@@ -1513,18 +1513,28 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p>Dans ce tutoriel nous allons voir comment communiquer les résultats de nos analyses - à l’aide de la <strong>visualisation de données</strong> :</p>
 <p><br></p>
 <p><strong>1. <a href="#construction">Construire un graphique <code>ggplot2</code></a></strong></p>
-<p><strong>3. <a href="#creer">Créer des graphiques basiques</a></strong> :</p>
+<p><strong>2. <a href="#creer">Créer des graphiques basiques</a></strong> :</p>
 <ul>
 <li><p><a href="#scatterplot">nuage de points (scatter plot)</a></p></li>
 <li><p><a href="#histogram">histogramme</a></p></li>
 <li><p><a href="#boxplot">boîtes à moustaches (box plot)</a></p></li>
 <li><p><a href="#barplot">diagramme en bâtons (bar plot)</a></p></li>
-<li><p><a href="#facet">graphiques multiples (facet)</a></p></li>
 </ul>
-<p><strong>3. <a href="#exporter">Exporter un graphique</a></strong></p>
-<p><strong>4. <a href="#ameliorer">Améliorer ses graphiques</a></strong></p>
-<p><strong>5. <a href="#patchwork">Assembler ses graphiques à l’aide de <code>patchwork</code></a></strong></p>
-<p><strong>6. <a href="#defi">Défi</a></strong></p>
+<p><strong>3. <a href="#facet">Graphiques multiples</a></strong></p>
+<ul>
+<li><p><a href="#facet_wrap">facet_wrap</a></p></li>
+<li><p><a href="#facet_grid">facet_grid</a></p></li>
+</ul>
+<p><strong>4. <a href="#exporter">Exporter un graphique</a></strong></p>
+<ul>
+<li><p><a href="#onglet_plots">Depuis l’onglet <em>Plots</em></a></p></li>
+<li><p><a href="#ggsave">Avec <code>ggsave()</code></a></p></li>
+</ul>
+<p><strong>5. <a href="#ameliorer">Améliorer ses graphiques</a></strong></p>
+<ul>
+<li><p><a href="#theme">Les différents éléments de <code>theme()</code></a></p></li>
+<li><p><a href="#fonts">Les polices de caractères</a></p></li>
+</ul>
 <p><br></p>
 <h1 id="construire">Construire un graphique <code>ggplot2</code></h1>
 <p>Le package <code>ggplot2</code> (qui fait partie de la suite Tidyverse) repose sur le principe de <strong>grammaire des graphiques</strong> : notre visualisation se construit étape par étape, en procédant par <strong>couches</strong>, comme le montre la figure ci-dessous.</p>
