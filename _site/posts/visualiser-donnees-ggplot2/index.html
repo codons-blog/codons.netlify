@@ -3520,7 +3520,7 @@ Nous allons utiliser <code>geom_bar()</code> pour visualiser le nombre de pingou
 </code></pre>
 </div>
 </div>
-Nous pouvons maintenant modifier le titre et le sous-titre :
+<p>Nous pouvons maintenant modifier le titre et le sous-titre :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Modifier la police de caractères du titre et du sous-titre</span>
@@ -3532,44 +3532,7 @@ Nous pouvons maintenant modifier le titre et le sous-titre :
 </div>
 <p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-69-1.png" width="624" /></p>
 </div>
-<h2 id="utiliser-des-couleurs-dans-le-titre-ou-le-sous-titre">Utiliser des couleurs dans le titre ou le sous-titre</h2>
-<p>Si peu de légendes sont nécessaires à la bonne compréhension du graphique, il est possible d’alléger celui-ci en utilisant du texte coloré dans le titre ou le sous-titre pour remplacer la légende.</p>
-<p>Nous utilisons pour cela le package <code>ggtext</code> :</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Installer et charger le package ggtext</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages</a></span><span class='op'>(</span><span class='st'>"ggtext"</span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://wilkelab.org/ggtext/'>ggtext</a></span><span class='op'>)</span>
-</code></pre>
-</div>
-</div>
-<div class="layout-chunk" data-layout="l-body">
-
-</div>
-<p>Nous allons modifier le sous-titre du graphique, à l’aide de la syntaxe <strong>markdown</strong>. Pour colorer le texte “Adelie” en orange, cela donne le code suivant :</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span>span style<span class="ot">=</span> <span class="st">&#39;color:darkorange;&#39;</span><span class="sc">&gt;</span><span class="er">**</span>Adelie<span class="sc">**</span><span class="er">&lt;/</span>span<span class="sc">&gt;</span></span></code></pre></div>
-</div>
-<p>Nous indiquons ainsi que le mot “Adelie” est à colorer en orange (<code>color:darkorange</code>) et à mettre en gras (<code>**Adelie**</code>).</p>
-<p>Voici comment modifier le sous-titre et les autres paramètres (taille et position du titre et du sous-titre, marges et suppression de la légende) :</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>p</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Rapport entre la hauteur et la longueur du bec"</span>,
-       subtitle <span class='op'>=</span> <span class='st'>"pour trois espèces de pingouins de l'archipel Palmer :
-       &lt;span style= 'color:darkorange;'&gt;**Adelie**&lt;/span&gt;,
-       &lt;span style= 'color:purple;'&gt;**Chinstrap**&lt;/span&gt;,
-       &lt;span style= 'color:cyan4;'&gt;**Gentoo**&lt;/span&gt;"</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span><span class='op'>(</span>plot.title <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_text</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>25</span>, hjust <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span>,
-        plot.subtitle <span class='op'>=</span> <span class='fu'><a href='https://wilkelab.org/ggtext/reference/element_markdown.html'>element_markdown</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>20</span>, hjust <span class='op'>=</span> <span class='fl'>0.5</span>, margin <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>margin</a></span><span class='op'>(</span>t <span class='op'>=</span> <span class='fl'>5</span>, b <span class='op'>=</span> <span class='fl'>15</span><span class='op'>)</span><span class='op'>)</span>,
-        plot.title.position <span class='op'>=</span> <span class='st'>"plot"</span>,
-        plot.margin <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>margin</a></span><span class='op'>(</span><span class='fl'>25</span>, <span class='fl'>25</span>, <span class='fl'>25</span>, <span class='fl'>25</span><span class='op'>)</span>,
-        legend.position <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span>
-</code></pre>
-</div>
-<p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-73-1.png" width="624" /></p>
-</div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

@@ -1380,51 +1380,12 @@ showtext_auto()
 ```
 
 Nous pouvons maintenant modifier le titre et le sous-titre : 
+
+
 ```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
 # Modifier la police de caractères du titre et du sous-titre
 (p5 <- p4 +
   theme(plot.title = element_text(family = "Righteous"),
         plot.subtitle = element_text(family = "Righteous"))
 )
-```
-
-
-## Utiliser des couleurs dans le titre ou le sous-titre
-
-Si peu de légendes sont nécessaires à la bonne compréhension du graphique, il est possible d'alléger celui-ci en utilisant du texte coloré dans le titre ou le sous-titre pour remplacer la légende.
-
-Nous utilisons pour cela le package `ggtext` : 
-
-```{r, echo=TRUE, eval=FALSE, message=FALSE, warning=FALSE}
-# Installer et charger le package ggtext
-install.packages("ggtext")
-library(ggtext)
-```
-
-```{r, echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
-library(ggtext)
-```
-
-Nous allons modifier le sous-titre du graphique, à l'aide de la syntaxe **markdown**. Pour colorer le texte "Adelie" en orange, cela donne le code suivant : 
-
-```{r, echo=TRUE, eval=FALSE, message=FALSE, warning=FALSE}
-<span style= 'color:darkorange;'>**Adelie**</span>
-```
-
-Nous indiquons ainsi que le mot "Adelie" est à colorer en orange (`color:darkorange`) et à mettre en gras (`**Adelie**`).
-
-Voici comment modifier le sous-titre et les autres paramètres (taille et position du titre et du sous-titre, marges et suppression de la légende) : 
-
-```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
-p +
-  labs(title = "Rapport entre la hauteur et la longueur du bec",
-       subtitle = "pour trois espèces de pingouins de l'archipel Palmer :
-       <span style= 'color:darkorange;'>**Adelie**</span>,
-       <span style= 'color:purple;'>**Chinstrap**</span>,
-       <span style= 'color:cyan4;'>**Gentoo**</span>") +
-  theme(plot.title = element_text(size = 25, hjust = 0.5),
-        plot.subtitle = element_markdown(size = 20, hjust = 0.5, margin = margin(t = 5, b = 15)),
-        plot.title.position = "plot",
-        plot.margin = margin(25, 25, 25, 25),
-        legend.position = "none")
 ```
