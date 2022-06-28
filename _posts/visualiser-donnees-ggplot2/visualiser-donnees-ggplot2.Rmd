@@ -668,6 +668,7 @@ ggplot(data = pingouins,
   coord_flip() +
   theme_minimal()
 ```
+
 ## Diagramme en bâtons (bar plot) {#barplot}
 
 **Quelle espèce compte le plus de pingouins ?**  
@@ -741,19 +742,111 @@ ggplot(data = pingouins,
   theme_minimal()
 ```
 
-Nous pouvons remarquer que les espèces sont placées par ordre alphabétique le long de l'axe y. Nous préférerions que l'ordre respecte le nombre de pingouins par espèce. Nous pourrions pour cela définir des niveaux manuellement dans notre jeu de données à l'aide de fonctions de `dplyr` : 
+Comme vous pouvez le voir, les espèces sont placées le long de l'axe x par ordre alphabétique. Nous préférerions qu'elles soient triées par ordre décroissant de nombre de pingouins. Nous allons voir trois façons de procéder : 
+
+**1) créer un objet intermédiaire** : approche à éviter car elle ajoute un objet dans l'environnement et n'est **pas dynamique**, c'est-à-dire que le code ne sera pas utilisable pour d'autres cas de figure.
 
 ```{r, echo=TRUE, eval=FALSE, message=FALSE, warning=FALSE}
-# Trier les données
-pingouins_tri <- pingouins %>% 
-  mutate(espece = factor(espece, levels = c("Chinstrap", "Gentoo", "Adelie")))
+# Tri avec création d'un objet intermédiaire
 
-# Barplot
+pingouins_tri <- pingouins %>% 
+  mutate(espece = factor(espece,
+                         levels = c("Adelie", "Gentoo", "Chinstrap")))
+
 ggplot(data = pingouins_tri,
        mapping = aes(x = espece,
                      fill = espece)) +
-  geom_bar(show.legend = FALSE,
-           width = 0.5) +
+  geom_bar(show.legend = FALSE) +
+  geom_text(aes(label = ..count..),
+            stat = "count",
+            vjust = 1.5,
+            colour = "white",
+            size = 5) +
+  scale_fill_manual(values = c("Adelie" = "darkorange",
+                               "Chinstrap" = "purple",
+                               "Gentoo" = "cyan4")) +
+  labs(title = "Nombre de pingouins",
+       subtitle = "pour trois espèces de l'archipel Palmer",
+       x = "",
+       y = "") +
+  theme_minimal()
+```
+
+**2) modifier l'objet *pingouins* dans la fonction ggplot** : cette approche utilise la fonction `mutate()` du package `dplyr` pour créer le facteur espece. Le code sera ré-utilisable et ne crée pas de nouvel objet dans l'environnement. Il nous faut par contre déterminer les niveaux du facteur avec `levels()`.
+
+```{r, echo=TRUE, eval=FALSE, message=FALSE, warning=FALSE}
+# Tri dans la fonction ggplot() à l'aide de mutate()
+
+ggplot(data = mutate(pingouins,
+                     espece = factor(espece,
+                                     levels = c("Adelie", "Gentoo", "Chinstrap"))),
+       mapping = aes(x = espece,
+                     fill = espece)) +
+  geom_bar(show.legend = FALSE) +
+  geom_text(aes(label = ..count..),
+            stat = "count",
+            vjust = 1.5,
+            colour = "white",
+            size = 5) +
+  scale_fill_manual(values = c("Adelie" = "darkorange",
+                               "Chinstrap" = "purple",
+                               "Gentoo" = "cyan4")) +
+  labs(title = "Nombre de pingouins",
+       subtitle = "pour trois espèces de l'archipel Palmer",
+       x = "",
+       y = "") +
+  theme_minimal()
+```
+
+**3) utiliser les fonctionnalités du package `forcats`** : ce package, qui fait partie du Tidyverse, permet d'effectuer des opérations sur des facteurs. C'est l'**approche la plus dynamique** : R transforme une variable en facteur et détermine automatiquement les niveaux. Nous n'avons donc plus besoin de préciser les niveaux. Nous pouvons par exemple trier les niveaux d'un facteur par ordre d'apparition avec `fct_inseq()`, ou par ordre de nombre d'observations à l'aide de `fct_infreq()`.
+
+```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+# Tri dans la fonction ggplot() à l'aide des fonctionnalites du package forcats
+
+ggplot(data = mutate(pingouins,
+                     espece = fct_infreq(espece)),
+       mapping = aes(x = espece,
+                     fill = espece)) +
+  geom_bar(show.legend = FALSE) +
+  geom_text(aes(label = ..count..),
+            stat = "count",
+            vjust = 1.5,
+            colour = "white",
+            size = 5) +
+  scale_fill_manual(values = c("Adelie" = "darkorange",
+                               "Chinstrap" = "purple",
+                               "Gentoo" = "cyan4")) +
+  labs(title = "Nombre de pingouins",
+       subtitle = "pour trois espèces de l'archipel Palmer",
+       x = "",
+       y = "") +
+  theme_minimal()
+```
+
+<br>
+
+Comme nous l'avions fait pour les boxplots, nous pouvons changer l'orientation des barres. Nous allons modifier quelques éléments du code : 
+
+- en basculant les espèces le long de l'axe y, l'espèce ayant le plus grand nombre de pingouins va se retrouver en bas du graphique. En effet, la variable **espece** étant un facteur avec des niveaux ordonnés, le premier niveau du facteur se retrouve au plus près de l'origine de l'axe : à gauche si les barres sont orientées verticalement, en bas si elles sont orientées horizontalement. Pour inverser l'ordre des niveaux, nous utilisons `fct_rev()`.
+
+- nous modifions l'alignement des étiquettes en remplaçant `vjust` par `hjust`  
+
+- nous réduisons la largeur des barres à l'aide du paramètre `width`
+
+```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+# Barplot horizontal
+
+ggplot(data = mutate(pingouins,
+                     espece = fct_rev(fct_infreq(espece))),
+       mapping = aes(x = espece,
+                     fill = espece)) +
+  geom_bar(width = 0.75,
+           show.legend = FALSE) +
+  geom_text(aes(label = ..count..),
+            stat = "count",
+            hjust = 1.5,
+            colour = "white",
+            size = 5) +
   scale_fill_manual(values = c("Adelie" = "darkorange",
                                "Chinstrap" = "purple",
                                "Gentoo" = "cyan4")) +
@@ -767,46 +860,26 @@ ggplot(data = pingouins_tri,
 
 <br>
 
-Une autre façon de procéder tire profit du **pipe `%>%`** que nous avons vu dans le tutoriel sur le Tidyverse.
-En partant du jeu de données d'origine, nous allons affecter à la variable "espece" des niveaux par ordre décroissant de nombre d'individus, puis enchaîner avec la création du barplot.
+### Une note sur l'utilisation du pipe `%>%`  
 
-Cette façon de faire évite de multiplier les objets intermédiaires et d'encombrer son environnement de travail avec des objets avec des noms à rallonge (`pingouins_tri_taille_ailes_ordre_croissant`) ou des noms peu explicites (`test1`, `test_final`).
+Nous pouvons également utiliser le **pipe `%>%`** que nous avions vu dans le tutoriel sur le Tidyverse pour enchaîner les opérations de tri puis la création du graphique.
 
-<br>
-
-Le package `forcats` (qui fait lui aussi partie du `Tidyverse`) permet d'effectuer des opérations sur des facteurs. Nous allons ainsi demander à R de transformer la variable "espece" en facteur, avec des niveaux qui respectent l'ordre allant de l'espèce ayant le plus grand nombre de pingouins à celle ayant le plus faible nombre de pingouins.
-
-La fonction `fct_infreq` permet de faire cela, associée à la fonction `mutate()` du package `dplyr` qui permet de transformer une colonne. Il existe d'autres fonctions similaires, comme `fct_inseq()` qui utilise pour définir les niveaux d'un facteur l'ordre d'apparition des éléments dans la variable.
+Cette façon de procéder permet, quand nous manipulons un jeu de données (ajout d'une colonne par exemple), de s'assurer que nous n'avons pas fait d'erreur avant de générer le graphique, le tout sans avoir besoin de créer d'objet intermédiaire. L'utilisation du pipe permet également de bénéficier de l'auto-complétion à l'aide de la touche `Tab`, ce qui est plutôt appréciable quand nos variables portent des noms complexes ou que le code contient de nombreux paramètres.
 
 ```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
-# Utilisation du pipe pour trier les données puis générer le barplot
-pingouins %>% 
-  mutate(espece = fct_infreq(espece)) %>% 
-  ggplot(aes(x = espece,
-             fill = espece)) +
-  geom_bar(show.legend = FALSE,
-           width = 0.5) +
-  scale_fill_manual(values = c("Adelie" = "darkorange",
-                               "Chinstrap" = "purple",
-                               "Gentoo" = "cyan4")) +
-  labs(title = "Nombre de pingouins",
-       subtitle = "pour trois espèces de l'archipel Palmer",
-       x = "",
-       y = "") +
-  coord_flip() +
-  theme_minimal()
-```
+# Utilisation du pipe %>%
 
-Les espèces sont bien triées, mais dans le mauvais ordre ! Pour corriger cela, il suffit d'ajouter la fonction `fct_rev()` à la fonction `fct_infreq()` : 
-
-```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
-# Inverser l'odre des barres
 pingouins %>% 
   mutate(espece = fct_rev(fct_infreq(espece))) %>% 
-  ggplot(aes(x = espece,
-             fill = espece)) +
-  geom_bar(show.legend = FALSE,
-           width = 0.5) +
+  ggplot(mapping = aes(x = espece,
+                       fill = espece)) +
+  geom_bar(width = 0.75,
+           show.legend = FALSE) +
+  geom_text(aes(label = ..count..),
+            stat = "count",
+            hjust = 1.5,
+            colour = "white",
+            size = 5) +
   scale_fill_manual(values = c("Adelie" = "darkorange",
                                "Chinstrap" = "purple",
                                "Gentoo" = "cyan4")) +
@@ -817,6 +890,7 @@ pingouins %>%
   coord_flip() +
   theme_minimal()
 ```
+
 
 ## Graphiques multiples (facet) {#facet}
 
