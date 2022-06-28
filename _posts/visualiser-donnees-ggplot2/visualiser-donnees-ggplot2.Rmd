@@ -892,28 +892,95 @@ pingouins %>%
 ```
 
 
-## Graphiques multiples (facet) {#facet}
+# Graphiques multiples {#facet}
 
-Nous souhaitons étudier le **rapport entre la longueur du bec et la longueur des ailes**, mais au lieu de représenter les trois espèces sur un seul graphique, nous voudrions avoir un graphique par espèce. Nous pourrions le faire en générant un graphique par espèce à l'aide de la fonction `filter(espece == ...)` et d'un pipe `%>%`, et en répétant l'opération trois fois, une pour chaque espèce. Ou nous pouvons utiliser la fonction `facet_wrap()` qui permet de **séparer nos données en fonction de la variable espèce**.
+Quel est le **rapport entre la longueur du bec et la longueur des ailes** ? 
 
-Commençons par placer les données des trois espèces sur un seul graphique : 
+Nous pouvons créer un nuage de points avec les trois espèces sur un même graphique, comme nous l'avons fait jusqu'ici : 
 
 ```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
-# Rapport entre la longueur du bec et la longueur des ailes - 1 seul graphique pour les trois espèces
+# Scatter plot : 1 graphique pour les 3 especes
+
+pingouins %>% 
+  mutate(espece = fct_rev(fct_infreq(espece))) %>% 
+  ggplot(mapping = aes(x = espece,
+                       fill = espece)) +
+  geom_bar(width = 0.75,
+           show.legend = FALSE) +
+  geom_text(aes(label = ..count..),
+            stat = "count",
+            hjust = 1.5,
+            colour = "white",
+            size = 5) +
+  scale_fill_manual(values = c("Adelie" = "darkorange",
+                               "Chinstrap" = "purple",
+                               "Gentoo" = "cyan4")) +
+  labs(title = "Nombre de pingouins",
+       subtitle = "pour trois espèces de l'archipel Palmer",
+       x = "",
+       y = "") +
+  coord_flip() +
+  theme_minimal()
+```
+
+
+Nous souhaitons maintenant visualiser ces données en sépérant les graphiques par espece et par ile.
+
+Nous pourrions pour cela créer séparément les graphiques à l'aide de la fonction `filter()`. `ggplot2` possède deux fonctions qui le font directement : **`facet_wrap()`** et **`facet_grid()`**.
+
+## `facet_wrap()`  
+
+Nous allons simplement ajouter une couche à notre graphique précédent en précisant quelle variable sert à séparer les données (à l'aide d'un **tilde ~**). Nous modifions également le thème pour rendre les noms des espèces plus lisibles :
+
+```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+# facet_wrap() : 1 graphique par espece
 ggplot(data = pingouins,
        mapping = aes(x = aile_lngr_mm,
                      y = bec_lngr_mm)) +
   geom_point(aes(colour = espece),
+             size = 3,
+             alpha = 0.5,
              show.legend = FALSE) +
   scale_colour_manual(values = c("Adelie" = "darkorange",
-                               "Chinstrap" = "purple",
-                               "Gentoo" = "cyan4")) +
+                                 "Chinstrap" = "purple",
+                                 "Gentoo" = "cyan4")) +
   labs(title = "Rapport entre la longueur du bec et la longueur des ailes",
        subtitle = "pour trois espèces de l'archipel Palmer",
        x = "Longueur de l'aile (mm)",
-       y = "Longueur du bec (mm") +
-  theme_minimal()
+       y = "Longueur du bec (mm)") +
+  facet_wrap(~espece) +
+  theme_light()
 ```
+
+Nous pouvons modifier l'orientation des graphiques à l'aide du paramètre `dir = ...` (par défaut `h`, `v` pour des graphiques orientés verticalement).  
+
+Nous pouvons également déplacer l'étiquette de titre (noms des espèces dans notre cas) avec le paramètre `strip.position = ...` (par défaut `top`, peut prendre les valeurs `right`, `bottom` ou `left`) : 
+
+```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+# facet_wrap() : 1 graphique par espece + paramètres
+ggplot(data = pingouins,
+       mapping = aes(x = aile_lngr_mm,
+                     y = bec_lngr_mm)) +
+  geom_point(aes(colour = espece),
+             size = 3,
+             alpha = 0.5,
+             show.legend = FALSE) +
+  scale_colour_manual(values = c("Adelie" = "darkorange",
+                                 "Chinstrap" = "purple",
+                                 "Gentoo" = "cyan4")) +
+  labs(title = "Rapport entre la longueur du bec et la longueur des ailes",
+       subtitle = "pour trois espèces de l'archipel Palmer",
+       x = "Longueur de l'aile (mm)",
+       y = "Longueur du bec (mm)") +
+  facet_wrap(~espece,
+             dir = "v",
+             strip.position = "right") +
+  theme_light()
+```
+
+
+Commençons par placer les données des trois espèces sur un seul graphique : 
+
 
 La fonction `facet_wrap()` s'utilise simplement en précisant quelle variable va nous servir à séparer nos données (la variable **espèce** dans notre cas), précédée d'un **tilde ~** : 
 
