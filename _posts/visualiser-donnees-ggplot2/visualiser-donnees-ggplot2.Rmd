@@ -1026,73 +1026,138 @@ ggplot(data = pingouins,
 
 # Exporter un graphique {#exporter}
 
-Jusqu'à présent, nos différents graphiques apparaissaient dans le panneau **Viewer** de RStudio, mais n'étaient pas sauvegardés.
+Jusqu'à présent, nos graphiques apparaissaient dans l'onglet **Plots** mais n'étaient pas sauvegardés. 
 
-Il existe plusieurs façons d'exporter un graphique :  
+Nous allons voir deux façons d'exporter un graphique : 
 
-**- A partir du panneau Viewer** : en cliquant sur **Export**, vous aurez le choix entre sauvegarder votre graphique sous forme d'**image** ou de **fichier pdf**, ou vous pourrez le copier dans le presse-papiers (par exemple pour le coller dans un document). Nous allons le sauvegarder sous forme d'image.
+- directement depuis l'onglet Plot  
+
+- en ligne de commande avec `ggsave()`
+
+
+## Depuis l'onglet *Plots*
+
+L'onglet **Plots** vous permet de naviguer entre vos graphiques, d'ouvrir le graphique actuellement affiché dans une nouvelle fenêtre, d'exporter votre graphique, de le supprimer ou de supprimer tous les graphiques de la session de travail.
+
+En cliquant sur **Export**, vous avez trois options : 
+
+- sauvegarder le graphique **sous forme d'image**
+
+- sauvegarder le graphique **au format PDF**  
+
+- **copier le graphique** dans le presse-papiers (par exemple pour le coller dans un document)
 
 ```{r, layout="l-body"}
 knitr::include_graphics("img/export_ggplot_01.png")
 ```
 
-Vous aurez alors le choix entre plusieurs **formats** (`.png`, `.jpeg`, ...). Vous pourrez également **redimensionner** votre graphique (en conservant ou non le ratio des dimensions), choisir le **dossier de destination** et **renommer** votre fichier (le nom proposé par défaut n'est pas très explicite ...).
+Nous allons exporter le barplot horizontal sous forme d'image : cliquez sur **Export** puis **Save as image**. 
 
 ```{r, layout="l-body"}
 knitr::include_graphics("img/export_ggplot_02.png")
 ```
 
-<br>
+Vous aurez alors le choix entre plusieurs **extensions** (`.png`, `.jpeg`, ...).
 
-**- En utilisant la fonction `ggsave()` : il vous faudra d'abord assigner votre graphique dans un objet. R est ce qu'on appelle un **langage orienté objet**, ce qui veut dire que tout ce que vous manipulez dans votre session R (les fichiers importés, les transformations, les fonctions, et même les graphiques !) sont stockés dans la mémoire vive sous forme d'objet.
+Vous pourrez également **redimensionner** votre graphique (en conservant ou non le ratio des dimensions), choisir le **dossier de destination** et **renommer** votre fichier (le nom proposé par défaut n'est pas très explicite ...).
 
-Vous pouvez simplement ajouter un nom d'objet et une flèche d'assignation devant le code ayant servi à générer votre dernier graphique : `barplot_especes <- ggplot(...`. Votre graphique (y compris toutes les couches ajoutées et les paramètres) est stocké dans l'objet **barplot_especes**. Vous n'aurez par contre pas d'aperçu de votre graphique dans le panneau **Viewer** comme c'était le cas jusque là. Vous pouvez simplement appeler l'objet créé pour l'afficher, ou entourer l'ensemble de ce code par des parenthèses pour effectuer les deux opérations à la fois : stocker le graphique dans un objet et l'afficher dans le panneau Viewer.
+## Avec `ggsave()`
 
-```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
-# Assigner le bar plot à l'obet barplot_especes et l'afficher
-(barplot_especes <- pingouins %>% 
-   mutate(espece = fct_rev(fct_infreq(espece))) %>% 
-   ggplot(aes(x = espece,
-              fill = espece)) +
-   geom_bar(show.legend = FALSE,
-            width = 0.5) +
-   scale_fill_manual(values = c("Adelie" = "darkorange",
-                                "Chinstrap" = "purple",
-                                "Gentoo" = "cyan4")) +
+Cette fonction permet d'exporter un graphique au format **.png** dans un répertoire, avec les dimensions et la résolution de notre choix.
+
+Vous devez tout d'abord assigner le graphique à exporter dans un objet. R étant un langage de programmation orienté objet, tout ce que vous manipulez (les fichiers importés, les fonctions et même les graphiques) sont stockés dans la mémoire vive sous forme d'objet (visibles dans l'onglet **Environment**).
+
+Reprenons le code utilisé pour générer le barplot horizontal et assignons-le à l'objet `barplot_especes` : 
+
+```{r, echo=TRUE, eval=FALSE, message=FALSE, warning=FALSE}
+# Assigner le graphique à un objet
+barplot_especes <- ggplot(data = mutate(pingouins,
+                                        espece = fct_rev(fct_infreq(espece))),
+                          mapping = aes(x = espece,
+                                        fill = espece)) +
+  geom_bar(width = 0.75,
+           show.legend = FALSE) +
+  geom_text(aes(label = ..count..),
+            stat = "count",
+            hjust = 1.5,
+            colour = "white",
+            size = 5) +
+  scale_fill_manual(values = c("Adelie" = "darkorange",
+                               "Chinstrap" = "purple",
+                               "Gentoo" = "cyan4")) +
   labs(title = "Nombre de pingouins",
        subtitle = "pour trois espèces de l'archipel Palmer",
        x = "",
        y = "") +
-   coord_flip() +
-   theme_minimal()
+  coord_flip() +
+  theme_minimal()
+```
+
+Tout ce qui vous a permis de créer ce graphique est désormais stocké dans l'objet **barplot_especes**. En procédant ainsi, vous n'aurez plus d'aperçu de votre graphique dans l'onglet **Plots**.
+
+Pour ce faire, vous avez deux options : 
+
+- appeler l'objet `barplot_especes` dans la console ou le script et exécuter la commande  
+
+- entourer le code précédant par des parenthèses : cela permet d'assigner le graphique dans l'objet et de l'afficher dans l'onglet Plots.
+
+```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+# Assigner le graphique à un objet et l'afficher
+(barplot_especes <- ggplot(data = mutate(pingouins,
+                                         espece = fct_rev(fct_infreq(espece))),
+                           mapping = aes(x = espece,
+                                         fill = espece)) +
+  geom_bar(width = 0.75,
+           show.legend = FALSE) +
+  geom_text(aes(label = ..count..),
+            stat = "count",
+            hjust = 1.5,
+            colour = "white",
+            size = 5) +
+  scale_fill_manual(values = c("Adelie" = "darkorange",
+                               "Chinstrap" = "purple",
+                               "Gentoo" = "cyan4")) +
+  labs(title = "Nombre de pingouins",
+       subtitle = "pour trois espèces de l'archipel Palmer",
+       x = "",
+       y = "") +
+  coord_flip() +
+  theme_minimal()
 )
 ```
 
-Créons maintenant un répértoire **figs/** dans notre répertoire de travail (à l'aide de **New Folder** dans l'onglet **Files** dans RStudio) et sauvegardons notre graphique : 
+Nous pouvons maintenant sauvegarder le graphique à l'aide de la fonction `ggsave()` en utilisant les paramètres suivants :  
+
+- `figs/barplot_especes.png` : emplacement du fichier à exporter (dossier/nom-du-fichier)  
+
+- `barplot_especes` : nom de l'objet à exporter  
+
+- `dpi = 320` : résolution de l'image  
+
+- `width = 12` : largeur de l'image  
+
+- `height = 6` : hauteur de l'image
+
 
 ```{r, echo=TRUE, eval=FALSE, message=FALSE, warning=FALSE}
 ggsave("figs/barplot_especes.png", barplot_especes, dpi = 320, width = 12, height = 6)
 ```
 
-Décortiquons cette commande pour comprendre sa syntaxe : 
+Il existe d'autres paramètres, n'hésitez pas explorer l'aide de la fonction à l'aide de la commande `?ggsave`. 
 
-- **`figs/barplot_especes.png` : répertoire de destination et nom sous lequel sauvegarder le graphique
+Vous pouvez essayer différentes options et valeurs pour voir le résultat.
 
-- **`barplot_especes` : nom de l'objet dans lequel le graphique est stocké. Vous pouvez également utiliser la fonction `last_plot()` pour sauvegarder le dernier graphique.
-
--**`dpi = 320`** : résolution de l'image
-
--**`width = 12`** : largeur de l'image
-
--**`height = 6`** : hauteur de l'image
-
-Il existe d'autres paramètres, n'hésitez pas explorer l'aide de la fonction à l'aide de la commande `?ggsave`. Vous pouvez essayer différentes options et valeurs pour voir le résultat.
-
-Ouvrez le fichier `barplot_especes.png` et comparez ce fichier avec le visuel affiché dans votre session RStudio. Il n'est pas rare d'avoir quelques surprise ! La taille des lettres peut par exemple être plus petite dans le fichier exporté que dans l'aperçu RStudio. Il est toujours utile d'exporter son graphique et de vérifier le rendu pour rectifier les paramètres si nécessaire.
+Ouvrez le fichier `barplot_especes.png` et comparez ce fichier avec le visuel affiché dans votre session RStudio.
 
 ```{r, layout="l-body"}
 knitr::include_graphics("img/barplot_especes.png")
 ```
+
+Il n'est pas rare d'avoir quelques surprises ! La taille des lettres peut par exemple être plus petite dans le fichier exporté que dans l'aperçu RStudio. 
+
+Il est toujours utile d'exporter son graphique et de vérifier le rendu pour rectifier les paramètres si nécessaire.
+
+[Cet article](https://www.christophenicault.com/post/understand_size_dimension_ggplot2/) explique en détail comment paramétrer la taille et la résolution d'une image.
 
 # Améliorer ses graphiques {#ameliorer}
 
