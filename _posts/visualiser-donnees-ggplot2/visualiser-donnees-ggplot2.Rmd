@@ -42,7 +42,7 @@ Dans ce tutoriel nous allons voir comment communiquer les résultats de nos anal
 
 **1. [Construire un graphique `ggplot2`](#construction)**  
 
-**3. [Créer des graphiques basiques](#creer)** :  
+**2. [Créer des graphiques basiques](#creer)** :  
 
 - [nuage de points (scatter plot)](#scatterplot) 
 
@@ -52,15 +52,23 @@ Dans ce tutoriel nous allons voir comment communiquer les résultats de nos anal
   
 - [diagramme en bâtons (bar plot)](#barplot)  
 
-- [graphiques multiples (facet)](#facet)
+**3. [Graphiques multiples](#facet)**
 
-**3. [Exporter un graphique](#exporter)**
+- [facet_wrap](#facet_wrap)
 
-**4. [Améliorer ses graphiques](#ameliorer)**
+- [facet_grid](#facet_grid)
 
-**5. [Assembler ses graphiques à l'aide de `patchwork`](#patchwork)**
+**4. [Exporter un graphique](#exporter)**
 
-**6. [Défi](#defi)**
+- [Depuis l'onglet *Plots*](#onglet_plots)  
+
+- [Avec `ggsave()`](#ggsave)
+
+**5. [Améliorer ses graphiques](#ameliorer)**
+
+- [Les différents éléments de `theme()`](#theme)
+
+- [Les polices de caractères](#fonts)
 
 <br> 
 
