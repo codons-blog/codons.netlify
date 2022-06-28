@@ -1268,6 +1268,44 @@ Le titre et le sous-titre de notre graphique sont alignés sur le centre de la z
 )
 ```
 
+### Les axes
+
+```{r, layout="l-body-outset"}
+knitr::include_graphics("img/ggplot_themes_axis.png")
+```
+
+
+Nous allons modifier la couleur des titres des axes. Nous pourrions le faire pour les axes x et y à l'aide de `axis.title = element_text(colour = "white)`. Nous aimerions cependant augementer l'espace entre le titres des axes et les axes, nous devons pouvons utiliser `axis.title.x = element_text(colour = "white", margin = margin(t = 10))` et `axis.title.y = element_text(colour = "white", margin = margin(r = 10))` pour respecter l'orientation des titres.
+
+Nous allons également modifier la couleur du texte des axes avec `axis.text = element_text(...)`.
+
+```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+# Parametrer les axes
+(p3 <-p2 +
+  theme(axis.title.x = element_text(colour = "white",
+                                    margin = margin(t = 10)),
+        axis.title.y = element_text(colour = "white",
+                                    margin = margin(r = 10)),
+        axis.text = element_text(colour = "white"))
+)
+```
+
+Nous pourrions également retirer les marques des graduations à l'aide de `axis.ticks = element_blank()`, mais celles-ci ne sont pas visibles avec les modifications apportées au graphique.
+
+Pour montrer l'intérêt de ce paramètre, reprenons notre premier graphique : 
+
+```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+# Premier scatter plot
+p
+```
+
+Nous pouvons retirer de ces marques : 
+
+```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+# Supprimer les marques des graduations
+p +
+  theme(axis.ticks = element_blank())
+```
 
 ## Modifier l'arrière-plan
 
