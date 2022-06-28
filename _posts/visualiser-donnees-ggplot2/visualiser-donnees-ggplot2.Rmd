@@ -900,26 +900,19 @@ Nous pouvons créer un nuage de points avec les trois espèces sur un même grap
 
 ```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
 # Scatter plot : 1 graphique pour les 3 especes
-
-pingouins %>% 
-  mutate(espece = fct_rev(fct_infreq(espece))) %>% 
-  ggplot(mapping = aes(x = espece,
-                       fill = espece)) +
-  geom_bar(width = 0.75,
-           show.legend = FALSE) +
-  geom_text(aes(label = ..count..),
-            stat = "count",
-            hjust = 1.5,
-            colour = "white",
-            size = 5) +
-  scale_fill_manual(values = c("Adelie" = "darkorange",
-                               "Chinstrap" = "purple",
-                               "Gentoo" = "cyan4")) +
-  labs(title = "Nombre de pingouins",
+ggplot(data = pingouins,
+       mapping = aes(x = aile_lngr_mm,
+                     y = bec_lngr_mm)) +
+  geom_point(aes(colour = espece),
+             size = 3,
+             alpha = 0.5) +
+  scale_colour_manual(values = c("Adelie" = "darkorange",
+                                 "Chinstrap" = "purple",
+                                 "Gentoo" = "cyan4")) +
+  labs(title = "Rapport entre la longueur du bec et la longueur des ailes",
        subtitle = "pour trois espèces de l'archipel Palmer",
-       x = "",
-       y = "") +
-  coord_flip() +
+       x = "Longueur de l'aile (mm)",
+       y = "Longueur du bec (mm)") +
   theme_minimal()
 ```
 
@@ -930,7 +923,11 @@ Nous pourrions pour cela créer séparément les graphiques à l'aide de la fonc
 
 ## `facet_wrap()`  
 
-Nous allons simplement ajouter une couche à notre graphique précédent en précisant quelle variable sert à séparer les données (à l'aide d'un **tilde ~**). Nous modifions également le thème pour rendre les noms des espèces plus lisibles :
+Nous allons simplement ajouter une couche à notre graphique précédent en précisant quelle variable sert à séparer les données (à l'aide d'un **tilde ~**).
+
+Les fonctions `facet_...()` génèrent automatiquement des étiquettes de texte, nous ajoutons donc le paramètre `show.legend = FALSE`.
+
+Nous modifions également le thème pour rendre les noms des espèces plus lisibles :
 
 ```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
 # facet_wrap() : 1 graphique par espece
@@ -978,47 +975,52 @@ ggplot(data = pingouins,
   theme_light()
 ```
 
+## `facet_grid()`  
 
-Commençons par placer les données des trois espèces sur un seul graphique : 
-
-
-La fonction `facet_wrap()` s'utilise simplement en précisant quelle variable va nous servir à séparer nos données (la variable **espèce** dans notre cas), précédée d'un **tilde ~** : 
+Quand nous souhaitons utiliser deux variables discrètes (non continues, avec des catégories) pour séparer nos données, nous utilisons la fonction `facet_grid()`. La syntaxe est similaire et nous précisons avec l'opérateur `lignes ~ colonnes` comment répartir les variables : 
 
 ```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
-# Rapport entre la longueur du bec et la longueur des ailes - 1 graphique par espèce
+# facet_grid() : 1 graphique par combinaison de variables
 ggplot(data = pingouins,
        mapping = aes(x = aile_lngr_mm,
                      y = bec_lngr_mm)) +
   geom_point(aes(colour = espece),
+             size = 3,
+             alpha = 0.5,
              show.legend = FALSE) +
   scale_colour_manual(values = c("Adelie" = "darkorange",
-                               "Chinstrap" = "purple",
-                               "Gentoo" = "cyan4")) +
+                                 "Chinstrap" = "purple",
+                                 "Gentoo" = "cyan4")) +
   labs(title = "Rapport entre la longueur du bec et la longueur des ailes",
        subtitle = "pour trois espèces de l'archipel Palmer",
        x = "Longueur de l'aile (mm)",
-       y = "Longueur du bec (mm") +
-  facet_wrap(~espece) +
-  theme_minimal()
+       y = "Longueur du bec (mm)") +
+  facet_grid(espece ~ ile) +
+  theme_light()
 ```
 
-Pour simplifier la lecture de ce graphique, nous pouvons **utiliser un autre thème** : 
+Toutes les combinaisons possibles sont affichées, ce qui génère des graphiques vides dans le cas où la combinaison en question ne possède aucune observation.
+
+Nous pouvons déplacer les étiquettes de titres à l'aide du paramètre `switch` qui peut prendre trois valeurs : `x` pour déplacer les étiquettes de l'axe x en bas des graphiques, `y` pour déplacer les étiquettes des axes y à gauche des graphiques, ou `both` pour effectuer les deux modifications simultanément : 
 
 ```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
-# Changer le thème
+# facet_grid() : 1 graphique par combinaison de variables + paramètre switch
 ggplot(data = pingouins,
        mapping = aes(x = aile_lngr_mm,
                      y = bec_lngr_mm)) +
   geom_point(aes(colour = espece),
+             size = 3,
+             alpha = 0.5,
              show.legend = FALSE) +
   scale_colour_manual(values = c("Adelie" = "darkorange",
-                               "Chinstrap" = "purple",
-                               "Gentoo" = "cyan4")) +
+                                 "Chinstrap" = "purple",
+                                 "Gentoo" = "cyan4")) +
   labs(title = "Rapport entre la longueur du bec et la longueur des ailes",
        subtitle = "pour trois espèces de l'archipel Palmer",
        x = "Longueur de l'aile (mm)",
-       y = "Longueur du bec (mm") +
-  facet_wrap(~espece) +
+       y = "Longueur du bec (mm)") +
+  facet_grid(espece ~ ile,
+             switch = "x") +
   theme_light()
 ```
 
