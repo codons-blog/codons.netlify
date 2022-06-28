@@ -1307,145 +1307,60 @@ p +
   theme(axis.ticks = element_blank())
 ```
 
-## Modifier l'arrière-plan
+### La légende
 
-Commençons par un paramètre assez évident, à savoir la couleur de l'arrière-plan. Les thèmes prédéfinis dans `ggplot2` vous donnent quelques possibilités, mais vous pouvez en réalité choisir n'importe quelle couleur, pour peu que vous ayiez son nom ou son code hexadécimal. 
-
-Nous allons reprendre le barplot du nombre de pingouins par espèce et y apporter des modifications, en montrant le résultat étape par étape.
-
-Le paramètre `theme()` va vous permettre d'ajuster tous les paramètres de votre graphique (et la liste est très longue !).
-
-<br>
-
-Votre graphique se compose de deux grandes parties : 
-
-- le **"panel"** qui contient les éléments de visualisation (le graphique lui-même)  
-
-- le **plot** qui contient tout ce qui est autour : titre, légende, titres des axes, ...
-
-Nous allons commencer par modifier la couleur de l'arrière-plan de la zone du graphique, à l'aide du paramètre `panel.background()`. Nous allons dans ce paramètre préciser la couleur de l'intérieur et du contour de la zone du graphique (comme nous l'avions fait plus haut en modifiant la forme et les couleurs des points) à l'aide des paramètres `fill` et `colour` au sein d'un argument `element_rect()` : 
-
-```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
-# Modifier la couleur de l'arrière-plan de la zone du graphique
-pingouins %>% 
-   mutate(espece = fct_rev(fct_infreq(espece))) %>% 
-   ggplot(aes(x = espece,
-              fill = espece)) +
-   geom_bar(show.legend = FALSE,
-            width = 0.5) +
-   scale_fill_manual(values = c("Adelie" = "darkorange",
-                                "Chinstrap" = "purple",
-                                "Gentoo" = "cyan4")) +
-  labs(title = "Nombre de pingouins",
-       subtitle = "pour trois espèces de l'archipel Palmer",
-       x = "",
-       y = "") +
-   coord_flip() +
-   theme_minimal() +
-  theme(panel.background = element_rect(fill = "#1d3557", colour = NA))
+```{r, layout="l-body-outset"}
+knitr::include_graphics("img/ggplot_themes_legend.png")
 ```
 
-Pour modifier la couleur de l'arrière-plan de la zone autour du graphique, nous procédons de la même façon à l'aide du paramètre **`plot.background()`** : 
+Nous allons modifier la couleur de l'arrière-plan de la légende (pour deux zones : le texte et les points), modifier la couleur et la taille du texte et supprimer le titre.
 
 ```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
-# Modifier la couleur de l'arrière-plan de la zone autour du graphique
-pingouins %>% 
-   mutate(espece = fct_rev(fct_infreq(espece))) %>% 
-   ggplot(aes(x = espece,
-              fill = espece)) +
-   geom_bar(show.legend = FALSE,
-            width = 0.5) +
-   scale_fill_manual(values = c("Adelie" = "darkorange",
-                                "Chinstrap" = "purple",
-                                "Gentoo" = "cyan4")) +
-  labs(title = "Nombre de pingouins",
-       subtitle = "pour trois espèces de l'archipel Palmer",
-       x = "",
-       y = "") +
-   coord_flip() +
-   theme_minimal() +
-  theme(panel.background = element_rect(fill = "#1d3557", colour = NA),
-        plot.background = element_rect(fill = "#1d3557", colour = NA))
+# Parametrer la legende
+(p4 <- p3 +
+  theme(legend.background = element_rect(fill = "#1d3557"),
+        legend.key = element_blank(),
+        legend.text = element_text(colour = "white", size = 15),
+        legend.title = element_blank())
+)
 ```
 
-## Modifier la grille
-
-Certaines lignes de la grille peuvent devenir inutiles. Dans notre cas, les lignes horizontales de la grille ne sont pas nécessaires à la compréhension du graphique. Nous allons pouvoir modifier ces éléments à l'aide des paramètres `panel.grid`. : 
-
-- **`panel.grid`** : modifier toutes les lignes
-
-- **`panel.grid.major`** : modifier les lignes principales 
-
-- **`panel.grid.minor`** : modifier les lignes secondaires
-
-- **`panel.grid.major.x`** : modifier les lignes principales de l'axe x
-
-- **`panel.grid.major.y`** : modifier les lignes principales de l'axe y
-
-- **`panel.grid.minor.x`** : modifier les lignes secondaires de l'axe x
-
-- **`panel.grid.minor.y`** : modifier les lignes secondaires de l'axe y
-
-<br>
-
-Nous procédons de la façons suivante : 
-
-**1) Supprimer toutes les lignes secondaires** : `panel.grid.minor = element_blank()`  
-
-**2) Modifier les lignes principales de l'axe en lignes pointillées** : `panel.grid.major.x = element_line(linetype = "dotted)`
-
-**3) Supprimer les lignes principales de l'axe y** : `panel.grid.major.y = element_blank()`
+Nous pouvons modifier la position de la légende : 
 
 ```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
-# Modifier la grille
-pingouins %>% 
-  mutate(espece = fct_rev(fct_infreq(espece))) %>% 
-  ggplot(aes(x = espece,
-             fill = espece)) +
-  geom_bar(show.legend = FALSE,
-           width = 0.5) +
-  scale_fill_manual(values = c("Adelie" = "darkorange",
-                               "Chinstrap" = "purple",
-                               "Gentoo" = "cyan4")) +
-  labs(title = "Nombre de pingouins",
-       subtitle = "pour trois espèces de l'archipel Palmer",
-       x = "",
-       y = "") +
-  coord_flip() +
-  theme_minimal() +
-  theme(panel.background = element_rect(fill = "#1d3557", colour = NA),
-        plot.background = element_rect(fill = "#1d3557", colour = NA),
-        panel.grid.minor = element_blank(),
-        panel.grid.major.x = element_line(linetype = "dotted"),
-        panel.grid.major.y = element_blank())
+# Modifier la position de la legende
+(p4 <- p3 +
+  theme(legend.background = element_rect(fill = "#1d3557"),
+        legend.key = element_blank(),
+        legend.text = element_text(colour = "white", size = 15),
+        legend.title = element_blank(),
+        legend.position = "top")
+)
+```
+
+La taille, la couleur et la transparence des points de la légende reprennent les paramètres utilisés dans `geom_point()`. Nous aimerions modifier ces éléments de la légende pour augmenter la taille des points et supprimer leur transparence pour simplifier la lecture de la légende. Nous utilisons pour cela un paramètre `guides()` :
+
+```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+# Modifier la representation des points de la legende
+(p4 <- p3 +
+  theme(legend.background = element_rect(fill = "#1d3557"),
+        legend.key = element_blank(),
+        legend.text = element_text(colour = "white", size = 15),
+        legend.title = element_blank(),
+        legend.position = "top") +
+  guides(colour = guide_legend(override.aes = list(alpha = 1,
+                                                   size = 5)))
+)
 ```
 
 
-## Le texte 
+## Les polices de caractères
 
-L'arrière-plan plus sombre rend le texte difficilement lisible. Nous pouvons modifier la couleur et la taille du texte utilisé dans le titre, le sous-titre, les titres des axes et les étiquettes de axes.
-
-Plusieurs paramètres permettent de modifier du texte : 
-
-- **family** : police de caractères 
-
-- **colour** : couleur du texte
-
-- **size** : taille du texte (valeurs numériques)
-
-- **hjust** : alignement horizontal du texte
-
-- **vjust** : alignement vertical du texte
-
-<aside>
-0 (à gauche), 0.5 (centre) ou 1 (droite)
-</aside>
-
-Ces paramètres peuvent être appliqués séparément au titre, au sous-titre, aux titres des axes et aux étiquettes des axes.
+Nous aimerions utiliser une autre police de caractères pour le titre et le sous-titre du graphique. 
 
 Le package `showtext()` permet d'utiliser des polices **Google fonts** dans nos graphiques, n'hésitez pas à fouiller pour trouver celle qui vous convient ! 
 
-Installer et charger le package showtext : 
+Installez et chargez le package showtext : 
 
 ```{r, echo=TRUE, eval=FALSE, message=FALSE, warning=FALSE}
 # Installer et charger le package showtext
@@ -1464,40 +1379,11 @@ font_add_google("Righteous", "Righteous")
 showtext_auto()
 ```
 
-Nous pouvons maintenant modifier les paramètres en procédant de la manière suivante : 
-
-- **modifier la police, la taille, la couleur et l'alignement du titre** : `plot.title = element_text(family = "Righteous", colour = "white", size = 25, hjust = 0.5)`  
-
-- **modifier la police, la taille, la couleur et l'alignement du sous-titre** : `plot.subtitle = element_text(family = "Righteous", colour = "white", size = 15, hjust = 0.5)`
-
-- **modifier la police, la taille et la couleur du texte des axes** : `axis.text = element_text(family = "Righteous", colour = "white", size = 12)`
-
+Nous pouvons maintenant modifier le titre et le sous-titre : 
 ```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
-# Modifier le texte
-pingouins %>% 
-  mutate(espece = fct_rev(fct_infreq(espece))) %>% 
-  ggplot(aes(x = espece,
-             fill = espece)) +
-  geom_bar(show.legend = FALSE,
-           width = 0.5) +
-  scale_fill_manual(values = c("Adelie" = "darkorange",
-                               "Chinstrap" = "purple",
-                               "Gentoo" = "cyan4")) +
-  labs(title = "Nombre de pingouins",
-       subtitle = "pour trois espèces de l'archipel Palmer",
-       x = "",
-       y = "") +
-  coord_flip() +
-  theme_minimal() +
-  theme(panel.background = element_rect(fill = "#1d3557", colour = NA),
-        plot.background = element_rect(fill = "#1d3557", colour = NA),
-        panel.grid.minor = element_blank(),
-        panel.grid.major.x = element_line(linetype = "dotted"),
-        panel.grid.major.y = element_blank(),
-        plot.title = element_text(family = "Righteous", colour = "white",
-                                  size = 25, hjust = 0.5),
-        plot.subtitle = element_text(family = "Righteous", colour = "white",
-                                     size = 15, hjust = 0.5),
-        axis.text = element_text(family = "Righteous", colour = "white",
-                                 size = 12))
+# Modifier la police de caractères du titre et du sous-titre
+(p5 <- p4 +
+  theme(plot.title = element_text(family = "Righteous"),
+        plot.subtitle = element_text(family = "Righteous"))
+)
 ```
