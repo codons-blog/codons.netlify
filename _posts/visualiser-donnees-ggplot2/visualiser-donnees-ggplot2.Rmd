@@ -1167,6 +1167,74 @@ Nous avons vu comment créer les principaux types de graphiques ainsi que certai
 
 La suite de ce tutoriel vous donnera quelques éléments pour améliorer vos graphiques, n'hésitez pas à aller voir la section **Liens** du blog pour trouver d'autres ressources qui vous aideront à creuser encore davantage les possibilités de `ggplot2`.
 
+## Les différents éléments de `theme()`
+
+Un graphique se compose de quatre parties principales, dont nous pouvons paramétrer les différents éléments : 
+
+- le **"panel"** qui contient les éléments géométriques de visualisation  
+
+- le **"plot"** qui contient ce qui entoure le panel (titre, sous-titre, ...)  
+
+- les **axes** avec les titres, les graduations, ...  
+
+- la **légende**
+
+Nous allons voir comment modifier chaque partie d'un graphique, en utilisant le scatter plot généré au début de ce tutoriel. Commençons par reprendre le code utilisé et assignons-le à un objet. Nous pourrons ensuite ajouter les couches apportant les modifications : 
+
+```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+# Scatter plot basique
+(p <- ggplot(data = pingouins,
+       mapping = aes(x = bec_lngr_mm,
+                     y = bec_htr_mm)) +
+  geom_point(aes(colour = espece),
+             size = 3,
+             alpha = 0.5) +
+  scale_colour_manual(values = c("Adelie" = "darkorange",
+                                 "Chinstrap" = "purple",
+                                 "Gentoo" = "cyan4")) +
+  labs(title = "Rapport entre la hauteur et la longueur du bec",
+       subtitle = "pour trois espèces de pingouins de l'archipel Palmer",
+       x = "Longueur du bec (mm)",
+       y = "Hauteur du bec (mm)")
+ )
+```
+
+### Le **panel**
+
+```{r, layout="l-body-outset"}
+knitr::include_graphics("img/ggplot_themes_panel.png")
+```
+
+Nous allons pouvoir définir des paramètres pour ces différents éléments, selon la syntaxe suivante : `nom-du-parametre = element_...()`.
+
+En fonction de ce que nous paramétrons, nous allons utiliser par exemple `element_rect()` (contour et intérieur d'une zone rectangulaire), `element_line()` (couleur et épaisseur d'une ligne) ou `element_text()` (police de caractères, taille et couleur du texte, alignement).
+
+Nous allons modifier les éléments suivants du panel : 
+
+- **couleur de l'arrière-plan** avec `panel.background = element_rect(fill = ..., colour = ...)`  
+- **couleur et de la bordure** avec `panel.border = element_rect(...)` (attention, la bordure se paramètre comme une zone rectangulaire : il faut donc préciser `fill = NA` pour que l'arrière-plan du panel conserve la couleur définie dans `panel.background()`)  
+
+- **retirer les lignes de graduations mineures** avec `panel.grid.minor = element_blank()`  
+
+- **couleur et type des lignes de graduations majeures** avec `panal.grid.major = element_line(colour = ..., linetype = ...)`
+
+```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+# Parametrer les elements du panel
+p +
+  theme(panel.background = element_rect(fill = "#1d3557", colour = NA),
+        panel.border = element_rect(fill = NA, colour = "white", size = 3),
+        panel.grid.minor = element_blank(),
+        panel.grid.major = element_line(colour = "white",
+                                        linetype = "dotted"))
+```
+
+### Le plot
+
+```{r, layout="l-body-outset"}
+knitr::include_graphics("img/ggplot_themes_plot.png")
+```
+
+
 ## Modifier l'arrière-plan
 
 Commençons par un paramètre assez évident, à savoir la couleur de l'arrière-plan. Les thèmes prédéfinis dans `ggplot2` vous donnent quelques possibilités, mais vous pouvez en réalité choisir n'importe quelle couleur, pour peu que vous ayiez son nom ou son code hexadécimal. 
