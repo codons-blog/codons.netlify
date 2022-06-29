@@ -1230,7 +1230,7 @@ Nous allons modifier les éléments suivants du panel :
 # Parametrer les elements du panel
 (p1 <- p +
   theme(panel.background = element_rect(fill = "#1d3557", colour = NA),
-        panel.border = element_rect(fill = NA, colour = "white", size = 3),
+        panel.border = element_rect(fill = NA, colour = "white", size = 1),
         panel.grid.minor = element_blank(),
         panel.grid.major = element_line(colour = "white",
                                         linetype = "dotted"))
@@ -1253,11 +1253,11 @@ Nous pouvons aligner le titre et le sous-titre au centre (`hjust = 0.5`) et ajou
 # Parametrer les elements du plot
 (p2 <- p1 +
   theme(plot.background = element_rect(fill = "#1d3557", colour = NA),
-        plot.margin = margin(t = 25, r = 25, b = 25, l = 25),
+        plot.margin = margin(t = 10, r = 10, b = 10, l = 10),
         plot.title = element_text(colour = "white", size = 20,
                                   hjust = 0.5),
         plot.subtitle = element_text(colour = "white", size = 15,
-                                     hjust = 0.5, margin = margin(b = 15)))
+                                     hjust = 0.5, margin = margin(b = 5)))
 )
 ```
 
@@ -1267,7 +1267,7 @@ Le titre et le sous-titre de notre graphique sont alignés sur le centre de la z
 # Aligner le titre et le sous-titre sur le centre de la zone plot
 (p2 <- p1 +
   theme(plot.background = element_rect(fill = "#1d3557", colour = NA),
-        plot.margin = margin(t = 25, r = 25, b = 25, l = 25),
+        plot.margin = margin(t = 10, r = 10, b = 10, l = 10),
         plot.title = element_text(colour = "white", size = 20,
                                   hjust = 0.5),
         plot.title.position = "plot",
