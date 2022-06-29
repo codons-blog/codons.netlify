@@ -100,11 +100,11 @@ knitr::include_graphics("img/ggplot_01.gif")
 
 Vous remarquerez dans le code la présence du signe **"+"** à la fin de chaque ligne : c'est ce qui permet d'ajouter une couche à votre graphique.
 
-# Créer des graphiques basiques {#creer}
+# Graphiques simples {#creer}
 
 Commençons par ouvrir un nouveau script R et importer le jeu de données :
 
-```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+```{r, echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
 library(tidyverse)
 
 pingouins <- readr::read_csv("https://raw.githubusercontent.com/codons-blog/C-04-VisualisationDonnees/main/pingouins.csv")
@@ -1362,9 +1362,9 @@ La taille, la couleur et la transparence des points de la légende reprennent le
 ```
 
 
-## Les polices de caractères
+## Modifier la police du texte avec `showtext`
 
-Nous aimerions utiliser une autre police de caractères pour le titre et le sous-titre du graphique. 
+Nous aimerions utiliser d'autres polices de caractères pour notre graphiques. 
 
 Le package `showtext()` permet d'utiliser des polices **Google fonts** dans nos graphiques, n'hésitez pas à fouiller pour trouver celle qui vous convient ! 
 
@@ -1376,7 +1376,7 @@ install.packages("showtext")
 library(showtext)
 ```
 
-Nous allons utiliser la police **Righteous** :
+Nous allons utiliser la police **Righteous** pour le titre et le sous-titre, et la police **Gruppo** pour la légende et les axes :
 
 ```{r, echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
 library(showtext)
@@ -1384,16 +1384,23 @@ library(showtext)
 
 ```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
 font_add_google("Righteous", "Righteous")
+font_add_google("Gruppo", "Gruppo")
 showtext_auto()
 ```
 
-Nous pouvons maintenant modifier le titre et le sous-titre : 
+Nous modifions également les marges du graphique, la taille du texte et l'alignement du titre et du sous-titre : 
 
 
 ```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
 # Modifier la police de caractères du titre et du sous-titre
 (p5 <- p4 +
-  theme(plot.title = element_text(family = "Righteous"),
-        plot.subtitle = element_text(family = "Righteous"))
+  theme(plot.title = element_text(family = "Righteous",
+                                  size = 25, margin = margin(t = 5, b = 5)),
+        plot.subtitle = element_text(family = "Righteous", size = 20),
+        plot.title.position = "panel",
+        plot.margin = margin(5, 15, 5, 15),
+        legend.text = element_text(family = "Gruppo", size = 20),
+        axis.title = element_text(family = "Gruppo", size = 20),
+        axis.text = element_text(family = "Gruppo", size = 15))
 )
 ```

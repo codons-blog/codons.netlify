@@ -2202,7 +2202,7 @@ d-article p code {
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#construire">Construire un graphique <code>ggplot2</code></a></li>
-<li><a href="#creer">Créer des graphiques basiques</a></li>
+<li><a href="#creer">Graphiques simples</a></li>
 <li><a href="#facet">Graphiques multiples</a></li>
 <li><a href="#exporter">Exporter un graphique</a></li>
 <li><a href="#ameliorer">Améliorer ses graphiques</a></li>
@@ -2260,15 +2260,10 @@ La figure ci-dessous montre de manière simplifiée comment créer un <code>ggpl
 <p><img src="img/ggplot_01.gif" /><!-- --></p>
 </div>
 <p>Vous remarquerez dans le code la présence du signe <strong>“+”</strong> à la fin de chaque ligne : c’est ce qui permet d’ajouter une couche à votre graphique.</p>
-<h1 id="creer">Créer des graphiques basiques</h1>
+<h1 id="creer">Graphiques simples</h1>
 <p>Commençons par ouvrir un nouveau script R et importer le jeu de données :</p>
 <div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>
 
-<span class='va'>pingouins</span> <span class='op'>&lt;-</span> <span class='fu'>readr</span><span class='fu'>::</span><span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"https://raw.githubusercontent.com/codons-blog/C-04-VisualisationDonnees/main/pingouins.csv"</span><span class='op'>)</span>
-</code></pre>
-</div>
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -3507,8 +3502,8 @@ Nous allons utiliser <code>geom_bar()</code> pour visualiser le nombre de pingou
 </div>
 <p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-65-1.png" width="624" /></p>
 </div>
-<h2 id="les-polices-de-caractères">Les polices de caractères</h2>
-<p>Nous aimerions utiliser une autre police de caractères pour le titre et le sous-titre du graphique.</p>
+<h2 id="modifier-la-police-du-texte-avec-showtext">Modifier la police du texte avec <code>showtext</code></h2>
+<p>Nous aimerions utiliser d’autres polices de caractères pour notre graphiques.</p>
 <p>Le package <code>showtext()</code> permet d’utiliser des polices <strong>Google fonts</strong> dans nos graphiques, n’hésitez pas à fouiller pour trouver celle qui vous convient !</p>
 <p>Installez et chargez le package showtext :</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -3519,24 +3514,31 @@ Nous allons utiliser <code>geom_bar()</code> pour visualiser le nombre de pingou
 </code></pre>
 </div>
 </div>
-<p>Nous allons utiliser la police <strong>Righteous</strong> :</p>
+<p>Nous allons utiliser la police <strong>Righteous</strong> pour le titre et le sous-titre, et la police <strong>Gruppo</strong> pour la légende et les axes :</p>
 <div class="layout-chunk" data-layout="l-body">
 
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/sysfonts/man/font_add_google.html'>font_add_google</a></span><span class='op'>(</span><span class='st'>"Righteous"</span>, <span class='st'>"Righteous"</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/pkg/sysfonts/man/font_add_google.html'>font_add_google</a></span><span class='op'>(</span><span class='st'>"Gruppo"</span>, <span class='st'>"Gruppo"</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/pkg/showtext/man/showtext_auto.html'>showtext_auto</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
-<p>Nous pouvons maintenant modifier le titre et le sous-titre :</p>
+<p>Nous modifions également les marges du graphique, la taille du texte et l’alignement du titre et du sous-titre :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Modifier la police de caractères du titre et du sous-titre</span>
 <span class='op'>(</span><span class='va'>p5</span> <span class='op'>&lt;-</span> <span class='va'>p4</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span><span class='op'>(</span>plot.title <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_text</a></span><span class='op'>(</span>family <span class='op'>=</span> <span class='st'>"Righteous"</span><span class='op'>)</span>,
-        plot.subtitle <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_text</a></span><span class='op'>(</span>family <span class='op'>=</span> <span class='st'>"Righteous"</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span><span class='op'>(</span>plot.title <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_text</a></span><span class='op'>(</span>family <span class='op'>=</span> <span class='st'>"Righteous"</span>,
+                                  size <span class='op'>=</span> <span class='fl'>25</span>, margin <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>margin</a></span><span class='op'>(</span>t <span class='op'>=</span> <span class='fl'>5</span>, b <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span>,
+        plot.subtitle <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_text</a></span><span class='op'>(</span>family <span class='op'>=</span> <span class='st'>"Righteous"</span>, size <span class='op'>=</span> <span class='fl'>20</span><span class='op'>)</span>,
+        plot.title.position <span class='op'>=</span> <span class='st'>"panel"</span>,
+        plot.margin <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>margin</a></span><span class='op'>(</span><span class='fl'>5</span>, <span class='fl'>15</span>, <span class='fl'>5</span>, <span class='fl'>15</span><span class='op'>)</span>,
+        legend.text <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_text</a></span><span class='op'>(</span>family <span class='op'>=</span> <span class='st'>"Gruppo"</span>, size <span class='op'>=</span> <span class='fl'>20</span><span class='op'>)</span>,
+        axis.title <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_text</a></span><span class='op'>(</span>family <span class='op'>=</span> <span class='st'>"Gruppo"</span>, size <span class='op'>=</span> <span class='fl'>20</span><span class='op'>)</span>,
+        axis.text <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_text</a></span><span class='op'>(</span>family <span class='op'>=</span> <span class='st'>"Gruppo"</span>, size <span class='op'>=</span> <span class='fl'>15</span><span class='op'>)</span><span class='op'>)</span>
 <span class='op'>)</span>
 </code></pre>
 </div>
