@@ -1514,17 +1514,17 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p>Dans ce tutoriel nous allons voir comment communiquer les résultats de nos analyses - à l’aide de la <strong>visualisation de données</strong> :</p>
 <p><br></p>
 <p><strong>1. <a href="#construction">Construire un graphique <code>ggplot2</code></a></strong></p>
-<p><strong>2. <a href="#creer">Créer des graphiques basiques</a></strong> :</p>
+<p><strong>2. <a href="#creer">Graphiques simples</a></strong> :</p>
 <ul>
-<li><p><a href="#scatterplot">nuage de points (scatter plot)</a></p></li>
-<li><p><a href="#histogram">histogramme</a></p></li>
-<li><p><a href="#boxplot">boîtes à moustaches (box plot)</a></p></li>
-<li><p><a href="#barplot">diagramme en bâtons (bar plot)</a></p></li>
+<li><p><a href="#scatterplot"><code>geom_point()</code></a></p></li>
+<li><p><a href="#histogram"><code>geom_histogram()</code></a></p></li>
+<li><p><a href="#boxplot"><code>geom_boxplot()</code></a></p></li>
+<li><p><a href="#barplot"><code>geom_bar()</code></a></p></li>
 </ul>
 <p><strong>3. <a href="#facet">Graphiques multiples</a></strong></p>
 <ul>
-<li><p><a href="#facet_wrap">facet_wrap</a></p></li>
-<li><p><a href="#facet_grid">facet_grid</a></p></li>
+<li><p><a href="#facet_wrap">`facet_wrap()``</a></p></li>
+<li><p><a href="#facet_grid"><code>facet_grid()</code></a></p></li>
 </ul>
 <p><strong>4. <a href="#exporter">Exporter un graphique</a></strong></p>
 <ul>
@@ -1534,10 +1534,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p><strong>5. <a href="#ameliorer">Améliorer ses graphiques</a></strong></p>
 <ul>
 <li><p><a href="#theme">Les différents éléments de <code>theme()</code></a></p></li>
-<li><p><a href="#fonts">Les polices de caractères</a></p></li>
+<li><p><a href="#fonts">Modifier la police de caractères avec <code>showtext</code></a></p></li>
 </ul>
+<p>**6. <a href="#patchwork">Combiner des graphiques avec <code>patchwork</code></a></p>
 <p><br></p>
 <h1 id="construire">Construire un graphique <code>ggplot2</code></h1>
+<p><br></p>
 <p>Le package <code>ggplot2</code> (qui fait partie de la suite Tidyverse) repose sur le principe de <strong>grammaire des graphiques</strong> : notre visualisation se construit étape par étape, en procédant par <strong>couches</strong>, comme le montre la figure ci-dessous.</p>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/ggplot-grammar-of-graphics.png" width="960" /></p>
@@ -1555,7 +1557,8 @@ La figure ci-dessous montre de manière simplifiée comment créer un <code>ggpl
 </div>
 <p>Vous remarquerez dans le code la présence du signe <strong>“+”</strong> à la fin de chaque ligne : c’est ce qui permet d’ajouter une couche à votre graphique.</p>
 <h1 id="creer">Graphiques simples</h1>
-<p>Commençons par ouvrir un nouveau script R et importer le jeu de données :</p>
+<p><br></p>
+<p>Commençons par ouvrir un <strong>nouveau script R</strong> et <strong>importer le jeu de données</strong> :</p>
 <div class="layout-chunk" data-layout="l-body">
 
 </div>
@@ -1580,7 +1583,7 @@ La figure ci-dessous montre de manière simplifiée comment créer un <code>ggpl
 </div>
 </div>
 <p><br></p>
-<p>Il est toujours utile de vérifier les données importées avant d’aller plus loin :</p>
+<p>Il est toujours utile de <strong>vérifier les données</strong> importées avant d’aller plus loin :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://pillar.r-lib.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='va'>pingouins</span><span class='op'>)</span>
@@ -1602,7 +1605,9 @@ $ masse_g      &lt;dbl&gt; 3750, 3800, 3250, 3450, 3650, 3625, 4675, 3475,~</cod
 <p><img src="img/lter_penguins.png" width="900" /></p>
 </div>
 <p>Dessin de <a href="https://allisonhorst.github.io/palmerpenguins/reference/figures/lter_penguins.png">Allison Horst</a></p>
+<p><br></p>
 <h2 id="scatterplot">Nuage de points (scatter plot)</h2>
+<p><br></p>
 <p>Intéressons-nous au bec des pingouins en répondant à la question suivante : <strong>quelle est la distribution du rapport entre la hauteur du bec et sa longueur ?</strong>.</p>
 <p>Afin de bien comprendre comment construire un graphique avec <code>ggplot2</code>, procédons étape par étape.</p>
 <p><br></p>
@@ -1637,6 +1642,7 @@ $ masse_g      &lt;dbl&gt; 3750, 3800, 3250, 3450, 3650, 3625, 4675, 3475,~</cod
 </div>
 <p><br></p>
 <p>Voilà la distribution que nous cherchons à observer. C’est un bon début, mais cela manque de couleurs …</p>
+<p><br></p>
 <p>Il existe deux façons d’ajouter des couleurs à un <code>ggplot</code> :</p>
 <ul>
 <li><strong>définir une couleur pour l’ensemble des points</strong> : on placera alors le paramètre couleur <strong>en dehors de la parenthèse <code>aes()</code></strong>.</li>
@@ -1667,7 +1673,8 @@ $ masse_g      &lt;dbl&gt; 3750, 3800, 3250, 3450, 3650, 3625, 4675, 3475,~</cod
 <p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-12-1.png" width="624" /></p>
 </div>
 <p>Vous pouvez voir qu’une <strong>légende</strong> permettant de différencier les trois espèces a été ajoutée à droite du graphique.</p>
-<p>Nous aimerions utiliser les mêmes couleurs que celles de la documentation du jeu de données. Nous utilisons pour cela le paramètre <code>scale_colour_manual()</code> :</p>
+<p><br></p>
+<p>Nous aimerions utiliser les mêmes **couleurs* que celles de la documentation du jeu de données. Nous utilisons pour cela le paramètre <code>scale_colour_manual()</code> :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Modifier les couleurs</span>
@@ -1682,7 +1689,7 @@ $ masse_g      &lt;dbl&gt; 3750, 3800, 3250, 3450, 3650, 3625, 4675, 3475,~</cod
 </div>
 <p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-13-1.png" width="624" /></p>
 </div>
-<p>La taille des points nous semble trop petite : nous allons l’augmenter à l’aide de <code>size</code> :</p>
+<p>La <strong>taille</strong> des points nous semble trop petite : nous allons l’augmenter à l’aide de <code>size</code> :</p>
 <aside>
 Prend une valeur numérique, par défaut 1
 </aside>
@@ -1701,7 +1708,7 @@ Prend une valeur numérique, par défaut 1
 </div>
 <p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-14-1.png" width="624" /></p>
 </div>
-<p>Afin de rendre le graphique plus lisible, nous pouvons ajouter de la transparence aux points à l’aide du paramètre <code>alpha</code> :</p>
+<p>Afin de rendre le graphique plus lisible, nous pouvons ajouter de la <strong>transparence</strong> aux points à l’aide du paramètre <code>alpha</code> :</p>
 <aside>
 Entre 0 et 1, par opacité croissante
 </aside>
@@ -1721,7 +1728,7 @@ Entre 0 et 1, par opacité croissante
 </div>
 <p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-15-1.png" width="624" /></p>
 </div>
-<p>Nous allons maintenant ajouter un titre et un sous-titre à notre graphique, et modifier les titres des axes pour les rendre plus explicites :</p>
+<p>Nous allons maintenant ajouter un <strong>titre</strong> et un <strong>sous-titre</strong> à notre graphique, et modifier les <strong>titres des axes</strong> pour les rendre plus explicites :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Ajouter ou modifier les titres du graphique et des axes</span>
@@ -1742,8 +1749,9 @@ Entre 0 et 1, par opacité croissante
 </div>
 <p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-16-1.png" width="624" /></p>
 </div>
-<p>Le fond gris du graphique est proposé par défaut par <code>ggplot2</code> : il s’agit d’un <strong>thème</strong> définissant l’apparence générale du graphique (couleurs de l’arrière-plan, de la grille, présence ou non d’un cadre, …). Nous allons utiliser l’un des autres thèmes prédéfinis dans <code>ggplot2</code>, le thème <strong>“minimal”</strong> à l’aide du paramètre <code>theme_minimal()</code>.</p>
-<p><br> Il en existe d’autres : <code>theme_light()</code>, <code>theme_bw()</code>, <code>theme_void()</code>, … N’hésitez pas à les essayer pour trouver celui qui vous convient le mieux !</p>
+<p>Le fond gris du graphique est proposé par défaut par <code>ggplot2</code> : il s’agit d’un <strong>thème</strong> définissant l’apparence générale du graphique (couleurs de l’arrière-plan, de la grille, présence ou non d’un cadre, …).</p>
+<p>Nous allons utiliser l’un des autres thèmes prédéfinis dans <code>ggplot2</code>, le thème <strong>“minimal”</strong> à l’aide du paramètre <code>theme_minimal()</code>.</p>
+<p>Il en existe d’autres : <code>theme_light()</code>, <code>theme_bw()</code>, <code>theme_void()</code>, … N’hésitez pas à les essayer pour trouver celui qui vous convient le mieux !</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Changer le thème</span>
@@ -1770,12 +1778,14 @@ Entre 0 et 1, par opacité croissante
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/geom_point_shapes.png" width="700" /></p>
 </div>
+<p><br></p>
 <p>La façon de colorer les points dépend de la forme choisie :</p>
 <ul>
 <li><p>couleur appliquée au <strong>contour</strong> pour les formes <strong>0 à 14</strong> à l’aide de <code>colour = ...</code></p></li>
 <li><p>couleur appliquée à l’<strong>intérieur</strong> pour les formes <strong>15 à 20</strong> à l’aide de <code>fill = ...</code></p></li>
 <li><p>couleur appliquée <strong>au contour et à l’intérieur</strong> pour les formes <strong>21 à 24</strong> à l’aide de ces deux paramètres, avec la même couleur ou des couleurs différentes. Pour ces cinq formes, la largeur du contour peut être modifiée à l’aide de <code>stroke = ...</code> (prend une valeur numérique).</p></li>
 </ul>
+<p><br></p>
 <p>Pour donner un exemple, nous pouvons ajouter à nos points un contour noir :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -1831,8 +1841,11 @@ Entre 0 et 1, par opacité croissante
 <p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-21-1.png" width="624" /></p>
 </div>
 <p>Il existe beaucoup d’autres palettes, accessibles via des packages, dont la liste est <a href="https://github.com/EmilHvitfeldt/r-color-palettes">accessible ici</a>.</p>
+<p><br></p>
 <h2 id="histogram">Histogramme</h2>
-<p>Essayons maintenant de répondre à la question suivante : <strong>quelle est la distribution de la longueur des ailes ?</strong>. <br> Nous allons pour cela générer un histogramme à l’aide de <code>geom_histogram()</code> :</p>
+<p><br></p>
+<p>Essayons maintenant de répondre à la question suivante : <strong>quelle est la distribution de la longueur des ailes ?</strong>. <br></p>
+<p>Nous allons pour cela générer un histogramme à l’aide de <code>geom_histogram()</code> :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Histogramme</span>
@@ -1852,9 +1865,9 @@ Entre 0 et 1, par opacité croissante
 </div>
 <p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-22-1.png" width="624" /></p>
 </div>
-<p>Il existe trois manières d’arranger la position des histogrammes des différents groupes :</p>
+<p>Il existe trois manières d’<strong>arranger la position des histogrammes</strong> des différents groupes :</p>
 <p><strong>1) <code>position = "stack</code> (par défaut)</strong> : voir ci-dessus.</p>
-<strong>2) <code>position = "identity</code></strong> :
+<p><strong>2) <code>position = "identity"</code></strong> :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Histogramme - position = "identity"</span>
@@ -1875,7 +1888,7 @@ Entre 0 et 1, par opacité croissante
 </div>
 <p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-23-1.png" width="624" /></p>
 </div>
-<strong>3) <code>position = "dodge</code></strong>
+<p><strong>3) <code>position = "dodge"</code></strong></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Histogramme - position = "dodge"</span>
@@ -1896,15 +1909,11 @@ Entre 0 et 1, par opacité croissante
 </div>
 <p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-24-1.png" width="624" /></p>
 </div>
+<p><br></p>
 <p>Lorsque vous exécutez ce code, vous pouvez lire le message suivant dans la console : <strong><code>stat_bin()</code> using <code>bins = 30</code>. Pick better value with <code>binwidth</code>.</strong></p>
-<p><br></p>
 <p>Cela vous signale que le nombre de classes (bins) choisi pour l’histogramme n’est peut-être pas idéal.</p>
-<p><br></p>
 <p>Vous pouvez modifier ces classes de deux façons :</p>
 <p><strong>1) en modifiant la largeur de chaque classe sur l’axe x : <code>binwidth = ...</code></strong></p>
-<p><strong>2) en modifiant le nombre de classes à afficher : <code>bins = ...</code></strong></p>
-<p><br></p>
-<p>Modifions ces paramètres pour voir le résultat :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Histogramme - position = "identity" - binwidth = 0.5</span>
@@ -1926,7 +1935,7 @@ Entre 0 et 1, par opacité croissante
 </div>
 <p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-25-1.png" width="624" /></p>
 </div>
-<p><br></p>
+<p><strong>2) en modifiant le nombre de classes à afficher : <code>bins = ...</code></strong></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Histogramme - position = "identity" - bins = 15</span>
@@ -1948,9 +1957,9 @@ Entre 0 et 1, par opacité croissante
 </div>
 <p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-26-1.png" width="624" /></p>
 </div>
+<p><br></p>
 <h2 id="boxplot">Boîtes à moustaches (box plot)</h2>
 <p>Intéressons-nous maintenant à la masse de nos pingouins : <strong>les masses des trois espèces sont-elles similaires ?</strong></p>
-<p><br></p>
 <p>Nous allons créer un graphique en boîte à moustaches à l’aide de <code>geom_boxplot()</code> :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -1971,6 +1980,7 @@ Entre 0 et 1, par opacité croissante
 </div>
 <p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-27-1.png" width="624" /></p>
 </div>
+<p><br></p>
 <p>Nous pouvons apporter quelques modifications à ce graphique :</p>
 <ul>
 <li><p>comme il y a une boîte à moustaches par espèce, nous <strong>pouvons supprimer la légende à l’aide de <code>show_legend = FALSE</code></strong></p></li>
@@ -2069,7 +2079,8 @@ Entre 0 et 1, par opacité croissante
 </div>
 <p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-30-1.png" width="624" /></p>
 </div>
-<p>Nous pouvons ajouter à ces box plots des scatter plots pour visualiser les données sous-jacentes :</p>
+<p><br></p>
+<p>Nous pouvons <strong>ajouter à ces box plots des scatter plots</strong> pour visualiser les données sous-jacentes :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Boxplots + scatter plots</span>
@@ -2102,7 +2113,10 @@ Entre 0 et 1, par opacité croissante
 </div>
 <p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-31-1.png" width="624" /></p>
 </div>
-<p>Nous aimerions espacer un peu les points pour rendre le graphique plus lisible. Nous allons pour cela utiliser un autre type de visualisation de nuages de points : <code>geom_jitter()</code>. Les paramètres <code>height</code> et <code>width</code> permettent d’ajuster l’étalement du nuage respectivement en hauteur et en largeur. L’utilisation de l’un ou l’autre de ces paramètres dépendra de l’orientation de nos nuages de points (répartition des variables sur les axes x et y et utilisation de <code>coord_flip()</code>).</p>
+<p><br></p>
+<p>Nous aimerions <strong>espacer les points</strong> pour rendre le graphique plus lisible. Nous allons pour cela utiliser un autre type de visualisation de nuages de points : <code>geom_jitter()</code>.</p>
+<p>Les paramètres <code>height</code> et <code>width</code> permettent d’ajuster l’étalement du nuage respectivement en hauteur et en largeur.</p>
+<p>L’utilisation de l’un ou l’autre de ces paramètres dépendra de l’orientation de nos nuages de points (répartition des variables sur les axes x et y et utilisation de <code>coord_flip()</code>).</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Boxplots + geom_jitter()</span>
@@ -2136,9 +2150,11 @@ Entre 0 et 1, par opacité croissante
 </div>
 <p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-32-1.png" width="624" /></p>
 </div>
+<p><br></p>
 <h2 id="barplot">Diagramme en bâtons (bar plot)</h2>
-<p><strong>Quelle espèce compte le plus de pingouins ?</strong><br />
-Nous allons utiliser <code>geom_bar()</code> pour visualiser le nombre de pingouins par espèce :</p>
+<p><br></p>
+<p><strong>Quelle espèce compte le plus de pingouins ?</strong></p>
+<p>Nous allons utiliser <code>geom_bar()</code> pour visualiser le nombre de pingouins par espèce :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Barplot</span>
@@ -2158,8 +2174,10 @@ Nous allons utiliser <code>geom_bar()</code> pour visualiser le nombre de pingou
 </div>
 <p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-33-1.png" width="624" /></p>
 </div>
+<p><br></p>
 <p>Les espèces étant déjà notées sur l’axe x, nous utilisons <code>show.legend = FALSE</code> pour alléger le graphique.</p>
-<p>Nous souhaiterions ajouter des étiquettes de texte au-dessus des barres pour indiquer le nombre de pingouins par espèce. Nous allons pour cela ajouter une couche à l’aide de <code>geom_text()</code> :</p>
+<p><br></p>
+<p>Nous souhaiterions ajouter des <strong>étiquettes de texte</strong> au-dessus des barres pour indiquer le nombre de pingouins par espèce. Nous allons pour cela ajouter une couche à l’aide de <code>geom_text()</code> :</p>
 <ul>
 <li><p><code>aes(label = ..count..)</code> : indique que les étiquettes contiendront le nombre d’observations par groupe défini précédemment (les espèces).</p></li>
 <li><p><code>stat = "count"</code> : nécessaire pour que le code fonctionne.</p></li>
@@ -2187,7 +2205,7 @@ Nous allons utiliser <code>geom_bar()</code> pour visualiser le nombre de pingou
 </div>
 <p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-34-1.png" width="624" /></p>
 </div>
-<p>Vous pouvez voir que l’étiquette pour l’espèce Adélie est coupée … il y a plusieurs façons de régler ce problème. Nous allons simplement positionner les étiquettes à l’intérieur des barres, augmenter la taille des caractères et colorer le texte en blanc pour le rendre plus lisible.</p>
+<p>Vous pouvez voir que l’étiquette pour l’espèce Adélie est coupée … il y a plusieurs façons de régler ce problème. Nous allons simplement <strong>positionner les étiquettes à l’intérieur des barres</strong>, <strong>augmenter la taille des caractères</strong> et <strong>colorer le texte en blanc</strong> pour le rendre plus lisible.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Barplot + geom_text() + texte dans les barres</span>
@@ -2212,7 +2230,9 @@ Nous allons utiliser <code>geom_bar()</code> pour visualiser le nombre de pingou
 </div>
 <p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-35-1.png" width="624" /></p>
 </div>
-<p>Comme vous pouvez le voir, les espèces sont placées le long de l’axe x par ordre alphabétique. Nous préférerions qu’elles soient triées par ordre décroissant de nombre de pingouins. Nous allons voir trois façons de procéder :</p>
+<p>Comme vous pouvez le voir, les espèces sont placées le long de l’axe x par <strong>ordre alphabétique</strong>.</p>
+<p>Nous préférerions qu’elles soient triées par ordre décroissant de nombre de pingouins. Nous allons voir trois façons de procéder :</p>
+<p><br></p>
 <p><strong>1) créer un objet intermédiaire</strong> : approche à éviter car elle ajoute un objet dans l’environnement et n’est <strong>pas dynamique</strong>, c’est-à-dire que le code ne sera pas utilisable pour d’autres cas de figure.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2242,7 +2262,8 @@ Nous allons utiliser <code>geom_bar()</code> pour visualiser le nombre de pingou
 </code></pre>
 </div>
 </div>
-<p><strong>2) modifier l’objet <em>pingouins</em> dans la fonction ggplot</strong> : cette approche utilise la fonction <code>mutate()</code> du package <code>dplyr</code> pour créer le facteur espece. Le code sera ré-utilisable et ne crée pas de nouvel objet dans l’environnement. Il nous faut par contre déterminer les niveaux du facteur avec <code>levels()</code>.</p>
+<p><br></p>
+<p><strong>2) modifier l’objet <em>pingouins</em> dans la fonction ggplot</strong> : cette approche utilise la fonction <code>mutate()</code> du package <code>dplyr</code> pour créer le facteur espece. Le code ne crée pas de nouvel objet dans l’environnement. Il nous faut par contre <strong>définir les niveaux du facteur</strong> avec <code>levels()</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Tri dans la fonction ggplot() à l'aide de mutate()</span>
@@ -2269,7 +2290,8 @@ Nous allons utiliser <code>geom_bar()</code> pour visualiser le nombre de pingou
 </code></pre>
 </div>
 </div>
-<p><strong>3) utiliser les fonctionnalités du package <code>forcats</code></strong> : ce package, qui fait partie du Tidyverse, permet d’effectuer des opérations sur des facteurs. C’est l’<strong>approche la plus dynamique</strong> : R transforme une variable en facteur et détermine automatiquement les niveaux. Nous n’avons donc plus besoin de préciser les niveaux. Nous pouvons par exemple trier les niveaux d’un facteur par ordre d’apparition avec <code>fct_inseq()</code>, ou par ordre de nombre d’observations à l’aide de <code>fct_infreq()</code>.</p>
+<p><br></p>
+<p><strong>3) utiliser les fonctionnalités du <a href="https://forcats.tidyverse.org/">package <code>forcats</code>**</a> : ce package, qui fait partie du Tidyverse, permet d’effectuer des opérations sur des facteurs. C’est l’</strong>approche la plus dynamique** : R transforme une variable en facteur et détermine automatiquement les niveaux. Nous n’avons donc plus besoin de préciser les niveaux. Nous pouvons par exemple trier les niveaux d’un facteur par ordre d’apparition avec <code>fct_inseq()</code>, ou par ordre de nombre d’observations à l’aide de <code>fct_infreq()</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Tri dans la fonction ggplot() à l'aide des fonctionnalites du package forcats</span>
@@ -2297,9 +2319,10 @@ Nous allons utiliser <code>geom_bar()</code> pour visualiser le nombre de pingou
 <p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-38-1.png" width="624" /></p>
 </div>
 <p><br></p>
-<p>Comme nous l’avions fait pour les boxplots, nous pouvons changer l’orientation des barres. Nous allons modifier quelques éléments du code :</p>
+<p>Comme nous l’avions fait pour les boxplots, nous pouvons <strong>changer l’orientation</strong> des barres.</p>
+<p>Nous allons modifier quelques éléments du code :</p>
 <ul>
-<li><p>en basculant les espèces le long de l’axe y, l’espèce ayant le plus grand nombre de pingouins va se retrouver en bas du graphique. En effet, la variable <strong>espece</strong> étant un facteur avec des niveaux ordonnés, le premier niveau du facteur se retrouve au plus près de l’origine de l’axe : à gauche si les barres sont orientées verticalement, en bas si elles sont orientées horizontalement. Pour inverser l’ordre des niveaux, nous utilisons <code>fct_rev()</code>.</p></li>
+<li><p>en basculant les espèces le long de l’axe y, l’espèce ayant le plus grand nombre de pingouins va se retrouver en bas du graphique. En effet, la variable espece étant un facteur avec des niveaux ordonnés, le premier niveau du facteur se retrouve au plus près de l’origine de l’axe : à gauche si les barres sont orientées verticalement, en bas si elles sont orientées horizontalement. Pour inverser l’ordre des niveaux, nous utilisons <code>fct_rev()</code>.</p></li>
 <li><p>nous modifions l’alignement des étiquettes en remplaçant <code>vjust</code> par <code>hjust</code></p></li>
 <li><p>nous réduisons la largeur des barres à l’aide du paramètre <code>width</code></p></li>
 </ul>
@@ -2333,8 +2356,10 @@ Nous allons utiliser <code>geom_bar()</code> pour visualiser le nombre de pingou
 </div>
 <p><br></p>
 <h3 id="une-note-sur-lutilisation-du-pipe">Une note sur l’utilisation du pipe <code>%&gt;%</code></h3>
-<p>Nous pouvons également utiliser le <strong>pipe <code>%&gt;%</code></strong> que nous avions vu dans le tutoriel sur le Tidyverse pour enchaîner les opérations de tri puis la création du graphique.</p>
-<p>Cette façon de procéder permet, quand nous manipulons un jeu de données (ajout d’une colonne par exemple), de s’assurer que nous n’avons pas fait d’erreur avant de générer le graphique, le tout sans avoir besoin de créer d’objet intermédiaire. L’utilisation du pipe permet également de bénéficier de l’auto-complétion à l’aide de la touche <code>Tab</code>, ce qui est plutôt appréciable quand nos variables portent des noms complexes ou que le code contient de nombreux paramètres.</p>
+<p><br></p>
+<p>Nous pouvons également utiliser le <strong>pipe <code>%&gt;%</code></strong> que nous avions vu dans le <a href="https://codons.netlify.app/posts/manipuler-donnees-tidyverse/#rename">tutoriel sur le Tidyverse</a> pour enchaîner les opérations de tri puis la création du graphique.</p>
+<p>Cette façon de procéder permet, quand nous manipulons un jeu de données (ajout d’une colonne par exemple), de s’assurer que nous n’avons <strong>pas fait d’erreur</strong> avant de générer le graphique, le tout <strong>sans avoir besoin de créer d’objet intermédiaire</strong>.</p>
+<p>L’utilisation du pipe permet également de bénéficier de l’<strong>auto-complétion</strong> à l’aide de la touche <code>Tab</code>, ce qui est plutôt appréciable quand nos variables portent des noms complexes ou que le code contient de nombreux paramètres.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Utilisation du pipe %&gt;%</span>
@@ -2363,7 +2388,9 @@ Nous allons utiliser <code>geom_bar()</code> pour visualiser le nombre de pingou
 </div>
 <p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-40-1.png" width="624" /></p>
 </div>
+<p><br></p>
 <h1 id="facet">Graphiques multiples</h1>
+<p><br></p>
 <p>Quel est le <strong>rapport entre la longueur du bec et la longueur des ailes</strong> ?</p>
 <p>Nous pouvons créer un nuage de points avec les trois espèces sur un même graphique, comme nous l’avons fait jusqu’ici :</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -2387,12 +2414,15 @@ Nous allons utiliser <code>geom_bar()</code> pour visualiser le nombre de pingou
 </div>
 <p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-41-1.png" width="624" /></p>
 </div>
-<p>Nous souhaitons maintenant visualiser ces données en sépérant les graphiques par espece et par ile.</p>
+<p><br></p>
+<p>Nous souhaitons maintenant visualiser ces données en <strong>sépérant les graphiques par espèce et par île</strong>.</p>
 <p>Nous pourrions pour cela créer séparément les graphiques à l’aide de la fonction <code>filter()</code>. <code>ggplot2</code> possède deux fonctions qui le font directement : <strong><code>facet_wrap()</code></strong> et <strong><code>facet_grid()</code></strong>.</p>
+<p><br></p>
 <h2 id="facet_wrap"><code>facet_wrap()</code></h2>
+<p><br></p>
 <p>Nous allons simplement ajouter une couche à notre graphique précédent en précisant quelle variable sert à séparer les données (à l’aide d’un <strong>tilde ~</strong>).</p>
 <p>Les fonctions <code>facet_...()</code> génèrent automatiquement des étiquettes de texte, nous ajoutons donc le paramètre <code>show.legend = FALSE</code>.</p>
-<p>Nous modifions également le thème pour rendre les noms des espèces plus lisibles :</p>
+<p>Nous modifions également le <strong>thème</strong> pour rendre les noms des espèces plus lisibles :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># facet_wrap() : 1 graphique par espece</span>
@@ -2416,8 +2446,8 @@ Nous allons utiliser <code>geom_bar()</code> pour visualiser le nombre de pingou
 </div>
 <p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-42-1.png" width="624" /></p>
 </div>
-<p>Nous pouvons modifier l’orientation des graphiques à l’aide du paramètre <code>dir = ...</code> (par défaut <code>h</code>, <code>v</code> pour des graphiques orientés verticalement).</p>
-<p>Nous pouvons également déplacer l’étiquette de titre (noms des espèces dans notre cas) avec le paramètre <code>strip.position = ...</code> (par défaut <code>top</code>, peut prendre les valeurs <code>right</code>, <code>bottom</code> ou <code>left</code>) :</p>
+<p>Nous pouvons modifier l’<strong>orientation</strong> des graphiques à l’aide du paramètre <code>dir = ...</code> (par défaut <code>h</code>, <code>v</code> pour des graphiques orientés verticalement).</p>
+<p>Nous pouvons également <strong>déplacer l’étiquette de titre</strong> (noms des espèces dans notre cas) avec le paramètre <code>strip.position = ...</code> (par défaut <code>top</code>, peut prendre les valeurs <code>right</code>, <code>bottom</code> ou <code>left</code>) :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># facet_wrap() : 1 graphique par espece + paramètres</span>
@@ -2443,8 +2473,11 @@ Nous allons utiliser <code>geom_bar()</code> pour visualiser le nombre de pingou
 </div>
 <p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-43-1.png" width="624" /></p>
 </div>
+<p><br></p>
 <h2 id="facet_grid"><code>facet_grid()</code></h2>
-<p>Quand nous souhaitons utiliser deux variables discrètes (non continues, avec des catégories) pour séparer nos données, nous utilisons la fonction <code>facet_grid()</code>. La syntaxe est similaire et nous précisons avec l’opérateur <code>lignes ~ colonnes</code> comment répartir les variables :</p>
+<p><br></p>
+<p>Quand nous souhaitons utiliser deux variables discrètes (non continues, avec des catégories) pour séparer nos données, nous utilisons la fonction <code>facet_grid()</code>.</p>
+<p>La syntaxe est similaire et nous précisons avec l’opérateur <code>lignes ~ colonnes</code> comment répartir les variables :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># facet_grid() : 1 graphique par combinaison de variables</span>
@@ -2468,7 +2501,7 @@ Nous allons utiliser <code>geom_bar()</code> pour visualiser le nombre de pingou
 </div>
 <p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-44-1.png" width="624" /></p>
 </div>
-<p>Toutes les combinaisons possibles sont affichées, ce qui génère des graphiques vides dans le cas où la combinaison en question ne possède aucune observation.</p>
+<p><strong>Toutes les combinaisons</strong> possibles sont affichées, ce qui génère des graphiques vides dans le cas où la combinaison en question ne possède aucune observation.</p>
 <p>Nous pouvons déplacer les étiquettes de titres à l’aide du paramètre <code>switch</code> qui peut prendre trois valeurs : <code>x</code> pour déplacer les étiquettes de l’axe x en bas des graphiques, <code>y</code> pour déplacer les étiquettes des axes y à gauche des graphiques, ou <code>both</code> pour effectuer les deux modifications simultanément :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2494,15 +2527,20 @@ Nous allons utiliser <code>geom_bar()</code> pour visualiser le nombre de pingou
 </div>
 <p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-45-1.png" width="624" /></p>
 </div>
+<p><br></p>
 <h1 id="exporter">Exporter un graphique</h1>
+<p><br></p>
 <p>Jusqu’à présent, nos graphiques apparaissaient dans l’onglet <strong>Plots</strong> mais n’étaient pas sauvegardés.</p>
 <p>Nous allons voir deux façons d’exporter un graphique :</p>
 <ul>
 <li><p>directement depuis l’onglet Plot</p></li>
 <li><p>en ligne de commande avec <code>ggsave()</code></p></li>
 </ul>
+<p><br></p>
 <h2 id="depuis-longlet-plots">Depuis l’onglet <em>Plots</em></h2>
+<p><br></p>
 <p>L’onglet <strong>Plots</strong> vous permet de naviguer entre vos graphiques, d’ouvrir le graphique actuellement affiché dans une nouvelle fenêtre, d’exporter votre graphique, de le supprimer ou de supprimer tous les graphiques de la session de travail.</p>
+<p><br></p>
 <p>En cliquant sur <strong>Export</strong>, vous avez trois options :</p>
 <ul>
 <li><p>sauvegarder le graphique <strong>sous forme d’image</strong></p></li>
@@ -2512,15 +2550,18 @@ Nous allons utiliser <code>geom_bar()</code> pour visualiser le nombre de pingou
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/export_ggplot_01.png" width="486" /></p>
 </div>
+<p><br></p>
 <p>Nous allons exporter le barplot horizontal sous forme d’image : cliquez sur <strong>Export</strong> puis <strong>Save as image</strong>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/export_ggplot_02.png" width="491" /></p>
 </div>
 <p>Vous aurez alors le choix entre plusieurs <strong>extensions</strong> (<code>.png</code>, <code>.jpeg</code>, …).</p>
 <p>Vous pourrez également <strong>redimensionner</strong> votre graphique (en conservant ou non le ratio des dimensions), choisir le <strong>dossier de destination</strong> et <strong>renommer</strong> votre fichier (le nom proposé par défaut n’est pas très explicite …).</p>
+<p><br></p>
 <h2 id="avec-ggsave">Avec <code>ggsave()</code></h2>
+<p><br></p>
 <p>Cette fonction permet d’exporter un graphique au format <strong>.png</strong> dans un répertoire, avec les dimensions et la résolution de notre choix.</p>
-<p>Vous devez tout d’abord assigner le graphique à exporter dans un objet. R étant un langage de programmation orienté objet, tout ce que vous manipulez (les fichiers importés, les fonctions et même les graphiques) sont stockés dans la mémoire vive sous forme d’objet (visibles dans l’onglet <strong>Environment</strong>).</p>
+<p>Vous devez tout d’abord <strong>assigner le graphique à exporter dans un objet</strong>. R étant un langage de programmation orienté objet, tout ce que vous manipulez (les fichiers importés, les fonctions et même les graphiques) sont stockés dans la mémoire vive sous forme d’objet (visibles dans l’onglet <strong>Environment</strong>).</p>
 <p>Reprenons le code utilisé pour générer le barplot horizontal et assignons-le à l’objet <code>barplot_especes</code> :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2552,7 +2593,7 @@ Nous allons utiliser <code>geom_bar()</code> pour visualiser le nombre de pingou
 <p>Pour ce faire, vous avez deux options :</p>
 <ul>
 <li><p>appeler l’objet <code>barplot_especes</code> dans la console ou le script et exécuter la commande</p></li>
-<li><p>entourer le code précédant par des parenthèses : cela permet d’assigner le graphique dans l’objet et de l’afficher dans l’onglet Plots.</p></li>
+<li><p><strong>entourer le code précédant par des parenthèses</strong> : cela permet d’assigner le graphique dans l’objet et de l’afficher dans l’onglet Plots.</p></li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2582,6 +2623,7 @@ Nous allons utiliser <code>geom_bar()</code> pour visualiser le nombre de pingou
 </div>
 <p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-49-1.png" width="624" /></p>
 </div>
+<p><br></p>
 <p>Nous pouvons maintenant sauvegarder le graphique à l’aide de la fonction <code>ggsave()</code> en utilisant les paramètres suivants :</p>
 <ul>
 <li><p><code>figs/barplot_especes.png</code> : emplacement du fichier à exporter (dossier/nom-du-fichier)</p></li>
@@ -2596,28 +2638,34 @@ Nous allons utiliser <code>geom_bar()</code> pour visualiser le nombre de pingou
 </code></pre>
 </div>
 </div>
-<p>Il existe d’autres paramètres, n’hésitez pas explorer l’aide de la fonction à l’aide de la commande <code>?ggsave</code>.</p>
+<p>Il existe d’autres paramètres, n’hésitez pas explorer l’aide de la fonction à l’<strong>aide de la commande <code>?ggsave</code></strong>.</p>
 <p>Vous pouvez essayer différentes options et valeurs pour voir le résultat.</p>
 <p>Ouvrez le fichier <code>barplot_especes.png</code> et comparez ce fichier avec le visuel affiché dans votre session RStudio.</p>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/barplot_especes.png" width="1920" /></p>
 </div>
-<p>Il n’est pas rare d’avoir quelques surprises ! La taille des lettres peut par exemple être plus petite dans le fichier exporté que dans l’aperçu RStudio.</p>
-<p>Il est toujours utile d’exporter son graphique et de vérifier le rendu pour rectifier les paramètres si nécessaire.</p>
+<p><strong>Il n’est pas rare d’avoir quelques surprises</strong> ! La taille des lettres peut par exemple être plus petite dans le fichier exporté que dans l’aperçu RStudio.</p>
+<p>Il est toujours utile d’<strong>exporter son graphique</strong> et de <strong>vérifier le rendu</strong> pour <strong>rectifier les paramètres si nécessaire</strong>.</p>
 <p><a href="https://www.christophenicault.com/post/understand_size_dimension_ggplot2/">Cet article</a> explique en détail comment paramétrer la taille et la résolution d’une image.</p>
+<p><br></p>
 <h1 id="ameliorer">Améliorer ses graphiques</h1>
-<p>Nous avons vu comment créer les principaux types de graphiques ainsi que certains paramètres permettant de modifier leur apparence. Il existe énormément de paramètres permettant de modifier nos graphiques pour les rendre plus attractifs. Les possibilités sont pour ainsi dire infinies !</p>
+<p><br></p>
+<p>Nous avons vu comment créer les principaux types de graphiques ainsi que certains paramètres permettant de modifier leur apparence. Il existe énormément de paramètres permettant de modifier nos graphiques pour les rendre plus attractifs. <strong>Les possibilités sont pour ainsi dire infinies !</strong></p>
 <p><br></p>
 <p>La suite de ce tutoriel vous donnera quelques éléments pour améliorer vos graphiques, n’hésitez pas à aller voir la section <strong>Liens</strong> du blog pour trouver d’autres ressources qui vous aideront à creuser encore davantage les possibilités de <code>ggplot2</code>.</p>
+<p><br></p>
 <h2 id="les-différents-éléments-de-theme">Les différents éléments de <code>theme()</code></h2>
-<p>Un graphique se compose de quatre parties principales, dont nous pouvons paramétrer les différents éléments :</p>
+<p><br></p>
+<p>Un graphique se compose de <strong>quatre parties</strong> principales, dont nous pouvons paramétrer les différents éléments :</p>
 <ul>
 <li><p>le <strong>“panel”</strong> qui contient les éléments géométriques de visualisation</p></li>
 <li><p>le <strong>“plot”</strong> qui contient ce qui entoure le panel (titre, sous-titre, …)</p></li>
 <li><p>les <strong>axes</strong> avec les titres, les graduations, …</p></li>
 <li><p>la <strong>légende</strong></p></li>
 </ul>
-<p>Nous allons voir comment modifier chaque partie d’un graphique, en utilisant le scatter plot généré au début de ce tutoriel. Commençons par reprendre le code utilisé et assignons-le à un objet. Nous pourrons ensuite ajouter les couches apportant les modifications :</p>
+<p><br></p>
+<p>Nous allons voir comment modifier chaque partie d’un graphique, en utilisant le scatter plot généré au début de ce tutoriel.</p>
+<p>Commençons par reprendre le code utilisé et assignons-le à un objet. Nous pourrons ensuite ajouter les couches apportant les modifications :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Scatter plot basique</span>
@@ -2639,12 +2687,15 @@ Nous allons utiliser <code>geom_bar()</code> pour visualiser le nombre de pingou
 </div>
 <p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-52-1.png" width="624" /></p>
 </div>
+<p><br></p>
 <h3 id="le-panel">Le <strong>panel</strong></h3>
+<p><br></p>
 <div class="layout-chunk" data-layout="l-body-outset">
 <p><img src="img/ggplot_themes_panel.png" width="640" /></p>
 </div>
-<p>Nous allons pouvoir définir des paramètres pour ces différents éléments, selon la syntaxe suivante : <code>nom-du-parametre = element_...()</code>.</p>
+<p>Nous allons pouvoir définir des paramètres pour ces différents éléments, selon la syntaxe suivante : <strong><code>nom-du-parametre = element_...()</code></strong>.</p>
 <p>En fonction de ce que nous paramétrons, nous allons utiliser par exemple <code>element_rect()</code> (contour et intérieur d’une zone rectangulaire), <code>element_line()</code> (couleur et épaisseur d’une ligne) ou <code>element_text()</code> (police de caractères, taille et couleur du texte, alignement).</p>
+<p><br></p>
 <p>Nous allons modifier les éléments suivants du panel :</p>
 <ul>
 <li><p><strong>couleur de l’arrière-plan</strong> avec <code>panel.background = element_rect(fill = ..., colour = ...)</code><br />
@@ -2667,12 +2718,14 @@ Nous allons utiliser <code>geom_bar()</code> pour visualiser le nombre de pingou
 </div>
 <p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-54-1.png" width="624" /></p>
 </div>
+<p><br></p>
 <h3 id="le-plot">Le plot</h3>
+<p><br></p>
 <div class="layout-chunk" data-layout="l-body-outset">
 <p><img src="img/ggplot_themes_plot.png" width="640" /></p>
 </div>
-<p>Nous allons utiliser la même couleur pour l’arrière-plan de la zone de plot (<code>plot.background()</code>), ce qui nécessitera de modifier la couleur du titre (<code>plot.title</code>) et du sous-titre (<code>plot.subtitle</code>) (et plus tard des titres et du texte des axes et de la légende).</p>
-<p>Nous allons également utiliser <code>plot.margin()</code> pour augmenter l’espace entre le bord supérieur de la zone de plot et le titre. Les fonctions permettant de modifier les marges s’utilisent de la manière suivante : <code>plot.margin = margin(top = ..., right = ..., bottom = ..., left = ...)</code>. Vous pouvez utiliser les initiales : <code>margin(t = ..., r = ..., b = ..., l = ...)</code> ou simplement les valeurs numériques des quatres paramètres séparées par des virgules.</p>
+<p>Nous allons utiliser la <strong>même couleur pour l’arrière-plan de la zone de plot (<code>plot.background()</code>)</strong>, ce qui nécessitera de modifier la <strong>couleur du titre (<code>plot.title</code>) et du sous-titre (<code>plot.subtitle</code>)</strong> (et plus tard des titres et du texte des axes et de la légende).</p>
+<p>Nous allons également utiliser <code>plot.margin()</code> pour <strong>augmenter l’espace</strong> entre le bord supérieur de la zone de plot et le titre. Les fonctions permettant de modifier les marges s’utilisent de la manière suivante : <code>plot.margin = margin(top = ..., right = ..., bottom = ..., left = ...)</code>. Vous pouvez utiliser les initiales : <code>margin(t = ..., r = ..., b = ..., l = ...)</code> ou simplement les valeurs numériques des quatres paramètres séparées par des virgules.</p>
 <p>Nous pouvons aligner le titre et le sous-titre au centre (<code>hjust = 0.5</code>) et ajouter de l’espace entre le haut du panel et le sous-titre pour aérer notre graphique. Nous pouvons pour cela ajouter un paramètre <code>margin</code> dans l’élément <code>plot.subtitle = element_text()</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2706,11 +2759,14 @@ Nous allons utiliser <code>geom_bar()</code> pour visualiser le nombre de pingou
 </div>
 <p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-57-1.png" width="624" /></p>
 </div>
+<p><br></p>
 <h3 id="les-axes">Les axes</h3>
+<p><br></p>
 <div class="layout-chunk" data-layout="l-body-outset">
 <p><img src="img/ggplot_themes_axis.png" width="640" /></p>
 </div>
-<p>Nous allons modifier la couleur des titres des axes. Nous pourrions le faire pour les axes x et y à l’aide de <code>axis.title = element_text(colour = "white)</code>. Nous aimerions cependant augementer l’espace entre le titres des axes et les axes, nous devons pouvons utiliser <code>axis.title.x = element_text(colour = "white", margin = margin(t = 10))</code> et <code>axis.title.y = element_text(colour = "white", margin = margin(r = 10))</code> pour respecter l’orientation des titres.</p>
+<p>Nous allons modifier la <strong>couleur des titres des axes</strong>. Nous pourrions le faire pour les axes x et y à l’aide de <code>axis.title = element_text(colour = "white)</code>.</p>
+<p>Nous aimerions cependant <strong>augmenter l’espace entre le titres des axes et les axes</strong>, nous devons pouvons utiliser <code>axis.title.x = element_text(colour = "white", margin = margin(t = 10))</code> et <code>axis.title.y = element_text(colour = "white", margin = margin(r = 10))</code> pour respecter l’orientation des titres.</p>
 <p>Nous allons également modifier la couleur du texte des axes avec <code>axis.text = element_text(...)</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2726,7 +2782,7 @@ Nous allons utiliser <code>geom_bar()</code> pour visualiser le nombre de pingou
 </div>
 <p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-59-1.png" width="624" /></p>
 </div>
-<p>Nous pourrions également retirer les marques des graduations à l’aide de <code>axis.ticks = element_blank()</code>, mais celles-ci ne sont pas visibles avec les modifications apportées au graphique.</p>
+<p>Nous pourrions également <strong>retirer les marques des graduations</strong> à l’aide de <code>axis.ticks = element_blank()</code>, mais celles-ci ne sont pas visibles avec les modifications apportées au graphique.</p>
 <p>Pour montrer l’intérêt de ce paramètre, reprenons notre premier graphique :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2746,11 +2802,13 @@ Nous allons utiliser <code>geom_bar()</code> pour visualiser le nombre de pingou
 </div>
 <p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-61-1.png" width="624" /></p>
 </div>
+<p><br></p>
 <h3 id="la-légende">La légende</h3>
+<p><br></p>
 <div class="layout-chunk" data-layout="l-body-outset">
 <p><img src="img/ggplot_themes_legend.png" width="640" /></p>
 </div>
-<p>Nous allons modifier la couleur de l’arrière-plan de la légende (pour deux zones : le texte et les points), modifier la couleur et la taille du texte et supprimer le titre.</p>
+<p>Nous allons modifier la <strong>couleur de l’arrière-plan de la légende</strong> (pour deux zones : le texte et les points), <strong>modifier la couleur et la taille du texte</strong> et <strong>supprimer le titre</strong>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Parametrer la legende</span>
@@ -2764,7 +2822,7 @@ Nous allons utiliser <code>geom_bar()</code> pour visualiser le nombre de pingou
 </div>
 <p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-63-1.png" width="624" /></p>
 </div>
-<p>Nous pouvons modifier la position de la légende :</p>
+<p>Nous pouvons modifier la <strong>position de la légende</strong> :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Modifier la position de la legende</span>
@@ -2779,7 +2837,8 @@ Nous allons utiliser <code>geom_bar()</code> pour visualiser le nombre de pingou
 </div>
 <p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-64-1.png" width="624" /></p>
 </div>
-<p>La taille, la couleur et la transparence des points de la légende reprennent les paramètres utilisés dans <code>geom_point()</code>. Nous aimerions modifier ces éléments de la légende pour augmenter la taille des points et supprimer leur transparence pour simplifier la lecture de la légende. Nous utilisons pour cela un paramètre <code>guides()</code> :</p>
+<p>La taille, la couleur et la transparence des points de la légende reprennent les paramètres utilisés dans <code>geom_point()</code>. Nous aimerions modifier ces éléments de la légende pour augmenter la taille des points et supprimer leur transparence pour simplifier la lecture de la légende.</p>
+<p>Nous utilisons pour cela le <strong>paramètre <code>guides()</code></strong> :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Modifier la representation des points de la legende</span>
@@ -2796,9 +2855,11 @@ Nous allons utiliser <code>geom_bar()</code> pour visualiser le nombre de pingou
 </div>
 <p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-65-1.png" width="624" /></p>
 </div>
+<p><br></p>
 <h2 id="modifier-la-police-du-texte-avec-showtext">Modifier la police du texte avec <code>showtext</code></h2>
-<p>Nous aimerions utiliser d’autres polices de caractères pour notre graphiques.</p>
-<p>Le package <code>showtext()</code> permet d’utiliser des polices <strong>Google fonts</strong> dans nos graphiques, n’hésitez pas à fouiller pour trouver celle qui vous convient !</p>
+<p><br></p>
+<p>Nous aimerions utiliser d’autres polices de caractères pour notre graphique.</p>
+<p>Le <a href="https://github.com/yixuan/showtext">package <code>showtext()</code></a> permet d’utiliser des polices <strong>Google fonts</strong> dans nos graphiques, n’hésitez pas à fouiller pour trouver celle qui vous convient !</p>
 <p>Installez et chargez le package showtext :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2820,7 +2881,7 @@ Nous allons utiliser <code>geom_bar()</code> pour visualiser le nombre de pingou
 </code></pre>
 </div>
 </div>
-<p>Nous modifions également les marges du graphique, la taille du texte et l’alignement du titre et du sous-titre :</p>
+<p>Nous modifions également les <strong>marges du graphique</strong>, la <strong>taille du texte</strong> et l’<strong>alignement du titre et du sous-titre</strong> :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Modifier la police de caractères du titre et du sous-titre</span>
@@ -2838,8 +2899,10 @@ Nous allons utiliser <code>geom_bar()</code> pour visualiser le nombre de pingou
 </div>
 <p><img src="visualiser-donnees-ggplot2_files/figure-html5/unnamed-chunk-69-1.png" width="624" /></p>
 </div>
+<p><br></p>
 <h1 id="combiner-des-graphiques-avec-patchwork">Combiner des graphiques avec <code>patchwork</code></h1>
-<p>Le package <code>patchwork</code> permet de combiner plusieurs graphiques en une seule image.</p>
+<p><br></p>
+<p>Le <a href="https://patchwork.data-imaginist.com/">package <code>patchwork</code></a> permet de <strong>combiner plusieurs graphiques en une seule image</strong>.</p>
 <p>Installons et chargeons ce package :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2855,7 +2918,9 @@ Nous allons utiliser <code>geom_bar()</code> pour visualiser le nombre de pingou
 <p><strong>1) Un barplot du nombre de pingouins par île</strong></p>
 <p><strong>2) Un barplot du nombre de pingouins par espèce</strong></p>
 <p><strong>3) Un histogramme de la distribution de la masse corporelle</strong></p>
+<p><br></p>
 <p>Nous allons créer ces trois graphiques séparément. Quelques ajustements seront nécessaires : taille du texte, largeur des barres et des boîtes à moustaches, …</p>
+<p><br></p>
 <p>Le code ci-dessous tient compte de ces ajustements, n’hésitez pas à essayer différents réglages des paramètres pour obtenir le graphique qui vous convient ! L’onglet <strong>Plots</strong> de RStudio affiche un graphique peu fidèle au résultat final après exportation de l’image au format .png, il est donc nécessaire de faire des essais, exporter l’image ou l’ouvrir pour faire les ajustements.</p>
 <p>Nous allons utiliser la même couleur d’arrière-plan, les mêmes polices, etc. pour les différents graphiques.</p>
 <p>Nous pouvons donc définir un thème personnalisé qui contient ces paramètres : nous l’utiliserons comme nous l’avions fait avec <code>theme_minimal()</code> par exemple. Nous pourrons modifier d’autres paramètres à l’aide de la fonction <code>theme()</code> pour les éléments propres à l’un des graphiques.</p>
@@ -2878,7 +2943,9 @@ Nous allons utiliser <code>geom_bar()</code> pour visualiser le nombre de pingou
 </div>
 </div>
 <p>Nous venons de créer une <strong>fonction</strong> : nous pouvons l’appliquer à nos graphiques à l’aide de <code>theme_perso()</code>.</p>
+<p><br></p>
 <p>Créons maintenant chacun des graphiques :</p>
+<p><br></p>
 <p><strong>1) Barplot du nombre de pingouins par ile</strong></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2906,6 +2973,7 @@ Nous allons utiliser <code>geom_bar()</code> pour visualiser le nombre de pingou
 </code></pre>
 </div>
 </div>
+<p><br></p>
 <p><strong>2) Barplot du nombre de pingouins par espece</strong></p>
 <p>Nous utilisons ici <code>show.legend = TRUE</code> pour que la correspondance entre les couleurs et les espèces apparaisse dans notre graphique. Nous pourrons déplacer la légende avec <code>patchwork</code> quand nous combinerons les trois graphiques.</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -2935,6 +3003,7 @@ Nous allons utiliser <code>geom_bar()</code> pour visualiser le nombre de pingou
 </code></pre>
 </div>
 </div>
+<p><br></p>
 <p><strong>3) Boxplot + scatter plot de la distribution de la masse</strong></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2984,10 +3053,13 @@ Nous allons utiliser <code>geom_bar()</code> pour visualiser le nombre de pingou
 </code></pre>
 </div>
 </div>
+<p><br></p>
 <p><strong>Combiner les trois graphiques avec <code>patchwork</code></strong> :</p>
-<p>La syntaxe de ce package est plutôt simple : nous plaçons les deux barplots côte à côte sur une première ligne, et le boxplot sur un deuxième ligne : <code>(p1 + p2) / p3</code>.</p>
-<p>Nous précisons ensuite, à l’aide de <code>plot_layout()</code> que nous voulons une taille relative plus importante pour la deuxième ligne (<code>heights = c(1, 2)</code>). Le code <code>guides = "collect"</code> indique que les légendes des différents graphiques sont à regrouper (très utile pour éviter d’avoir plusieurs fois la même légende dans le graphique final).</p>
-<p>Nous ajoutons un titre global avec <code>plot_annotation()</code>.</p>
+<p>La syntaxe de ce package est plutôt simple : nous plaçons les deux barplots côte à côte sur une première ligne, et le boxplot sur un deuxième ligne : <strong><code>(p1 + p2) / p3</code></strong>.</p>
+<p><br></p>
+<p>Nous précisons ensuite, à l’aide de <strong><code>plot_layout()</code></strong> que nous voulons une taille relative plus importante pour la deuxième ligne (<code>heights = c(1, 2)</code>).</p>
+<p>Le code <strong><code>guides = "collect"</code></strong> indique que les légendes des différents graphiques sont à regrouper (très utile pour éviter d’avoir plusieurs fois la même légende dans le graphique final).</p>
+<p>Nous ajoutons un titre global avec <strong><code>plot_annotation()</code></strong>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Combiner les trois graphiques avec patchwork </span>
@@ -3001,6 +3073,7 @@ Nous allons utiliser <code>geom_bar()</code> pour visualiser le nombre de pingou
 </code></pre>
 </div>
 </div>
+<p><br></p>
 <p>Exportons ce graphique :</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -3009,6 +3082,7 @@ Nous allons utiliser <code>geom_bar()</code> pour visualiser le nombre de pingou
 </code></pre>
 </div>
 </div>
+<p><br></p>
 <p>Voici le résultat :</p>
 <div class="layout-chunk" data-layout="l-body-outset">
 <p><img src="img/patchwork_pingouins.png" width="1920" /></p>
