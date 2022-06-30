@@ -6,14 +6,14 @@
       "description": "Tutoriels pour apprendre à coder en R",
       "author": [],
       "contents": "\r\nLe contenu des tutoriels de ce site a été adapté du site ourcodingclub avec l’autorisation des auteurs.\r\n\r\nListe des tutoriels disponibles à ce jour :\r\nPremiers pas avec R\r\n\r\n\r\n\r\n",
-      "last_modified": "2022-06-29T09:40:38+02:00"
+      "last_modified": "2022-06-30T11:46:47+02:00"
     },
     {
       "path": "index.html",
       "title": "Tutoriels R",
       "author": [],
       "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2022-06-29T09:40:39+02:00"
+      "last_modified": "2022-06-30T11:46:48+02:00"
     },
     {
       "path": "links.html",
@@ -21,7 +21,7 @@
       "description": "Liens utiles pour approfondir",
       "author": [],
       "contents": "\r\nTélécharger R et RStudioAide-mémoiresLivresRépertoires GitHub des tutoriels\r\n\r\nTélécharger R et RStudio\r\nThe Comprehensive R Archive Network\r\nRStudio\r\n\r\nAide-mémoires\r\nRStudio (anglais / français)\r\nR basique (anglais)\r\ndplyr (anglais / francais)\r\ntidyr (anglais / francais)\r\n\r\nLivres\r\nR for Data Science (anglais)\r\nIntroduction à R et au tidyverse (français)\r\n\r\nRépertoires GitHub des tutoriels\r\nPremiers pas avec R\r\nManipulation de données\r\n\r\n\r\n\r\n",
-      "last_modified": "2022-06-29T09:40:40+02:00"
+      "last_modified": "2022-06-30T11:46:49+02:00"
     }
   ],
   "collections": ["posts/posts.json"]

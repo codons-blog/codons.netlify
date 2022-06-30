@@ -1404,3 +1404,190 @@ Nous modifions également les marges du graphique, la taille du texte et l'align
         axis.text = element_text(family = "Gruppo", size = 15))
 )
 ```
+
+# Combiner des graphiques avec `patchwork`
+
+Le package `patchwork` permet de combiner plusieurs graphiques en une seule image.
+
+Installons et chargeons ce package : 
+
+```{r, echo=TRUE, eval=FALSE, message=FALSE, warning=FALSE}
+install.packages("patchwork")
+library(patchwork)
+```
+
+```{r, echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
+library(patchwork)
+```
+
+Notre objectif est de combiner trois graphiques : 
+
+**1) Un barplot du nombre de pingouins par île**  
+
+**2) Un barplot du nombre de pingouins par espèce**
+
+**3) Un histogramme de la distribution de la masse corporelle**
+
+Nous allons créer ces trois graphiques séparément. Quelques ajustements seront nécessaires : taille du texte, largeur des barres et des boîtes à moustaches, ... 
+
+Le code ci-dessous tient compte de ces ajustements, n'hésitez pas à essayer différents réglages des paramètres pour obtenir le graphique qui vous convient ! L'onglet **Plots** de RStudio affiche un graphique peu fidèle au résultat final après exportation de l'image au format .png, il est donc nécessaire de faire des essais, exporter l'image ou l'ouvrir pour faire les ajustements.
+
+Nous allons utiliser la même couleur d'arrière-plan, les mêmes polices, etc. pour les différents graphiques.
+
+Nous pouvons donc définir un thème personnalisé qui contient ces paramètres : nous l'utiliserons comme nous l'avions fait avec `theme_minimal()` par exemple. Nous pourrons modifier d'autres paramètres à l'aide de la fonction `theme()` pour les éléments propres à l'un des graphiques.
+
+```{r, echo=TRUE, eval=FALSE, message=FALSE, warning=FALSE}
+# Theme personnalise
+theme_perso <- function() {
+  theme(panel.background = element_rect(fill = "#1d3557", colour = NA),
+        plot.background = element_rect(fill = "#1d3557", colour = NA),
+        plot.margin = margin(15, 15, 15, 15),
+        plot.title = element_text(family = "Righteous", colour = "white", size = 40, 
+                                  margin = margin(b = 20), hjust = 0.5),
+        plot.subtitle = element_text(family = "Righteous", colour = "white", size = 20,
+                                     margin = margin(b = 10), hjust = 0.5),
+        legend.background = element_rect(fill = "#1d3557", colour = NA),
+        legend.title = element_blank(),
+        legend.text = element_text(family = "Gruppo", colour = "white", size = 40))
+}
+```
+
+Nous venons de créer une **fonction** : nous pouvons l'appliquer à nos graphiques à l'aide de `theme_perso()`.
+
+Créons maintenant chacun des graphiques : 
+
+**1) Barplot du nombre de pingouins par ile**
+
+```{r, echo=TRUE, eval=FALSE, message=FALSE, warning=FALSE}
+# p1 : barplot du nombre de pingouins par ile
+p1 <- ggplot(data = mutate(pingouins,
+                     ile = fct_rev(fct_infreq(ile))),
+       mapping = aes(x = ile)) +
+  geom_bar(width = 0.75,
+           fill = "#dcf3ff") +
+  geom_text(aes(label = ..count..),
+            stat = "count",
+            family = "Gruppo",
+            hjust = 1.5,
+            colour = "#1d3557",
+            size = 20) +
+  labs(title = "Nombre de pingouins par île",
+       x = "",
+       y = "") +
+  coord_flip() +
+  theme_perso() +
+  theme(panel.grid = element_blank(),
+        axis.text.x = element_blank(),
+        axis.text.y = element_text(family = "Gruppo", colour = "#dcf3ff",
+                                   size = 40))
+```
+
+**2) Barplot du nombre de pingouins par espece**
+
+Nous utilisons ici `show.legend = TRUE` pour que la correspondance entre les couleurs et les espèces apparaisse dans notre graphique. Nous pourrons déplacer la légende avec `patchwork` quand nous combinerons les trois graphiques.
+
+```{r, echo=TRUE, eval=FALSE, message=FALSE, warning=FALSE}
+# p2 : barplot du nombre de pingouins par espece
+p2 <- ggplot(data = mutate(pingouins,
+                     espece = fct_rev(fct_infreq(espece))),
+       mapping = aes(x = espece,
+                     fill = espece)) +
+  geom_bar(width = 0.75) +
+  geom_text(aes(label = ..count..),
+            stat = "count",
+            family = "Gruppo",
+            hjust = 1.5,
+            colour = "white",
+            size = 20) +
+  scale_fill_manual(values = c("Adelie" = "darkorange",
+                               "Chinstrap" = "purple",
+                               "Gentoo" = "cyan4")) +
+  labs(title = "Nombre de pingouins par espèce",
+       x = "",
+       y = "") +
+  coord_flip() +
+  theme_perso() +
+  theme(panel.grid = element_blank(),
+        axis.text = element_blank())
+```
+
+**3) Boxplot + scatter plot de la distribution de la masse**
+
+```{r, echo=TRUE, eval=FALSE, message=FALSE, warning=FALSE}
+# p3 : boxplot + scatter plot de la distribution de la masse 
+p2 <- ggplot(data = pingouins,
+       mapping = aes(x = espece,
+                     y = masse_g / 1e3)) +
+  geom_boxplot(aes(colour = espece,
+                   fill = espece),
+               show.legend = FALSE,
+               outlier.shape = NA,
+               width = 0.5,
+               alpha = 0.5,
+               lwd = 0.75) +
+  geom_jitter(aes(colour = espece),
+              show.legend = FALSE,
+              alpha = 0.25,
+              width = 0.25) +
+  scale_colour_manual(values = c("Adelie" = "darkorange",
+                                 "Chinstrap" = "purple",
+                                 "Gentoo" = "cyan4")) +
+  scale_fill_manual(values = c("Adelie" = "darkorange",
+                               "Chinstrap" = "purple",
+                               "Gentoo" = "cyan4")) +
+  labs(title = "Distribution de la masse corporelle",
+       x = "",
+       y = "Masse (kg)") +
+  scale_y_continuous(breaks = seq(2, 6, 1),
+                     limits = c(2.5, 6.5)) +
+  coord_flip() +
+  theme_perso() +
+  theme(panel.grid.minor = element_blank(),
+        panel.grid.major.y = element_blank(),
+        panel.grid.major.x = element_line(colour = "white", 
+                                          linetype = "dotted",
+                                          size = 0.2),
+        plot.title = element_text(margin = margin(b = 25)),
+        plot.title.position = "panel",
+        axis.title.x = element_text(family = "Gruppo",
+                                    colour = "white",
+                                    size = 40,
+                                    margin = margin(t = 15)),
+        axis.text.x = element_text(family = "Gruppo",
+                                   colour = "white",
+                                   size = 40),
+        axis.text.y = element_blank())
+```
+
+**Combiner les trois graphiques avec `patchwork`** : 
+
+La syntaxe de ce package est plutôt simple : nous plaçons les deux barplots côte à côte sur une première ligne, et le boxplot sur un deuxième ligne : `(p1 + p2) / p3`.
+
+Nous précisons ensuite, à l'aide de `plot_layout()` que nous voulons une taille relative plus importante pour la deuxième ligne (`heights = c(1, 2)`). Le code `guides = "collect"` indique que les légendes des différents graphiques sont à regrouper (très utile pour éviter d'avoir plusieurs fois la même légende dans le graphique final).
+
+Nous ajoutons un titre global avec `plot_annotation()`.
+
+```{r, echo=TRUE, eval=FALSE, message=FALSE, warning=FALSE}
+# Combiner les trois graphiques avec patchwork 
+p <- (p1 + p2) / p3 +
+  patchwork::plot_layout(heights = c(1, 2),
+                         guides = "collect") +
+  patchwork::plot_annotation(
+    title = "Pingouins de l'archipel Palmer",
+    theme = theme_perso() +
+      theme(plot.title = element_text(size = 100)))
+
+```
+
+Exportons ce graphique : 
+
+```{r, echo=TRUE, eval=FALSE, message=FALSE, warning=FALSE}
+# Exporter le graphique
+ggsave("figs/patchwork_pingouins.png", p, dpi = 320, width = 12, height = 6)
+```
+
+Voici le résultat : 
+
+```{r, layout="l-body-outset"}
+knitr::include_graphics("img/patchwork_pingouins.png")
+```
