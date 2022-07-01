@@ -10,8 +10,10 @@ knitr::opts_chunk$set(echo = FALSE)
 
 [Télécharger R et RStudio](#download)  
 [Aide-mémoires](#cheatsheets)  
+[Tutoriels](#tutorials)  
 [Livres](#books)  
-[Répertoires GitHub des tutoriels](#git)
+[Répertoires GitHub des tutoriels](#git)  
+[Autres](#other)
 
 <br>
 
@@ -33,6 +35,16 @@ knitr::opts_chunk$set(echo = FALSE)
   
 - tidyr ([anglais](https://raw.githubusercontent.com/rstudio/cheatsheets/main/tidyr.pdf) / [francais](https://thinkr.fr/pdf/dplyr-french-cheatsheet.pdf))  
 
+- data.table ([anglais](https://raw.githubusercontent.com/rstudio/cheatsheets/main/datatable.pdf)  
+
+- ggplot2 ([anglais](https://raw.githubusercontent.com/rstudio/cheatsheets/main/datavizualisation.pdf) / [francais](https://thinkr.fr/pdf/ggplot2-french-cheatsheet.pdf)) 
+
+<br>
+
+# Tutoriels {#tutorials}
+
+- [A ggplot2 tutorial for beautiful plotting in R](https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/)
+
 <br>
 
 # Livres {#books}
@@ -41,6 +53,8 @@ knitr::opts_chunk$set(echo = FALSE)
 
 - [Introduction à R et au tidyverse](https://juba.github.io/tidyverse/index.html) (français)
 
+- [ggplot2 : elegant graphics for data analysis](https://ggplot2-book.org/) (anglais)
+
 <br>
 
 # Répertoires GitHub des tutoriels {#git}
@@ -48,3 +62,9 @@ knitr::opts_chunk$set(echo = FALSE)
 - [Premiers pas avec R](https://github.com/codons-blog/C-01-PremiersPas)  
 
 - [Manipulation de données](https://github.com/codons-blog/C-02-ManipulationDonnees)  
+
+<br>
+
+# Autres {#other}
+
+- [#TidyTuesday challenge](https://github.com/rfordatascience/tidytuesday)  
