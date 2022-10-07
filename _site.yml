@@ -7,10 +7,10 @@ navbar:
   right:
     - text: "Accueil"
       href: index.html
-    - text: "A propos"
-      href: about.html
     - text: "Liens"
       href: links.html
+    - text: "Glossaire"
+      href: glossary.html
 output:
   distill::distill_article:
     css: theme.css
