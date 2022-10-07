@@ -8,8 +8,6 @@ description: |
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-[Premiers pas avec R et RStudio](https://codons.netlify.app/posts/premiers-pas-avec-r/)
+[![Alt text](img/premiers_pas_banner.png)](https://codons.netlify.app/posts/premiers-pas-avec-r/)
 
-[![image](img/happy-r.png)]{width=5% height = 5%}](https://codons.netlify.app/posts/premiers-pas-avec-r/)
-
-![](img/happy-r.png)(https://codons.netlify.app/posts/premiers-pas-avec-r/)
+[![Alt text](img/manipulation_donnees_tidyverse_banner.png)](https://codons.netlify.app/posts/premiers-pas-avec-r/)
