@@ -15,13 +15,13 @@ output:
     toc: true
     toc_depth: 1
     self_contained: false
-draft: false
+draft: true
 ---
 
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
-knitr::opts_knit$set(root.dir='C:/Users/plasserre/Documents/R_workshops/codons.netlify/_posts/datatable')
+# knitr::opts_knit$set(root.dir='C:/Users/plasserre/Documents/R_workshops/codons.netlify/_posts/datatable')
 ```
 
 
