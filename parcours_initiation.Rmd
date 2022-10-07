@@ -9,5 +9,3 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 [![Alt text](img/premiers_pas_banner.png)](https://codons.netlify.app/posts/premiers-pas-avec-r/)
-
-[![Alt text](img/manipulation_donnees_tidyverse_banner.png)](https://codons.netlify.app/posts/premiers-pas-avec-r/)
