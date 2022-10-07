@@ -7,6 +7,12 @@ navbar:
   right:
     - text: "Accueil"
       href: index.html
+    - text: "Tutoriels"
+      menu:
+        - text: "Parcours \"initiation\""
+          href: parcours_initiation.html
+        - text: "Parcours \"perfectionnement\""
+          href: parcours_perfectionnement.html
     - text: "Liens"
       href: links.html
     - text: "Glossaire"
