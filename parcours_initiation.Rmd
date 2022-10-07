@@ -1,70 +1,11 @@
 ---
-title: "Glossaire"
+title: "Parcours \"initiation\""
 description: |
-  Les termes les plus utilisés et leurs définitions
+  Découvrir ou re-découvrir les bases
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-[Télécharger R et RStudio](#download)  
-[Aide-mémoires](#cheatsheets)  
-[Tutoriels](#tutorials)  
-[Livres](#books)  
-[Répertoires GitHub des tutoriels](#git)  
-[Autres](#other)
-
-<br>
-
-# Télécharger R et RStudio {#download}
-
-- [The Comprehensive R Archive Network](https://cran.r-project.org/)   
-
-- [RStudio](https://www.rstudio.com/products/rstudio/)  
-
-<br>
-
-# Aide-mémoires {#cheatsheets}
-
-- RStudio ([anglais](https://raw.githubusercontent.com/rstudio/cheatsheets/main/rstudio-ide.pdf) / [français](https://thinkr.fr/pdf/rstudio-french-cheatsheet.pdf)) 
-  
-- R basique ([anglais](https://raw.githubusercontent.com/rstudio/cheatsheets/main/base-r.pdf))  
-
-- dplyr ([anglais](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-transformation.pdf) / [francais](https://thinkr.fr/pdf/dplyr-french-cheatsheet.pdf))  
-  
-- tidyr ([anglais](https://raw.githubusercontent.com/rstudio/cheatsheets/main/tidyr.pdf) / [francais](https://thinkr.fr/pdf/dplyr-french-cheatsheet.pdf))  
-
-- data.table ([anglais](https://raw.githubusercontent.com/rstudio/cheatsheets/main/datatable.pdf)  
-
-- ggplot2 ([anglais](https://raw.githubusercontent.com/rstudio/cheatsheets/main/datavizualisation.pdf) / [francais](https://thinkr.fr/pdf/ggplot2-french-cheatsheet.pdf)) 
-
-<br>
-
-# Tutoriels {#tutorials}
-
-- [A ggplot2 tutorial for beautiful plotting in R](https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/)
-
-<br>
-
-# Livres {#books}
-
-- [R for Data Science](https://cran.r-project.org/) (anglais)
-
-- [Introduction à R et au tidyverse](https://juba.github.io/tidyverse/index.html) (français)
-
-- [ggplot2 : elegant graphics for data analysis](https://ggplot2-book.org/) (anglais)
-
-<br>
-
-# Répertoires GitHub des tutoriels {#git}
-
-- [Premiers pas avec R](https://github.com/codons-blog/C-01-PremiersPas)  
-
-- [Manipulation de données](https://github.com/codons-blog/C-02-ManipulationDonnees)  
-
-<br>
-
-# Autres {#other}
-
-- [#TidyTuesday challenge](https://github.com/rfordatascience/tidytuesday)  
+[Premiers pas avec R et RStudio](https://codons.netlify.app/posts/premiers-pas-avec-r/)
