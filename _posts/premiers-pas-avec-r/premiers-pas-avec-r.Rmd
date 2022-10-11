@@ -15,7 +15,6 @@ output:
   distill::distill_article:
     toc: true
     toc_depth: 1
-    # toc_float: true
     self_contained: false
 ---
 
@@ -32,10 +31,12 @@ oiseaux <- read.csv("oiseaux.csv")
 *Ce tutoriel est adapté de [Getting started with R and RStudio](https://ourcodingclub.github.io/tutorials/intro-to-r/) du site [Our Coding Club](https://ourcodingclub.github.io/).* 
 
 ```{r, layout="l-body-outset"}
-knitr::include_graphics("img/happy-r.png")
+# knitr::include_graphics("img/happy-r.png")
 ```
 
-Dessin de [Allison Horst](https://raw.githubusercontent.com/allisonhorst/qmss-r-teaching-tools/main/slides/happy-r.png)
+<!-- Dessin de [Allison Horst](https://raw.githubusercontent.com/allisonhorst/qmss-r-teaching-tools/main/slides/happy-r.png) -->
+
+[![Dessin de Allison Horst](img/happy-r.png){width=100%}](https://raw.githubusercontent.com/allisonhorst/qmss-r-teaching-tools/main/slides/happy-r.png)
 
 # Introduction
 
