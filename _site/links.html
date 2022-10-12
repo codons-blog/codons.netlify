@@ -788,7 +788,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   d-article table.gt_table td,
   d-article table.gt_table th {
     border-bottom: none;
-    font-size: 100%;
   }
 
   .html-widget {
@@ -1861,21 +1860,15 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
       // hoverable references
       $('span.citation[data-cites]').each(function() {
-        const citeChild = $(this).children()[0]
-        // Do not process if @xyz has been used without escaping and without bibliography activated
-        // https://github.com/rstudio/distill/issues/466
-        if (citeChild === undefined) return true
-
-        if (citeChild.nodeName == "D-FOOTNOTE") {
-          var fn = citeChild
+        if ($(this).children()[0].nodeName == "D-FOOTNOTE") {
+          var fn = $(this).children()[0]
           $(this).html(fn.shadowRoot.querySelector("sup"))
           $(this).id = fn.id
           fn.remove()
         }
         var refs = $(this).attr('data-cites').split(" ");
         var refHtml = refs.map(function(ref) {
-          // Could use CSS.escape too here, we insure backward compatibility in navigator
-          return "<p>" + $('div[id="ref-' + ref + '"]').html() + "</p>";
+          return "<p>" + $('#ref-' + ref).html() + "</p>";
         }).join("\n");
         window.tippy(this, {
           allowHTML: true,
@@ -2233,44 +2226,73 @@ Tutoriels
 <p><br></p>
 <h1 id="download">Télécharger R et RStudio</h1>
 <ul>
-<li><p><a href="https://cran.r-project.org/">The Comprehensive R Archive Network</a></p></li>
-<li><p><a href="https://www.rstudio.com/products/rstudio/">RStudio</a></p></li>
+<li><p><a href="https://cran.r-project.org/">The Comprehensive R Archive
+Network</a></p></li>
+<li><p><a
+href="https://www.rstudio.com/products/rstudio/">RStudio</a></p></li>
 </ul>
 <p><br></p>
 <h1 id="cheatsheets">Aide-mémoires</h1>
 <ul>
-<li><p>RStudio (<a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/rstudio-ide.pdf">anglais</a> / <a href="https://thinkr.fr/pdf/rstudio-french-cheatsheet.pdf">français</a>)</p></li>
-<li><p>R basique (<a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/base-r.pdf">anglais</a>)</p></li>
-<li><p>dplyr (<a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-transformation.pdf">anglais</a> / <a href="https://thinkr.fr/pdf/dplyr-french-cheatsheet.pdf">francais</a>)</p></li>
-<li><p>tidyr (<a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/tidyr.pdf">anglais</a> / <a href="https://thinkr.fr/pdf/dplyr-french-cheatsheet.pdf">francais</a>)</p></li>
-<li><p>data.table (<a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/datatable.pdf">anglais</a></p></li>
-<li><p>ggplot2 (<a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/datavizualisation.pdf">anglais</a> / <a href="https://thinkr.fr/pdf/ggplot2-french-cheatsheet.pdf">francais</a>)</p></li>
+<li><p>RStudio (<a
+href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/rstudio-ide.pdf">anglais</a>
+/ <a
+href="https://thinkr.fr/pdf/rstudio-french-cheatsheet.pdf">français</a>)</p></li>
+<li><p>R basique (<a
+href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/base-r.pdf">anglais</a>)</p></li>
+<li><p>dplyr (<a
+href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-transformation.pdf">anglais</a>
+/ <a
+href="https://thinkr.fr/pdf/dplyr-french-cheatsheet.pdf">francais</a>)</p></li>
+<li><p>tidyr (<a
+href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/tidyr.pdf">anglais</a>
+/ <a
+href="https://thinkr.fr/pdf/dplyr-french-cheatsheet.pdf">francais</a>)</p></li>
+<li><p>data.table (<a
+href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/datatable.pdf">anglais</a></p></li>
+<li><p>ggplot2 (<a
+href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/datavizualisation.pdf">anglais</a>
+/ <a
+href="https://thinkr.fr/pdf/ggplot2-french-cheatsheet.pdf">francais</a>)</p></li>
 </ul>
 <p><br></p>
 <h1 id="tutorials">Tutoriels</h1>
 <ul>
-<li><a href="https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/">A ggplot2 tutorial for beautiful plotting in R</a></li>
+<li><a
+href="https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/">A
+ggplot2 tutorial for beautiful plotting in R</a></li>
 </ul>
 <p><br></p>
 <h1 id="books">Livres</h1>
 <ul>
-<li><p><a href="https://cran.r-project.org/">R for Data Science</a> (anglais)</p></li>
-<li><p><a href="https://juba.github.io/tidyverse/index.html">Introduction à R et au tidyverse</a> (français)</p></li>
-<li><p><a href="https://ggplot2-book.org/">ggplot2 : elegant graphics for data analysis</a> (anglais)</p></li>
+<li><p><a href="https://cran.r-project.org/">R for Data Science</a>
+(anglais)</p></li>
+<li><p><a
+href="https://juba.github.io/tidyverse/index.html">Introduction à R et
+au tidyverse</a> (français)</p></li>
+<li><p><a href="https://ggplot2-book.org/">ggplot2 : elegant graphics
+for data analysis</a> (anglais)</p></li>
 </ul>
 <p><br></p>
 <h1 id="git">Répertoires GitHub des tutoriels</h1>
 <ul>
-<li><p><a href="https://github.com/codons-blog/C-01-PremiersPas">Premiers pas avec R</a></p></li>
-<li><p><a href="https://github.com/codons-blog/C-02-ManipulationDonnees">Manipulation de données</a></p></li>
+<li><p><a
+href="https://github.com/codons-blog/C-01-PremiersPas">Premiers pas avec
+R</a></p></li>
+<li><p><a
+href="https://github.com/codons-blog/C-02-ManipulationDonnees">Manipulation
+de données</a></p></li>
 </ul>
 <p><br></p>
 <h1 id="other">Autres</h1>
 <ul>
-<li><a href="https://github.com/rfordatascience/tidytuesday">#TidyTuesday challenge</a><br />
+<li><a
+href="https://github.com/rfordatascience/tidytuesday">#TidyTuesday
+challenge</a><br />
 </li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
