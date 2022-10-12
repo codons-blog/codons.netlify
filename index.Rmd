@@ -1,5 +1,7 @@
 ---
-title: "Tutoriels R"
+title: "Ateliers codons"
 site: distill::distill_website
-listing: posts
+# listing: posts
 ---
+
+[![Alt text](img/premiers_pas_banner.png)](https://codons.netlify.app/posts/premiers-pas-avec-r/)

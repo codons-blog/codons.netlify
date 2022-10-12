@@ -788,7 +788,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   d-article table.gt_table td,
   d-article table.gt_table th {
     border-bottom: none;
-    font-size: 100%;
   }
 
   .html-widget {
@@ -1861,21 +1860,15 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
       // hoverable references
       $('span.citation[data-cites]').each(function() {
-        const citeChild = $(this).children()[0]
-        // Do not process if @xyz has been used without escaping and without bibliography activated
-        // https://github.com/rstudio/distill/issues/466
-        if (citeChild === undefined) return true
-
-        if (citeChild.nodeName == "D-FOOTNOTE") {
-          var fn = citeChild
+        if ($(this).children()[0].nodeName == "D-FOOTNOTE") {
+          var fn = $(this).children()[0]
           $(this).html(fn.shadowRoot.querySelector("sup"))
           $(this).id = fn.id
           fn.remove()
         }
         var refs = $(this).attr('data-cites').split(" ");
         var refHtml = refs.map(function(ref) {
-          // Could use CSS.escape too here, we insure backward compatibility in navigator
-          return "<p>" + $('div[id="ref-' + ref + '"]').html() + "</p>";
+          return "<p>" + $('#ref-' + ref).html() + "</p>";
         }).join("\n");
         window.tippy(this, {
           allowHTML: true,
@@ -2224,39 +2217,64 @@ Tutoriels
 
 
 <div class="d-article">
-<p><a href="#a">A</a> <a href="#b">B</a> <a href="#c">C</a> <a href="#d">D</a> <a href="#e">E</a> <a href="#f">F</a> <a href="#g">G</a> <a href="#h">H</a> <a href="#i">I</a> <a href="#j">J</a> <a href="#k">K</a> <a href="#l">L</a> <a href="#m">M</a> <a href="#n">N</a> <a href="#o">O</a> <a href="#p">P</a> <a href="#q">Q</a> <a href="#r">R</a> <a href="#s">S</a> <a href="#t">T</a> <a href="#u">U</a> <a href="#v">V</a> <a href="#w">W</a> <a href="#x">X</a> <a href="#y">Y</a> <a href="#z">Z</a></p>
+<p><a href="#a">A</a> <a href="#b">B</a> <a href="#c">C</a> <a
+href="#d">D</a> <a href="#e">E</a> <a href="#f">F</a> <a href="#g">G</a>
+<a href="#h">H</a> <a href="#i">I</a> <a href="#j">J</a> <a
+href="#k">K</a> <a href="#l">L</a> <a href="#m">M</a> <a href="#n">N</a>
+<a href="#o">O</a> <a href="#p">P</a> <a href="#q">Q</a> <a
+href="#r">R</a> <a href="#s">S</a> <a href="#t">T</a> <a href="#u">U</a>
+<a href="#v">V</a> <a href="#w">W</a> <a href="#x">X</a> <a
+href="#y">Y</a> <a href="#z">Z</a></p>
 <p><br></p>
 <h1 id="a">A</h1>
-<p>##Argument** : élément d’une fonction, essentiel ou optionnel, qui précise ou modifie la façon dont la fonction est exécutée.</p>
+<p>##Argument** : élément d’une fonction, essentiel ou optionnel, qui
+précise ou modifie la façon dont la fonction est exécutée.</p>
 <h1 id="b">B</h1>
 <h1 id="c">C</h1>
-<p><strong>Casse</strong> : R différencie les lettres minuscules des lettres majuscules.<br />
-<strong>Chemin absolu</strong> : chemin vers un fichier à partir de la racine (ex : C:/).<br />
-<strong>Chemin relatif</strong> : chemin vers un fichier à partir du <a href="#wd">répertoire de travail</a>.<br />
-<strong>Classe</strong> : type de données contenues dans une variable (le plus souvent des caractères ou des valeurs numériques).<br />
-<strong>Commande</strong> : morceau de code qui exécute une action et qui contient généralement une ou plusieurs fonctions.<br />
-<strong>Commentaire</strong> : partie d’un script qui ne sera pas exécutée (commence par un <code>#</code>).<br />
-<strong>Console</strong> : fenêtre dans RStudio où l’on peut écrire et exécuter du code.</p>
+<p><strong>Casse</strong> : R différencie les lettres minuscules des
+lettres majuscules.<br />
+<strong>Chemin absolu</strong> : chemin vers un fichier à partir de la
+racine (ex : C:/).<br />
+<strong>Chemin relatif</strong> : chemin vers un fichier à partir du <a
+href="#wd">répertoire de travail</a>.<br />
+<strong>Classe</strong> : type de données contenues dans une variable
+(le plus souvent des caractères ou des valeurs numériques).<br />
+<strong>Commande</strong> : morceau de code qui exécute une action et
+qui contient généralement une ou plusieurs fonctions.<br />
+<strong>Commentaire</strong> : partie d’un script qui ne sera pas
+exécutée (commence par un <code>#</code>).<br />
+<strong>Console</strong> : fenêtre dans RStudio où l’on peut écrire et
+exécuter du code.</p>
 <h1 id="d">D</h1>
-<p><strong>Data frame</strong> : objet à deux dimensions (lignes et colonnes) dont les éléments peuvent être de différents types.</p>
+<p><strong>Data frame</strong> : objet à deux dimensions (lignes et
+colonnes) dont les éléments peuvent être de différents types.</p>
 <h1 id="e">E</h1>
-<p><strong>Environnement</strong> : contient votre espace de travail (données importées, objets, fonctions, …)</p>
+<p><strong>Environnement</strong> : contient votre espace de travail
+(données importées, objets, fonctions, …)</p>
 <h1 id="f">F</h1>
-<p><strong>Facteur</strong> : vecteur contenant une structure interne définie par des niveaux.<br />
+<p><strong>Facteur</strong> : vecteur contenant une structure interne
+définie par des niveaux.<br />
 <strong>Fonction</strong> : code qui exécute une action.</p>
 <h1 id="om">M</h1>
-<p><strong>Matrice</strong> : objet à deux dimensions dont les éléments sont de même type.</p>
+<p><strong>Matrice</strong> : objet à deux dimensions dont les éléments
+sont de même type.</p>
 <h1 id="o">O</h1>
-<p><strong>Objet</strong> : tout élément manipulé ou créé dans R (on parle d’un langage orienté objet).</p>
+<p><strong>Objet</strong> : tout élément manipulé ou créé dans R (on
+parle d’un langage orienté objet).</p>
 <h1 id="p">P</h1>
-<p><strong>Package</strong> : ensemble de fonctionnalités supplémentaires qui peuvent être chargées dans R.</p>
+<p><strong>Package</strong> : ensemble de fonctionnalités
+supplémentaires qui peuvent être chargées dans R.</p>
 <h1 id="r">R</h1>
-<p><span id="wd"><strong>Répertoire de travail</strong></span> : dossier qui contient tout ce qui concerne votre session actuelle.</p>
+<p><span id="wd"><strong>Répertoire de travail</strong></span> : dossier
+qui contient tout ce qui concerne votre session actuelle.</p>
 <h1 id="s">S</h1>
-<p><strong>Script</strong> : à la façon d’un document texte, permet de rédiger et de sauvegarder du code.</p>
+<p><strong>Script</strong> : à la façon d’un document texte, permet de
+rédiger et de sauvegarder du code.</p>
 <h1 id="v">V</h1>
-<p><strong>Vecteur</strong> : objet à une dimension, dont les éléments sont de même type.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p><strong>Vecteur</strong> : objet à une dimension, dont les éléments
+sont de même type.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
