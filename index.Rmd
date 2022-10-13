@@ -4,4 +4,12 @@ site: distill::distill_website
 # listing: posts
 ---
 
+[![Installer R](img/banniere_installer_r.png){width="50%"}](https://codons.netlify.app/posts/installer-r)
+
+[![Alt text](img/banniere_installer_r.png)]{width = 50%}(https://codons.netlify.app/posts/premiers-pas-avec-r/)
+
 [![Alt text](img/premiers_pas_banner.png)](https://codons.netlify.app/posts/premiers-pas-avec-r/)
+
+```{r, eval=TRUE, echo=TRUE, code_folding=TRUE}
+knitr::include_graphics("img/premiers_pas_banner.png")
+```
