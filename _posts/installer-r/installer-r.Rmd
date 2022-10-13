@@ -30,8 +30,8 @@ knitr::opts_chunk$set(echo = FALSE)
 
 Dans ce tutoriel, nous allons voir comment télécharger et installer R.
 
-1.  [Qu'est-ce que R ?](#r)\
-2.  [Télécharger R](#download)\
+1.  [Qu'est-ce que R ?](#r)
+2.  [Télécharger R](#download)
 3.  [Installer R](#install)
 
 <br>
@@ -62,4 +62,14 @@ Il dispose d'une **communauté** en ligne très active ainsi que d'**extensions*
 
 Contrairement à d'autres logiciels de statistiques comme Minitab ou SPSS, R peut être exécuté entièrement en **ligne de commande** et ne nécessite pas d'interface graphique, ce qui lui confère une **grande flexibilité**.  
 
-<br> 
+<br>  
+
+Voici quelques avantages de R :  
+
+- C'est un outil **libre et open source** (tout le monde peut utiliser le code et voir comment il fonctionne)  
+- C'est un langage de programmation plutôt qu'une interface graphique, ce qui permet à l'utilisateur de sauvegarder facilement des **scripts** sous forme de texte pour les ré-utiliser ou les partager  
+- Beaucoup de personnes l'utilisent dans beaucoup de domaines différents - **il est rare d'être confronté à un problème qui n'a jamais été résolu !**
+
+<br>
+
+# Télécharger R {#download}
