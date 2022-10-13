@@ -31,7 +31,7 @@ knitr::opts_chunk$set(echo = FALSE)
 Dans ce tutoriel, nous allons voir comment télécharger et installer R.
 
 1.  [Qu'est-ce que R ?](#r)
-2.  [Télécharger R](#download)
+2.  [Télécharger R pour Windows](#download)
 3.  [Installer R](#install)
 
 <br>
@@ -72,4 +72,47 @@ Voici quelques avantages de R :
 
 <br>
 
-# Télécharger R {#download}
+# Télécharger R pour Windows {#download}  
+
+Naviguez jusqu'au site internet du [**CRAN (*The Comprehensive R Archive Network*)**](https://cran.r-project.org/) et choisissez **Download R for Windows**.
+
+[![CRAN_01](img/cran_01.png){width="100%"}](https://cran.r-project.org/)
+
+Cliquez sur **base** puis sur **Download R-... for Windows**.  
+
+[![CRAN_02](img/cran_02.png){width="100%"}](https://cran.r-project.org/)
+[![CRAN_03](img/cran_03.png){width="100%"}](https://cran.r-project.org/)
+
+Choisissez l'**emplacement de sauvegarde** puis téléchargez le fichier.  
+
+# Installer R
+
+Naviguez jusqu'à cet emplacement (*Téléchargements* par exemple) et double-cliquez sur le fichier **R-...-win.exe**
+
+[![CRAN_04](img/cran_04.png){width="100%"}](https://cran.r-project.org/)
+
+Choisissez la **langue** pour l'installation puis cliquez sur **OK**
+
+[![CRAN_05](img/cran_05.png){width="50%"}](https://cran.r-project.org/)
+
+Parcourez les **Informations** puis cliquez sur **Suivant**.
+
+[![CRAN_06](img/cran_06.png){width="50%"}](https://cran.r-project.org/)
+
+Choisissez le **dossier dans lequel sera installé R** (*Program Files* par exemple).
+
+[![CRAN_07](img/cran_07.png){width="50%"}](https://cran.r-project.org/)
+
+Dans les **Composants à installer**, laissez les valeurs par défaut puis cliquez sur **Suivant**.
+
+[![CRAN_08](img/cran_08.png){width="50%"}](https://cran.r-project.org/)
+
+Dans les **Options de démarrage**, laissez les valeurs par défauts puis cliquez sur **Suivant**.
+
+[![CRAN_09](img/cran_09.png){width="50%"}](https://cran.r-project.org/)
+
+Dans les **Tâches supplémentaires**, vous pouvez choisir de créer une icône sur le Bureau et/ou dans la barre de lancement rapide. Nous utilisons rarement R de manière isolée, vous pouvez donc laisser les valeurs par défaut 
+
+[![CRAN_10](img/cran_10.png){width="50%"}](https://cran.r-project.org/)
+
+Une fois R installé, cliquez sur **Terminer**.
