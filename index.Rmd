@@ -4,7 +4,7 @@ site: distill::distill_website
 # listing: posts
 ---
 
-[![Installer R](img/banniere_installer_r.png){width="50%"}](https://codons.netlify.app/posts/installer-r)
+[![Installer R](img/banniere_installer_r_rstudio.png){width="75%"}](https://codons.netlify.app/posts/installer-r-et-rstudio)
 
 <!-- [![Alt text](img/banniere_installer_r.png)]{width = 50%}(https://codons.netlify.app/posts/premiers-pas-avec-r/) -->
 
