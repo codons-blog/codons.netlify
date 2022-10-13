@@ -6,14 +6,14 @@
       "description": "Les termes les plus utilisés et leurs définitions",
       "author": [],
       "contents": "\r\nA B C D E F G\r\nH I J K L M N\r\nO P Q R S T U\r\nV W X Y Z\r\n\r\nA\r\n##Argument** : élément d’une fonction, essentiel ou optionnel, qui\r\nprécise ou modifie la façon dont la fonction est exécutée.\r\nB\r\nC\r\nCasse : R différencie les lettres minuscules des\r\nlettres majuscules.Chemin absolu : chemin vers un fichier à partir de la\r\nracine (ex : C:/).Chemin relatif : chemin vers un fichier à partir du répertoire de travail.Classe : type de données contenues dans une variable\r\n(le plus souvent des caractères ou des valeurs numériques).Commande : morceau de code qui exécute une action et\r\nqui contient généralement une ou plusieurs fonctions.Commentaire : partie d’un script qui ne sera pas\r\nexécutée (commence par un #).Console : fenêtre dans RStudio où l’on peut écrire et\r\nexécuter du code.\r\nD\r\nData frame : objet à deux dimensions (lignes et\r\ncolonnes) dont les éléments peuvent être de différents types.\r\nE\r\nEnvironnement : contient votre espace de travail\r\n(données importées, objets, fonctions, …)\r\nF\r\nFacteur : vecteur contenant une structure interne\r\ndéfinie par des niveaux.Fonction : code qui exécute une action.\r\nM\r\nMatrice : objet à deux dimensions dont les éléments\r\nsont de même type.\r\nO\r\nObjet : tout élément manipulé ou créé dans R (on\r\nparle d’un langage orienté objet).\r\nP\r\nPackage : ensemble de fonctionnalités\r\nsupplémentaires qui peuvent être chargées dans R.\r\nR\r\nRépertoire de travail : dossier\r\nqui contient tout ce qui concerne votre session actuelle.\r\nS\r\nScript : à la façon d’un document texte, permet de\r\nrédiger et de sauvegarder du code.\r\nV\r\nVecteur : objet à une dimension, dont les éléments\r\nsont de même type.\r\n\r\n\r\n\r\n",
-      "last_modified": "2022-10-13T13:36:16+02:00"
+      "last_modified": "2022-10-13T13:45:48+02:00"
     },
     {
       "path": "index.html",
       "title": "Ateliers codons",
       "author": [],
       "contents": "\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
-      "last_modified": "2022-10-13T13:36:17+02:00"
+      "last_modified": "2022-10-13T13:45:48+02:00"
     },
     {
       "path": "links.html",
@@ -21,7 +21,7 @@
       "description": "Liens utiles pour approfondir",
       "author": [],
       "contents": "\r\nTélécharger R et RStudioAide-mémoiresTutorielsLivresRépertoires GitHub des tutorielsAutres\r\n\r\nTélécharger R et RStudio\r\nThe Comprehensive R Archive\r\nNetwork\r\nRStudio\r\n\r\nAide-mémoires\r\nRStudio (anglais\r\n/ français)\r\nR basique (anglais)\r\ndplyr (anglais\r\n/ francais)\r\ntidyr (anglais\r\n/ francais)\r\ndata.table (anglais\r\nggplot2 (anglais\r\n/ francais)\r\n\r\nTutoriels\r\nA\r\nggplot2 tutorial for beautiful plotting in R\r\n\r\nLivres\r\nR for Data Science\r\n(anglais)\r\nIntroduction à R et\r\nau tidyverse (français)\r\nggplot2 : elegant graphics\r\nfor data analysis (anglais)\r\n\r\nRépertoires GitHub des tutoriels\r\nPremiers pas avec\r\nR\r\nManipulation\r\nde données\r\n\r\nAutres\r\n#TidyTuesday\r\nchallenge\r\n\r\n\r\n\r\n",
-      "last_modified": "2022-10-13T13:36:17+02:00"
+      "last_modified": "2022-10-13T13:45:49+02:00"
     },
     {
       "path": "parcours_initiation.html",
@@ -29,7 +29,7 @@
       "description": "Découvrir ou re-découvrir les bases",
       "author": [],
       "contents": "\r\n\r\n\r\n\r\n\r\n",
-      "last_modified": "2022-10-13T13:36:18+02:00"
+      "last_modified": "2022-10-13T13:45:49+02:00"
     },
     {
       "path": "parcours_perfectionnement.html",
@@ -37,7 +37,7 @@
       "description": "Les termes les plus utilisés et leurs définitions",
       "author": [],
       "contents": "\r\nTélécharger R et RStudioAide-mémoiresTutorielsLivresRépertoires GitHub des tutorielsAutres\r\n\r\nTélécharger R et RStudio\r\nThe Comprehensive R Archive\r\nNetwork\r\nRStudio\r\n\r\nAide-mémoires\r\nRStudio (anglais\r\n/ français)\r\nR basique (anglais)\r\ndplyr (anglais\r\n/ francais)\r\ntidyr (anglais\r\n/ francais)\r\ndata.table (anglais\r\nggplot2 (anglais\r\n/ francais)\r\n\r\nTutoriels\r\nA\r\nggplot2 tutorial for beautiful plotting in R\r\n\r\nLivres\r\nR for Data Science\r\n(anglais)\r\nIntroduction à R et\r\nau tidyverse (français)\r\nggplot2 : elegant graphics\r\nfor data analysis (anglais)\r\n\r\nRépertoires GitHub des tutoriels\r\nPremiers pas avec\r\nR\r\nManipulation\r\nde données\r\n\r\nAutres\r\n#TidyTuesday\r\nchallenge\r\n\r\n\r\n\r\n",
-      "last_modified": "2022-10-13T13:36:19+02:00"
+      "last_modified": "2022-10-13T13:45:50+02:00"
     }
   ],
   "collections": ["posts/posts.json"]
