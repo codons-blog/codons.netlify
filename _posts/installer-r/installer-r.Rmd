@@ -1,0 +1,64 @@
+---
+title: "Installer R"
+description: |
+  Comment télécharger et installer R sur son ordinateur.
+author:
+  - name: Gergana Daskalova
+    url: https://ourcodingclub.github.io/tutorials/intro-to-r/
+  - name: Jonathan Kitt (adaptation)
+date: 2022-10-13
+categories:
+  - R
+  - Installation
+output:
+  distill::distill_article:
+    toc: true
+    toc_depth: 1
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+*Ce tutoriel est adapté de [Getting started with R and RStudio](https://ourcodingclub.github.io/tutorials/intro-to-r/) du site [Our Coding Club](https://ourcodingclub.github.io/).*
+
+[![Marta Branco](img/pexels-marta-branco-1194713.jpg){width="100%"}](https://www.pexels.com/fr-fr/photo/photo-gros-plan-du-clavier-noir-et-bleu-1194713/)
+
+<br>
+
+Dans ce tutoriel, nous allons voir comment télécharger et installer R.
+
+1.  [Qu'est-ce que R ?](#r)\
+2.  [Télécharger R](#download)\
+3.  [Installer R](#install)
+
+<br>
+
+# Qu'est-ce que R ? {#r}
+
+<br>
+
+R est un **langage de programmation statistique** qui a rapidement gagné en popularité dans de nombreux domaines scientifiques.
+
+Il a été développé par **Ross Ihaka** et **Robert Gentleman**, du Département de Statistiques de l'Université d'Auckland, comme **implémentation libre du langage de programmation S**.
+
+<br>
+
+|      |                                                                                                                                   |
+|------|-----------------------------------------------------------------------------------------------------------------------------------|
+| 1991 | Création du langage R                                                                                                             |
+| 1993 | R est dévoilé au public                                                                                                           |
+| 1996 | [Article dans le *Journal of Computational and Graphical Statistics*](https://www.stat.auckland.ac.nz/~ihaka/downloads/R-paper.pdf) |
+
+<br>
+
+R désigne également le **logiciel** qui utilise ce langage pour des calculs statistiques (et tout un tas d'autres applications !). 
+
+Il dispose d'une **communauté** en ligne très active ainsi que d'**extensions** pour presque tous les domaines et applications possibles et imaginables. 
+  
+<br>
+
+Contrairement à d'autres logiciels de statistiques comme Minitab ou SPSS, R peut être exécuté entièrement en **ligne de commande** et ne nécessite pas d'interface graphique, ce qui lui confère une **grande flexibilité**.  
+
+<br> 
