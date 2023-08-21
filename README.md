@@ -5,11 +5,11 @@ Les ateliers codons sont des formations organisées en interne à l'UMR GDEC, po
 
 ## Les ateliers 
 
-- Manipuler des fichiers de grande taille (>1Go) avec data.table
-- Installer R et RStudio  
-- Manipuler des données avec tidyverse  
+- Installer R et RStudio
 - Premiers pas avec R  
-- Visualiser les données avec ggplot2  
+- Manipuler des données avec tidyverse  
+- Visualiser les données avec ggplot2
+- Manipuler des fichiers de grande taille (>1Go) avec data.table  
 
 Les codes de ces différents ateliers sont dans le répertoire /codons.netlify/_posts  
 
