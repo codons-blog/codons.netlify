@@ -17,9 +17,9 @@ Les codes de ces différents ateliers sont dans le répertoire /codons.netlify/_
 
 Le site web de supports de cours est construit avec l'outil Netlify.  
 
+## Lien  
 
-## Knowledge transmission
-See [GDEC's Wiki](https://wiki.inra.fr/wiki/umr1095/Project+Bioinfo/howto-hic)
+url
 
 ## Support  
 jonathan.kitt@inrae.fr, pauline.lasserre-zuber@inrae.fr
