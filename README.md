@@ -16,7 +16,7 @@ Les codes de ces différents ateliers sont dans le répertoire /codons.netlify/_
 ## Le blog
 
 Le site web de supports de cours est construit avec l'outil Netlify.  
-Lien vers le blog [ateliers Codons](https://codons.netlify.app/parcours_perfectionnement)
+Lien vers le blog [ateliers codons](https://ateliers-codons.netlify.app/)
 
 ## Support  
 jonathan.kitt@inrae.fr, pauline.lasserre-zuber@inrae.fr
